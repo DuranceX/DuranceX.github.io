@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Failed to connect to github.com port 443: Timed out</title>
+    <link href="/2020/02/22/hexo-Failed-to-connect-to-github-com-port-443-Timed-out/"/>
+    <url>/2020/02/22/hexo-Failed-to-connect-to-github-com-port-443-Timed-out/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Failed-to-connect-to-github-com-port-443-Timed-out"><a href="#Failed-to-connect-to-github-com-port-443-Timed-out" class="headerlink" title="Failed to connect to github. com port 443: Timed out"></a>Failed to connect to github. com port 443: Timed out</h1><p> 在使用hexo g -d部署到github上时出现了“Failed to connect to github. com port 443: Timed out”的错误提示。<br><img src="/img/problems/Time_out.png" srcset="/img/loading.gif" alt=""></p><p><strong>解决办法</strong></p><p>输入</p><pre><code class="git">git config --global http.proxy http://127.0.0.1:1080git config --global https.proxy http://127.0.0.1:1080</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>problems</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>problems</tag>
+      
+      <tag>hexo</tag>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>进度报告</title>
     <link href="/2020/02/22/2020-02-22%E8%BF%9B%E5%BA%A6/"/>
     <url>/2020/02/22/2020-02-22%E8%BF%9B%E5%BA%A6/</url>
@@ -27,7 +56,7 @@
     
     <tags>
       
-      <tag>first</tag>
+      <tag>hexo</tag>
       
     </tags>
     

@@ -136,12 +136,18 @@
                 
 
 <div class="list-group">
-<!--  <p class="h4">共计 2 篇文章</p>-->
+<!--  <p class="h4">共计 3 篇文章</p>-->
   <hr>
   
     
       
       <p class="h5">2020</p>
+    
+    <a href="/2020/02/24/fluid%E7%BE%8E%E5%8C%96/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">fluid美化</span>
+      <span style="float: right;">02-24</span>
+    </a>
+  
     
     <a href="/2020/02/22/hexo-Failed-to-connect-to-github-com-port-443-Timed-out/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">Failed to connect to github.com port 443: Timed out</span>
@@ -203,11 +209,28 @@
     <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
     <br>
 
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
     
 
 
-    
-
+    <p id="hitokoto">:D 获取中...</p>
 
     <!-- cnzz Analytics icon -->
     
@@ -239,6 +262,17 @@
 <!-- Plugins -->
 
 
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
   
 
   
@@ -383,6 +417,26 @@
 
 
 
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--一言API-->
+<!-- 现代写法，推荐 -->
+<script>
+  fetch('https://v1.hitokoto.cn/?c=c&c=d')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
 
 </body>
 </html>

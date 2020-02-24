@@ -135,7 +135,7 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<ul class="category-tree-list"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/problems/">problems</a><span class="category-tree-list-count">1</span></li></ul>
+<ul class="category-tree-list"><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/problems/">problems</a><span class="category-tree-list-count">1</span></li><li class="category-tree-list-item"><a class="category-tree-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a><span class="category-tree-list-count">1</span></li></ul>
 
 
               </div>
@@ -183,11 +183,28 @@
     <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
     <br>
 
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
     
 
 
-    
-
+    <p id="hitokoto">:D 获取中...</p>
 
     <!-- cnzz Analytics icon -->
     
@@ -219,6 +236,17 @@
 <!-- Plugins -->
 
 
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
   
 
   
@@ -363,6 +391,26 @@
 
 
 
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--一言API-->
+<!-- 现代写法，推荐 -->
+<script>
+  fetch('https://v1.hitokoto.cn/?c=c&c=d')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>进度报告 ~ 星下小屋</title>
+  <title>第二章：数据表示与逻辑电路基础 ~ 星下小屋</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -121,7 +121,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Saturday, 2020/02/22, 22:32
+                  Wednesday, 2020/02/26, 17:23
                 </p>
               
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    30 字
+                    807 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -173,8 +173,156 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="进度报告"><a href="#进度报告" class="headerlink" title="进度报告"></a>进度报告</h1><h3 id="2020-02-22"><a href="#2020-02-22" class="headerlink" title="2020-02-22"></a>2020-02-22</h3><p><strong>单元3+后一份试卷选择题</strong></p>
-<h3 id="2020-02-23"><a href="#2020-02-23" class="headerlink" title="2020-02-23"></a>2020-02-23</h3><p><strong>一份试卷+昨天剩余部分</strong></p>
+            <p>计算机组成原理——第二章：数据表示与逻辑电路基础<br />
+包括机器数、定点与浮点数、数据校验等内容</p>
+<a id="more"></a>
+<h1 id="一-机器数及其特点"><a class="markdownIt-Anchor" href="#一-机器数及其特点"></a> 一、机器数及其特点</h1>
+<h2 id="机器内的数据表示"><a class="markdownIt-Anchor" href="#机器内的数据表示"></a> 机器内的数据表示</h2>
+<ol>
+<li>
+<p>真值：符号用“+”，“-”表示的数据表示方法</p>
+</li>
+<li>
+<p>机器数：符号数值化的数据表示方法，用0、1表示符号（二进制）</p>
+</li>
+<li>
+<p>四种常见的机器数：原码，反码，补码，移码<br />
+设定点数的形式为X<sub>0</sub>X<sub>1</sub>X<sub>2</sub>X<sub>3</sub>…X<sub>n</sub><br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%9C%BA%E5%99%A8%E6%95%B0.png" srcset="/img/loading.gif" alt="" /><br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%A7%BB%E7%A0%81.png" srcset="/img/loading.gif" alt="" /><br />
+计算起来就是反码是原码取反（0-&gt;1,1-&gt;0，符号除外）<br />
+补码就是反码+1<br />
+移码的数值位与补码相同，符号位与补码相反</p>
+<blockquote>
+<p>因此不能说“0”代表正号，“1”代表负号，因为在补码中如此，但在移码中相反</p>
+</blockquote>
+<blockquote>
+<p>例如：<br />
+(1)X=+1011<br />
+[X]<sub>原</sub>=[X]<sub>反</sub>=[X]<sub>补</sub>=01011<br />
+(2)X=-1011<br />
+[X]<sub>原</sub>=11011      [X]<sub>反</sub>=10100       [X]<sub>补</sub>=10101<br />
+(3)0的表示<br />
+[+0]<sub>原</sub>=00000      [-0]<sub>原</sub>=10000<br />
+[+0]<sub>反</sub>=00000      [-0]<sub>反</sub>=11111<br />
+[+0]<sub>补</sub>=00000=[-0]<sub>补</sub></p>
+<blockquote>
+<p>机器数表示的范围受字长的限制<br />
+原码和反码的0有两种表现形式；补码和移码的0只有1种表现形式</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>反码的运算<br />
+两个二进制数反码相加，最后得到的位数若大于两数的位数，则第一位加至最后一位</p>
+<blockquote>
+<p>例：<br />
+x=-1101，Y=-1010，则[X+Y]<sub>反</sub>为<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%8F%8D%E7%A0%81%E8%BF%90%E7%AE%97.png" srcset="/img/loading.gif" alt="" /></p>
+</blockquote>
+</li>
+</ol>
+<h1 id="二-定点与浮点数据表示"><a class="markdownIt-Anchor" href="#二-定点与浮点数据表示"></a> 二、定点与浮点数据表示</h1>
+<h2 id="定点数"><a class="markdownIt-Anchor" href="#定点数"></a> 定点数</h2>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E6%95%B0.png" srcset="/img/loading.gif" alt="" /><br />
+可见定点小数的的小数点在数字中间，定点整数的小数点在数字最后</p>
+<h2 id="浮点数"><a class="markdownIt-Anchor" href="#浮点数"></a> 浮点数</h2>
+<p>浮点数是把数的范围和精度分别表示的一种数据表示方法</p>
+<ol>
+<li>
+<p>一般格式<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.png" srcset="/img/loading.gif" alt="" /><br />
+       当计算机的字长确定时，分给阶码部分的位越多，数据表示的范围就越大，与此同时数据的精确度会下降</p>
+</li>
+<li>
+<p>IEEE 754格式<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/IEEE-754.png" srcset="/img/loading.gif" alt="" /><br />
+IEEE 754格式与对应真值之间的变换流程如下<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/IEEE%E8%BD%AC%E6%8D%A2.png" srcset="/img/loading.gif" alt="" /></p>
+<blockquote>
+<p>例：<br />
+将二进制数20.59375转换成32位IEEE754格式浮点数的二进制格式<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/DECtoIEEE.png" srcset="/img/loading.gif" alt="" /><br />
+IEEE754浮点数ｘ的二进制存储格式为(41360000)H，其对应的十进制值为？<br />
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/IEEEtoDEC.png" srcset="/img/loading.gif" alt="" /></p>
+<blockquote>
+<p>小数的原码计算方式：<br />
+小数项×2取整数部分，直到小数部分为0<br />
+例：0.375的小数表示过程<br />
+0.375 * 2 = 0.75 -------------- 0<br />
+0.75   * 2 = 1.5    -------------- 1<br />
+0.5     * 2 = 1      -------------- 1<br />
+所以0.375的二进制表示为.011<br />
+反之：<br />
+例：.011的十进制表示过程<br />
+0 * 10<sup>-1</sup> + 1 * 10<sup>-2</sup> + 1 * 10<sup>-3</sup> =0.375</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<h1 id="数据校验的基本原理"><a class="markdownIt-Anchor" href="#数据校验的基本原理"></a> 数据校验的基本原理</h1>
+<p>校验的基本原理是添加冗余码（校验位）<br />
+形成 <mark>[有效信息(k位)+校验信息®位]</mark> 的格式</p>
+<p>码距：两个合法代码对应位上编码不同的位数称为码距<br />
+例如：10101和00110从第一位开始依次有第一位、第四、第五位不同，则码距为3<br />
+一组数中取码距最小的两对数的码距</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">码距</th>
+<th style="text-align:center">检错</th>
+<th style="text-align:center">纠错</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">或1</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">加1</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">加2</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">加2</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">加3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>三个公式：</p>
+<ol>
+<li>码距&gt;=$e $+1 ——&gt;可检测e个错误</li>
+<li>码距&gt;=2$ t$+1 ——&gt;可纠正t个错误</li>
+<li>码距&gt;=$ e<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">+</span></span></span></span> t$+1 ——&gt;可纠正t个错误，同时检测e个错误（e&gt;=t）</li>
+</ol>
 
             <hr>
           </div>
@@ -182,6 +330,23 @@
           <div>
             <p>
             
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">计算机组成原理</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86">计算机组成原理</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+                
+              </span>
             
             </p>
             
@@ -364,7 +529,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "进度报告&nbsp;",
+        "第二章：数据表示与逻辑电路基础&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -421,6 +586,32 @@
   </script>
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+              processEscapes: true,
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+      });
+
+      MathJax.Hub.Queue(function() {
+          var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+              all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+      });
+
+    </script>
+
+    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
+
+  
 
 
 

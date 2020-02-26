@@ -187,7 +187,7 @@
 </li>
 <li>
 <p>四种常见的机器数：原码，反码，补码，移码<br />
-设定点数的形式为X<sub>0</sub>X<sub>1</sub>X<sub>2</sub>X<sub>3</sub>…X<sub>n</sub><br />
+设定点数的形式为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><sub>0</sub><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><sub>1</sub><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><sub>2</sub><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><sub>3</sub>…<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span><sub>n</sub><br />
 <img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%9C%BA%E5%99%A8%E6%95%B0.png" srcset="/img/loading.gif" alt="" /><br />
 <img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%A7%BB%E7%A0%81.png" srcset="/img/loading.gif" alt="" /><br />
 计算起来就是反码是原码取反（0-&gt;1,1-&gt;0，符号除外）<br />
@@ -243,7 +243,7 @@ IEEE 754格式与对应真值之间的变换流程如下<br />
 <p>例：<br />
 将二进制数20.59375转换成32位IEEE754格式浮点数的二进制格式<br />
 <img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/DECtoIEEE.png" srcset="/img/loading.gif" alt="" /><br />
-IEEE754浮点数ｘ的二进制存储格式为(41360000)H，其对应的十进制值为？<br />
+IEEE754浮点数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">ｘ</mi></mrow><annotation encoding="application/x-tex">ｘ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">ｘ</span></span></span></span>的二进制存储格式为(41360000)H，其对应的十进制值为？<br />
 <img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/IEEEtoDEC.png" srcset="/img/loading.gif" alt="" /></p>
 <blockquote>
 <p>小数的原码计算方式：<br />
@@ -262,7 +262,7 @@ IEEE754浮点数ｘ的二进制存储格式为(41360000)H，其对应的十进�
 </ol>
 <h1 id="数据校验的基本原理"><a class="markdownIt-Anchor" href="#数据校验的基本原理"></a> 数据校验的基本原理</h1>
 <p>校验的基本原理是添加冗余码（校验位）<br />
-形成 <mark>[有效信息(k位)+校验信息®位]</mark> 的格式</p>
+形成 <mark>[有效信息(k位)+校验信息(r )位]</mark> 的格式</p>
 <p>码距：两个合法代码对应位上编码不同的位数称为码距<br />
 例如：10101和00110从第一位开始依次有第一位、第四、第五位不同，则码距为3<br />
 一组数中取码距最小的两对数的码距</p>
@@ -319,9 +319,9 @@ IEEE754浮点数ｘ的二进制存储格式为(41360000)H，其对应的十进�
 </table>
 <p>三个公式：</p>
 <ol>
-<li>码距&gt;=$e $+1 ——&gt;可检测e个错误</li>
-<li>码距&gt;=2$ t$+1 ——&gt;可纠正t个错误</li>
-<li>码距&gt;=e+t+1 ——&gt;可纠正t个错误，同时检测e个错误（e&gt;=t）</li>
+<li>码距&gt;=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>+1 ——&gt;可检测e个错误</li>
+<li>码距&gt;=2<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>+1 ——&gt;可纠正t个错误</li>
+<li>码距&gt;=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span>+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span>+1 ——&gt;可纠正t个错误，同时检测e个错误（e&gt;=t）</li>
 </ol>
 
             <hr>
@@ -590,27 +590,8 @@ IEEE754浮点数ｘ的二进制存储格式为(41360000)H，其对应的十进�
   
 
   
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-          tex2jax: {
-              inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-          }
-      });
-
-      MathJax.Hub.Queue(function() {
-          var all = MathJax.Hub.getAllJax(), i;
-          for(i=0; i < all.length; i += 1) {
-              all[i].SourceElement().parentNode.className += ' has-jax';
-          }
-      });
-
-    </script>
-
-    <script src="https://cdn.staticfile.org/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
-
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.min.css"  >
   
 
 

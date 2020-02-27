@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>信安原理第一课</title>
+    <link href="/2020/02/27/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81/"/>
+    <url>/2020/02/27/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81/</url>
+    
+    <content type="html"><![CDATA[<p>信息安全原理第一部分：网络安全威胁</p><a id="more"></a><h1 id="网络安全威胁分类"><a class="markdownIt-Anchor" href="#网络安全威胁分类"></a> 网络安全威胁分类</h1><p>网络霸权、网络恐怖主义、网络谣言、网络政治动员、网络欺凌、网络攻击和网络犯罪<br /><img src="/img/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86/%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81.png" srcset="/img/loading.gif" alt="" /></p><h1 id="根据信息流动过程分为四种威胁"><a class="markdownIt-Anchor" href="#根据信息流动过程分为四种威胁"></a> 根据信息流动过程分为四种威胁</h1><p>中断威胁：(物理破坏系统、破坏网络结构等)</p><ul><li>使合法用户不能正常访问网络资源</li><li>使有严格时间要求的服务不能及时得到响应</li></ul><p>截获威胁：(窃听信息，非法复制程序、数据等)</p><ul><li>指一个非授权方介入系统，使得信息在传输中被丢失或泄露的攻击</li></ul><p>篡改威胁：</p><ul><li>以非法手段窃得对信息的管理权，来篡改信息</li></ul><p>伪造威胁：</p><ul><li>一个非授权方将伪造的客体插入系统，破坏信息的可认证性</li></ul><p><img src="/img/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86/%E4%BF%A1%E6%81%AF%E6%B5%81%E5%8A%A8.png" srcset="/img/loading.gif" alt="" /></p><p>在四种威胁中，<br />中断威胁破坏信息系统可用性，截获威胁破坏信息保密性，<br />篡改威胁破坏信息完整性，伪造威胁破坏信息可认证性。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>信息安全原理</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习</tag>
+      
+      <tag>信安原理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>第二章：数据表示与逻辑电路基础</title>
     <link href="/2020/02/26/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/"/>
     <url>/2020/02/26/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</url>

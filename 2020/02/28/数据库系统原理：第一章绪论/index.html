@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>数据库系统原理：第一章绪论 ~ 星下小屋</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/banner_img.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Friday, 2020/02/28, 13:49
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.7k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      9 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+
+              </p>
+              
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>数据库系统原理：第一章绪论，包括数据库系统概述、数据模型、数据库系统的结构和数据库系统的组成四部分内容。</p>
+<a id="more"></a>
+<h1 id="一-数据库系统概述"><a class="markdownIt-Anchor" href="#一-数据库系统概述"></a> 一、数据库系统概述</h1>
+<h2 id="数据库的四个概念"><a class="markdownIt-Anchor" href="#数据库的四个概念"></a> 数据库的四个概念</h2>
+<ul>
+<li>数据（Data）</li>
+<li>数据库（DB，Database）
+<ul>
+<li><font color=#00BFFF>长期存储</font>在计算机内、<font color=#00BFFF>有组织的</font>、<font color=#00BFFF>可共享</font>的<font color=#00BFFF>大量数据</font>的集合</li>
+<li>具有最小冗余度是较高的数据独立性</li>
+</ul>
+</li>
+<li>数据库管理系统（DBMS，Database Manage System）<abbr title="1.数据定义功能   2.数据组织、存储和管理功能    3.数据操作功能    4.数据库的事务管理和运行管理（用户对数据的并发使用、系统故障后恢复数据库等....）    5.数据库的建立和维护功能">功能</abbr>
+<ul>
+<li>是一个位于用户和操作系统之间的基础软件</li>
+</ul>
+</li>
+<li>数据库系统（DBS，Database System）
+<ul>
+<li>指在计算机系统引入数据库后的系统构成</li>
+<li><font color=#00BFFF>在不引起混淆的情况下</font>可称数据库系统为数据库，视语境而言</li>
+<li>特点
+<ul>
+<li>数据结构化</li>
+<li>数据的共享性高，冗余度低且意扩充</li>
+<li>数据独立性高
+<ul>
+<li>物理独立性</li>
+<li>逻辑独立性</li>
+</ul>
+</li>
+<li>数据由数据库管理系统统一管理和控制</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>其中，DBS包括DB和DBMS<br />
+DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其建立的DB总称为DBS</p>
+<blockquote>
+<p>为什么说文件系统中数据操作的效率低。<br />
+——因为文件系统是针对某一特定应用的，所以当我们修改记录的时候，需要在文件中进行对应的修改，还需要考虑不同文件之间的联系，即文件系统的独立性差，所以文件系统中数据操作（比如增、删、改、查）的效率低下。<br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png" srcset="/img/loading.gif" alt="" /></p>
+</blockquote>
+<p>附：数据管理3个阶段的比较（图源中国大学MOOC中国人民大学相关课程）<br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94.png" srcset="/img/loading.gif" alt="" /></p>
+<hr />
+<h1 id="二-数据模型"><a class="markdownIt-Anchor" href="#二-数据模型"></a> 二、数据模型</h1>
+<p>数据模型是数据库系统的核心和基础</p>
+<h2 id="21-两类数据模型"><a class="markdownIt-Anchor" href="#21-两类数据模型"></a> 2.1 两类数据模型</h2>
+<ol>
+<li>
+<p>概念模型/信息模型<br />
+按用户的观点来对数据和信息建模，<font color=#00BFFF>用于数据库设计</font></p>
+</li>
+<li>
+<p><abbr title="逻辑模型主要包括网状模型、层次模型、关系模型等，见下。">逻辑模型</abbr> 和物理模型</p>
+<p>逻辑模型按照计算机系统的观点对数据建模，<font color=#00BFF>用于DBMS实现</font><br />
+物理模型描述在系统内（磁盘上）的表示方式和存取方式</p>
+</li>
+</ol>
+<h2 id="22-概念模型"><a class="markdownIt-Anchor" href="#22-概念模型"></a> 2.2 概念模型</h2>
+<p><strong>基本概念</strong></p>
+<ol>
+<li>
+<p>实体（Entity）<br />
+客观存在并可相互区别的事物称为实体，具体的人、事、物或抽象概念</p>
+</li>
+<li>
+<p>属性（Attribute）<br />
+实体所具有的某一特性称为属性</p>
+</li>
+<li>
+<p>码（Key）<br />
+唯一标识实体的属性集称为码</p>
+</li>
+<li>
+<p>实体型（Entity Type）<br />
+用实体名及其属性名集合来抽象和刻画同类实体称为实体型</p>
+</li>
+<li>
+<p>实体集（Entity Set）<br />
+同一类型实体的集合称为实体集</p>
+</li>
+<li>
+<p>联系（Relationship）<br />
+事物 <abbr title="是指组成实体的各属性之间的联系">内部联系</abbr> 以及事物 <abbr title="通常是指不同实体集之间的联系">之间的联系</abbr></p>
+<p>其中实体之间的联系有一对一(1:1)、一对多(1:m)和多对多(m:n)等类型(一对多可包含一对一)<br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%81%94%E7%B3%BB.png" srcset="/img/loading.gif" alt="" /></p>
+</li>
+</ol>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B%E4%BE%8B%E5%AD%90.png" srcset="/img/loading.gif" alt="" /><br />
+以上图为例：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">概念</th>
+<th style="text-align:center">—&gt;</th>
+<th style="text-align:left">所指</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">实体</td>
+<td style="text-align:center">—&gt;</td>
+<td style="text-align:left">学生</td>
+</tr>
+<tr>
+<td style="text-align:left">属性</td>
+<td style="text-align:center">—&gt;</td>
+<td style="text-align:left">学号、姓名、性别…</td>
+</tr>
+<tr>
+<td style="text-align:left">码</td>
+<td style="text-align:center">—&gt;</td>
+<td style="text-align:left">学号</td>
+</tr>
+<tr>
+<td style="text-align:left">实体型</td>
+<td style="text-align:center">—&gt;</td>
+<td style="text-align:left">学生</td>
+</tr>
+<tr>
+<td style="text-align:left">实体集</td>
+<td style="text-align:center">—&gt;</td>
+<td style="text-align:left">学生型的集合</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>此例中概念所对应的具体意思<br />
+实体:现实的一个学生<br />
+码:可以唯一确定一个学生的属性——学号<br />
+实体型:抽象出这些属性后，用这些属性描述的一个学生实体</p>
+</blockquote>
+<p><strong>概念模型的一种表示方法</strong><br />
+实体-联系方法（Entity-Relationship Approach）<br />
+例如：<br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/E-R%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" alt="" /></p>
+<h2 id="23数据模型的组成要素"><a class="markdownIt-Anchor" href="#23数据模型的组成要素"></a> 2.3数据模型的组成要素</h2>
+<p>数据模型由三部分组成</p>
+<p><strong>数据结构</strong><br />
+数据结构用来描述系统的静态特性<br />
+一般什么结构就叫什么模型，例如<br />
+层次结构-层次模型、网状结构-网状模型、关系结构-关系模型…</p>
+<p><strong>数据操作</strong></p>
+<ul>
+<li>数据操作的类型（查询、增删修改等）</li>
+<li>数据操作的语言（查询-Query，更新-DML等）</li>
+</ul>
+<p><strong>完整性约束</strong><br />
+<em>完整性规则：给定的数据模型中数据及其联系所具有的制约和依存规则</em><br />
+而完整性约束是一组完整性规则的集合<br />
+例如退休年龄的限制</p>
+<h2 id="24层次模型"><a class="markdownIt-Anchor" href="#24层次模型"></a> 2.4层次模型</h2>
+<p>层次模型用<mark>树形结构</mark>(类似数据结构中的树)来表示各类实体以及实体间的联系</p>
+<p><strong>表示方法</strong></p>
+<ul>
+<li>实体型：用记录类型描述</li>
+<li>树形：用字段描述</li>
+<li>联系：用结点之间的连线表示记录类型之间的一对多的父子联系</li>
+</ul>
+<p><strong>定义</strong><br />
+满足下面两个条件：</p>
+<ol>
+<li>有且只有一个结点没有双亲结点，即根节点</li>
+<li>根以外的其他结点有且只有一个双亲结点</li>
+</ol>
+<p><strong>优点</strong></p>
+<ul>
+<li>层次模型的数据结构比较简单清晰</li>
+<li>查询效率高，性能优于关系模型，不低于网状模型</li>
+<li>提供了良好的完整性支持</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>结点之间的多对多联系表示不自然</li>
+<li>对插入和删除操作的限制比较多（相当于数据结构增删结点，要考虑子节点）</li>
+<li>查询子女结点必须通过双亲结点（树特点）</li>
+</ul>
+<h2 id="25网状模型"><a class="markdownIt-Anchor" href="#25网状模型"></a> 2.5网状模型</h2>
+<p>网状数据库系统采用<mark>网状结构</mark>来表示各类实体以及实体间的联系</p>
+<p><strong>表示方法</strong><br />
+和层次结构相同</p>
+<ul>
+<li>实体型：用记录类型描述</li>
+<li>树形：用字段描述</li>
+<li>联系：用结点之间的连线表示记录类型之间的一对多的父子联系</li>
+</ul>
+<p><strong>定义</strong><br />
+满足下面两个条件：</p>
+<ol>
+<li>允许一个以上的结点无双亲</li>
+<li>一个结点可以有多于一个的双亲</li>
+</ol>
+<p>示例：<br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" alt="" /></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>更直接地描述现实世界，如一个结点可以有多个双亲，比层次结构更符合实际</li>
+<li>具有良好的性能</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>结构复杂，尤其是环境扩大时</li>
+</ul>
+<h2 id="26关系模型"><a class="markdownIt-Anchor" href="#26关系模型"></a> <mark>2.6关系模型</mark></h2>
+<p>在<mark>用户观点</mark>下，关系模型中数据的逻辑结构是一张二维表</p>
+<ul>
+<li>关系：一个关系对应通常的一张表</li>
+<li>元组：表中的一行即为一个元组</li>
+<li>属性：表中的一列即为一个属性</li>
+<li>主码：也称码键。表中的可以唯一确定一个元祖的某个属性组</li>
+<li>域：属性的取值范围(例如学生的“年龄”属性的域为（15-45）)</li>
+<li>分量：元组中的一个属性值</li>
+<li>关系模式：对关系的描述
+<blockquote>
+<p>关系名（属性1，属性2…，属性n）<br />
+学生（学号(主码)，姓名，年龄，系别）</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>关系必须是规范化的，最基本的规范条件为 每一个分量必须是一个不可分的数据项，即表中不能还有表。</strong> 例如工资表，包含职工号、姓名、职称、工资四个属性，若工资在表中又分为基本工资、红利、税收，那么这个“工资”项即使另一份小表，说明该工资表中有表，不是规范关系。</p>
+<p>关系模型与常规表格术语对照</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关系术语</th>
+<th style="text-align:center">表格术语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">关系名</td>
+<td style="text-align:center">表名</td>
+</tr>
+<tr>
+<td style="text-align:center">关系模式</td>
+<td style="text-align:center">表头（表格的描述）</td>
+</tr>
+<tr>
+<td style="text-align:center">关系</td>
+<td style="text-align:center">一张表</td>
+</tr>
+<tr>
+<td style="text-align:center">元组</td>
+<td style="text-align:center">记录或行</td>
+</tr>
+<tr>
+<td style="text-align:center">属性</td>
+<td style="text-align:center">字段或列</td>
+</tr>
+<tr>
+<td style="text-align:center">属性名</td>
+<td style="text-align:center">字段名或列名</td>
+</tr>
+<tr>
+<td style="text-align:center">属性值</td>
+<td style="text-align:center">列值</td>
+</tr>
+<tr>
+<td style="text-align:center">分量</td>
+<td style="text-align:center">一条记录中一个列值</td>
+</tr>
+<tr>
+<td style="text-align:center">非规范关系</td>
+<td style="text-align:center">表中有表（合并单元格）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="27三种常用模型比较"><a class="markdownIt-Anchor" href="#27三种常用模型比较"></a> 2.7三种常用模型比较</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">层次模型</th>
+<th style="text-align:left">网状模型</th>
+<th style="text-align:left">关系模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">数据结构</td>
+<td style="text-align:left">层次结构——树</td>
+<td style="text-align:left">网状结构——树</td>
+<td style="text-align:left">关系结构——二维表</td>
+</tr>
+<tr>
+<td style="text-align:left">数据模型</td>
+<td style="text-align:left">层次模型</td>
+<td style="text-align:left">网状模型</td>
+<td style="text-align:left">关系模型</td>
+</tr>
+</tbody>
+</table>
+<h1 id="三-数据库系统的结构"><a class="markdownIt-Anchor" href="#三-数据库系统的结构"></a> 三、数据库系统的结构</h1>
+<h2 id="31数据库系统模式的概念"><a class="markdownIt-Anchor" href="#31数据库系统模式的概念"></a> 3.1数据库系统模式的概念</h2>
+<p>模式：一系列关系模式<br />
+实例：模式的一个具体值</p>
+<blockquote>
+<p>例：<br />
+“学生选课数据库”模式：学生、课程和学生选课3个关系模式：</p>
+<ul>
+<li>学生表：Student(Sno,Sname,Sage)</li>
+<li>课程表：Course(Cno,Cname)</li>
+<li>学生选课表：SC(Sno,Cno,Grage)</li>
+</ul>
+<p>“学生选课数据库”实例：</p>
+<ul>
+<li>2019年学生数据库实例</li>
+<li>2019年学校所开设的所有课</li>
+<li>2019年所有学生选课情况</li>
+</ul>
+</blockquote>
+<h2 id="32数据库的三级模式结构"><a class="markdownIt-Anchor" href="#32数据库的三级模式结构"></a> <mark>3.2数据库的三级模式结构</mark></h2>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F.png" srcset="/img/loading.gif" alt="数据库系统的三级模式结构" /></p>
+<p><strong>模式（也称逻辑模式）</strong></p>
+<ul>
+<li>是数据库中全体数据的逻辑结构和特征的描述</li>
+<li><font color=#00BFFF>一般，某个应用的数据库只有一个模式</font></li>
+<li><font color=#00BFFF>模式是数据库系统模式结构的中心</font></li>
+<li>与数据的物理存储模式以及具体的应用程序开发无关</li>
+<li>定义模式
+<ul>
+<li>定义数据之间的联系</li>
+<li>定义与数据有关的安全性、完整性要求</li>
+</ul>
+</li>
+</ul>
+<p><strong>外模式（也称子模式或用户模式）</strong></p>
+<ul>
+<li>是与某一具体应用有关的数据的逻辑表示</li>
+<li>外模式通常是模式的子集，一个模式可以有多个外模式</li>
+<li>一个外模式可以为多个应用所用，一个应用只能用一个外模式</li>
+<li>用途
+<ul>
+<li>使用户只能看见和访问所对应外模式中的数据，简化用户视图的同时保证数据库安全</li>
+</ul>
+</li>
+</ul>
+<p><strong>内模式（也称存储模式）</strong></p>
+<ul>
+<li>是数据物理结构和存储方式的描述</li>
+<li>是数据在数据库内部的表示方式
+<ul>
+<li>如存储方式（顺序存储、堆存储…）</li>
+<li>数据是否压缩</li>
+<li>数据是否加密</li>
+<li>…</li>
+</ul>
+</li>
+<li><font color=#00BFFF>一个数据库只有一个内模式</font></li>
+</ul>
+<h2 id="33数据库的二级映像"><a class="markdownIt-Anchor" href="#33数据库的二级映像"></a> <mark>3.3数据库的二级映像</mark></h2>
+<p>三级模式是对数据的三个抽象级别<br />
+二级映像是指不同模式之间的转换：外模式-&gt;模式-&gt;内模式</p>
+<ol>
+<li>外模式-&gt;模式</li>
+</ol>
+<ul>
+<li>定义外模式与模式之间的转换对应关系</li>
+<li>因为只有一个模式，有多个外模式，所以数据库中外模式/模式映像是不唯一的</li>
+<li><font color=#00BFFF>保证逻辑独立性</font>
+<ul>
+<li>当模式改变时，不需要修改外模式，只需要修改外模式/模式映像，同时因为外模式不变，所以应用程序也不用进行修改，保证了数据与程序之间的逻辑独立性，简称数据的逻辑独立性</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>模式-&gt;内模式</li>
+</ol>
+<ul>
+<li>定义模式与内模式之间的转换对应关系</li>
+<li>因为只有一个模式，一个内模式，所以数据库中模式/内模式映像是唯一的</li>
+<li><font color=#00BFFF>保证物理独立性</font>
+<ul>
+<li>当数据库的存储结构改变了（比如选用另一种存储方式），数据库管理员只需要修改模式/内模式映像，不需要修改模式，模式不变，则应用程序也不变，保证了数据与程序之间的物理独立性，简称数据的物理独立性</li>
+</ul>
+</li>
+</ul>
+<h1 id="四-数据库系统的组成"><a class="markdownIt-Anchor" href="#四-数据库系统的组成"></a> 四、数据库系统的组成</h1>
+<p>分为数据库、数据库管理系统、应用程序和数据库管理员<br />
+或硬件平台及数据库、软件、人员<br />
+其中的<strong>人员</strong>分可分为数据库管理员、系统分析员和数据库设计人员、应用程序员、最终用户，<font color=#00BFFF>不同的人员涉及不同的数据抽象级别，具有不同的数据视图</font><br />
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE.png" srcset="/img/loading.gif" alt="" /></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86">数据库系统原理</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86">数据库系统原理</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="DuranceX/DuranceX.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <p id="hitokoto">:D 获取中...</p>
+
+    <!-- cnzz Analytics icon -->
+    
+
+    
+      <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({theme: 'forest'});
+        }
+      </script>
+    
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据库系统原理：第一章绪论&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("我", "的", "星", "下", "小", "屋", "(*^▽^*)");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--一言API-->
+<!-- 现代写法，推荐 -->
+<script>
+  fetch('https://v1.hitokoto.cn/?c=c&c=d')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="140,140,140" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>

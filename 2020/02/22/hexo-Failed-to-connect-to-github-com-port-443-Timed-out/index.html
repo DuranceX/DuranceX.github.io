@@ -173,14 +173,17 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <p>Failed to connect to github.com port 443: Timed out </p>
+            <p>Failed to connect to <a href="http://github.com" target="_blank" rel="noopener">github.com</a> port 443: Timed out</p>
 <a id="more"></a>
-<h1 id="Failed-to-connect-to-github-com-port-443-Timed-out"><a href="#Failed-to-connect-to-github-com-port-443-Timed-out" class="headerlink" title="Failed to connect to github. com port 443: Timed out"></a>Failed to connect to github. com port 443: Timed out</h1><p> 在使用hexo g -d部署到github上时出现了“Failed to connect to github. com port 443: Timed out”的错误提示。<br><img src="/img/problems/Time_out.png" srcset="/img/loading.gif" alt=""></p>
+<h1 id="failed-to-connect-to-github-com-port-443-timed-out"><a class="markdownIt-Anchor" href="#failed-to-connect-to-github-com-port-443-timed-out"></a> Failed to connect to github. com port 443: Timed out</h1>
+<p>在使用hexo g -d部署到github上时出现了“Failed to connect to github. com port 443: Timed out”的错误提示。<br />
+<img src="/img/problems/Time_out.png" srcset="/img/loading.gif" alt="" /></p>
 <p><strong>解决办法</strong></p>
 <p>输入</p>
-<pre><code class="git">git config --global http.proxy http://127.0.0.1:1080
+<pre class="highlight"><code class="git">git config --global http.proxy http://127.0.0.1:1080
 
-git config --global https.proxy http://127.0.0.1:1080</code></pre>
+git config --global https.proxy http://127.0.0.1:1080
+</code></pre>
 
             <hr>
           </div>
@@ -200,9 +203,9 @@ git config --global https.proxy http://127.0.0.1:1080</code></pre>
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/problems">problems</a>
-                
                   <a class="hover-with-bg" href="/tags/hexo">hexo</a>
+                
+                  <a class="hover-with-bg" href="/tags/problems">problems</a>
                 
                   <a class="hover-with-bg" href="/tags/git">git</a>
                 
@@ -318,6 +321,15 @@ git config --global https.proxy http://127.0.0.1:1080</code></pre>
     <!-- cnzz Analytics icon -->
     
 
+    
+      <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({theme: 'forest'});
+        }
+      </script>
+    
+    
   </div>
 </footer>
 

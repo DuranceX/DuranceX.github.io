@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - 数据库系统原理 ~ 星下小屋</title>
+  <title>主题中Container的使用 ~ 星下小屋</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,7 +106,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
          style="background: url('/img/banner_img1.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -116,6 +116,43 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Wednesday, 2020/03/04, 14:09
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    440 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+
+              </p>
+              
             
           </div>
 
@@ -127,36 +164,118 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">共计 1 篇文章</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据库系统原理：第一章绪论</span>
-      <span style="float: right;">02-28</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+            <p class="note note-primary">本文最后更新于：Wednesday, 2020/03/04, 15:05</p>
+          
+          <div class="markdown-body">
+            <p>fluid主题中Container的挖掘。</p>
+<a id="more"></a>
+<h1 id="fluid中container的挖掘使用"><a class="markdownIt-Anchor" href="#fluid中container的挖掘使用"></a> Fluid中Container的挖掘使用</h1>
+<p>在一个博客主题中看到了如下的&quot;提示框&quot;效果<br />
+<img src="/img/%E7%BE%8E%E5%8C%96/container-example.png" srcset="/img/loading.gif" alt="" /></p>
+<p>  就想着能不能在fluid主题中实现类似的效果，按照博客中的教程进行了设置后发现并不能使用，应该是不同主题的缘故。这个想法也就作罢了。<br />
+  但今天在根据fluid主题在github上的更新记录添加“文章更新时间”功能的时候，发现在post.ejs中使用了一个<code>note-warning</code>的类，原本只是想要修改一下这个note的样式，从黄色调成蓝色，然后在其对应的css文件中（路径：<code>fluid\source\lib\mdbootstrap\css\mdb.min.css</code>发现不止有<code>note-waring</code>类，还有<code>note-primary</code>、<code>note-info</code>等一系列类，一想这个跟上图中的提示框的代码相近，会不会有相同的效果？于是进行了尝试，发现果真如此！虽然不能像上图那个博客一样通过下面那种格式来使用</p>
+<pre class="highlight"><code class="">::: info
+here if info
+:::
+</code></pre>
+<p>但是在markdown中同样可以通过html的语法来进行调用。</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-primary"</span>&gt;</span>here is note-primary<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-secondary"</span>&gt;</span>here is note-secondary<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-success"</span>&gt;</span>here is note-success<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-danger"</span>&gt;</span>here is note-danger<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-warning"</span>&gt;</span>here is note-warning<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note note-info"</span>&gt;</span>here is note-info<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"note not-light"</span>&gt;</span>here is note-light<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p>效果依次为：</p>
+<p class="note note-primary">here is note-primary</p>
+<p class="note note-secondary">here is note-secondary</p>
+<p class="note note-success">here is note-success</p>
+<p class="note note-danger">here is note-danger</p>
+<p class="note note-warning">here is note-warning</p>
+<p class="note note-info">here is note-info</p>
+<p class="note not-light">here is note-light</p>
+<p>具体的样式可以在<code>fluid\source\lib\mdbootstrap\css\mdb.min.css</code>搜索<code>note</code>定位后进行修改🤪🤪</p>
 
-
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96">博客美化</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/hexo">hexo</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%BE%8E%E5%8C%96">美化</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="DuranceX/DuranceX.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -246,6 +365,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -297,7 +421,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - 数据库系统原理&nbsp;",
+        "主题中Container的使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

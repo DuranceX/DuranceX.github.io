@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - 学习 ~ 星下小屋</title>
+  <title>java学习笔记(一) ~ 星下小屋</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -35,11 +35,13 @@
   <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
 
 
+<!-- 自定义样式保持在最底部 -->
+
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,7 +108,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
          style="background: url('/img/banner_img1.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -116,6 +118,43 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Thursday, 2020/03/05, 14:38
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    576 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+
+              </p>
+              
             
           </div>
 
@@ -127,54 +166,227 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">共计 4 篇文章</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据库系统原理：第一章绪论</span>
-      <span style="float: right;">02-28</span>
-    </a>
-  
-    
-    <a href="/2020/02/27/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">信安原理第一课</span>
-      <span style="float: right;">02-27</span>
-    </a>
-  
-    
-    <a href="/2020/02/26/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第二章：数据表示与逻辑电路基础</span>
-      <span style="float: right;">02-26</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第一章：计算机系统概论</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          
+            <p class="note note-primary">本文最后更新于：Thursday, 2020/03/05, 14:46</p>
+          
+          <div class="markdown-body">
+            <p>java课程的学习笔记，部分和c++重合的内容不做描述</p>
+<a id="more"></a>
+<h1 id="一-安装java"><a class="markdownIt-Anchor" href="#一-安装java"></a> 一、安装java</h1>
+<h2 id="下载java"><a class="markdownIt-Anchor" href="#下载java"></a> 下载java</h2>
+<p>去<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">Oracle</a>官网下载。</p>
+<h2 id="添加环境变量"><a class="markdownIt-Anchor" href="#添加环境变量"></a> 添加环境变量</h2>
+<p>在&quot;系统变量&quot;中进行添加</p>
+<ol>
+<li>添加JAVA_HOME<br />
+选择“新建”，变量名为<code>JAVA_HOME</code>，变量值为jdk的路径，例如<code>C:\Program Files\Java\jdk-12.0.2</code></li>
+<li>添加CLASSPATH<br />
+选择“新建”，变量名为<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib;</code></li>
+<li>添加Path<br />
+找到<code>Path</code>项，双击打开（win7等直接在变量值最前面加），选择“新建”，变量值为jdk目录下bin文件夹的路径，例如<code>C:\Program Files\Java\jdk-12.0.2\bin</code></li>
+</ol>
+<h2 id="测试是否安装成功"><a class="markdownIt-Anchor" href="#测试是否安装成功"></a> 测试是否安装成功</h2>
+<p>打开<code>CMD</code>窗口，输入<code>java -version</code>，有输出则说明安装完成。</p>
+<h1 id="二-基本数据类型"><a class="markdownIt-Anchor" href="#二-基本数据类型"></a> 二、基本数据类型</h1>
+<h2 id="分类和长度"><a class="markdownIt-Anchor" href="#分类和长度"></a> 分类和长度</h2>
+<p>与c++一致，其中注意char型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:center">初始值</th>
+<th style="text-align:center">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">16 bits</td>
+<td style="text-align:center">‘\u0000’</td>
+<td style="text-align:center">‘\u0000~\uffff’</td>
+</tr>
+</tbody>
+</table>
+<h2 id="浮点数"><a class="markdownIt-Anchor" href="#浮点数"></a> 浮点数</h2>
+<p>默认为double型</p>
+<ul>
+<li>十进制数形式<br />
+由数字和小数点组成，且必须有小数点。<br />
+如：0.123,  1.23, 123.0</li>
+<li>科学计数法形式　　　<br />
+如：123e3或123E3，其中e或E之前必须有数字，且e或E后面的指数必须为整数。</li>
+<li>float型的值,必须在数字后加f或F,如1.23f。</li>
+<li>double型的值,可以在数字后加d或D,如1.23D。</li>
+</ul>
+<h2 id="转义符"><a class="markdownIt-Anchor" href="#转义符"></a> 转义符</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">转义字符</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">回车(\u000a)</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">Tab(\u0009)</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">空格(\u0008)</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">换行(\u000d)</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页(\u000c)</td>
+</tr>
+<tr>
+<td style="text-align:left">\’</td>
+<td style="text-align:left">单引号(\u0027)</td>
+</tr>
+<tr>
+<td style="text-align:left">\&quot;</td>
+<td style="text-align:left">双引号(\u0022)</td>
+</tr>
+<tr>
+<td style="text-align:left">\ddd</td>
+<td style="text-align:left">三位八进制</td>
+</tr>
+<tr>
+<td style="text-align:left">\udddd</td>
+<td style="text-align:left">四位16进制</td>
+</tr>
+<tr>
+<td style="text-align:left">\\</td>
+<td style="text-align:left">反斜杠(\u005c)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="三-输入输出"><a class="markdownIt-Anchor" href="#三-输入输出"></a> 三、输入输出</h1>
+<h2 id="输出"><a class="markdownIt-Anchor" href="#输出"></a> 输出</h2>
+<p>使用<code>System.out.print</code>进行输出</p>
+<pre class="highlight"><code class="java">System.out.print();  \\输出内容
+System.out.println();  \\输出内容，并换行
+System.out.printf();   \*支持占位符
+%d: 输出<span class="hljs-keyword">int</span>型数据
+%c: 输出<span class="hljs-keyword">char</span>型数据
+%f: 输出浮点型数据，小数部分最多保留<span class="hljs-number">6</span>位     
+%s: 输出字符串数据
+%md: 输出的<span class="hljs-keyword">int</span>型数据占m列   
+%m.nf:输出的浮点型数据占m列，小数点保留n位。
+*/
+</code></pre>
+<h2 id="输入"><a class="markdownIt-Anchor" href="#输入"></a> 输入</h2>
+<p>使用输入需要先导入文件，<code>import java.utli.*;</code>或<code>import java.utli.Scanner;</code></p>
+<p>进行使用时，需要先创建Scanner对象</p>
+<pre class="highlight"><code class="java">Scanner input = <span class="hljs-keyword">new</span> Scanner(System.in);
+</code></pre>
+<p>在使用时使用<code>input.next类型()</code>来读取输入内容，例：</p>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">int</span> x = input.nextInt();
+<span class="hljs-keyword">float</span> y = input.nextFloat();
+</code></pre>
+<h1 id="四-格式差异"><a class="markdownIt-Anchor" href="#四-格式差异"></a> 四、格式差异</h1>
+<h2 id="main函数"><a class="markdownIt-Anchor" href="#main函数"></a> main函数</h2>
+<p>java main函数格式为</p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>
+</span>{
 
+}
+</code></pre>
+<h2 id="类"><a class="markdownIt-Anchor" href="#类"></a> 类</h2>
+<p>类为</p>
+<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> class <span class="hljs-title">balabala</span><span class="hljs-params">()</span>
+</span>{
+    
+}
+</code></pre>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/java">java</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/java">java</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0">笔记</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="DuranceX/DuranceX.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -264,6 +476,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -271,6 +488,8 @@
 
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
 
 
 <!-- Plugins -->
@@ -315,7 +534,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - 学习&nbsp;",
+        "java学习笔记(一)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

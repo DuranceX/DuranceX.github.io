@@ -131,7 +131,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1k 字
+                    2.5k 字
                   </span>
                 
 
@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      11 分钟
                   </span>&nbsp;
                 
 
@@ -172,7 +172,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           
-            <p class="note note-primary">本文最后更新于：Friday, 2020/03/06, 15:45</p>
+            <p class="note note-primary">本文最后更新于：Sunday, 2020/03/08, 17:34</p>
           
           <div class="markdown-body">
             <p>html的入门笔记</p>
@@ -187,6 +187,48 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
+<h1 id="头部元素"><a class="markdownIt-Anchor" href="#头部元素"></a> 头部元素</h1>
+<h2 id="title"><a class="markdownIt-Anchor" href="#title"></a> &lt;title&gt;</h2>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+</code></pre>
+<p>title标签定义了网页的标题，即在浏览器标签页上显示的内容</p>
+<h2 id="base"><a class="markdownIt-Anchor" href="#base"></a> &lt;base&gt;</h2>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>
+</code></pre>
+<p>&lt;base&gt;标签描述了基本的链接地址，是该HTML文档中所有链接标签的默认链接。<br />
+例如在&lt;body&gt;里添加<code>&lt;img src=&quot;logo.png&quot;&gt;</code>，则其链接就相当于<code>https://www.baidu.com/logo.png</code></p>
+<h2 id="link"><a class="markdownIt-Anchor" href="#link"></a> &lt;link&gt;</h2>
+<p><code>&lt;link&gt;</code>标签用来定义文档与外部资源之间的关系。最常见的用法是链接样式表。</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"theme.css"</span>&gt;</span>
+</code></pre>
+<p>其中<code>rel</code>表示关系这里是<code>stylesheet</code>即样式表，<code>href</code>表示链接文件的路径<br />
+所有<code>rel</code>属性值<a href="https://www.runoob.com/tags/tag-link.html" target="_blank" rel="noopener">列表</a></p>
+<h2 id="style"><a class="markdownIt-Anchor" href="#style"></a> &lt;style&gt;</h2>
+<p><code>&lt;style&gt;</code>标签定义了HTML文档的样式文件引用地址，也可以在<code>&lt;style&gt;</code>标签中直接添加样式来渲染HTML文档</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">body</span> {<span class="hljs-attribute">background-color</span>:yellow}
+<span class="hljs-selector-tag">p</span> {<span class="hljs-attribute">color</span>:blue}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
+<h2 id="meta"><a class="markdownIt-Anchor" href="#meta"></a> &lt;meta&gt;</h2>
+<p><code>&lt;meta&gt;</code>标签用来描述一些基本的元数据，元数据不会显示在页面上，但会被浏览器解析，用于描述页面，例如网页描述、作者、最后修改时间等。<br />
+示例：</p>
+<pre class="highlight"><code class="html"><span class="hljs-comment">&lt;!-- 为搜索引擎定义关键词 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"HTML,CSS"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 为网页定义描述内容 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"learning blog"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 定义网页作者 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"author"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"初言"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 每30秒刷新当前页面 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"30"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 定义编码方式 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+</code></pre>
+<h2 id="script"><a class="markdownIt-Anchor" href="#script"></a> &lt;script&gt;</h2>
+<p><code>&lt;script&gt;&lt;/script&gt;</code>标签用于定于网页脚本，可以通过<code>src</code>属性指向外部脚本文件，也可以直接在标签内写脚本语句</p>
+<p class="note note-primary">如果使用"src"属性，则< script>元素必须是空的</p>
 <h1 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h1>
 <p>html中使用<code>&lt;h1&gt;标题文本&lt;/h1&gt;</code>~<code>&lt;h6&gt;标题问题&lt;/h6&gt;</code>来描述6级标题</p>
 <h1 id="注释"><a class="markdownIt-Anchor" href="#注释"></a> 注释</h1>
@@ -260,7 +302,7 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//www.baidu.com/img/baidu_jgylogo3.gif"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </code></pre>
 <p>在<a href="https://c.runoob.com/front-end/61" target="_blank" rel="noopener">编辑器</a>里尝试</p>
-<p><code>&lt;a&gt;</code>标签还可以用来发送邮件😱<br />
+<p><code>&lt;a&gt;</code>标签还可以用来发送邮件(＃°Д°)<br />
 在<code>href</code>的参数中输入<code>mailto:balabala@qq.com</code>等即可实现(需要有邮件客户端)<br />
 示例：</p>
 <pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:example@qq.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span>简单版本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -269,6 +311,120 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <p><a href="mailto:example@qq.com" target="_top">简单版本</a><br />
 <a href="mailto:example@qq.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer Party&body=You are invited to a big summer party!" target="_top">进阶版本</a><br />
 在进阶版本中，cc表示抄送对象邮箱，bcc表示秘密抄送对象的邮箱，subject表示邮件标题，body则是邮件内容。</p>
+<h1 id="内联样式"><a class="markdownIt-Anchor" href="#内联样式"></a> 内联样式</h1>
+<p>当只有个别HTML元素需要特殊样式渲染时，可以使用内联样式，例如：</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color:red;margin-left:20px;"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:green"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="color:red;margin-left:20px;">这是一个段落</p>
+<p style="background-color:green">这是一个段落</p>
+同样还有其他样式，在CSS里再做讨论
+<h1 id="图像"><a class="markdownIt-Anchor" href="#图像"></a> 图像</h1>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"some_text"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"111"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"111"</span>&gt;</span>
+</code></pre>
+<p><code>img</code>标签没有结束标签，<code>src</code>表示图像的路径，<code>alt</code>表示的当图片无法加载时，显示的文本，用来告诉用户大概是个什么图片，<code>width</code>和<code>height</code>属性则是指定图片的高度和宽度</p>
+<p><strong>创建图像映像</strong><br />
+大意就是点击图像中的不同区域，实现不同的效果，就是将图像分成几个不同的区域，各自相应点击事件。<a href="https://www.runoob.com/try/try.php?filename=tryhtml_areamap" target="_blank" rel="noopener">详情示例</a><br />
+其中：</p>
+<pre class="highlight"><code class="html"><span class="hljs-comment">&lt;!-- 1、矩形：(左上角顶点坐标为(x1,y1)，右下角顶点坐标为(x2,y2)) --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"rect"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,x2,y2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 2、圆形：(圆心坐标为(X1,y1)，半径为r) --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,r"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 3、多边形：(各顶点坐标依次为(x1,y1)、(x2,y2)、(x3,y3) ......) --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"poly"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,x2,y2 ......"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
+</code></pre>
+<h1 id="表格"><a class="markdownIt-Anchor" href="#表格"></a> 表格</h1>
+<p>表格元素基本框架：</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>th1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>th2<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>row1,col1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>row1,col2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>row1,col3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">"2"</span>&gt;</span>row1,col4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>row2,col1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">"2"</span>&gt;</span>row2,col2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
+<p>表格用<code>&lt;table&gt;</code>标签来定义，<code>&lt;tr&gt;&lt;/tr&gt;</code>表示一行，<code>&lt;td&gt;&lt;/td&gt;</code>表示该行里的一格,<code>&lt;th&gt;&lt;/th&gt;</code>表示表头，不同<code>&lt;tr&gt;</code>中的<code>&lt;td&gt;</code>数量不等可实现合并单元格，使用<code>cellpadding=&quot;10&quot;</code>来设置10px的格边距，使用<code>border=&quot;1&quot;</code>来添加宽度为1px的边框，使用<code>cellspacing=&quot;10&quot;</code>来添加格与格之间的间距，使用<code>rowspan=&quot;2&quot;</code>来添加纵向两个的合并单元格，使用<code>colspan=&quot;2&quot;</code>来添加横向两个的合并单元格。显示如下</p>
+<table border="1">
+    <tr>
+        <th>th1</th>
+        <th>th2</th>
+    </tr>
+    <tr>
+        <td>row1,col1</td>
+        <td>row1,col2</td>
+        <td>row1,col3</td>
+        <td rowspan="2">row1,col4</td>
+    </tr>
+    <tr>
+        <td>row2,col1</td>
+        <td colspan="2">row2,col2</td>
+    </tr>
+</table>
+<h1 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h1>
+<p>列表分为有序列表和无序列表，有序列表用<code>&lt;ol&gt;&lt;/ol&gt;</code>标签包括，无序标签用<code>&lt;ul&gt;&lt;/ul&gt;</code>标签包括，列表中每一记录用<code>&lt;li&gt;&lt;/li&gt;</code>表示<br />
+示例：</p>
+<pre class="highlight"><code class="html">有序列表：
+<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>first<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>third<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+
+无序列表
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>first<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>third<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p>显示如下<br />
+有序列表：</p>
+<ol>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+</ol>
+<p>无序列表</p>
+<ul>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+</ul>
+<p>可以在<code>&lt;ol&gt;&lt;/ol&gt;</code>标签中定义<code>type</code>属性来设置不同的序号，默认为&quot;1,2,3…&quot;，例如设定为<code>&lt;ol type=&quot;A&quot;&gt;&lt;/ol&gt;</code>，显示就会变成&quot;A,B,C,D…&quot;<a href="https://www.runoob.com/try/try.php?filename=tryhtml_lists_ordered" target="_blank" rel="noopener">示例</a><br />
+同样，无序列表也可以通过设置对应的<code>style</code>属性来设置不同符号，默认为圆点</p>
+<ul>
+<li>圆点值为：<code>list-style-type:disc</code></li>
+<li>空心圆圈值为：<code>list-style-type:circle</code></li>
+<li>方形点值为：<code>list-style-type:square</code></li>
+</ul>
+<p><strong>自定义列表</strong><br />
+自定义列表以<code>&lt;dl&gt;&lt;/dl&gt;</code>标签包裹，自定义列表项由<code>&lt;dt&gt;&lt;/dt&gt;</code>标签包裹，自定义列表项的定义由<code>&lt;dt&gt;&lt;/dt&gt;</code>标签包裹。<br />
+示例：(以“-”作为序号)</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>- black hot drink<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>- white cold drink<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+</code></pre>
+<dl>
+  <dt>Coffee</dt>
+  <dd>- black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>- white cold drink</dd>
+</dl>
+<h1 id="区块"><a class="markdownIt-Anchor" href="#区块"></a> 区块</h1>
+<p>使用<code>&lt;div&gt;&lt;/div&gt;</code>标签来对页面进行分块，方便布局，并通过<code>&lt;div&gt;&lt;/div&gt;</code>标签来对大块的内容块设置样式属性。</p>
+<p><code>&lt;span&gt;&lt;/span&gt;</code>标签式内联元素，可用作文本的容器，与CSS搭配用于对部分文本设置样式属性</p>
 
             <hr>
           </div>

@@ -618,9 +618,11 @@ h6::before {
 .links .card-body:hover {
   transition-duration: 0.3s;
   background-color: #ebedef;
+  transform: scale(1.1);
 }
 .links .card-body:hover .link-avatar {
   transform: scale(1.1);
+  transform: rotate(30deg);
 }
 .link-avatar {
   width: 3rem;

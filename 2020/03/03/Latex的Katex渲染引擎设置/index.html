@@ -40,7 +40,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/%5Clib%5Cmdbootstrap%5Ccss%5Cmdb.min1.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min1.css">
 
 
 <meta name="generator" content="Hexo 4.2.0"></head>
@@ -183,13 +183,15 @@
   <div class="row">
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          
-            <p class="note note-primary">本文最后更新于：Tuesday, 2020/03/03, 14:28</p>
-          
-          <div class="markdown-body">
-            <p>调用katex渲染引擎渲染latex中出现的一些问题</p>
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p
+                class="note note-warning">本文最后更新于：Tuesday, 2020/03/03, 14:28</p>
+            
+            <div class="markdown-body">
+              <p>调用katex渲染引擎渲染latex中出现的一些问题</p>
 <a id="more"></a>
 <h1 id="latex的katex渲染引擎设置"><a class="markdownIt-Anchor" href="#latex的katex渲染引擎设置"></a> Latex的Katex渲染引擎设置</h1>
 <p>  由于需要在markdown中插入数学公式，因此了解到了Latex，但是在完成了公式的输入后发现hexo中并不能成功渲染Latex公式。为什么呢？这是因为hexo使用自带的<code>hexo-renderer-marked</code>引擎来渲染页面，但是<code>hexo-renderer-marked</code>引擎不能渲染Latex引擎，因此我们需要更换引擎。<br />
@@ -223,60 +225,60 @@ hexo s
 </code></pre>
 <p>即可在localhost中看到渲染后的效果</p>
 
+            </div>
             <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-              
-              <span>
+            <div>
+              <p>
+                
+                  <span>
                 <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/problems/">problems</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
                 
-                  <a class="hover-with-bg" href="/categories/problems">problems</a>
-                  &nbsp;
                 
-              </span>&nbsp;&nbsp;
-            
-              
-              <span>
+                  <span>
                 <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/problems/">problems</a>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                    
+                  </span>
                 
-                  <a class="hover-with-bg" href="/tags/problems">problems</a>
-                
-                  <a class="hover-with-bg" href="/tags/hexo">hexo</a>
-                
-              </span>
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
-    <div id="tocbot"></div>
-  </div>
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                      <a href="/2020/03/04/%E4%B8%BB%E9%A2%98%E4%B8%ADContainer%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <i class="fa fa-chevron-left"></i>
+                        <span>主题中Container的使用</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA/">
+                        <span>数据库系统原理：第一章绪论</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
 
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-      <br><br>
-      
-      
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
   <script defer src="https://utteranc.es/client.js"
           repo="DuranceX/DuranceX.github.io"
           issue-term="pathname"
@@ -289,9 +291,26 @@ hexo s
   </script>
 
 
+                </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+      </div>
     
   </div>
 </div>
+
+<!-- Custom -->
 
     
   </main>

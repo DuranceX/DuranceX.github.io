@@ -145,7 +145,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    2.5k 字
+                    3.8k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      11 分钟
+                      17 分钟
                   </span>&nbsp;
                 
 
@@ -188,7 +188,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：Sunday, 2020/03/08, 20:28</p>
+                class="note note-warning">本文最后更新于：Monday, 2020/03/16, 11:20</p>
             
             <div class="markdown-body">
               <p>html的入门笔记</p>
@@ -441,6 +441,226 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <h1 id="区块"><a class="markdownIt-Anchor" href="#区块"></a> 区块</h1>
 <p>使用<code>&lt;div&gt;&lt;/div&gt;</code>标签来对页面进行分块，方便布局，并通过<code>&lt;div&gt;&lt;/div&gt;</code>标签来对大块的内容块设置样式属性。</p>
 <p><code>&lt;span&gt;&lt;/span&gt;</code>标签式内联元素，可用作文本的容器，与CSS搭配用于对部分文本设置样式属性</p>
+<h1 id="表单元素"><a class="markdownIt-Anchor" href="#表单元素"></a> 表单元素</h1>
+<h2 id="form"><a class="markdownIt-Anchor" href="#form"></a> &lt;form&gt;</h2>
+<p><code>&lt;form&gt;&lt;/form&gt;</code>标签用于创建供用户输入的HTML表单</p>
+<p><strong><code>action</code>属性</strong><br />
+<strong>action</strong>属性用于定义在提交表单时执行的动作。链接目标页面，例如：</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"demo-form.php"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>若省略action属性，则action会被设置为当前页面</p>
+<h2 id="input"><a class="markdownIt-Anchor" href="#input"></a> &lt;input&gt;</h2>
+<p><code>&lt;input&gt;</code>标签通过定义不同的<code>type</code>属性可以实现不同的效果</p>
+<p><strong>文本框</strong><br />
+在多数浏览器中，文本框的默认宽度是20个字符</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
+</code></pre>
+<input type="text" placeholder="Input something">
+<hr />
+<p><strong>密码字段</strong><br />
+<code>type</code>属性值为<code>password</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
+</code></pre>
+<input type="password" placeholder="Input something">
+<hr />
+<p><strong>单选按钮</strong><br />
+<code>type</code>属性为<code>radio</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选我选我
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选他选他
+</code></pre>
+<p><input type="radio" >选我选我<br />
+<input type="radio" >选他选他</p>
+<p>这种情况下我们发现无法实现单选的效果，需要将两个按钮设置相同的<code>name</code>属性，，就可以实现单选效果了。</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选我选我
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选他选他
+</code></pre>
+<p><input type="radio" name="choice">选我选我<br />
+<input type="radio" name="choice">选他选他</p>
+<hr />
+<p><strong>复选框</strong><br />
+<code>type</code>属性为<code>checkbox</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bike"</span>&gt;</span>i have a bike
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Car"</span>&gt;</span>i have a Car
+</code></pre>
+<p><input type="checkbox" value="Bike">i have a bike<br />
+<input type="checkbox" value="Car">i have a Car</p>
+<hr />
+<p><strong>滑动轴</strong><br />
+<code>type</code>属性为<code>range</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"1"</span>&gt;</span>
+</code></pre>
+<input type="range" value="50" max="100" min="0" step="1">
+<p>用<code>max</code>限定最大值，<code>min</code>限定最小值，<code>value</code>设定初始值，<code>step</code>设定步长</p>
+<hr />
+<p><strong>按钮</strong><br />
+<code>type</code>属性为<code>button</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"点我！"</span>&gt;</span>
+</code></pre>
+<input type="button" value="点我！">
+<hr />
+<p><strong>颜色</strong><br />
+<code>type</code>属性为<code>color</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"color"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"#ff0000"</span>&gt;</span>
+</code></pre>
+<p><input type="color" value="#ff0000">  可以设置<code>value</code>的值来设定初始值</p>
+<hr />
+<p><strong>时间</strong><br />
+<code>type</code>属性为<code>date</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span>&gt;</span>
+</code></pre>
+<input type="date">
+<hr />
+<p>若<code>type</code>属性为<code>month</code>、<code>time</code>、<code>week</code>可有不同的效果</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"month"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"time"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"week"</span>&gt;</span>
+</code></pre>
+<p><input type="month"><br /><br />
+<input type="time"><br /><br />
+<input type="week"></p>
+<p><strong>选取文件</strong><br />
+<code>type</code>属性为<code>file</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span>&gt;</span>
+</code></pre>
+<input type="file">
+<p>使用<code>multiple</code>属性进行多选</p>
+<p><strong>数字</strong><br />
+<code>type</code>属性为<code>number</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"5"</span>&gt;</span>
+</code></pre>
+<input type="number" max="100" min="0" value="50" step="5">
+<p>用<code>max</code>限定最大值，<code>min</code>限定最小值，<code>value</code>设定初始值，<code>step</code>设定步长</p>
+<h2 id="label"><a class="markdownIt-Anchor" href="#label"></a> &lt;label&gt;</h2>
+<p><code>&lt;label&gt;</code>标签用于显示文本，但与普通文本相比，<code>&lt;label&gt;</code>标签可以响应鼠标点击事件</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"me"</span>&gt;</span>选我选我<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"me"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"选我选我"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"he"</span>&gt;</span>选他选他<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"he"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"选他选他"</span>&gt;</span>
+</code></pre>
+<p><label for="me">选我选我</label><input type="radio" name="choice" id="me" value="选我选我"><br />
+<label for="he">选他选他</label><input type="radio" name="choice" id="he" value="选他选他"></p>
+<p>可与前项对比发现不同</p>
+<h2 id="textarea"><a class="markdownIt-Anchor" href="#textarea"></a> &lt;textarea&gt;</h2>
+<p><code>&lt;textarea&gt;</code>标签用于创建一个可以拖动扩大缩小的文本框</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"5"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"10"</span>&gt;</span>
+我是一个文本框
+<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+</code></pre>
+<textarea rows="5" cols="10">
+我是一个文本框
+</textarea>
+<h2 id="select及datalist"><a class="markdownIt-Anchor" href="#select及datalist"></a> &lt;select&gt;及&lt;datalist&gt;</h2>
+<p>下拉框选项用<code>&lt;select&gt;</code>标签和<code>&lt;option&gt;</code>标签进行组合</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"apple"</span>&gt;</span>apple<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"banana"</span>&gt;</span>banana<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"pear"</span>&gt;</span>pear<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"peach"</span>&gt;</span>peach<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
+<select>
+    <option value="apple">apple</option>
+    <option value="banana">banana</option>
+    <option value="pear">pear</option>
+    <option value="peach">peach</option>
+</select>
+<p>添加<code>multiple</code>属性可以进行多选，添加<code>required</code>属性可以要求必须选择至少一个选项<br />
+<code>size</code>属性规定下拉列表中一次性显示的条目数量。</p>
+<hr />
+<p>下拉框还可以用<code>&lt;input&gt;</code>和<code>&lt;datalist&gt;</code>标签组合实现</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">list</span>=<span class="hljs-string">"browsers"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">datalist</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"browsers"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Internet Explorer"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Firefox"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Chrome"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Opera"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Safari"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">datalist</span>&gt;</span>
+</code></pre>
+<input list="browsers">
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+<hr />
+<p>通过在下拉框中添加<code>&lt;optgroup&gt;</code>标签还可以将选项进行分组</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">optgroup</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Swedish Cars"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"volvo"</span>&gt;</span>Volvo<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"saab"</span>&gt;</span>Saab<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">optgroup</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">optgroup</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"German Cars"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"mercedes"</span>&gt;</span>Mercedes<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"audi"</span>&gt;</span>Audi<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">optgroup</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
+<select>
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+<h2 id="button"><a class="markdownIt-Anchor" href="#button"></a> &lt;button&gt;</h2>
+<p>通过<code>&lt;button&gt;</code>标签可以创建一个按钮</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>点我！<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p><button type="button">点我！</button></p>
+<p>在 <code>&lt;button&gt;</code> 元素内部可以放置内容，比如文本或图像。这是该元素与使用 <code>&lt;input&gt;</code> 元素创建的按钮之间的不同之处。</p>
+<p>通过添加<code>onclick=&quot;xxx()&quot;</code>属性将单击事件与函数xxx()链接起来。<br />
+具体事件属性再议。</p>
+<h2 id="fieldset和legend"><a class="markdownIt-Anchor" href="#fieldset和legend"></a> &lt;fieldset&gt;和&lt;legend&gt;</h2>
+<p>通过<code>&lt;fieldset&gt;</code>标签对表单中的元素进行分组，即加上一个边框，通过<code>legend</code>标签为该组设定标题</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Personalia:<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+    Name: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    Date of birth: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+</code></pre>
+<fieldset>
+    <legend>Personalia:</legend>
+    Name: <input type="text"><br>
+    Email: <input type="text"><br>
+    Date of birth: <input type="text">
+</fieldset>
+<p>为<code>&lt;fieldset&gt;</code>标签添加<code>disabled</code>属性可以使该分组内元素全部不可更改、</p>
+<h2 id="output"><a class="markdownIt-Anchor" href="#output"></a> &lt;output&gt;</h2>
+<p><code>&lt;output&gt;</code>元素跟<code>&lt;form&gt;</code>标签组合进行输出</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">oninput</span>=<span class="hljs-string">"x.value=parseInt(a.value)+parseInt(b.value)"</span>&gt;</span>0
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"a"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span>&gt;</span>100
++<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"b"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span>&gt;</span>
+=<span class="hljs-tag">&lt;<span class="hljs-name">output</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"x"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"a b"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">output</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+<input type="range" id="a" value="50">100
++<input type="number" id="b" value="50">
+=<output name="x" for="a b"></output>
+</form>
+<h1 id="视频"><a class="markdownIt-Anchor" href="#视频"></a> 视频</h1>
+<p>使用<code>&lt;video&gt;&lt;/video&gt;</code>标签</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"320"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"240"</span> <span class="hljs-attr">controls</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"movie.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+</code></pre>
+<p><code>controls</code>属性规定了播放视频会不会带有进度条等控制栏内容。<br />
+详见<a href="https://www.runoob.com/try/try.php?filename=tryhtml5_video_js_prop" target="_blank" rel="noopener">链接</a>，与按钮的组合。</p>
+<h1 id="音频"><a class="markdownIt-Anchor" href="#音频"></a> 音频</h1>
+<p>使用<code>&lt;audio&gt;&lt;audio&gt;</code>标签</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"horse.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/ogg"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+</code></pre>
+<p><a href="https://www.runoob.com/try/try.php?filename=tryhtml5_audio_all" target="_blank" rel="noopener">链接</a></p>
 
             </div>
             <hr>
@@ -592,6 +812,23 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
     
     
 
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
 
     <p id="hitokoto">:D 获取中...</p>
 

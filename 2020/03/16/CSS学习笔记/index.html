@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>CSS学习笔记 ~ 星下小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min1.css">
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+      style="background: url('/img/banner_img1.jpg') no-repeat center center;
+        background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Monday, 2020/03/16, 15:53
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    1.5k 字
+                  </span>
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p
+                class="note note-warning">本文最后更新于：Monday, 2020/03/16, 18:23</p>
+            
+            <div class="markdown-body">
+              <p>css的一些学习笔记</p>
+<a id="more"></a>
+<h1 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h1>
+<h2 id="元素内嵌样式表"><a class="markdownIt-Anchor" href="#元素内嵌样式表"></a> 元素内嵌样式表</h2>
+<p>作为标签的全局属性存在，可以直接通过<code>style=&quot;&quot;</code>的形式进行添加</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background:#ff0000;color:white"</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="background:#ff0000;color:white">test</p>
+<h2 id="文档内嵌样式表"><a class="markdownIt-Anchor" href="#文档内嵌样式表"></a> 文档内嵌样式表</h2>
+<p>在<code>&lt;header&gt;&lt;/header&gt;</code>标签内进行添加</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">p</span>{
+            <span class="hljs-attribute">background</span>:<span class="hljs-number">#ff0000</span>;
+            <span class="hljs-attribute">color</span>:white;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+</code></pre>
+<h2 id="外部样式表"><a class="markdownIt-Anchor" href="#外部样式表"></a> 外部样式表</h2>
+<p>在外部新建css文件，通过html中的<code>link</code>标签进行连接,例如在同一目录下新建一个<code>styles.css</code>进行导入</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"styles.css"</span>&gt;</span>
+</code></pre>
+<h2 id="优先级"><a class="markdownIt-Anchor" href="#优先级"></a> 优先级</h2>
+<p>元素内嵌样式表&gt;文档内嵌样式表&gt;外部样式表</p>
+<h1 id="选择器"><a class="markdownIt-Anchor" href="#选择器"></a> 选择器</h1>
+<h2 id="元素选择器"><a class="markdownIt-Anchor" href="#元素选择器"></a> 元素选择器</h2>
+<p>直接使用元素名进行选择，对所有a元素适用</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20pt</span>;
+}
+</code></pre>
+<p>选择所有元素，只要将p去掉，用<code>*</code>代替即可</p>
+<pre class="highlight"><code class="css">*{
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20pt</span>;
+}
+</code></pre>
+<h2 id="类选择器"><a class="markdownIt-Anchor" href="#类选择器"></a> 类选择器</h2>
+<p>使用html的<code>class</code>属性来进行区分，在css中使用<code>.classname</code>来进行选择</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.test</span>{
+            <span class="hljs-attribute">color</span>:blue;
+            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"test"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<p>也可以指定特定的HTML元素使用class。</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.center</span> {<span class="hljs-attribute">text-align</span>:center;}
+</code></pre>
+<p>如上所示，所有的<code>class=&quot;center&quot;</code>的 p 元素使用该样式表，其余元素不变。</p>
+<h2 id="id选择器"><a class="markdownIt-Anchor" href="#id选择器"></a> ID选择器</h2>
+<p>使用html的<code>id</code>属性进行区分，在css中使用<code>#idname</code>来进行选择</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-id">#test</span>{
+            <span class="hljs-attribute">color</span>:blue;
+            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"test"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<h2 id="根据属性选择"><a class="markdownIt-Anchor" href="#根据属性选择"></a> 根据属性选择</h2>
+<p>根据属性选择元素，使用<code>[属性名]</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-attr">[href]</span>{
+            <span class="hljs-attribute">color</span>:blue;
+            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"com1"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"com2"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<p>示例中通过使用<code>[href]</code>对<code>href</code>属性进行了选择，方括号中也可以添加具体的值来针对该属性值为某一具体值的元素进行选择，例如选择第一个a标签包含的元素，可使用<code>[href=&quot;com1&quot;]</code>来进行选择。</p>
+<h1 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h1>
+<h2 id="背景颜色"><a class="markdownIt-Anchor" href="#背景颜色"></a> 背景颜色</h2>
+<p>使用<code>background-color</code>属性</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:red"</span>&gt;</span>fgffdfd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h2 id="背景图像"><a class="markdownIt-Anchor" href="#背景图像"></a> 背景图像</h2>
+<p>使用<code>background-image</code>属性</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-image:/img/banner_img1.jpg"</span>&gt;</span>ddddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h2 id="背景的水平或垂直平铺"><a class="markdownIt-Anchor" href="#背景的水平或垂直平铺"></a> 背景的水平或垂直平铺</h2>
+<p>使用<code>background-repeat</code>属性</p>
+<pre class="highlight"><code class="html">body{
+    background-repeat:repeat-x; //在x方向平铺
+    background-repeat:repeat-y; //在y方向平铺
+    background-repeat:no-repeat; //不平铺
+}
+</code></pre>
+<p><a href="https://www.runoob.com/try/try.php?filename=trycss_background-image_gradient2" target="_blank" rel="noopener">示例</a></p>
+<h2 id="背景位置"><a class="markdownIt-Anchor" href="#背景位置"></a> 背景位置</h2>
+<p>使用<code>background-position</code>属性<br />
+<strong>方式1</strong></p>
+<pre class="highlight"><code class="html">background-position:center center;
+</code></pre>
+<p>可选值有<code>left</code>、<code>right</code>、<code>top</code>、<code>center</code>、<code>bottom</code><br />
+一个参数是水平方向，另一个参数是竖直方向，如果只指定一个参数，那另一值默认为center。</p>
+<hr />
+<p><strong>方式2</strong></p>
+<pre class="highlight"><code class="html">background-position: 30% 20%; 
+</code></pre>
+<p>第一个值是水平位置，第二个值是垂直位置，左上角为0%，0%，右下角有100%，100%，如果只设定了一个值，那另一个值默认为50%。默认值0%，0%。</p>
+<hr />
+<p><strong>方式3</strong></p>
+<pre class="highlight"><code class="html">background-position: 50px 100px;
+</code></pre>
+<p>使用像素进行定位，第一个值是水平位置，第二个值是垂直位置，左上角是0，0。如果只设定了一个值，那另一个值默认为50%。可以混用%和px。</p>
+<h2 id="背景固定方式"><a class="markdownIt-Anchor" href="#背景固定方式"></a> 背景固定方式</h2>
+<p>使用<code>background-attachment</code>属性</p>
+<pre class="highlight"><code class="html">background-attachment:fixed;
+</code></pre>
+<p>可选值<code>scoll</code>、<code>fixed</code>、<code>local</code><br />
+<code>scoll</code>表示背景图片随页面滚动而滚动，是默认值<br />
+<code>fixed</code>表示背景图片固定，不会随页面滚动而滚动<br />
+<code>local</code>表示背景图片会随着元素内容的滚动而滚动</p>
+<h2 id="背景大小"><a class="markdownIt-Anchor" href="#背景大小"></a> 背景大小</h2>
+<p>使用<code>background-size</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-size</span><span class="hljs-selector-pseudo">:80px</span> 60<span class="hljs-selector-tag">px</span>;
+</code></pre>
+<p>可选值<code>length</code>、<code>percentage</code>、<code>cover</code>、<code>contain</code><br />
+<code>length</code>：通过两个像素大小来表示，第一个值为宽度，第二个值为高度，若只设置一个参数，另一个参数为<code>auto</code>（自动）<br />
+<code>perccentage</code>：通过相对于背景定位区域的比例来表示，第一个值为宽度，第二个值为高度，若只设置一个参数，另一个参数为<code>auto</code>（自动）<br />
+<code>cover</code>：保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小<br />
+<code>container</code>：保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小</p>
+<h2 id="背景相对位置"><a class="markdownIt-Anchor" href="#背景相对位置"></a> 背景相对位置</h2>
+<p>使用<code>background-origin</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-origin</span><span class="hljs-selector-pseudo">:content-box</span>;
+</code></pre>
+<p>可选值<code>padding-box</code>、<code>border-box</code>、<code>content-box</code><br />
+<code>padding-box</code>：背景图像关于填充框的相对位置<br />
+<code>border-box</code>: 背景图像关于边界框的相对位置<br />
+<code>content-box</code>：背景图像关于内容库的相对位置<br />
+<a href="https://www.runoob.com/try/try.php?filename=trycss3_background-origin" target="_blank" rel="noopener">示例</a></p>
+<h2 id="指定绘图区的背景"><a class="markdownIt-Anchor" href="#指定绘图区的背景"></a> 指定绘图区的背景</h2>
+<p>使用<code>background-clip</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-clip</span><span class="hljs-selector-pseudo">:content-box</span>;
+</code></pre>
+<p>可选值<code>padding-box</code>、<code>border-box</code>、<code>content-box</code><br />
+<code>padding-box</code>：默认值。背景绘制在边框方框内（剪切成边框方框）<br />
+<code>border-box</code>: 背景绘制在衬距方框内（剪切成衬距方框）<br />
+<code>content-box</code>：背景绘制在内容方框内（剪切成内容方框）。<br />
+<a href="https://www.runoob.com/try/try.php?filename=trycss3_background-clip" target="_blank" rel="noopener">示例</a></p>
+<h1 id="文本"><a class="markdownIt-Anchor" href="#文本"></a> 文本</h1>
+<h2 id="颜色"><a class="markdownIt-Anchor" href="#颜色"></a> 颜色</h2>
+<p>使用<code>color</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:red;}
+<span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:<span class="hljs-number">#ff0000</span>;}
+<span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:<span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);}
+</code></pre>
+<p>可以使用颜色名、十六进制颜色、rgb颜色、rgba颜色</p>
+<h2 id="对齐方式"><a class="markdownIt-Anchor" href="#对齐方式"></a> 对齐方式</h2>
+<p>使用<code>text-align</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h3</span> {<span class="hljs-attribute">text-align</span>:right}
+</code></pre>
+<p>可选值<code>left</code>、<code>right</code>、<code>center</code>、<code>justify</code><br />
+分别对应左端对齐，右端对齐，居中，两端对齐。</p>
+<h2 id="下划线等"><a class="markdownIt-Anchor" href="#下划线等"></a> 下划线等</h2>
+<p>使用<code>text-decoration</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {<span class="hljs-attribute">text-decoration</span>:overline}
+</code></pre>
+<p>参数值<code>overline</code>、<code>underline</code>、<code>line-through</code>、<code>none</code><br />
+分别对应上划线、下划线、删除线、无线。<br />
+可以多设几个参数值添加多条线，例如</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {<span class="hljs-attribute">text-decoration</span>:overline underline line-through}
+</code></pre>
+<p>后面可以添加颜色值和线型，例如虚线——<code>dotted</code>，波浪线——<code>wavy</code><br />
+示例：</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">text-decoration</span>: underline overline dotted red;
+}
+ 
+<span class="hljs-selector-tag">h2</span> {
+  <span class="hljs-attribute">text-decoration</span>: underline overline wavy blue;
+}
+</code></pre>
+<h2 id="大小写"><a class="markdownIt-Anchor" href="#大小写"></a> 大小写</h2>
+<p>使用<code>text-transform</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">text-transform</span>:lowercase;}
+</code></pre>
+<p>可选项<code>none</code>、<code>capitalize</code>、<code>uppercase</code>、<code>lowercase</code><br />
+<code>none</code>：默认，无格式<br />
+<code>capitalize</code>：每个单词首字母大写<br />
+<code>uppercase</code>：所有字母大写<br />
+<code>lowercase</code>：所有字母小写</p>
+<h2 id="缩进"><a class="markdownIt-Anchor" href="#缩进"></a> 缩进</h2>
+<p>使用<code>text-indent</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">text-indent</span><span class="hljs-selector-pseudo">:50px</span>;
+</code></pre>
+<ol>
+<li>设置固定的缩进值，如50px;</li>
+<li>设定基于父元素宽度的百分比的缩进</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/HTML/">HTML</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/HTML/">HTML</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/css/">css</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/03/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                        <span>数据库系统原理：第二章关系数据库（二）</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
+  <script defer src="https://utteranc.es/client.js"
+          repo="DuranceX/DuranceX.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+                </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <p id="hitokoto">:D 获取中...</p>
+
+    <!-- cnzz Analytics icon -->
+    
+
+    
+      <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({theme: 'forest'});
+        }
+      </script>
+    
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  
+  <script  src="/js/post.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+  <script  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "CSS学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("我", "的", "星", "下", "小", "屋", "(*^▽^*)");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--一言API-->
+<!-- 现代写法，推荐 -->
+<script>
+  fetch('https://v1.hitokoto.cn/?c=c&c=d')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="140,140,140" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>

@@ -145,7 +145,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    2.3k 字
+                    2.5k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      10 分钟
+                      11 分钟
                   </span>&nbsp;
                 
 
@@ -188,7 +188,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：Sunday, 2020/03/08, 12:10</p>
+                class="note note-warning">本文最后更新于：Monday, 2020/03/16, 13:21</p>
             
             <div class="markdown-body">
               <p>各类参数的修改位置及作用、网页音乐播放器、评论模块、一言的调用等…</p>
@@ -474,7 +474,28 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 <li>zIndex：表示背景的z-index属性，css属性用于控制所在层的位置，默认：-1<br />
 转自<a href="https://www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#%E3%80%9013%E3%80%91%E8%83%8C%E6%99%AF%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E7%BA%BF%E6%9D%A1%E6%95%88%E6%9E%9C" target="_blank" rel="noopener">TRHX博客</a></li>
 </ul>
-
+<h2 id="网站运行时间"><a class="markdownIt-Anchor" href="#网站运行时间"></a> 网站运行时间</h2>
+<p>在<code>\themes\fluid\layout\_partial\footer.ejs</code>中添加以下代码</p>
+<pre class="highlight"><code class="javascript">&lt;span id=<span class="hljs-string">"timeDate"</span>&gt;载入天数...&lt;<span class="hljs-regexp">/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/</span>span&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); 
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>{ 
+        <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"21/02/2020 17:38:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span>
+        now.setTime(now.getTime()+<span class="hljs-number">250</span>); 
+        days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); 
+        hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); 
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> ){hnum = <span class="hljs-string">"0"</span> + hnum;} minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); 
+        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> ){mnum = <span class="hljs-string">"0"</span> + mnum;} 
+        seconds = (now - grt ) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum); 
+        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> ){snum = <span class="hljs-string">"0"</span> + snum;} 
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已勉强运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; 
+        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; 
+    } 
+setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
+<blockquote><p>转自</p>
+<footer><strong>THRX博客 -</strong><cite><a href="https://www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间" target="_blank" rel="noopener">www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间</a></cite></footer></blockquote>
             </div>
             <hr>
             <div>
@@ -625,6 +646,23 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
     
     
 
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
 
     <p id="hitokoto">:D 获取中...</p>
 

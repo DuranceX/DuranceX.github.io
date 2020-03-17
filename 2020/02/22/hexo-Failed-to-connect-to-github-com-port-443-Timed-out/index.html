@@ -39,10 +39,6 @@
 
 <!-- 自定义样式保持在最底部 -->
 
-  
-<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min1.css">
-
-
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -220,9 +216,9 @@ git config --global https.proxy http://127.0.0.1:1080
                   <span>
                 <i class="iconfont icon-tag"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
-                    
                       <a class="hover-with-bg" href="/tags/problems/">problems</a>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
                     
                       <a class="hover-with-bg" href="/tags/git/">git</a>
                     
@@ -259,16 +255,31 @@ git config --global https.proxy http://127.0.0.1:1080
                 <div class="comments" id="comments">
                   
                   
-  <script defer src="https://utteranc.es/client.js"
-          repo="DuranceX/DuranceX.github.io"
-          issue-term="pathname"
-  
-          label="utterances"
-    
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
+        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
   </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
                 </div>

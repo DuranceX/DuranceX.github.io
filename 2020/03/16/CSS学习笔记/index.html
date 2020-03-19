@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.5k 字
+                    3.1k 字
                   </span>
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      6 分钟
+                      12 分钟
                   </span>&nbsp;
                 
 
@@ -184,7 +184,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：Monday, 2020/03/16, 18:23</p>
+                class="note note-warning">本文最后更新于：Thursday, 2020/03/19, 17:53</p>
             
             <div class="markdown-body">
               <p>css的一些学习笔记</p>
@@ -242,6 +242,9 @@
 <pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.center</span> {<span class="hljs-attribute">text-align</span>:center;}
 </code></pre>
 <p>如上所示，所有的<code>class=&quot;center&quot;</code>的 p 元素使用该样式表，其余元素不变。</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-class">.center</span> <span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">text-align</span>:center;}
+</code></pre>
+<p>如上所示，所有的<code>class=&quot;center&quot;</code>元素内的 p 元素使用该样式表，其余元素不变。</p>
 <h2 id="id选择器"><a class="markdownIt-Anchor" href="#id选择器"></a> ID选择器</h2>
 <p>使用html的<code>id</code>属性进行区分，在css中使用<code>#idname</code>来进行选择</p>
 <pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
@@ -272,7 +275,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
 <p>示例中通过使用<code>[href]</code>对<code>href</code>属性进行了选择，方括号中也可以添加具体的值来针对该属性值为某一具体值的元素进行选择，例如选择第一个a标签包含的元素，可使用<code>[href=&quot;com1&quot;]</code>来进行选择。</p>
-<h1 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h1>
+<h1 id="背景background"><a class="markdownIt-Anchor" href="#背景background"></a> 背景（Background）</h1>
 <h2 id="背景颜色"><a class="markdownIt-Anchor" href="#背景颜色"></a> 背景颜色</h2>
 <p>使用<code>background-color</code>属性</p>
 <pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:red"</span>&gt;</span>fgffdfd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -342,7 +345,7 @@
 <code>border-box</code>: 背景绘制在衬距方框内（剪切成衬距方框）<br />
 <code>content-box</code>：背景绘制在内容方框内（剪切成内容方框）。<br />
 <a href="https://www.runoob.com/try/try.php?filename=trycss3_background-clip" target="_blank" rel="noopener">示例</a></p>
-<h1 id="文本"><a class="markdownIt-Anchor" href="#文本"></a> 文本</h1>
+<h1 id="文本text"><a class="markdownIt-Anchor" href="#文本text"></a> 文本（Text）</h1>
 <h2 id="颜色"><a class="markdownIt-Anchor" href="#颜色"></a> 颜色</h2>
 <p>使用<code>color</code>属性</p>
 <pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:red;}
@@ -356,7 +359,7 @@
 </code></pre>
 <p>可选值<code>left</code>、<code>right</code>、<code>center</code>、<code>justify</code><br />
 分别对应左端对齐，右端对齐，居中，两端对齐。</p>
-<h2 id="下划线等"><a class="markdownIt-Anchor" href="#下划线等"></a> 下划线等</h2>
+<h2 id="文本修饰下划线等"><a class="markdownIt-Anchor" href="#文本修饰下划线等"></a> 文本修饰（下划线等）</h2>
 <p>使用<code>text-decoration</code>属性</p>
 <pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {<span class="hljs-attribute">text-decoration</span>:overline}
 </code></pre>
@@ -392,6 +395,221 @@
 <li>设置固定的缩进值，如50px;</li>
 <li>设定基于父元素宽度的百分比的缩进</li>
 </ol>
+<h2 id="行高"><a class="markdownIt-Anchor" href="#行高"></a> 行高</h2>
+<p>使用<code>line-height</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">line-height</span>:<span class="hljs-number">200%</span>}
+</code></pre>
+<p>可选项<code>number</code>、<code>length</code>、<code>%</code><br />
+<code>number</code>：设置数字，比如2-两倍行距<br />
+<code>length</code>：设置固定行间距，默认正常的行间距为20px;<br />
+<code>%</code>：用百分比来进行设置</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:50%"</span>&gt;</span>
+小行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+小行距
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:20px"</span>&gt;</span>
+正常行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+正常行距
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:2"</span>&gt;</span>
+大行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+大行距
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="line-height:50%">
+小行距<br />
+小行距
+</p>
+<p style="line-height:20px">
+正常行距<br />
+正常行距
+</p>
+<p style="line-height:2">
+大行距<br />
+大行距
+</p>
+<h1 id="盒子模型"><a class="markdownIt-Anchor" href="#盒子模型"></a> 盒子模型</h1>
+<p><img src="/img/css/Box.png" srcset="/img/loading.gif" alt="" /><br />
+<b></p>
+<ul>
+<li>Margin（外边框）:Border外的边框，透明，与其他元素之间的距离</li>
+<li>Border（边框）：围绕在内边框和内容外的边框，是最直观可见的边框</li>
+<li>Padding（内边框）：内容部分与边框之间的距离</li>
+<li>Content（内容）：盒子模型的内容部分是我们要显示的内容，例如文本和图像<br />
+</b></li>
+</ul>
+<p>我们设定的<code>width</code>和<code>height</code>属性指的是<code>Content</code>部分的宽度和高度<br />
+总宽度 = 内容宽度（width）+ 内边框宽度*2 + 边框宽度*2 + 外边框宽度*2</p>
+<h1 id="边框border"><a class="markdownIt-Anchor" href="#边框border"></a> 边框（Border）</h1>
+<h2 id="边框样式"><a class="markdownIt-Anchor" href="#边框样式"></a> 边框样式</h2>
+<p>使用<code>border-style</code>属性</p>
+<pre class="highlight"><code class="html">border-style:solid;
+</code></pre>
+<p>可选项：（随颜色不同，效果不同）</p>
+<style>
+p.none {border-style:none;}
+p.dotted {border-style:dotted;}
+p.dashed {border-style:dashed;}
+p.solid {border-style:solid;}
+p.double {border-style:double;}
+p.groove {border-style:groove;}
+p.ridge {border-style:ridge;}
+p.inset {border-style:inset;}
+p.outset {border-style:outset;}
+p.hidden {border-style:hidden;}
+</style>
+<p class="none">none——无边框。</p>
+<p class="dotted">dotted——虚线边框。</p>
+<p class="dashed">dashed——虚线边框。</p>
+<p class="solid">solid——实线边框。</p>
+<p class="double">double——双边框。</p>
+<p class="groove">groove——凹槽边框。</p>
+<p class="ridge">ridge——垄状边框。</p>
+<p class="inset">inset——嵌入边框。</p>
+<p class="outset">outset——外凸边框。</p>
+<p class="hidden">hidden——隐藏边框。</p>
+<h2 id="边框宽度"><a class="markdownIt-Anchor" href="#边框宽度"></a> 边框宽度</h2>
+<p>使用<code>border-style</code>属性</p>
+<h2 id="分别设置四边框"><a class="markdownIt-Anchor" href="#分别设置四边框"></a> 分别设置四边框</h2>
+<b>
+- border-style:属性1，属性2，属性3，属性4;</b><br />
+&emsp;&emsp;上->右->下->左<br />
+<b>
+- border-style:属性1，属性2，属性3</b><br />
+&emsp;&emsp;上->左右->下<br />
+<b>
+- border-style:属性1，属性2</b><br />
+&emsp;&emsp;上下->左右<br />
+<b>
+- border-style:属性1</b><br />
+&emsp;&emsp;上下左右属性相同
+<br /><br />
+示例
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">border-top</span>:thick double <span class="hljs-number">#ff0000</span>;
+    <span class="hljs-attribute">border-left</span>:<span class="hljs-number">2px</span> solid green;
+    <span class="hljs-attribute">border-right</span>:<span class="hljs-number">4px</span> dotted <span class="hljs-number">#00ffff</span>;
+    <span class="hljs-attribute">border-bottom</span>:hidden;
+}
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test2</span>{
+    <span class="hljs-attribute">border-left</span>:<span class="hljs-number">4px</span> solid <span class="hljs-number">#33b6ee</span>;
+    <span class="hljs-attribute">background-color</span>:<span class="hljs-built_in">rgba</span>(<span class="hljs-number">207</span>,<span class="hljs-number">235</span>,<span class="hljs-number">246</span>);
+    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">3</span>;
+    <span class="hljs-attribute">Padding-left</span>:<span class="hljs-number">10px</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<style>
+p.test{
+    border-top:thick double #ff0000;
+    border-left:2px solid green;
+    border-right:4px dotted #00ffff;
+    border-bottom:hidden;
+}
+p.test2{
+    border-left:5px solid #33b6ee;
+    background-color:rgba(207,235,246);
+    line-height:3;
+    Padding-left:10px;
+}
+</style>
+<p class="test">示例<p>
+<p class="test2">示例2<p>
+<h2 id="轮廓-outline"><a class="markdownIt-Anchor" href="#轮廓-outline"></a> 轮廓 （outline）</h2>
+<p>轮廓（outline）是在<code>border</code>外的一条线，属性值与Border一致，outline不占用额外空间。</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"border:2px dashed black;outline:2px solid red;"</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="border:2px dashed black;outline:2px solid red;">test</p>
+<h1 id="外边框margin"><a class="markdownIt-Anchor" href="#外边框margin"></a> 外边框（Margin）</h1>
+<p><code>margin</code>项有两个可选项，<code>length</code>和<code>auto</code><br />
+<code>auto</code>：设置浏览器边距，取决于浏览器<br />
+<code>length</code>：固定的具体数值<br />
+<b></p>
+<ul>
+<li>margin:边距1，边距2，边距3，边距4;</b><br /><br />
+  上-&gt;右-&gt;下-&gt;左<br /><br />
+<b></li>
+<li>margin:边距1，边距2，边距3</b><br /><br />
+  上-&gt;左右-&gt;下<br /><br />
+<b></li>
+<li>margin:边距1，边距2</b><br /><br />
+  上下-&gt;左右<br /><br />
+<b></li>
+<li>margin:边距1</b><br /><br />
+  上下左右边距相同<br />
+<br /><br /></li>
+</ul>
+<h1 id="内边框padding"><a class="markdownIt-Anchor" href="#内边框padding"></a> 内边框（padding）</h1>
+<p><code>padding</code>项，内容与<code>margin</code>相同</p>
+<h1 id="尺寸dimension"><a class="markdownIt-Anchor" href="#尺寸dimension"></a> 尺寸（Dimension）</h1>
+<p>最大高度——<code>max-height</code><br />
+最大宽度——<code>max-width</code><br />
+最小高度——<code>min-height</code><br />
+最小宽度——<code>min-width</code><br />
+都可以使用像素值或百分比来进行设置。</p>
+<h1 id="显示displayvisibility"><a class="markdownIt-Anchor" href="#显示displayvisibility"></a> 显示（display&amp;visibility）</h1>
+<h2 id="可见性"><a class="markdownIt-Anchor" href="#可见性"></a> 可见性</h2>
+<p>使用<code>display</code>和<code>visibility</code>标签<br />
+通过设置<code>display:none</code>和<code>visibility:hidden</code>标签来隐藏元素。</p>
+<p class="note note-primary">
+<b>
+visibility:hidden，可以隐藏元素，但是元素仍然占用空间，对布局会有影响。<br />
+display:none，可以隐藏元素，同时元素不占用空间。</b>
+</p>
+<h2 id="块元素和内联元素"><a class="markdownIt-Anchor" href="#块元素和内联元素"></a> 👀块元素和内联元素</h2>
+<p><strong>块级元素特性：</strong></p>
+<ul>
+<li>总是独占一行，表现为另起一行开始，而且其后的元素也必须另起一行显示;</li>
+<li>宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制;</li>
+</ul>
+<p><strong>内联元素(inline)特性：</strong></p>
+<ul>
+<li>和相邻的内联元素在同一行;</li>
+<li>宽度(width)、高度(height)、内边距的top/bottom(padding-top/padding-bottom)和外边距的top/bottom(margin-top/margin-bottom)都不可改变，就是里面文字或图片的大小;</li>
+</ul>
+<p><strong>块级元素主要有：</strong><br />
+address , blockquote , center , dir , div , dl , fieldset , form , h1 , h2 , h3 , h4 , h5 , h6 , hr , isindex , menu , noframes , noscript , ol , p , pre , table , ul , li</p>
+<p><strong>内联元素主要有：</strong><br />
+a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , img , input , kbd , label , q , s , samp , select , small , span , strike , strong , sub , sup ,textarea , tt , u , var</p>
+<p>👀CSS中，可以通过修改<code>dispaly</code>属性来改变块级显示或是内联显示</p>
+<ul>
+<li>display:block —— 显示为块级元素</li>
+<li>display:inline —— 显示为内联元素</li>
+<li>display:inline-block —— 显示为内联元素，表现为同行显示并可修改高度内外边距等属性</li>
+</ul>
+<p>例如通常将<code>&lt;ul&gt;</code>加上<code>display:inline</code>或<code>display:inline-block</code>属性，来使得列表水平显示，用作导航栏之类。</p>
+<h1 id="定位position"><a class="markdownIt-Anchor" href="#定位position"></a> 定位（position）</h1>
+<p>使用<code>position</code>属性，和<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>属性配合使用。</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">position</span><span class="hljs-selector-pseudo">:static</span>
+</code></pre>
+<p>可选项：<code>static</code>、<code>fixed</code>、<code>relative</code>、<code>absolute</code>、<code>sticky</code></p>
+<p><code>static</code>：默认值，没有定位，不受<code>top</code>、<code>left</code>等属性的影响。<br />
+<code>fixed</code>：相对于窗口的固定位置，即使窗口滚动它也不动。通过四个属性值设定具体位置。<br />
+<code>relative</code>：相对于该元素的正常位置。但是占用空间不变，例如两个标题，占用两行，通过top属性使第二行覆盖第一行，则第二行所占位置仍然存在，成为空白。<br />
+<code>absolute</code>：绝对定位，相对于最近的以定位的父元素，若没有则相对于&lt;html&gt;，<code>absolute</code>定位的元素不占用空间，不影响布局，相当于“浮于文字上方”<br />
+<code>sticky</code>：sticky定位的元素在没有移出窗口时相当于relative，在移出窗口后就位于窗口最上方，就是顶部菜单栏的形式。</p>
+<p>此外，可以通过<code>z-index</code>属性来指定元素的堆叠顺序。相当于手动规定不同的图层顺序。<code>z-index</code>的值越大，图层就在越上层。如果没有定义<code>z-index</code>属性的话，最后定位在HTML代码中的元素将在最前面。</p>
+<h1 id="裁剪clip"><a class="markdownIt-Anchor" href="#裁剪clip"></a> 裁剪（clip）</h1>
+<pre class="highlight"><code class="css">//固定格式
+<span class="hljs-selector-tag">clip</span><span class="hljs-selector-pseudo">:rect(top</span>, <span class="hljs-selector-tag">right</span>, <span class="hljs-selector-tag">bottom</span>, <span class="hljs-selector-tag">left</span>)
+</code></pre>
+<p><code>top</code>：表示从上方截去多少像素<br />
+<code>right</code>：表示左侧剩余多少像素<br />
+<code>bottom</code>：表示上方剩余多少像素<br />
+<code>left</code>：表示从左侧截去多少像素<br />
+🐷就很诡异</p>
+<h1 id="溢出处理overflow"><a class="markdownIt-Anchor" href="#溢出处理overflow"></a> 溢出处理（overflow）</h1>
+<p>使用<code>overflow</code>属性</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">overflow</span><span class="hljs-selector-pseudo">:hidden</span>;
+</code></pre>
+<p>可选项：<code>visible</code>、<code>hidden</code>、<code>scroll</code>、<code>auto</code><br />
+<code>visible</code>：默认值，溢出了就在下方继续显示<br />
+<code>hidden</code>：溢出后将溢出内容隐藏<br />
+<code>scroll</code>：提供一个滚动条<br />
+<code>auto</code>：在溢出后再提供一个滚动条以供查看内容</p>
 
             </div>
             <hr>

@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    3.1k 字
+                    5k 字
                   </span>
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      12 分钟
+                      20 分钟
                   </span>&nbsp;
                 
 
@@ -275,6 +275,67 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
 <p>示例中通过使用<code>[href]</code>对<code>href</code>属性进行了选择，方括号中也可以添加具体的值来针对该属性值为某一具体值的元素进行选择，例如选择第一个a标签包含的元素，可使用<code>[href=&quot;com1&quot;]</code>来进行选择。</p>
+<h2 id="后代选择器"><a class="markdownIt-Anchor" href="#后代选择器"></a> 后代选择器</h2>
+<p>使用空格<code></code>符号<br />
+选中某元素中的所有后代元素，如下所示，选中是<code>&lt;div&gt;</code>中的所有<code>&lt;p&gt;</code>标签</p>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span>{
+    <span class="hljs-attribute">background-color</span>:yellow;
+}
+</code></pre>
+<h2 id="子元素选择器"><a class="markdownIt-Anchor" href="#子元素选择器"></a> 子元素选择器</h2>
+<p>使用大于号<code>&gt;</code><br />
+选中某元素中的直接后代元素。如下所示，选中是直接在<code>div</code>之下的<code>&lt;p&gt;</code>标签</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">div</span>&gt;<span class="hljs-selector-tag">p</span>{
+    <span class="hljs-attribute">background-color</span>:yellow;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+//示例
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行会应用样式表，因为是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>之下的第一代后代元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行不会应用样式表，因为中间隔了一个<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>，不是第一代后代元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h2 id="相邻兄弟选择器"><a class="markdownIt-Anchor" href="#相邻兄弟选择器"></a> 相邻兄弟选择器</h2>
+<p>使用加号<code>+</code><br />
+选择是在某个元素<strong>之后第一次</strong>出现的另一个元素，如下所示，选中的是<code>&lt;div&gt;</code>结束后的第一个<code>&lt;p&gt;</code>标签</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">div</span>+<span class="hljs-selector-tag">p</span>
+{
+  <span class="hljs-attribute">background-color</span>:yellow;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行没被选中，因为<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>还没结束<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行被选中，是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>结束后的第一个<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行没被选中，是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>结束后的第二个<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<h2 id="后续兄弟选择器"><a class="markdownIt-Anchor" href="#后续兄弟选择器"></a> 后续兄弟选择器</h2>
+<p>使用波浪符号<code>~</code><br />
+选择的是在某个元素<strong>之后</strong>的所有另一个元素，如下所示，选中的是<code>&lt;div&gt;</code>结束后的所有<code>&lt;p&gt;</code>标签（未包含在其他元素内）</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">div</span>~<span class="hljs-selector-tag">p</span>
+{
+	<span class="hljs-attribute">background-color</span>:yellow;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行未被选中，因为在<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>之前，不会添加背景颜色。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>未被选中，因为在 div 中。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>被选中，因为不在 div 中，且没有被其他元素包裹<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行未被选中，因为包含在<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
 <h1 id="背景background"><a class="markdownIt-Anchor" href="#背景background"></a> 背景（Background）</h1>
 <h2 id="背景颜色"><a class="markdownIt-Anchor" href="#背景颜色"></a> 背景颜色</h2>
 <p>使用<code>background-color</code>属性</p>
@@ -523,6 +584,20 @@ p.test2{
 <pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"border:2px dashed black;outline:2px solid red;"</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
 <p style="border:2px dashed black;outline:2px solid red;">test</p>
+<h2 id="圆角border-radius"><a class="markdownIt-Anchor" href="#圆角border-radius"></a> 圆角（border-radius）</h2>
+<p>使用<code>border-radius</code>属性，单位为像素px</p>
+<h2 id="盒子阴影box-shadow"><a class="markdownIt-Anchor" href="#盒子阴影box-shadow"></a> 盒子阴影（box-shadow）</h2>
+<p>使用<code>box-shadow</code>属性</p>
+<pre class="highlight"><code class="html">box-shadow: 10px 10px 5px #888888;
+</code></pre>
+<p>第一个参数：水平阴影的位置（为正即右移xxpx，为负左移）<br />
+第二个参数：垂直阴影的位置（为正即下移，为负上移）<br />
+（第三个参数，可选）：模糊程度<br />
+（第四个参数，可选）：阴影的大小<br />
+（第五个参数，可选）：阴影颜色</p>
+<h2 id="边界图片border-image"><a class="markdownIt-Anchor" href="#边界图片border-image"></a> 边界图片（border-image）</h2>
+<p>使用<code>border-image:url(image-url)</code>属性<br />
+使用图片作为边框样式，<a href="https://www.runoob.com/try/try.php?filename=trycss3_border-image" target="_blank" rel="noopener">示例</a></p>
 <h1 id="外边框margin"><a class="markdownIt-Anchor" href="#外边框margin"></a> 外边框（Margin）</h1>
 <p><code>margin</code>项有两个可选项，<code>length</code>和<code>auto</code><br />
 <code>auto</code>：设置浏览器边距，取决于浏览器<br />
@@ -610,6 +685,147 @@ a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , im
 <code>hidden</code>：溢出后将溢出内容隐藏<br />
 <code>scroll</code>：提供一个滚动条<br />
 <code>auto</code>：在溢出后再提供一个滚动条以供查看内容</p>
+<h1 id="浮动floatclear"><a class="markdownIt-Anchor" href="#浮动floatclear"></a> 浮动（float&amp;clear）</h1>
+<pre class="highlight"><code class="css"><span class="hljs-selector-tag">float</span><span class="hljs-selector-pseudo">:left</span>;
+<span class="hljs-selector-tag">clear</span><span class="hljs-selector-pseudo">:both</span>;
+</code></pre>
+<p>可选项<code>left</code>、<code>right</code>分别对应靠左和靠右<br />
+使用<code>clear</code>可规定元素周围不出现浮动元素，可选项<code>left</code>、<code>right</code>、<code>both</code><br />
+图片的浮动效果类似于word中“文字环绕型”</p>
+<h1 id="布局对齐"><a class="markdownIt-Anchor" href="#布局对齐"></a> 布局\对齐</h1>
+<h2 id="元素居中对齐"><a class="markdownIt-Anchor" href="#元素居中对齐"></a> 元素居中对齐</h2>
+<p>使用<code>margin:auto</code>来进行元素居中对齐</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素居中对齐<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<div style="
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+">
+<p>元素居中对齐</p>
+</div>
+<h2 id="文本居中对齐"><a class="markdownIt-Anchor" href="#文本居中对齐"></a> 文本居中对齐</h2>
+<p>使用<code>text-align</code>属性，</p>
+<h2 id="图片居中对齐"><a class="markdownIt-Anchor" href="#图片居中对齐"></a> 图片居中对齐</h2>
+<h3 id="使用marginauto"><a class="markdownIt-Anchor" href="#使用marginauto"></a> 使用margin:auto</h3>
+<p>同样使用<code>margin:auto</code>来设置居中对齐，不过需要将图片使用<code>display:block</code>以块形式显示</p>
+<h3 id="使用div"><a class="markdownIt-Anchor" href="#使用div"></a> 使用div</h3>
+<p>可以在图像外层套一层<code>&lt;div&gt;</code>标签，并在div的样式表中设置<code>text-align:center</code></p>
+<h2 id="左右对齐"><a class="markdownIt-Anchor" href="#左右对齐"></a> 左右对齐</h2>
+<h3 id="使用position"><a class="markdownIt-Anchor" href="#使用position"></a> 使用position</h3>
+<p>使用<code>position:absolute</code>属性来对齐元素，设定<code>left:0px;</code>进行左对齐，<code>right:0px</code>右对齐</p>
+<h3 id="使用float"><a class="markdownIt-Anchor" href="#使用float"></a> 使用float</h3>
+<p>使用<code>float:left</code>左对齐，<code>float:right</code>右对齐。<br />
+但是当子元素的高度大于父元素时，子元素将溢出。这时可以给父元素添加<code>overflow:auto</code>来解决子元素溢出的问题。<a href="https://www.runoob.com/try/try.php?filename=trycss_layout_clearfix" target="_blank" rel="noopener">示例</a></p>
+<h2 id="垂直居中对齐"><a class="markdownIt-Anchor" href="#垂直居中对齐"></a> 垂直居中对齐</h2>
+<h3 id="使用padding"><a class="markdownIt-Anchor" href="#使用padding"></a> 使用padding</h3>
+<p>即在头部顶部使用<code>padding</code>，即可实现垂直居中</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"padding: 30px 0;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="padding: 30px 0;border: 3px solid green;">垂直居中</p>
+<h3 id="使用line-height"><a class="markdownIt-Anchor" href="#使用line-height"></a> 使用line-height</h3>
+<p>设置<code>line-hright</code>的值与<code>height</code>的值相等即可实现垂直居中</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:50px;height:50px;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p style="line-height:50px;height:50px;border: 3px solid green;">垂直居中</p>
+<h1 id="伪类"><a class="markdownIt-Anchor" href="#伪类"></a> 伪类</h1>
+<p>在选择器后添加冒号<code>:</code>来选择伪类，常用举例：</p>
+<pre class="highlight"><code class="html">a:link{color:red;}  //未访问的链接
+a:visited{color:blue;}  //已访问的链接
+a:hover{color:aqua;}  //当鼠标悬停在上方时的样式
+a:active{color:yellow;}   //已选中的链接，即按下还未松开的状态
+
+a:before{
+    content:"Read this -";
+    background-color:yellow;
+    color:red;
+    font-weight:bold;   
+}  //在所有"a"元素前插入的内容和样式
+
+a:after{
+    content:"Read this -";
+    background-color:yellow;
+    color:red;
+    font-weight:bold;   
+}  //在所有"a"元素后插入的内容和样式
+</code></pre>
+<h1 id="多列"><a class="markdownIt-Anchor" href="#多列"></a> 👀多列</h1>
+<h2 id="创建多列column-count"><a class="markdownIt-Anchor" href="#创建多列column-count"></a> 创建多列（column-count）</h2>
+<p>使用<code>column-count</code>属性，通过指定后面的数字来规定将元素分为几列</p>
+<pre class="highlight"><code class="html">column-count:3;
+</code></pre>
+<p style="column-count:3">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
+<h2 id="列与列的间隙column-gap"><a class="markdownIt-Anchor" href="#列与列的间隙column-gap"></a> 列与列的间隙（column-gap）</h2>
+<p>使用<code>column-gap</code>属性来设定列与列之间的间隙，下示代码将间隙设为50px;</p>
+<pre class="highlight"><code class="html">column-gap:50px;
+</code></pre>
+<p style="column-count:3;column-gap:50px;">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
+<h2 id="列边框"><a class="markdownIt-Anchor" href="#列边框"></a> 列边框</h2>
+<p><strong>边框样式</strong></p>
+<p>使用<code>column-rule-style</code>属性</p>
+<p><strong>边框颜色</strong></p>
+<p>使用<code>column-rule-color</code>属性</p>
+<p><strong>边框厚度</strong></p>
+<p>使用<code>column-rule-width</code>属性</p>
+<p><strong>缩写</strong><br />
+可使用<code>column-rule</code>属性来缩写</p>
+<p><strong>示例</strong></p>
+<pre class="highlight"><code class="html">column-rule-style:solid;
+column-rule-width:1px;
+column-rule-color:#cccccc;
+
+-------或者---------
+column-rule:1px solid #cccccc;
+</code></pre>
+<p style="column-count:3;column-rule:1px solid #cccccc;">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
+<h2 id="指定元素跨越多少列column-span"><a class="markdownIt-Anchor" href="#指定元素跨越多少列column-span"></a> 指定元素跨越多少列（column-span）</h2>
+<p>使用<code>column-span</code>属性</p>
+<pre class="highlight"><code class="html">column-span:all;
+</code></pre>
+<p>可选项<code>1</code>、<code>all</code>，<a href="https://www.runoob.com/try/try.php?filename=trycss3_column-span" target="_blank" rel="noopener">示例</a></p>
+<h2 id="列宽度column-width"><a class="markdownIt-Anchor" href="#列宽度column-width"></a> 列宽度（column-width）</h2>
+<p>使用<code>column-width</code>属性可以设定每列的宽度，会根据宽度自动分列，不用规定列数。</p>
+<pre class="highlight"><code class="html">column-width:100px;
+</code></pre>
+<p style="column-width:100px">上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。</p>
+<h1 id="多媒体查询media"><a class="markdownIt-Anchor" href="#多媒体查询media"></a> 多媒体查询（@media）</h1>
+<p>格式：</p>
+<pre class="highlight"><code class="css"><span class="hljs-keyword">@media</span> <span class="hljs-keyword">not</span>|<span class="hljs-keyword">only</span> mediatype <span class="hljs-keyword">and</span> (expressions) {
+    <span class="hljs-selector-tag">CSS</span> 代码...;
+}
+</code></pre>
+<p><code>mediatype</code>表示媒体类型，通过<code>not|only|all</code>来进行筛选</p>
+<p><code>mediatype</code>的可选项：<br />
+<code>print</code>：打印机<br />
+<code>screen</code>：用于电脑屏幕、平板、智能手机等<br />
+<code>speech</code>：用于屏幕阅读器</p>
+<p>筛选项：<br />
+<code>not</code>：不应用于后述媒体类型<br />
+<code>only</code>：只应用于后述媒体类型<br />
+<code>all</code>：应用于所有媒体类型，使用all时可以省去媒体类型，也可以只写媒体类型省去all</p>
+<p>expressions：<br />
+表达式，当所选设备满足表达式时应用css样式</p>
+<p><a href="https://www.runoob.com/try/try.php?filename=trycss3_media_queries1" target="_blank" rel="noopener">示例：</a></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test-media</span>{
+        <span class="hljs-attribute">background-color</span>:pink;
+    }
+
+    <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span><span class="hljs-number">480px</span>){
+        <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test-media</span>{
+        <span class="hljs-attribute">background-color</span>:lightgreen;
+        }
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
 
             </div>
             <hr>

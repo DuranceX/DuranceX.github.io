@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>数字电路基础：触发器 ~ 星下小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+
+<!-- 自定义样式保持在最底部 -->
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/links/">友链</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+      style="background: url('/img/banner_img1.jpg') no-repeat center center;
+        background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Saturday, 2020/03/28, 16:29
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    989 字
+                  </span>
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p
+                class="note note-warning">本文最后更新于：Saturday, 2020/03/28, 18:22</p>
+            
+            <div class="markdown-body">
+              <p>各种触发器的相关内容</p>
+<a id="more"></a>
+<h1 id="一-概念"><a class="markdownIt-Anchor" href="#一-概念"></a> 一、概念</h1>
+<p><strong>基本结构</strong><br />
+<img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E8%A7%A6%E5%8F%91%E5%99%A8header.png" srcset="/img/loading.gif" alt="" /></p>
+<ul>
+<li>有两个互补的输出端<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>Q</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{Q}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0777700000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">Q</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></li>
+<li>有<strong>两个</strong>稳定状态“1”和“0”
+<ul>
+<li>“1”状态：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Q=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>    <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>Q</mi><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\overline{Q}=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0777700000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">Q</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></li>
+<li>“0”状态：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Q=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>    <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>Q</mi><mo stretchy="true">‾</mo></mover><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\overline{Q}=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0777700000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">Q</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+</ul>
+</li>
+<li>当输入信号不发生变化时，触发器状态确定不变，即保持上一状态。</li>
+</ul>
+<p><strong>触发器状态</strong></p>
+<ul>
+<li>现态
+<ul>
+<li>输入信号作用前的状态，记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>Q</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">Q^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><msup><mi>Q</mi><mi>n</mi></msup><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{Q^n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0777700000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.590392em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></li>
+<li>一般简记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>Q</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{Q}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0777700000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">Q</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>次态
+<ul>
+<li>输入信号作用后的状态，记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>Q</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">Q^{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.008548em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><msup><mi>Q</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{Q^{n+1}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1345480000000001em;vertical-align:-0.19444em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.940108em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.860108em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<h1 id="二-基本r-s触发器"><a class="markdownIt-Anchor" href="#二-基本r-s触发器"></a> 二、基本R-S触发器</h1>
+<h2 id="与非门r-s触发器"><a class="markdownIt-Anchor" href="#与非门r-s触发器"></a> 与非门R-S触发器</h2>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/R-S%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<ul>
+<li>亦称为直接复位置位触发器</li>
+<li>是构成各种功能触发器的基本部件</li>
+<li>R：置0端或者复位端</li>
+<li>S：置1端或者置位端</li>
+</ul>
+<p><strong>基本工作原理：</strong><br />
+<img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/RS=11.png" srcset="/img/loading.gif" alt="" /><br />
+<strong>所以当RS=11时，Q<sup>n+1</sup>=Q，即保持原来状态不变</strong></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/RS=01.png" srcset="/img/loading.gif" alt="" /><br />
+<strong>所以当RS=10时，Q<sup>n+1</sup>=0，置0</strong></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/RS=01.png" srcset="/img/loading.gif" alt="" /><br />
+<strong>所以当RS=01时，Q<sup>n+1</sup>=1，置1</strong></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/RS=00.png" srcset="/img/loading.gif" alt="" /><br />
+<strong>所以当RS=00时，不存在互补输出端，所以不允许这种输入</strong></p>
+<hr />
+<p><strong>与非门R-S触发器状态描述</strong></p>
+<p>d表示不定，即可为1，可为0</p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%8E%E9%9D%9E%E9%97%A8R-S%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/RS%E7%89%B9%E5%BE%81.png" srcset="/img/loading.gif" alt="" /><br />
+当与非门构成的基本R-S触发器的同一输入端连续出现多个负脉冲信号时，仅第一个使触发器状态发生改变，因为00不使用，11保持上一状态。</p>
+<h2 id="或非门r-s触发器"><a class="markdownIt-Anchor" href="#或非门r-s触发器"></a> 或非门R-S触发器</h2>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E6%88%96%E9%9D%9E%E9%97%A8R-S%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /><br />
+跟与非门的R-S触发器相反，或非门的R-S触发器，00为保持位，10为置1，01为置0，11不使用</p>
+<p><strong>或非门R-S触发器状态描述</strong></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E6%88%96%E9%9D%9E%E9%97%A8R-S%E8%A7%A6%E5%8F%91%E5%99%A8%E7%8A%B6%E6%80%81.png" srcset="/img/loading.gif" alt="" /></p>
+<h2 id="两者对比"><a class="markdownIt-Anchor" href="#两者对比"></a> 两者对比</h2>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%8E%E9%9D%9E%E9%97%A8%E6%88%96%E9%9D%9E%E9%97%A8R-S%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<ul>
+<li>R和S的位置互换了，因为R是置0端，S是置1端。要符合这种说法的话，在或非门里R和S需要互换位置</li>
+<li>只有当R和S为低电平的时候才会对与非门的输出进行改变，所以称为低电平有效，输入端取反</li>
+<li>只有当R和S为高电平的时候才会对或非门的输出进行改变，所以称为高电平有效，输入端不变</li>
+</ul>
+<h1 id="三-时钟控制触发器"><a class="markdownIt-Anchor" href="#三-时钟控制触发器"></a> 三、时钟控制触发器</h1>
+<h2 id="钟控r-s触发器"><a class="markdownIt-Anchor" href="#钟控r-s触发器"></a> 钟控R-S触发器</h2>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7R-S%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<ul>
+<li>当时钟信号CP为0时，R’和S’始终为1，即始终保持上一状态</li>
+<li>当时钟信号CP为1时，R’和S’为R和S取反，功能跟或非门R-S触发器一样</li>
+</ul>
+<h2 id="钟控d触发器"><a class="markdownIt-Anchor" href="#钟控d触发器"></a> 钟控D触发器</h2>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7D%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7D%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7D%E8%A7%A6%E5%8F%91%E5%99%A8%E7%8A%B6%E6%80%81.png" srcset="/img/loading.gif" alt="" /></p>
+<h2 id="钟控j-k触发器"><a class="markdownIt-Anchor" href="#钟控j-k触发器"></a> 钟控J-K触发器</h2>
+<p>是J-K不是<s>JK</s>😒</p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7J-K%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7J-K%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7J-K%E8%A7%A6%E5%8F%91%E5%99%A8%E7%8A%B6%E6%80%81.png" srcset="/img/loading.gif" alt="" /></p>
+<h2 id="钟控t触发器"><a class="markdownIt-Anchor" href="#钟控t触发器"></a> 钟控T触发器</h2>
+<p>即把J-K触发器的J-K用一个T代替</p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7T%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7T%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%92%9F%E6%8E%A7T%E8%A7%A6%E5%8F%91%E5%99%A8%E7%8A%B6%E6%80%81.png" srcset="/img/loading.gif" alt="" /></p>
+<h2 id="时序逻辑电路概述"><a class="markdownIt-Anchor" href="#时序逻辑电路概述"></a> 时序逻辑电路概述</h2>
+<ul>
+<li>当CP=0时，触发器保持状态不变</li>
+<li>当CP=1时，触发器在输入信号作用下发生状态变化</li>
+<li>触发器的状态转移被控制在一个约定的时间间隔内，而不是控制在某一时刻
+<ul>
+<li>只有当CP=1时，输入信号的变化才有意义，才会影响输出</li>
+</ul>
+</li>
+</ul>
+<h1 id="四-维持阻塞触发器"><a class="markdownIt-Anchor" href="#四-维持阻塞触发器"></a> 四、维持阻塞触发器</h1>
+<p><strong>空翻现象</strong><br />
+当输入信号在短时间内发生多次变化时，会导致输出端的信号也发生多次变化</p>
+<p><strong>空翻现象的原因</strong></p>
+<ul>
+<li>时钟脉冲作用期间，输入信号直接控制着触发器状态的变化，当输入信号变化，输出信号随之变化</li>
+<li>时钟宽度控制不够，即CP为1的时间过长，使输入端的多次变化得到完全响应。</li>
+</ul>
+<p>为解决空翻现象，出现了维持阻塞触发器<br />
+<img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%BB%B4%E6%8C%81%E9%98%BB%E5%A1%9E%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%BB%B4%E6%8C%81%E9%98%BB%E5%A1%9E%E8%A7%A6%E5%8F%91%E5%99%A82.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%BB%B4%E6%8C%81%E9%98%BB%E5%A1%9E%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" alt="" /></p>
+<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%BB%B4%E6%8C%81%E9%98%BB%E5%A1%9E%E8%A7%A6%E5%8F%91%E5%99%A8%E5%88%86%E6%9E%902.png" srcset="/img/loading.gif" alt="" /></p>
+<p><strong>边沿触发器概念</strong><br />
+仅在时钟脉冲的上升沿或下降沿时刻进行采样并确定触发器的状态。<br />
+如上图所示，在绿色爆炸图案处，输入端D在一个时钟周期内发生了两次置1，但不在时钟信号的上升沿或下降沿，因此不做处理，因此避免了空翻现象。<br />
+<img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91%E5%99%A8.png" srcset="/img/loading.gif" alt="" /></p>
+
+            </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/">数电基础</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E7%94%B5/">数电</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/03/28/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/">
+                        <span>数字电路基础</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
+        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+                </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+
+    
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
+
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <p id="hitokoto">:D 获取中...</p>
+
+    <!-- cnzz Analytics icon -->
+    
+
+    
+      <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({theme: 'forest'});
+        }
+      </script>
+    
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  
+  <script  src="/js/post.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
+
+
+
+  <script  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+<!-- Plugins -->
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数字电路基础：触发器&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.11.1/katex.min.css" />
+  
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("我", "的", "星", "下", "小", "屋", "(*^▽^*)");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+  <!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+
+<!--一言API-->
+<!-- 现代写法，推荐 -->
+<script>
+  fetch('https://v1.hitokoto.cn/?c=c&c=d')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="140,140,140" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+</body>
+</html>

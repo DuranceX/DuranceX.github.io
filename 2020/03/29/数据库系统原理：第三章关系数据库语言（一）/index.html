@@ -27,7 +27,7 @@
 
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+  <link  rel="stylesheet" href="/lib/prettify/Tranquil%20Heart.min.css" />
 
 <link  rel="stylesheet" href="/css/main.css" />
 
@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    1.4k 字
+                    1.9k 字
                   </span>
                 
 
@@ -149,7 +149,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      5 分钟
+                      7 分钟
                   </span>&nbsp;
                 
 
@@ -184,7 +184,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p
-                class="note note-warning">本文最后更新于：Sunday, 2020/03/29, 18:34</p>
+                class="note note-warning">本文最后更新于：Thursday, 2020/04/02, 15:04</p>
             
             <div class="markdown-body">
               <p>数据库系统原理第三章的部分内容，主要包括SQL概述和数据定义。</p>
@@ -390,6 +390,53 @@ PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
 <p><strong>ALTER TABLE Student ALter COLUMN Sage INT</strong></p>
 <p>【例8】增加课程名称必须取唯一值的约束条件</p>
 <p><strong>ALTER TABLE Course ADD UNIQUE(Cname)</strong></p>
+<h3 id="删除基本表"><a class="markdownIt-Anchor" href="#删除基本表"></a> 删除基本表</h3>
+<p>格式：<br />
+DROP TABLE &lt;表名&gt; [RESTRICT | CASCADE];</p>
+<ul>
+<li>RESTRICT：删除表是有限制的，如果存在依赖该表的对象，则此表不能被删除</li>
+<li>CASCADE：删除该表没有限制，在删除基本表的同时，相关的依赖对象一起删除</li>
+</ul>
+<h2 id="索引"><a class="markdownIt-Anchor" href="#索引"></a> 索引</h2>
+<h3 id="索引的定义"><a class="markdownIt-Anchor" href="#索引的定义"></a> 索引的定义</h3>
+<p>索引是一种单独的、物理的对数据库表中一列或多列的值进行排序的一种存储结构。是某个表中一列或一些列的值和指向这些数据的指针列表组成的清单。索引的作用相当于图书的目录，可以根据目录中的页码快速找到所需的内容。</p>
+<h3 id="建立索引"><a class="markdownIt-Anchor" href="#建立索引"></a> 建立索引</h3>
+<p>格式：<br />
+CREATE [UNIQUE | CLUSTERED | NONCLUSTERED] INDEX &lt;索引名&gt; ON &lt;表名&gt; ( &lt;列名&gt; 次序 ，&lt;列名&gt; 次序 … )</p>
+<ul>
+<li>表名：要建立索引的基本表的名字
+<ul>
+<li>索引可以建立在该表的一列或多列上，各列名之间用逗号隔开</li>
+</ul>
+</li>
+<li>次序：指定索引值的排列次序，升序：ASC，降序：DESC，缺省值为ASC</li>
+<li>UNIQUE：此索引的每一个索引值只对应唯一的数据记录<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></li>
+<li>CLUSTERED：表示要建立的索引是 <abbr title="聚簇索引类似于电话簿，后者按姓氏排列数据。由于聚簇索引规定数据在表中的物理存储顺序，因此一个表只能包含一个聚簇索引。但该索引可以包含多个列（组合索引），就像电话簿按姓氏和名字进行组织一样。">聚簇索引</abbr></li>
+<li>NONCLUSTERED：表示要建立的索引是非聚簇索引</li>
+<li>聚簇索引要求数据库文件的物理顺序和索引排列顺序一致，而非聚簇索引则不做要求，数据库文件的物理顺序和索引排列顺序可以不同</li>
+</ul>
+<p>【例9】为学生-课程数据库中的Student,Course,SC三个表建立索引，Student表按学号升序建唯一索引，Course表按课程号升序建唯一索引，SC表按学号升序和课程号降序建唯一索引。</p>
+<p><strong>CREATE UNIQUE INDEX Stusno ON Student(Sno);</strong><br />
+<strong>CREATE UNIQUE INDEX Coucno ON Course(Cno);</strong><br />
+<strong>CREATE UNIQUE INDEX SCno ON SC(Sno ASC, Cno DESC);</strong></p>
+<h3 id="修改索引"><a class="markdownIt-Anchor" href="#修改索引"></a> 修改索引</h3>
+<p>格式：<br />
+ALTER INDEX &lt;旧索引名&gt; RENAME TO &lt;新索引名&gt;;</p>
+<p>【例10】将SC表的SCno索引名改为SCSno<br />
+<strong>ALTER INDEX SCno RENAME TO SCSno;</strong></p>
+<h3 id="删除索引"><a class="markdownIt-Anchor" href="#删除索引"></a> 删除索引</h3>
+<p>格式：<br />
+DROP INDEX &lt;索引名&gt;;<br />
+在删除索引时，系统会从数据字典中删去有关该索引的描述。</p>
+<p>【例11】删除Student表的Studsname索引<br />
+<strong>DROP INDEX Stusname;</strong></p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>唯一索引是不允许其中任何两行具有相同索引值的索引。 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
             </div>
             <hr>
@@ -421,6 +468,11 @@ PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
               
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
+                    
+                      <a href="/2020/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                        <i class="fa fa-chevron-left"></i>
+                        <span>数据库系统原理：第三章关系数据库语言（二）</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-12 col-md-6">

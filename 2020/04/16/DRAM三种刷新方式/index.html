@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ 星下小屋</title>
+  <title>DRAM三种刷新方式 ~ 星下小屋</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -118,7 +118,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
       style="background: url('/img/banner_img1.jpg') no-repeat center center;
         background-size: cover;">
       <div class="full-bg-img">
@@ -128,6 +128,40 @@
               
             </span>
 
+            
+              
+                <p class="mt-3 post-meta">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                  Thursday, 2020/04/16, 12:24
+                </p>
+              
+
+              <p class="mt-1">
+                
+                  
+                  <span class="post-meta">
+                    <i class="far fa-chart-bar"></i>
+                    684 字
+                  </span>
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  <span id="busuanzi_container_page_pv" class="post-meta" style="display: none">
+                    <i class="far fa-eye" aria-hidden="true"></i>
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>
+                
+              </p>
             
           </div>
 
@@ -139,72 +173,145 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 22 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数据库系统原理：第一章绪论</span>
-      <span style="float: right;">02-28</span>
-    </a>
-  
-    
-    <a href="/2020/02/27/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">信安原理第一课</span>
-      <span style="float: right;">02-27</span>
-    </a>
-  
-    
-    <a href="/2020/02/26/%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第二章：数据表示与逻辑电路基础</span>
-      <span style="float: right;">02-26</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">第一章：计算机系统概论</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/24/fluid%E4%B8%AA%E6%80%A7%E5%8C%96/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">fluid个性化</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/22/hexo-Failed-to-connect-to-github-com-port-443-Timed-out/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Failed to connect to github.com port 443: Timed out</span>
-      <span style="float: right;">02-22</span>
-    </a>
-  
-    
-    <a href="/2020/02/21/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <span style="float: right;">02-21</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5 z-depth-3" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p
+                class="note note-warning">本文最后更新于：Thursday, 2020/04/16, 13:43</p>
+            
+            <div class="markdown-body">
+              <p>DRAM的三种刷新方式：集中刷新、分散刷新、异步刷新。</p>
+<a id="more"></a>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/DRAM.png" srcset="/img/loading.gif" alt="" /><br />
+电路中的C1和C2用于保持数据，但因为电容C1和C2保持电荷很小，所以能维持稳定的时间也很短，因此要进行刷新操作来对C1和C2充电</p>
+<p>刷新与行地址有关。<br />
+刷新时一行行进行的，必须在刷新周期内，由专用的刷新电路来完成对基本单元电路的逐行刷新，才能保证DRAM内的信息不丢失。</p>
+<p>有三种刷新方式：集中刷新、分散刷新、异步刷新。</p>
+<p><font color=#1ebbbb><b>假定:</b></font></p>
+<ol>
+<li>刷新周期为2ms</li>
+<li>存取周期为0.5μs，即刷新一行的时间是0.5μs</li>
+<li>对128 x 128的矩阵的存储芯片进行刷新，按存储单元（1B/单元）分为128行和128列，即128 * 128 * 1B/单元=2<sup>14</sup>个单元 * 1B/单元 = 16KB内存。<br />
+例如16k x 8的芯片就是128行 * 128列</li>
+</ol>
+<h3 id="集中刷新"><a class="markdownIt-Anchor" href="#集中刷新"></a> 集中刷新</h3>
+<p>集中刷新是在规定的一个刷新周期内，对全部存储单元集中一段时间逐行进行刷新，此刻必须停止读/写操作。</p>
+<p>所需的时间为0.5μs * 128 = 64μs，在这64μs的时间内对128行逐行进行刷新，在这期间不能进行读/写操作，称为“死时间”。</p>
+<p>在2ms内有2000 / 0.5 = 4000个读写周期，其中128个读写周期用来刷新，所以<strong>平均读写周期为 2ms/（4000-128） = 0.5165μs</strong></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.png" srcset="/img/loading.gif" alt="" /></p>
+<h3 id="分散刷新"><a class="markdownIt-Anchor" href="#分散刷新"></a> 分散刷新</h3>
+<p>分散刷新是指对每行存储单元的刷新分散到每个存取周期中，即每次存取之后对该行数据进行一次刷新，相对于一个存取周期内对该行数据进行两次访问，因此延长了存取周期，<strong>平均读写周期为1μs</strong>，前半段用来存取，后半段用来刷新。这样每有128个读取操作，就会把0-127行全部刷新一遍，<strong>刷新周期为1μs * 128 = 128μs</strong>（即过128μs，数据全部刷新了一次）<br />
+这样做虽然解决了“死时间”的问题，但刷新过于频繁，影响性能。</p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.png" srcset="/img/loading.gif" alt="" /></p>
+<h3 id="异步刷新"><a class="markdownIt-Anchor" href="#异步刷新"></a> 异步刷新</h3>
+<p>异步刷新既可以缩短“死时间”，又可以充分利用最大刷新间隔为2ms的特点，不过于频繁地刷新从而影响性能，那就可以把128行的刷新步骤平均分配到这2ms中，即<strong>每隔15.6μs刷新一行</strong>（2000μs / 128 ≈ 15.6μs），而每行的刷新时间仍为0.5μs，这样<strong>刷新间隔为2ms，死时间为0.5μs</strong>。可以理解为把2ms分成128段，每段15.6μs，在每段分别执行集中刷新。</p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.png" srcset="/img/loading.gif" alt="" /></p>
+<p>参考：<a href="https://blog.csdn.net/m0_37345402/article/details/89811528?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">CSDN博客-DRAM的三种刷新方式的刷新周期问题</a></p>
 
-              </div>
             </div>
+            <hr>
+            <div>
+              <p>
+                
+                  <span>
+                <i class="iconfont icon-inbox"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+                      &nbsp;
+                    
+                  </span>&nbsp;&nbsp;
+                
+                
+                  <span>
+                <i class="iconfont icon-tag"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+                    
+                  </span>
+                
+              </p>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-12 col-md-6">
+                    
+                  </div>
+                  <div class="post-next col-12 col-md-6">
+                    
+                      <a href="/2020/04/10/%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/">
+                        <span>第三章：运算方法</span>
+                        <i class="fa fa-chevron-right"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+              
+                <!-- Comments -->
+                <div class="comments" id="comments">
+                  
+                  
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'true' === true;
+    var verify = 'true' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
+        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+                </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
     
   </main>
 
@@ -315,6 +422,11 @@ setInterval("createtime()",250);
 
 
 
+  
+    <script  src="https://cdn.staticfile.org/tocbot/4.10.0/tocbot.min.js" ></script>
+  
+  <script  src="/js/post.js" ></script>
+
 
 
   <script  src="https://cdn.staticfile.org/smoothscroll/1.4.10/SmoothScroll.min.js" ></script>
@@ -368,7 +480,7 @@ setInterval("createtime()",250);
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "DRAM三种刷新方式&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

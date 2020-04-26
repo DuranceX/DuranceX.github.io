@@ -166,7 +166,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    18
+                    19
                      分钟
                   </span>
                 
@@ -302,7 +302,7 @@
 <h1 id="三-输入输出"><a class="markdownIt-Anchor" href="#三-输入输出"></a> 三、输入输出</h1>
 <h2 id="输出"><a class="markdownIt-Anchor" href="#输出"></a> 输出</h2>
 <p>使用<code>System.out.print</code>进行输出</p>
-<pre class="highlight"><code class="java">System.out.print();  \\输出内容
+<pre><code class="hljs java">System.out.print();  \\输出内容
 System.out.println();  \\输出内容，并换行
 System.out.printf();   \*支持占位符
 %d: 输出<span class="hljs-keyword">int</span>型数据
@@ -311,42 +311,37 @@ System.out.printf();   \*支持占位符
 %s: 输出字符串数据
 %md: 输出的<span class="hljs-keyword">int</span>型数据占m列   
 %m.nf:输出的浮点型数据占m列，小数点保留n位。
-*/
-</code></pre>
+*/</code></pre>
 <h2 id="输入"><a class="markdownIt-Anchor" href="#输入"></a> 输入</h2>
 <p>使用输入需要先导入文件，<code>import java.utli.*;</code>或<code>import java.utli.Scanner;</code></p>
 <p>进行使用时，需要先创建Scanner对象</p>
-<pre class="highlight"><code class="java">Scanner input = <span class="hljs-keyword">new</span> Scanner(System.in);
-</code></pre>
+<pre><code class="hljs java">Scanner input = <span class="hljs-keyword">new</span> Scanner(System.in);</code></pre>
 <p>在使用时使用<code>input.next类型()</code>来读取输入内容，例：</p>
-<pre class="highlight"><code class="java"><span class="hljs-keyword">int</span> x = input.nextInt();
-<span class="hljs-keyword">float</span> y = input.nextFloat();
-</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">int</span> x = input.nextInt();
+<span class="hljs-keyword">float</span> y = input.nextFloat();</code></pre>
 <h1 id="四-函数-类格式差异"><a class="markdownIt-Anchor" href="#四-函数-类格式差异"></a> 四、函数、类格式差异</h1>
 <h2 id="main函数"><a class="markdownIt-Anchor" href="#main函数"></a> main函数</h2>
 <p>java main函数格式为</p>
-<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>
-</span>{
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>
+</span>&#123;
 
-}
-</code></pre>
+&#125;</code></pre>
 <h2 id="类"><a class="markdownIt-Anchor" href="#类"></a> 类</h2>
 <p>类为</p>
-<pre class="highlight"><code class="java"><span class="hljs-function"><span class="hljs-keyword">public</span> class <span class="hljs-title">balabala</span><span class="hljs-params">()</span>
-</span>{
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> class <span class="hljs-title">balabala</span><span class="hljs-params">()</span>
+</span>&#123;
     
-}
-</code></pre>
+&#125;</code></pre>
 <h1 id="五-数组"><a class="markdownIt-Anchor" href="#五-数组"></a> 五、数组</h1>
-<pre class="highlight"><code class="java"><span class="hljs-comment">//创建</span>
+<pre><code class="hljs java"><span class="hljs-comment">//创建</span>
 arrayType arrayName[];  
 <span class="hljs-comment">//或</span>
 arrayType []arrayName;
 
 <span class="hljs-comment">//静态初始化</span>
-arrayType arrayName[] = {elem1, elem2, elem3, ...};
+arrayType arrayName[] = &#123;elem1, elem2, elem3, ...&#125;;
 <span class="hljs-comment">//或</span>
-arrayType []arrayName = {elem1, elem2, elem3, ...};
+arrayType []arrayName = &#123;elem1, elem2, elem3, ...&#125;;
 
 <span class="hljs-comment">//动态初始化</span>
 arrayTyoe arrayName[] = <span class="hljs-keyword">new</span> arrayType[x];
@@ -362,15 +357,14 @@ String stringArray[] = <span class="hljs-keyword">new</span> String[<span class=
 stringArray[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"Welcome"</span>);
 stringArray[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"To"</span>);
 stringArray[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"My"</span>);
-stringArray[<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"Blog"</span>);
-</code></pre>
+stringArray[<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"Blog"</span>);</code></pre>
 <p>数组的复制操作，java提供<code>System.arraycopy</code>函数来进行操作，格式为<br />
 <code>System.arraycopy(SourceArray,sourcePositon,DestinationArray,DestinationPositon,number)</code><br />
 <code>SourceArray</code>表示被复制的数组，<code>DestinationArray</code>表示复制的数组，即Source-&gt;Destination<br />
 <code>SourcePosition</code>表示从下标几开始复制，<code>DestinationPosition</code>表示从下标几开始粘贴，<code>number</code>表示复制几位。<br />
 示例：</p>
-<pre class="highlight"><code class="java"><span class="hljs-keyword">int</span> array1[ ]={<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">13</span>,<span class="hljs-number">17</span>};
-<span class="hljs-keyword">int</span>[] array2={<span class="hljs-number">101</span>,<span class="hljs-number">102</span>,<span class="hljs-number">103</span>,<span class="hljs-number">104</span>,<span class="hljs-number">105</span>,<span class="hljs-number">106</span>,<span class="hljs-number">107</span>,<span class="hljs-number">108</span>};
+<pre><code class="hljs java"><span class="hljs-keyword">int</span> array1[ ]=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">13</span>,<span class="hljs-number">17</span>&#125;;
+<span class="hljs-keyword">int</span>[] array2=&#123;<span class="hljs-number">101</span>,<span class="hljs-number">102</span>,<span class="hljs-number">103</span>,<span class="hljs-number">104</span>,<span class="hljs-number">105</span>,<span class="hljs-number">106</span>,<span class="hljs-number">107</span>,<span class="hljs-number">108</span>&#125;;
 System.arraycopy(array1,<span class="hljs-number">2</span>,array2,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);   <span class="hljs-comment">//表示从array1[2]开始复制，即5，从array2[3]开始粘贴，即104，复制4位</span>
 System.out.println(<span class="hljs-string">"After copy, array2:"</span>);
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt; array2.length;i++)
@@ -384,8 +378,7 @@ array2[<span class="hljs-number">3</span>]=<span class="hljs-number">5</span>
 array2[<span class="hljs-number">4</span>]=<span class="hljs-number">7</span>
 array2[<span class="hljs-number">5</span>]=<span class="hljs-number">11</span>
 array2[<span class="hljs-number">6</span>]=<span class="hljs-number">13</span>
-array2[<span class="hljs-number">7</span>]=<span class="hljs-number">108</span>
-</code></pre>
+array2[<span class="hljs-number">7</span>]=<span class="hljs-number">108</span></code></pre>
 <h1 id="六-向量"><a class="markdownIt-Anchor" href="#六-向量"></a> 六、向量</h1>
 <p>向量是java.util包中的一个类，实现了类似 <mark>动态数组</mark> 的功能，跟数组的区别是向量的容量是 <mark>可变</mark> 的</p>
 <ul>
@@ -398,7 +391,7 @@ array2[<span class="hljs-number">7</span>]=<span class="hljs-number">108</span>
 </ul>
 </li>
 </ul>
-<pre class="highlight"><code class="java"><span class="hljs-comment">//声明格式：</span>
+<pre><code class="hljs java"><span class="hljs-comment">//声明格式：</span>
 Vector &lt;data Type&gt; VariableName = <span class="hljs-keyword">new</span> Vector &lt;data Type&gt;(parameter)
 
 <span class="hljs-comment">//三种形式</span>
@@ -407,10 +400,9 @@ Vector &lt;data Type&gt; VariableName = <span class="hljs-keyword">new</span> Ve
 <span class="hljs-keyword">public</span> <span class="hljs-title">Vector</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span>
 <span class="hljs-comment">//创建空向量，初始容量为x，容量增量为0</span>
 <span class="hljs-keyword">public</span> <span class="hljs-title">Vector</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span>
-<span class="hljs-comment">//创建空向量，初始容量为x，容量增量为y</span>
-</span></code></pre>
+<span class="hljs-comment">//创建空向量，初始容量为x，容量增量为y</span></span></code></pre>
 <p>示例：</p>
-<pre class="highlight"><code class="java">Vector&lt;String&gt; v1 = <span class="hljs-keyword">new</span> Vector&lt;String&gt;(<span class="hljs-number">5</span>); 
+<pre><code class="hljs java">Vector&lt;String&gt; v1 = <span class="hljs-keyword">new</span> Vector&lt;String&gt;(<span class="hljs-number">5</span>); 
 v1.addElement(<span class="hljs-keyword">new</span> String(<span class="hljs-string">"one"</span>));   <span class="hljs-comment">//添加元素"one"，下同</span>
 v1.addElement(<span class="hljs-string">"three"</span>);
 v1.addElement(<span class="hljs-string">"four"</span>);
@@ -438,8 +430,7 @@ v2的容量为：<span class="hljs-number">6</span>
 <span class="hljs-comment">/*
 首先看第一个例子，创建方式是Vector(int x)，说明初始容量为5，容量增量为0。因此当向量的长度达到容量(5)时，向量的容量翻倍，所以输出出来的V1的容量是10。
 第二个例子，创建方式是Vector(int x, int y)，说明初始容量为5，容量增量为0，因此当向量的长度达到容量(5)时，向量的新容量等于原容量+容量增量，即5+1=6，所以输出的V2的容量为6.
-*/</span>
-</code></pre>
+*/</span></code></pre>
 
             </article>
             <hr>

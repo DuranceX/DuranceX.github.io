@@ -22,7 +22,7 @@ body a {
   transition-timing-function: ease-in-out;
 }
 body a:hover {
-  color: #30A9DE;
+  color: #3aa7f9;
   text-decoration: none;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -108,7 +108,7 @@ post-content strong {
   cursor: pointer;
   border-radius: 0.1rem;
   border: none;
-  background-color: #fafbfc;
+  background-color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -118,7 +118,6 @@ post-content strong {
   line-height: 1;
   font-weight: bold;
   outline: none;
-  color: #6a737d;
   -webkit-transition: opacity 0.2s ease-in-out;
   -o-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
@@ -134,6 +133,12 @@ post-content strong {
 }
 .copy-btn > span {
   margin-left: 5px;
+}
+.copy-btn-dark {
+  color: #6a737d;
+}
+.copy-btn-light {
+  color: #bababa;
 }
 .markdown-body pre:hover > .copy-btn {
   opacity: 0.9;
@@ -577,11 +582,26 @@ a.beian-police img {
   font-weight: bold;
 }
 .markdown-body pre {
-  padding: 1.5rem 1rem;
   position: relative;
+  overflow: visible;
 }
-.markdown-body code {
+.markdown-body pre code {
   font-size: 85%;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  line-height: 1.5;
+  border-radius: 3px;
+  tab-size: 4;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+.markdown-body pre code::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.markdown-body pre code.mermaid > svg {
+  min-width: 100%;
 }
 .markdown-body p > img,
 .markdown-body p > a > img {
@@ -589,6 +609,14 @@ a.beian-police img {
   margin: 1.5rem auto;
   display: block;
   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15) !important;
+}
+.markdown-body div.hljs {
+  overflow-x: initial;
+  padding: 0;
+  border-radius: 3px;
+}
+.markdown-body div.hljs pre {
+  background-color: initial;
 }
 .list-group-item {
   border: 0;
@@ -696,6 +724,69 @@ a.beian-police img {
 .iconfont {
   font-size: 1rem;
   line-height: 1;
+}
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: 0.2s;
+  color: #fff;
+  cursor: pointer;
+  margin: 0.4rem 0.2rem 0.4rem !important;
+  outline: 0;
+  border-radius: 0.1875rem;
+  vertical-align: -0.65rem;
+  border: 2px solid #2f4154;
+}
+input[type=checkbox]:after,
+input[type=checkbox]:before {
+  content: " ";
+  transition: 0.2s;
+  position: absolute;
+  background: #fff;
+}
+input[type=checkbox]:before {
+  left: 0.125rem;
+  top: 0.375rem;
+  width: 0;
+  height: 0.125rem;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+input[type=checkbox]:after {
+  right: 0.5625rem;
+  bottom: 0.1875rem;
+  width: 0.125rem;
+  height: 0;
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transform: rotate(40deg);
+  transition-delay: 0.2s;
+}
+input[type=checkbox]:checked {
+  background: #2f4154;
+}
+input[type=checkbox]:checked:before {
+  left: 0.0625rem;
+  top: 0.625rem;
+  width: 0.375rem;
+  height: 0.125rem;
+}
+input[type=checkbox]:checked:after {
+  right: 0.3125rem;
+  bottom: 0.0625rem;
+  width: 0.125rem;
+  height: 0.875rem;
 }
 .index-card {
   margin-bottom: 2.5rem;
@@ -916,7 +1007,7 @@ h6::before {
 }
 .tocbot-active-link {
   font-weight: bold;
-  color: #30A9DE;
+  color: #3aa7f9;
 }
 .tocbot-is-collapsed {
   max-height: 0;
@@ -1073,8 +1164,8 @@ h6::before {
   margin-bottom: 0;
 }
 .note-primary {
-  background-color: #dfeefd;
-  border-color: #176ac4;
+  background-color: #c9ecfc;
+  border-color: #1ebaff;
 }
 .note-secondary {
   background-color: #e2e3e5;
@@ -1147,15 +1238,15 @@ h6::before {
   color: #fff !important;
   text-decoration: none;
 }
-.group-picture img {
+.group-image img {
   margin: 0 auto;
   padding: 0 3px;
 }
-.group-picture-row {
+.group-image-row {
   margin-bottom: 6px;
   overflow: hidden;
 }
-.group-picture-column {
+.group-image-column {
   float: left;
   margin-bottom: 10px;
 }
@@ -1222,7 +1313,7 @@ h6::before {
   padding: 0.5rem;
 }
 .tagcloud a:hover {
-  color: #30A9DE !important;
+  color: #3aa7f9 !important;
 }
 .links .card {
   box-shadow: none;
@@ -1237,8 +1328,12 @@ h6::before {
   width: 100%;
   height: 100%;
 }
+.links .card-body:hover {
+  transform: scale(1.1);
+}
 .links .card-body:hover .link-avatar {
   transform: scale(1.1);
+  transform: rotate(30deg);
 }
 .links .card-content {
   display: flex;

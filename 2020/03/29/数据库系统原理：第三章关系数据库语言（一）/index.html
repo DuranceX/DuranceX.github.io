@@ -351,26 +351,24 @@ CREATE TABLE &lt;表名&gt;<br />
 <li><strong>unique（A）：</strong> 表示每个元组在属性列A上是唯一的，即没有重复值</li>
 </ul>
 <p>【例3】建立“学生”表STUDENT，学号是主码，姓名取值唯一</p>
-<pre class="highlight"><code class="sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student
 (Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>) PRIMARY <span class="hljs-keyword">KEY</span>,     <span class="hljs-comment">/*列级完整性约束条件，Sno是主码*/</span>
 Sname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span>,        <span class="hljs-comment">/*列级完整性约束条件，Sname是唯一值*/</span>
 Ssex <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">2</span>),
 Sage <span class="hljs-built_in">SMALLINT</span>,
 Sdept <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>),
-);
-</code></pre>
+);</code></pre>
 <p>【例4】建立一个“课程”表Course</p>
-<pre class="highlight"><code class="sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course
 (Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>) PRIMARY <span class="hljs-keyword">KEY</span>,
 Cname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">40</span>),
 Cpno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),     <span class="hljs-comment">/*先修课*/</span>
 Ccredit <span class="hljs-built_in">SMALLINT</span>,
 <span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cpno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)     
 <span class="hljs-comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span>
-);
-</code></pre>
+);</code></pre>
 <p>【例5】建立一个学生选课表SC</p>
-<pre class="highlight"><code class="sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC
 (Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>),
 Cno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),
 Grade <span class="hljs-built_in">SMALLINT</span>,
@@ -380,8 +378,7 @@ PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
 <span class="hljs-comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span>
 <span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)
 <span class="hljs-comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span>
-);
-</code></pre>
+);</code></pre>
 <h3 id="修改基本表"><a class="markdownIt-Anchor" href="#修改基本表"></a> 修改基本表</h3>
 <p>ALTER TABLE &lt;表名&gt;<br />
 [ ADD &lt;新列名&gt; &lt;数据类型&gt; [ 完整性约束 ]]<br />

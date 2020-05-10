@@ -23,7 +23,7 @@
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +50,20 @@
 
 
 <body>
+  <a id="dark" onclick="switchDarkMode()"></a>
+  <script>
+    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
+    if( isNight || localStorage.getItem('dark') === '1') {
+      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
+        document.body.classList.add('dark');
+        document.getElementById('dark').style.background = "url('/img/light.png')";
+      }
+    }
+    else
+      document.getElementById("dark").style.background = "url('/img/dark.png')";
+
+    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+  </script>
   <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -162,12 +176,18 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 22 篇文章</p>
+  <p class="h4">共计 23 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
+    
+    <a href="/2020/05/10/Fluid%E6%B7%BB%E5%8A%A0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Fluid添加暗黑模式</span>
+      <span style="float: right;">05-10</span>
+    </a>
+  
     
     <a href="/2020/04/16/DRAM%E4%B8%89%E7%A7%8D%E5%88%B7%E6%96%B0%E6%96%B9%E5%BC%8F/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">DRAM三种刷新方式</span>
@@ -219,12 +239,6 @@
     
     <a href="/2020/03/12/%E5%AE%9A%E7%82%B9%E6%95%B0%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">定点数与浮点数</span>
-      <span style="float: right;">03-12</span>
-    </a>
-  
-    
-    <a href="/2020/03/12/%E6%9C%BA%E5%99%A8%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">机器数的表示方法</span>
       <span style="float: right;">03-12</span>
     </a>
   
@@ -361,6 +375,10 @@ setInterval("createtime()",250);
 
 
 
+
+
+  
+<script src="/js/mine.js"></script>
 
 
 

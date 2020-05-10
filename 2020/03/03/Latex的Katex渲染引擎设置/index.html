@@ -23,7 +23,7 @@
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +50,20 @@
 
 
 <body>
+  <a id="dark" onclick="switchDarkMode()"></a>
+  <script>
+    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
+    if( isNight || localStorage.getItem('dark') === '1') {
+      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
+        document.body.classList.add('dark');
+        document.getElementById('dark').style.background = "url('/img/light.png')";
+      }
+    }
+    else
+      document.getElementById("dark").style.background = "url('/img/dark.png')";
+
+    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+  </script>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -206,16 +220,16 @@
 供选择的有<code>hexo-renderer-kramed</code>和<code>hexo-renderer-markdown-it-plus</code><br />
 不过由于<code>kramed</code>引擎不能支持markdown all in one中的下标&quot;~ ~“以及 上标”^ ^&quot;这类格式，因此本文使用<code>hexo-renderer-markdown-it-plus</code>引擎<br />
 在更换渲染引擎时首先需要先卸载原先的渲染引擎，再安装新引擎</p>
-<pre><code class="hljs js">npm uninstall hexo-renderer-marked --save
-npm install hexo-renderer-markdown-it-plus --save</code></pre>
+<div class="hljs"><pre><code class="hljs js">npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-markdown-it-plus --save</code></pre></div>
 <p>安装<code>kramed</code>的话同理</p>
-<pre><code class="hljs js">npm uninstall hexo-renderer-marked --save
-npm install hexo-renderer-kramed --save</code></pre>
+<div class="hljs"><pre><code class="hljs js">npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save</code></pre></div>
 <p>在安装完引擎后，在fluid的<code>_config.yml</code>中找到<code>math</code>项</p>
-<pre><code class="hljs yml"><span class="hljs-attr">math:</span> 
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">math:</span> 
     <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>
     <span class="hljs-attr">specific:</span> <span class="hljs-literal">true</span> 
-    <span class="hljs-attr">engine:</span> <span class="hljs-string">katex</span></code></pre>
+    <span class="hljs-attr">engine:</span> <span class="hljs-string">katex</span></code></pre></div>
 <p>将<code>enable</code>的值改为<code>true</code>，<code>engine</code>的值改为<code>katex</code><br />
 由于这里将<code>specific</code>的值设为了<code>true</code>，所以在需要进行数学公式渲染的文章的<code>font-matter</code>中添加一条<code>math: true</code>，采用这种方法可以不影响不需要进行数学公式渲染的页面的加载速度。<br />
 这时候再<code>hexo s</code>发现界面中latex公式已经渲染成功了，但是不太美观<br />
@@ -224,9 +238,9 @@ npm install hexo-renderer-kramed --save</code></pre>
 在文件最后找到<code>katex</code>，将其值设为<code>https://cdn.staticfile.org/KaTeX/0.11.1/</code>此时再刷新页面即可看到渲染后的数学公式了<br />
 <img src="/img/problems/good-katex.png" srcset="/img/loading.gif" alt="" /></p>
 <p>若看不到效果的话，依次执行</p>
-<pre><code class="hljs git">hexo clean
+<div class="hljs"><pre><code class="hljs git">hexo clean
 hexo g
-hexo s</code></pre>
+hexo s</code></pre></div>
 <p>即可在localhost中看到渲染后的效果</p>
 
             </article>
@@ -476,6 +490,10 @@ setInterval("createtime()",250);
 
 
 
+
+
+  
+<script src="/js/mine.js"></script>
 
 
 

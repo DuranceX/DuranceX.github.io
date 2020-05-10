@@ -23,7 +23,7 @@
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +50,20 @@
 
 
 <body>
+  <a id="dark" onclick="switchDarkMode()"></a>
+  <script>
+    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
+    if( isNight || localStorage.getItem('dark') === '1') {
+      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
+        document.body.classList.add('dark');
+        document.getElementById('dark').style.background = "url('/img/light.png')";
+      }
+    }
+    else
+      document.getElementById("dark").style.background = "url('/img/dark.png')";
+
+    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+  </script>
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -156,7 +170,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    140 字
+                    141 字
                   </span>
                 
 
@@ -195,35 +209,37 @@
           <div class="post-content mx-auto" id="post">
             
               <p class="note note-warning">
-                本文最后更新于：Sunday, 2020/03/15, 20:22
+                本文最后更新于：Sunday, 2020/05/10, 14:00
               </p>
             
             <article class="markdown-body">
               <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre>
+<div class="hljs"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre></div>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
 <p>_[HTML]: Hyper Text Markup Language</p>
-<pre><code class="hljs bash">$ hexo server</code></pre>
+<div class="hljs"><pre><code class="hljs bash">$ hexo server</code></pre></div>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<pre><code class="hljs bash">$ hexo generate</code></pre>
+<div class="hljs"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<pre><code class="hljs bash">$ hexo deploy</code></pre>
+<div class="hljs"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<pre class="mermaid">
+<div class="hljs"><pre class="hljs mermaid">
 graph TD;
     A-->B;
     A-->C;
     B-->D;
-    C-->D;</pre>
+    C-->D;</pre></div>
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
 </blockquote>
 <blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
 <footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
+<input type="button" id="dark1" value="点我！">
+<p><a type="button" href="#" id="dark2">dfadf</a></p>
 
             </article>
             <hr>
@@ -457,6 +473,10 @@ setInterval("createtime()",250);
 
 
 
+
+
+  
+<script src="/js/mine.js"></script>
 
 
 

@@ -23,7 +23,7 @@
 <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/github-gist.min.css" />
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -50,6 +50,20 @@
 
 
 <body>
+  <a id="dark" onclick="switchDarkMode()"></a>
+  <script>
+    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
+    if( isNight || localStorage.getItem('dark') === '1') {
+      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
+        document.body.classList.add('dark');
+        document.getElementById('dark').style.background = "url('/img/light.png')";
+      }
+    }
+    else
+      document.getElementById("dark").style.background = "url('/img/dark.png')";
+
+    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+  </script>
   <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -162,7 +176,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 22 篇文章</p>
+  <p class="h4">共计 23 篇文章</p>
   <hr>
   
     
@@ -361,6 +375,10 @@ setInterval("createtime()",250);
 
 
 
+
+
+  
+<script src="/js/mine.js"></script>
 
 
 

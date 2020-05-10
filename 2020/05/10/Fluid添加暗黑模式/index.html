@@ -170,7 +170,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.2k 字
+                    1.3k 字
                   </span>
                 
 
@@ -180,7 +180,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    17
+                    18
                      分钟
                   </span>
                 
@@ -209,7 +209,7 @@
           <div class="post-content mx-auto" id="post">
             
               <p class="note note-warning">
-                本文最后更新于：Sunday, 2020/05/10, 15:44
+                本文最后更新于：Sunday, 2020/05/10, 15:50
               </p>
             
             <article class="markdown-body">
@@ -221,13 +221,16 @@
 <div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dark"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"switchDarkMode()"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   <span class="hljs-keyword">var</span> isNight = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getHours() &gt;= <span class="hljs-number">22</span> || <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getHours() &lt; <span class="hljs-number">7</span>;
-  <span class="hljs-keyword">if</span>( matchMedia(<span class="hljs-string">'(prefers-color-scheme: dark)'</span>).matches || isNight || localStorage.getItem(<span class="hljs-string">'dark'</span>) === <span class="hljs-string">'1'</span>) &#123;
+  <span class="hljs-keyword">if</span>( isNight || localStorage.getItem(<span class="hljs-string">'dark'</span>) === <span class="hljs-string">'1'</span>) &#123;
     <span class="hljs-keyword">if</span>(!(isNight&amp;&amp;localStorage.getItem(<span class="hljs-string">'noDark'</span>) === <span class="hljs-string">'1'</span>)) &#123;
       <span class="hljs-built_in">document</span>.body.classList.add(<span class="hljs-string">'dark'</span>);
     &#125;
   &#125;
   <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'dark'</span>).innerHTML = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"body"</span>).classList.contains(<span class="hljs-string">"dark"</span>)?<span class="hljs-string">"🌙"</span>:<span class="hljs-string">"🌞"</span>;
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+<blockquote>
+<p>这里原本是用了媒体查询的，可以根据浏览器是否开启深色模式来对应开启深色模式，不过貌似有点小问题😓，比如我的浏览器开了深色模式，但我点击了按钮，切换成了亮色模式，那肯定是说明我是喜欢以亮色模式访问该网站，但当我换了一个页面的时候（比如换了一个文章或回到首页）它又会检测到深色模式后切换到深色模式，emmmm，所以就先删了。。</p>
+</blockquote>
 <h3 id="js"><a class="markdownIt-Anchor" href="#js"></a> JS</h3>
 <p>然后是JS，在主题下的<code>source\js</code>文件夹下新建一个 DarkMode.js 文件，在其中加入以下代码</p>
 <div class="hljs"><pre><code class="hljs js"><span class="hljs-comment">//点击事件</span>

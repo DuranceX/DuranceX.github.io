@@ -1431,12 +1431,15 @@ h6::before {
   background-color: #1c1c21;
   color: #a09c9c;
 }
+.dark blockquote {
+  border-left: 0.25em solid #68696a;
+}
 .dark img {
   filter: brightness(50%);
 }
 .dark p,
 .dark .index-info a {
-  color: #a09c9c;
+  color: #718096;
 }
 .dark .index-info a:hover {
   color: #3aa7f9;
@@ -1489,7 +1492,7 @@ h6::before {
 }
 .dark footer,
 .dark footer a {
-  color: #a09c9c;
+  color: #718096;
 }
 .dark .markdown-body table td,
 .dark .markdown-body table th {

@@ -1,251 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>fluid个性化 | 星下小屋</title>
+
+
+    <meta name="keywords" content="hexo, 美化">
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="各类参数的修改位置及作用、网页音乐播放器、评论模块、一言的调用等…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fluid个性化">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/fluid%E4%B8%AA%E6%80%A7%E5%8C%96/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="各类参数的修改位置及作用、网页音乐播放器、评论模块、一言的调用等…">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/img/%E7%BE%8E%E5%8C%96/mouse-click.png">
+<meta property="og:image" content="http://yoursite.com/img/%E7%BE%8E%E5%8C%96/music.png">
+<meta property="article:published_time" content="2020-02-24T02:23:23.000Z">
+<meta property="article:modified_time" content="2020-03-16T05:21:28.369Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="美化">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://yoursite.com/img/%E7%BE%8E%E5%8C%96/mouse-click.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
 
 
+    
+    
+    
 
+    
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="Cardy Tse">
-  <meta name="keywords" content="">
-  <title>fluid个性化 - 星下小屋</title>
+     
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1673167_eduqakno3xu.css">
-
-
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-
-<body>
-  <a id="dark" onclick="switchDarkMode()"></a>
-  <script>
-    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
-    if( isNight || localStorage.getItem('dark') === '1') {
-      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
-        document.body.classList.add('dark');
-        document.getElementById('dark').style.background = "url('/img/light.png')";
-      }
-    }
-    else
-      document.getElementById("dark").style.background = "url('/img/dark.png')";
-
-    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
-  </script>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/banner_img1.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
             </span>
-
-            
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-24 10:23">
-                    Monday, 2020/02/24, 10:23
-                  </time>
-                </div>
-              
-
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.6k 字
-                  </span>
-                
-
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    36
-                     分钟
-                  </span>
-                
-
-                
-              </div>
-            
-          </div>
-
-          
-        </div>
-      </div>
+        </a>
     </div>
-  </header>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="navbar-menu button">
+                        Page
+                    </a>
+                
+            </div>
+        
+        
+        
+        
+        
 
-  <main>
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="dropdown-menu button">
+                        Page
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    requestAnimationFrame(() => {
+                        dd.style.display = 'flex';
+                        requestAnimationFrame(() => {
+                            dd.style.transform = 'translateY(0)';
+                            dd.style.opacity = '1';
+                        });
+                    });
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
+
+
+            <main class="main">
     
-      
+<div class="post-title">
+    <h1 class="post-title__text">
+        fluid个性化
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/02/" class="post-meta__date button">
+    2020-02-24
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" class="button">博客美化</a>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-              <p class="note note-warning">
-                本文最后更新于：Monday, 2020/03/16, 13:21
-              </p>
-            
-            <article class="markdown-body">
-              <p>各类参数的修改位置及作用、网页音乐播放器、评论模块、一言的调用等…</p>
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#网页标题浏览器恶搞"><span class="toc-text"> 网页标题浏览器恶搞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fluid鼠标点击效果更改"><span class="toc-text"> fluid鼠标点击效果更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一言"><span class="toc-text"> 一言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#音乐播放插件"><span class="toc-text"> 音乐播放插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景添加动态线条"><span class="toc-text"> 背景添加动态线条</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站运行时间"><span class="toc-text"> 网站运行时间</span></a></li></ol>
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header">
+                 
+                
+            </div>
+            <div class="post__content">
+                <p>各类参数的修改位置及作用、网页音乐播放器、评论模块、一言的调用等…</p>
 <a id="more"></a>
 <h1 id="fluid个性化及小插件的使用"><a class="markdownIt-Anchor" href="#fluid个性化及小插件的使用"></a> fluid个性化及小插件的使用</h1>
 <h2 id="网页标题浏览器恶搞"><a class="markdownIt-Anchor" href="#网页标题浏览器恶搞"></a> 网页标题浏览器恶搞</h2>
 <p>在<code>\themes\fluid\source\js</code> 下创建一个新的js文件，例如<code>FunnyTitle.js</code>，输入如下内容：</p>
-<div class="hljs"><pre><code class="hljs lua&#123;javascript,&#125;">&#x2F;&#x2F; 浏览器搞笑标题
-var OriginTitle &#x3D; document.title;
+<pre class="highlight"><code class="lua{javascript,}">// 浏览器搞笑标题
+var OriginTitle = document.title;
 var titleTime;
-document.addEventListener(&#39;visibilitychange&#39;, function () &#123;
-    if (document.hidden) &#123;
-        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;avatar.png&quot;);
-        document.title &#x3D; &#39;╭(°A°&#96;)╮ 页面崩溃啦 ~&#39;;
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        $('[rel=&quot;icon&quot;]').attr('href', &quot;/img/avatar.png&quot;);
+        document.title = '╭(°A°`)╮ 页面崩溃啦 ~';
         clearTimeout(titleTime);
-    &#125;
-    else &#123;
-        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;favicon.png&quot;);
-        document.title &#x3D; &#39;(ฅ&gt;ω&lt;*ฅ) 噫又好啦 ~&#39; + OriginTitle;
-        titleTime &#x3D; setTimeout(function () &#123;
-            document.title &#x3D; OriginTitle;
-        &#125;, 2000);
-    &#125;
-&#125;);</code></pre></div>
+    }
+    else {
+        $('[rel=&quot;icon&quot;]').attr('href', &quot;/img/favicon.png&quot;);
+        document.title = '(ฅ&gt;ω&lt;*ฅ) 噫又好啦 ~' + OriginTitle;
+        titleTime = setTimeout(function () {
+            document.title = OriginTitle;
+        }, 2000);
+    }
+});
+</code></pre>
 <p>之后在<code>\themes\fluid\layout.ejs</code>中末尾输入</p>
-<div class="hljs"><pre><code class="hljs javascript">&lt;!--浏览器搞笑标题--&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/FunnyTitle.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
+<pre class="highlight"><code class="javascript">&lt;!--浏览器搞笑标题--&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/FunnyTitle.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
 <h2 id="fluid鼠标点击效果更改"><a class="markdownIt-Anchor" href="#fluid鼠标点击效果更改"></a> fluid鼠标点击效果更改</h2>
 <p>fluid主题的鼠标特效在<code>\themes\fluid\layout\_partial\plugins\mouse-click.ejs</code>中，找到如下图所示的代码<br />
-<img src="/img/%E7%BE%8E%E5%8C%96/mouse-click.png" srcset="/img/loading.gif" alt="" />将数组中的字符串进行更改即可进行自定义<br />
+<img src="/img/%E7%BE%8E%E5%8C%96/mouse-click.png" alt="" />将数组中的字符串进行更改即可进行自定义<br />
 然后在<strong>主题配置</strong>（即fluid的<code>_config.yml</code>）中将<code>mouse-clik</code>项的style改为values</p>
 <h2 id="一言"><a class="markdownIt-Anchor" href="#一言"></a> 一言</h2>
 <p><a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言官网</a></p>
 <p>根据官网提供的示例，在<code>\themes\fluid\layout\layout.ejs</code>中添加如下代码</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 以下写法，选取一种即可 --&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-comment">&lt;!-- 以下写法，选取一种即可 --&gt;</span>
 
 <span class="hljs-comment">&lt;!-- 现代写法，推荐 --&gt;</span>
 <span class="hljs-comment">&lt;!-- 兼容低版本浏览器 (包括 IE)，可移除 --&gt;</span>
@@ -254,45 +246,49 @@ document.addEventListener(&#39;visibilitychange&#39;, function () &#123;
 <span class="hljs-comment">&lt;!--End--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   fetch(<span class="hljs-string">'https://v1.hitokoto.cn'</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>)</span>&#123;
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>)</span>{
       <span class="hljs-keyword">return</span> res.json();
-    &#125;)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
       <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);
       hitokoto.innerText = data.hitokoto; 
-    &#125;)
-    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;
+    })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
       <span class="hljs-built_in">console</span>.error(err);
-    &#125;)
+    })
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- 老式写法，兼容性最忧 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
   xhr.open(<span class="hljs-string">'get'</span>, <span class="hljs-string">'https://v1.hitokoto.cn'</span>);
-  xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) &#123;
+  xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) {
       <span class="hljs-keyword">var</span> data = <span class="hljs-built_in">JSON</span>.parse(xhr.responseText);
       <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);
       hitokoto.innerText = data.hitokoto;
-    &#125;
-  &#125;
+    }
+  }
   xhr.send();
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- 新 API 方法， 十分简洁 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 <p>然后在任意想要加入一言的位置添加</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"hitokoto"</span>&gt;</span>:D 获取中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"hitokoto"</span>&gt;</span>:D 获取中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
 <p>例如我在页面的最底部，即hexo❤Fluid下方加入一言，即在<code>\themes\fluid\layout\_partial\footer.ejs</code>中加入该行代码。在页面中显示的具体位置由代码所在位置决定。</p>
 <p>一言官网举例了几个网址供读取信息</p>
-<div class="hljs"><pre><code class="hljs html">https://v1.hitokoto.cn/（从7种分类中随机抽取）
+<pre class="highlight"><code class="html">https://v1.hitokoto.cn/（从7种分类中随机抽取）
 
 https://v1.hitokoto.cn/?c=b （请求获得一个分类是漫画的句子）
 
-https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的句子，并以纯文本格式输出</code></pre></div>
+https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的句子，并以纯文本格式输出
+</code></pre>
 <p>在本部分第一个代码块中将对应的网址更改即可，同样可以通过“&amp;”的方式指定多个特定的类型</p>
-<div class="hljs"><pre><code class="hljs html">https://v1.hitokoto.cn/?c=c&amp;c=d （从游戏分类和小说分类中获取一个句子）</code></pre></div>
+<pre class="highlight"><code class="html">https://v1.hitokoto.cn/?c=c&amp;c=d （从游戏分类和小说分类中获取一个句子）
+</code></pre>
 <p>参数列表如下，通过c=xx来使用</p>
 <table border="0">
 <tr>
@@ -335,16 +331,17 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 🎶Wow, such a beautiful HTML5 music player<br />
 原本用的是网易云的的外链播放器，然鹅！网易云几乎所有的歌都因版权问题无法生成外链播放器，即使通过一些方法生成了也无法播放，因此采用了APlayer。</p>
 <p>首先安装Aplayer</p>
-<div class="hljs"><pre><code class="hljs git">cnpm install aplayer --save</code></pre></div>
+<pre class="highlight"><code class="git">cnpm install aplayer --save
+</code></pre>
 <p>我因为网络的问题替换了成了淘宝的镜像，若没有设置过直接使用npm即可。</p>
 <p>在想要加入网页播放器的地方输入以下代码</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-          <span class="hljs-selector-class">.demo</span>&#123;<span class="hljs-attribute">width</span>:<span class="hljs-number">360px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0px</span> auto <span class="hljs-number">20px</span> auto&#125;
-          <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">padding</span>:<span class="hljs-number">10px</span> <span class="hljs-number">0</span>&#125;
+          <span class="hljs-selector-class">.demo</span>{<span class="hljs-attribute">width</span>:<span class="hljs-number">360px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0px</span> auto <span class="hljs-number">20px</span> auto}
+          <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">padding</span>:<span class="hljs-number">10px</span> <span class="hljs-number">0</span>}
       </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
@@ -454,31 +451,33 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
         <span class="hljs-keyword">var</span> ap = <span class="hljs-keyword">new</span> APlayer
-                (&#123;
+                ({
                     <span class="hljs-attr">element</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'player1'</span>),
                     <span class="hljs-attr">narrow</span>: <span class="hljs-literal">false</span>,
                     <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,
                     <span class="hljs-attr">showlrc</span>: <span class="hljs-literal">true</span>,
-                    <span class="hljs-attr">music</span>: &#123;
+                    <span class="hljs-attr">music</span>: {
                             <span class="hljs-attr">title</span>: <span class="hljs-string">'华年'</span>,
                             <span class="hljs-attr">author</span>: <span class="hljs-string">'鹿先森乐队'</span>,
                             <span class="hljs-attr">url</span>: <span class="hljs-string">'http://music.163.com/song/media/outer/url?id=542667160.mp3'</span>,
                             <span class="hljs-attr">pic</span>: <span class="hljs-string">'http://p2.music.126.net/r94mVfx8ERhRr7Zzemhd_w==/109951163405599390.jpg'</span>
-                            &#125;
-                &#125;);
+                            }
+                });
         ap.init();
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
 <p>例如我将播放器加入到“关于”界面，就在<code>\themes\fluid\layout\about.ejs</code>中加入这段代码，在这里我将代码嵌入跟原有代码进入了稍微的整合，使结构清晰。<br />
 在上述代码的<code>script</code>块中，<code>autoplay</code>是自动播放，改为true则会在打开该页面时自动播放。<br />
-在网页版网易云音乐搜索歌曲，打开后将网址的最后一串数字替换到<code>url</code>中对应的数字部分即可更换歌曲<img src="/img/%E7%BE%8E%E5%8C%96/music.png" srcset="/img/loading.gif" alt="" /><br />
+在网页版网易云音乐搜索歌曲，打开后将网址的最后一串数字替换到<code>url</code>中对应的数字部分即可更换歌曲<img src="/img/%E7%BE%8E%E5%8C%96/music.png" alt="" /><br />
 歌曲封面由<code>pic</code>字段决定，同样在网页版网易云音乐界面，在F12开发者模式中选中歌曲封面区域即可得到封面链接，替换至<code>pic</code>区域即可。歌词来自<a href="https://www.90lrc.cn/" target="_blank" rel="noopener">https://www.90lrc.cn/</a></p>
 <p>参考网址：<a href="https://blog.csdn.net/jclian91/article/details/80876198" target="_blank" rel="noopener">https://blog.csdn.net/jclian91/article/details/80876198</a></p>
 <h2 id="背景添加动态线条"><a class="markdownIt-Anchor" href="#背景添加动态线条"></a> 背景添加动态线条</h2>
 <p>在<code>\theme\fluid\layout\layout.ejs</code>文件中添加如下代码</p>
-<div class="hljs"><pre><code class="hljs javascript">&lt;!--动态线条背景--&gt;
+<pre class="highlight"><code class="javascript">&lt;!--动态线条背景--&gt;
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>
 <span class="hljs-attr">color</span>=<span class="hljs-string">"140,140,140"</span> <span class="hljs-attr">opacity</span>=<span class="hljs-string">'0.7'</span> <span class="hljs-attr">zIndex</span>=<span class="hljs-string">"-2"</span> <span class="hljs-attr">count</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
 <p>其中：</p>
 <ul>
 <li>color：表示线条颜色，三个数字分别为(R,G,B)，默认：（0,0,0）</li>
@@ -489,409 +488,89 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 </ul>
 <h2 id="网站运行时间"><a class="markdownIt-Anchor" href="#网站运行时间"></a> 网站运行时间</h2>
 <p>在<code>\themes\fluid\layout\_partial\footer.ejs</code>中添加以下代码</p>
-<div class="hljs"><pre><code class="hljs javascript">&lt;span id=<span class="hljs-string">"timeDate"</span>&gt;载入天数...&lt;<span class="hljs-regexp">/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/</span>span&gt;
+<pre class="highlight"><code class="javascript">&lt;span id=<span class="hljs-string">"timeDate"</span>&gt;载入天数...&lt;<span class="hljs-regexp">/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/</span>span&gt;
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
     <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; 
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>{ 
         <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"21/02/2020 17:38:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span>
         now.setTime(now.getTime()+<span class="hljs-number">250</span>); 
         days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); 
         hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); 
-        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); 
-        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; 
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> ){hnum = <span class="hljs-string">"0"</span> + hnum;} minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); 
+        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> ){mnum = <span class="hljs-string">"0"</span> + mnum;} 
         seconds = (now - grt ) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum); 
-        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; 
+        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> ){snum = <span class="hljs-string">"0"</span> + snum;} 
         <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已勉强运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; 
         <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; 
-    &#125; 
+    } 
 setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre></div>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
 <blockquote><p>转自</p>
 <footer><strong>THRX博客 -</strong><cite><a href="https://www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间" target="_blank" rel="noopener">www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间</a></cite></footer></blockquote>
-            </article>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">博客美化</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%BE%8E%E5%8C%96/">美化</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/02/24/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第一章：计算机系统概论</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </div>
-                  <div class="post-next col-6">
-                    
-                    
-                      <a href="/2020/02/22/hexo-Failed-to-connect-to-github-com-port-443-Timed-out/">
-                        <span class="hidden-mobile">Failed to connect to github.com port 443: Timed out</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </div>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
-  <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
-        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
-        placeholder: "说点什么",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: true,
-        serverURLs: "",
-        mathJax: true
-      });
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+             
+            <div class="post-footer__meta">
+    <p>
+        updated at2020-03-16
+    </p>
+</div> 
+            <div class="post-meta__cats">
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
+        <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" class="post-cats__link button">博客美化</a>
     
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  
-
-  
-
-  
-
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="/js/FunnyTitle.js"></script>
-
-  <!-- 一言 -->
-  <!-- 现代写法，推荐 -->
-  <script>
-    fetch('https://v1.hitokoto.cn/?c=c&c=d')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+        <a href="/tags/hexo/" class="post-tags__link button"># hexo</a>
+    
+        <a href="/tags/%E7%BE%8E%E5%8C%96/" class="post-tags__link button"># 美化</a>
+    
+</div> 
+        </article>
+        
     </div>
 
+
+</main>
+
+            <footer class="footer">
     
 
 
-    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-    <script>
-        var now = new Date(); 
-        function createtime() { 
-            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
-            now.setTime(now.getTime()+250); 
-            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
-            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-        } 
-    setInterval("createtime()",250);
-    </script>
-
-    <p id="hitokoto">:D 获取中...</p>
-
     
+     
+ 
 
+ 
     
-
-    <span>
-      Copyrights &copy;
-      2020
-      <i class="ri-heart-fill heart_icon"></i> Cardy Tse
-    </span>
-
-  </div>
+        
+        <p class="footer-copyright">
+            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">星下小屋</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
+        </div>
+         
 
+ 
 
-  <script  src="/js/lazyload.js" ></script>
+ 
 
-
-
-  
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
+ 
 
   
-<script src="/js/mine.js"></script>
 
 
 
-<!-- Plugins -->
+ 
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "fluid个性化&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+    
 
 
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-  
-  
-    <script>
-      !function (e, t, a) {
-        function r() {
-          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
-          requestAnimationFrame(r)
-        }
-
-        function n() {
-          var t = "function" == typeof e.onclick && e.onclick;
-          e.onclick = function (e) {
-            t && t(), o(e)
-          }
-        }
-
-        function o(e) {
-          var a = t.createElement("div");
-          a.className = "heart", s.push({
-            el: a,
-            x: e.clientX - 5,
-            y: e.clientY - 5,
-            scale: 1,
-            alpha: 1,
-            color: c()
-          }), t.body.appendChild(a)
-        }
-
-        function i(e) {
-          var a = t.createElement("style");
-          a.type = "text/css";
-          try {
-            a.appendChild(t.createTextNode(e))
-          } catch (t) {
-            a.styleSheet.cssText = e
-          }
-          t.getElementsByTagName("head")[0].appendChild(a)
-        }
-
-        function c() {
-          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-        }
-
-        var s = [];
-        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
-          setTimeout(e, 1e3 / 60)
-        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
-      }(window, document);
-    </script>
-  
+ 
 
 
 
@@ -900,9 +579,5 @@ setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-nu
 
 
 
-
-
-
-
-</body>
+    </body>
 </html>

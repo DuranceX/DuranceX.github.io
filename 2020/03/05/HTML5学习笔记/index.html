@@ -1,254 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>HTML5学习笔记 | 星下小屋</title>
+
+
+    <meta name="keywords" content="HTML, 笔记">
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="html的入门笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5学习笔记">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/HTML5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="html的入门笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-05T09:50:16.000Z">
+<meta property="article:modified_time" content="2020-03-16T03:20:16.000Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
 
 
+    
+    
+    
 
+    
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="Cardy Tse">
-  <meta name="keywords" content="">
-  <title>HTML5学习笔记 - 星下小屋</title>
+     
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1673167_eduqakno3xu.css">
-
-
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-
-<body>
-  <a id="dark" onclick="switchDarkMode()"></a>
-  <script>
-    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
-    if( isNight || localStorage.getItem('dark') === '1') {
-      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
-        document.body.classList.add('dark');
-        document.getElementById('dark').style.background = "url('/img/light.png')";
-      }
-    }
-    else
-      document.getElementById("dark").style.background = "url('/img/dark.png')";
-
-    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
-  </script>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/banner_img1.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
             </span>
-
-            
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-03-05 17:50">
-                    Thursday, 2020/03/05, 17:50
-                  </time>
-                </div>
-              
-
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    3.9k 字
-                  </span>
-                
-
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    55
-                     分钟
-                  </span>
-                
-
-                
-              </div>
-            
-          </div>
-
-          
-        </div>
-      </div>
+        </a>
     </div>
-  </header>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="navbar-menu button">
+                        Page
+                    </a>
+                
+            </div>
+        
+        
+        
+        
+        
 
-  <main>
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="dropdown-menu button">
+                        Page
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    requestAnimationFrame(() => {
+                        dd.style.display = 'flex';
+                        requestAnimationFrame(() => {
+                            dd.style.transform = 'translateY(0)';
+                            dd.style.opacity = '1';
+                        });
+                    });
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
+
+
+            <main class="main">
     
-      
+<div class="post-title">
+    <h1 class="post-title__text">
+        HTML5学习笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/03/" class="post-meta__date button">
+    2020-03-05
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/HTML/" class="button">HTML</a>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-              <p class="note note-warning">
-                本文最后更新于：Monday, 2020/03/16, 11:20
-              </p>
-            
-            <article class="markdown-body">
-              <p>html的入门笔记</p>
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title"><span class="toc-text"> &lt;title&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#base"><span class="toc-text"> &lt;base&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#link"><span class="toc-text"> &lt;link&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#style"><span class="toc-text"> &lt;style&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#meta"><span class="toc-text"> &lt;meta&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#script"><span class="toc-text"> &lt;script&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form"><span class="toc-text"> &lt;form&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#input"><span class="toc-text"> &lt;input&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#label"><span class="toc-text"> &lt;label&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#textarea"><span class="toc-text"> &lt;textarea&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select及datalist"><span class="toc-text"> &lt;select&gt;及&lt;datalist&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#button"><span class="toc-text"> &lt;button&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fieldset和legend"><span class="toc-text"> &lt;fieldset&gt;和&lt;legend&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#output"><span class="toc-text"> &lt;output&gt;</span></a></li></ol>
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header">
+                 
+                
+            </div>
+            <div class="post__content">
+                <p>html的入门笔记</p>
 <a id="more"></a>
 <p>学习资料：<a href="https://www.runoob.com/html" target="_blank" rel="noopener">菜鸟教程</a></p>
 <h1 id="基础框架"><a class="markdownIt-Anchor" href="#基础框架"></a> 基础框架</h1>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
 <h1 id="头部元素"><a class="markdownIt-Anchor" href="#头部元素"></a> 头部元素</h1>
 <h2 id="title"><a class="markdownIt-Anchor" href="#title"></a> &lt;title&gt;</h2>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+</code></pre>
 <p>title标签定义了网页的标题，即在浏览器标签页上显示的内容</p>
 <h2 id="base"><a class="markdownIt-Anchor" href="#base"></a> &lt;base&gt;</h2>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>
+</code></pre>
 <p>&lt;base&gt;标签描述了基本的链接地址，是该HTML文档中所有链接标签的默认链接。<br />
 例如在&lt;body&gt;里添加<code>&lt;img src=&quot;logo.png&quot;&gt;</code>，则其链接就相当于<code>https://www.baidu.com/logo.png</code></p>
 <h2 id="link"><a class="markdownIt-Anchor" href="#link"></a> &lt;link&gt;</h2>
 <p><code>&lt;link&gt;</code>标签用来定义文档与外部资源之间的关系。最常见的用法是链接样式表。</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"theme.css"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"theme.css"</span>&gt;</span>
+</code></pre>
 <p>其中<code>rel</code>表示关系这里是<code>stylesheet</code>即样式表，<code>href</code>表示链接文件的路径<br />
 所有<code>rel</code>属性值<a href="https://www.runoob.com/tags/tag-link.html" target="_blank" rel="noopener">列表</a></p>
 <h2 id="style"><a class="markdownIt-Anchor" href="#style"></a> &lt;style&gt;</h2>
 <p><code>&lt;style&gt;</code>标签定义了HTML文档的样式文件引用地址，也可以在<code>&lt;style&gt;</code>标签中直接添加样式来渲染HTML文档</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span><span class="css">
-<span class="hljs-selector-tag">body</span> &#123;<span class="hljs-attribute">background-color</span>:yellow&#125;
-<span class="hljs-selector-tag">p</span> &#123;<span class="hljs-attribute">color</span>:blue&#125;
+<span class="hljs-selector-tag">body</span> {<span class="hljs-attribute">background-color</span>:yellow}
+<span class="hljs-selector-tag">p</span> {<span class="hljs-attribute">color</span>:blue}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
 <h2 id="meta"><a class="markdownIt-Anchor" href="#meta"></a> &lt;meta&gt;</h2>
 <p><code>&lt;meta&gt;</code>标签用来描述一些基本的元数据，元数据不会显示在页面上，但会被浏览器解析，用于描述页面，例如网页描述、作者、最后修改时间等。<br />
 示例：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 为搜索引擎定义关键词 --&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-comment">&lt;!-- 为搜索引擎定义关键词 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"HTML,CSS"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 为网页定义描述内容 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"learning blog"</span>&gt;</span>
@@ -257,7 +249,8 @@
 <span class="hljs-comment">&lt;!-- 每30秒刷新当前页面 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"30"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 定义编码方式 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+</code></pre>
 <h2 id="script"><a class="markdownIt-Anchor" href="#script"></a> &lt;script&gt;</h2>
 <p><code>&lt;script&gt;&lt;/script&gt;</code>标签用于定于网页脚本，可以通过<code>src</code>属性指向外部脚本文件，也可以直接在标签内写脚本语句</p>
 <p class="note note-primary">如果使用"src"属性，则< script>元素必须是空的</p>
@@ -275,7 +268,7 @@
 <p class="note note-primary">HTML中无法识别多个空格和Enter键进行的回车，所有这些操作在html中都会被看成一个空格</p>
 <p>因此在段落中如果需要换行，可以添加<code>&lt;br /&gt;</code>标签来进行换行。</p>
 <p>段落即<code>&lt;p&gt;&lt;/p&gt;标签</code>会在段落前后自动加上<code>&lt;br /&gt;</code>，对比手动添加<code>&lt;br /&gt;</code>可以发现</p>
-<div class="hljs"><pre><code class="hljs html">文字1
+<pre class="highlight"><code class="html">文字1
 文字2
 文字3
 
@@ -287,11 +280,12 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 段落5
 <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-段落6</code></pre></div>
+段落6
+</code></pre>
 <p>在<a href="https://c.runoob.com/front-end/61" target="_blank" rel="noopener">编辑器</a>里尝试。</p>
 <h1 id="text">文本标签</h1>
 <p>html中提供以下标签来对普通文字（比如这行）进行加粗等操作</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>粗体<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>粗体<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>斜体<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">ins</span>&gt;</span>下划线<span class="hljs-tag">&lt;/<span class="hljs-name">ins</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">del</span>&gt;</span>删除字（中划线）<span class="hljs-tag">&lt;/<span class="hljs-name">del</span>&gt;</span>
@@ -299,7 +293,8 @@
 这是<span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span>下标<span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>着重文字<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>强调文字<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">mark</span>&gt;</span>高亮文字<span class="hljs-tag">&lt;/<span class="hljs-name">mark</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">mark</span>&gt;</span>高亮文字<span class="hljs-tag">&lt;/<span class="hljs-name">mark</span>&gt;</span>
+</code></pre>
 <p>显示效果如下：<br />
 <b>粗体</b><br />
 <i>斜体</i><br />
@@ -315,50 +310,57 @@
 <h1 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h1>
 <p>使用<code>&lt;a&gt;&lt;/a&gt;</code>标签来表示<br />
 语法：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>链接文本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>链接文本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
 <p>href的参数有一个链接，它可以是具体的网址，也可以是该html中的一个<code>id</code>属性，如果是本页元素的id属性的话，即可实现页面内跳转，此时<code>url=&quot;#id&quot;</code><br />
 target的参数表示打开方式，常用的有两个参数，<code>_self</code>在当前标签页打开，<code>_blank</code>在新标签页打开。另有<code>_top</code>参数用来跳出框架，<a href="https://www.runoob.com/try/try.php?filename=tryhtml_frame_getfree" target="_blank" rel="noopener">详情见</a>将，<code>_top</code>改为<code>_self</code>即可看出差别。<br />
 示例：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>新标签页打开百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>新标签页打开百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_self"</span>&gt;</span>当前标签页打开百度<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#text"</span>&gt;</span>跳转到“文本标签处”<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#text"</span>&gt;</span>跳转到“文本标签处”<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
 <p><a href="https://www.baidu.com/index.php?tn=93046615_hao_pg" target="_blank">新标签页打开百度</a><br />
 <a href="https://www.baidu.com/index.php?tn=93046615_hao_pg" target="_self">当前标签页打开百度</a><br />
 <a href="#text">跳转到“文本标签处”</a></p>
 <p>链接文本也可以不是文字，可以是图片或其他html元素<br />
 示例：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//www.baidu.com/img/baidu_jgylogo3.gif"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.baidu.com/index.php?tn=93046615_hao_pg"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//www.baidu.com/img/baidu_jgylogo3.gif"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
 <p>在<a href="https://c.runoob.com/front-end/61" target="_blank" rel="noopener">编辑器</a>里尝试</p>
 <p><code>&lt;a&gt;</code>标签还可以用来发送邮件(＃°Д°)<br />
 在<code>href</code>的参数中输入<code>mailto:balabala@qq.com</code>等即可实现(需要有邮件客户端)<br />
 示例：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:example@qq.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span>简单版本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:example@qq.com?cc=someoneelse@example.com&amp;bcc=andsomeoneelse@example.com&amp;subject=Summer Party&amp;body=You are invited to a big summer party!"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span>进阶版本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:example@qq.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span>简单版本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"mailto:example@qq.com?cc=someoneelse@example.com&amp;bcc=andsomeoneelse@example.com&amp;subject=Summer Party&amp;body=You are invited to a big summer party!"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_top"</span>&gt;</span>进阶版本<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
 <p><a href="mailto:example@qq.com" target="_top">简单版本</a><br />
 <a href="mailto:example@qq.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer Party&body=You are invited to a big summer party!" target="_top">进阶版本</a><br />
 在进阶版本中，cc表示抄送对象邮箱，bcc表示秘密抄送对象的邮箱，subject表示邮件标题，body则是邮件内容。</p>
 <h1 id="内联样式"><a class="markdownIt-Anchor" href="#内联样式"></a> 内联样式</h1>
 <p>当只有个别HTML元素需要特殊样式渲染时，可以使用内联样式，例如：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color:red;margin-left:20px;"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:green"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color:red;margin-left:20px;"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:green"</span>&gt;</span>这是一个段落<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
 <p style="color:red;margin-left:20px;">这是一个段落</p>
 <p style="background-color:green">这是一个段落</p>
 同样还有其他样式，在CSS里再做讨论
 <h1 id="图像"><a class="markdownIt-Anchor" href="#图像"></a> 图像</h1>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"some_text"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"111"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"111"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"some_text"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"111"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"111"</span>&gt;</span>
+</code></pre>
 <p><code>img</code>标签没有结束标签，<code>src</code>表示图像的路径，<code>alt</code>表示的当图片无法加载时，显示的文本，用来告诉用户大概是个什么图片，<code>width</code>和<code>height</code>属性则是指定图片的高度和宽度</p>
 <p><strong>创建图像映像</strong><br />
 大意就是点击图像中的不同区域，实现不同的效果，就是将图像分成几个不同的区域，各自相应点击事件。<a href="https://www.runoob.com/try/try.php?filename=tryhtml_areamap" target="_blank" rel="noopener">详情示例</a><br />
 其中：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 1、矩形：(左上角顶点坐标为(x1,y1)，右下角顶点坐标为(x2,y2)) --&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-comment">&lt;!-- 1、矩形：(左上角顶点坐标为(x1,y1)，右下角顶点坐标为(x2,y2)) --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"rect"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,x2,y2"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 2、圆形：(圆心坐标为(X1,y1)，半径为r) --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"circle"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,r"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- 3、多边形：(各顶点坐标依次为(x1,y1)、(x2,y2)、(x3,y3) ......) --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"poly"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,x2,y2 ......"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">area</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">"poly"</span> <span class="hljs-attr">coords</span>=<span class="hljs-string">"x1,y1,x2,y2 ......"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">url</span>&gt;</span>
+</code></pre>
 <h1 id="表格"><a class="markdownIt-Anchor" href="#表格"></a> 表格</h1>
 <p>表格元素基本框架：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"1"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>th1<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>th2<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
@@ -373,7 +375,8 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
         <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>row2,col1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">"2"</span>&gt;</span>row2,col2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</code></pre>
 <p>表格用<code>&lt;table&gt;</code>标签来定义，<code>&lt;tr&gt;&lt;/tr&gt;</code>表示一行，<code>&lt;td&gt;&lt;/td&gt;</code>表示该行里的一格,<code>&lt;th&gt;&lt;/th&gt;</code>表示表头，不同<code>&lt;tr&gt;</code>中的<code>&lt;td&gt;</code>数量不等可实现合并单元格，使用<code>cellpadding=&quot;10&quot;</code>来设置10px的格边距，使用<code>border=&quot;1&quot;</code>来添加宽度为1px的边框，使用<code>cellspacing=&quot;10&quot;</code>来添加格与格之间的间距，使用<code>rowspan=&quot;2&quot;</code>来添加纵向两个的合并单元格，使用<code>colspan=&quot;2&quot;</code>来添加横向两个的合并单元格。显示如下</p>
 <table border="1">
     <tr>
@@ -394,7 +397,7 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <h1 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h1>
 <p>列表分为有序列表和无序列表，有序列表用<code>&lt;ol&gt;&lt;/ol&gt;</code>标签包括，无序标签用<code>&lt;ul&gt;&lt;/ul&gt;</code>标签包括，列表中每一记录用<code>&lt;li&gt;&lt;/li&gt;</code>表示<br />
 示例：</p>
-<div class="hljs"><pre><code class="hljs html">有序列表：
+<pre class="highlight"><code class="html">有序列表：
 <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>first<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
@@ -406,7 +409,8 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>first<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>second<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>third<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
 <p>显示如下<br />
 有序列表：</p>
 <ol>
@@ -430,12 +434,13 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <p><strong>自定义列表</strong><br />
 自定义列表以<code>&lt;dl&gt;&lt;/dl&gt;</code>标签包裹，自定义列表项由<code>&lt;dt&gt;&lt;/dt&gt;</code>标签包裹，自定义列表项的定义由<code>&lt;dt&gt;&lt;/dt&gt;</code>标签包裹。<br />
 示例：(以“-”作为序号)</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Coffee<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>- black hot drink<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Milk<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>- white cold drink<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+</code></pre>
 <dl>
   <dt>Coffee</dt>
   <dd>- black hot drink</dd>
@@ -450,120 +455,119 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <p><code>&lt;form&gt;&lt;/form&gt;</code>标签用于创建供用户输入的HTML表单</p>
 <p><strong><code>action</code>属性</strong><br />
 <strong>action</strong>属性用于定义在提交表单时执行的动作。链接目标页面，例如：</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"demo-form.php"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"demo-form.php"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
 <p>若省略action属性，则action会被设置为当前页面</p>
 <h2 id="input"><a class="markdownIt-Anchor" href="#input"></a> &lt;input&gt;</h2>
 <p><code>&lt;input&gt;</code>标签通过定义不同的<code>type</code>属性可以实现不同的效果</p>
 <p><strong>文本框</strong><br />
 在多数浏览器中，文本框的默认宽度是20个字符</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
-``` 
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
-
-**密码字段**
-`type`属性值为`password`
-``` html
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
-``` 
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
-
-**单选按钮**
-`type`属性为`radio`
-``` html
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选我选我
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
+</code></pre>
+<input type="text" placeholder="Input something">
+<hr />
+<p><strong>密码字段</strong><br />
+<code>type</code>属性值为<code>password</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Input something"</span>&gt;</span>
+</code></pre>
+<input type="password" placeholder="Input something">
+<hr />
+<p><strong>单选按钮</strong><br />
+<code>type</code>属性为<code>radio</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选我选我
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选他选他
-``` 
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选我选我
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> &gt;</span>选他选他
-
-这种情况下我们发现无法实现单选的效果，需要将两个按钮设置相同的`name`属性，，就可以实现单选效果了。
-
-``` html
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选我选我
+</code></pre>
+<p><input type="radio" >选我选我<br />
+<input type="radio" >选他选他</p>
+<p>这种情况下我们发现无法实现单选的效果，需要将两个按钮设置相同的<code>name</code>属性，，就可以实现单选效果了。</p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选我选我
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选他选他
-``` 
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选我选我
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span>&gt;</span>选他选他
-
-<span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
-
-**复选框**
-`type`属性为`checkbox`
-
-``` html
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bike"</span>&gt;</span>i have a bike
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Car"</span>&gt;</span>i have a Car</code></pre></div>
+</code></pre>
+<p><input type="radio" name="choice">选我选我<br />
+<input type="radio" name="choice">选他选他</p>
+<hr />
+<p><strong>复选框</strong><br />
+<code>type</code>属性为<code>checkbox</code></p>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Bike"</span>&gt;</span>i have a bike
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Car"</span>&gt;</span>i have a Car
+</code></pre>
 <p><input type="checkbox" value="Bike">i have a bike<br />
 <input type="checkbox" value="Car">i have a Car</p>
 <hr />
 <p><strong>滑动轴</strong><br />
 <code>type</code>属性为<code>range</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"1"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"1"</span>&gt;</span>
+</code></pre>
 <input type="range" value="50" max="100" min="0" step="1">
 <p>用<code>max</code>限定最大值，<code>min</code>限定最小值，<code>value</code>设定初始值，<code>step</code>设定步长</p>
 <hr />
 <p><strong>按钮</strong><br />
 <code>type</code>属性为<code>button</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"点我！"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"点我！"</span>&gt;</span>
+</code></pre>
 <input type="button" value="点我！">
 <hr />
 <p><strong>颜色</strong><br />
 <code>type</code>属性为<code>color</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"color"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"#ff0000"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"color"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"#ff0000"</span>&gt;</span>
+</code></pre>
 <p><input type="color" value="#ff0000">  可以设置<code>value</code>的值来设定初始值</p>
 <hr />
 <p><strong>时间</strong><br />
 <code>type</code>属性为<code>date</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span>&gt;</span>
+</code></pre>
 <input type="date">
 <hr />
 <p>若<code>type</code>属性为<code>month</code>、<code>time</code>、<code>week</code>可有不同的效果</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"month"</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"month"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"time"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"week"</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"week"</span>&gt;</span>
+</code></pre>
 <p><input type="month"><br /><br />
 <input type="time"><br /><br />
 <input type="week"></p>
 <p><strong>选取文件</strong><br />
 <code>type</code>属性为<code>file</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span>&gt;</span>
+</code></pre>
 <input type="file">
 <p>使用<code>multiple</code>属性进行多选</p>
 <p><strong>数字</strong><br />
 <code>type</code>属性为<code>number</code></p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"5"</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span> <span class="hljs-attr">step</span>=<span class="hljs-string">"5"</span>&gt;</span>
+</code></pre>
 <input type="number" max="100" min="0" value="50" step="5">
 <p>用<code>max</code>限定最大值，<code>min</code>限定最小值，<code>value</code>设定初始值，<code>step</code>设定步长</p>
 <h2 id="label"><a class="markdownIt-Anchor" href="#label"></a> &lt;label&gt;</h2>
 <p><code>&lt;label&gt;</code>标签用于显示文本，但与普通文本相比，<code>&lt;label&gt;</code>标签可以响应鼠标点击事件</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"me"</span>&gt;</span>选我选我<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"me"</span>&gt;</span>选我选我<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"me"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"选我选我"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"he"</span>&gt;</span>选他选他<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"he"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"选他选他"</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"choice"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"he"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"选他选他"</span>&gt;</span>
+</code></pre>
 <p><label for="me">选我选我</label><input type="radio" name="choice" id="me" value="选我选我"><br />
 <label for="he">选他选他</label><input type="radio" name="choice" id="he" value="选他选他"></p>
 <p>可与前项对比发现不同</p>
 <h2 id="textarea"><a class="markdownIt-Anchor" href="#textarea"></a> &lt;textarea&gt;</h2>
 <p><code>&lt;textarea&gt;</code>标签用于创建一个可以拖动扩大缩小的文本框</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"5"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"10"</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"5"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"10"</span>&gt;</span>
 我是一个文本框
-<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+</code></pre>
 <textarea rows="5" cols="10">
 我是一个文本框
 </textarea>
 <h2 id="select及datalist"><a class="markdownIt-Anchor" href="#select及datalist"></a> &lt;select&gt;及&lt;datalist&gt;</h2>
 <p>下拉框选项用<code>&lt;select&gt;</code>标签和<code>&lt;option&gt;</code>标签进行组合</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"apple"</span>&gt;</span>apple<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"banana"</span>&gt;</span>banana<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"pear"</span>&gt;</span>pear<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"peach"</span>&gt;</span>peach<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
 <select>
     <option value="apple">apple</option>
     <option value="banana">banana</option>
@@ -574,14 +578,15 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <code>size</code>属性规定下拉列表中一次性显示的条目数量。</p>
 <hr />
 <p>下拉框还可以用<code>&lt;input&gt;</code>和<code>&lt;datalist&gt;</code>标签组合实现</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">list</span>=<span class="hljs-string">"browsers"</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">list</span>=<span class="hljs-string">"browsers"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">datalist</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"browsers"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Internet Explorer"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Firefox"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Chrome"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Opera"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Safari"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">datalist</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">datalist</span>&gt;</span>
+</code></pre>
 <input list="browsers">
 <datalist id="browsers">
   <option value="Internet Explorer">
@@ -592,7 +597,7 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 </datalist>
 <hr />
 <p>通过在下拉框中添加<code>&lt;optgroup&gt;</code>标签还可以将选项进行分组</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">optgroup</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Swedish Cars"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"volvo"</span>&gt;</span>Volvo<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"saab"</span>&gt;</span>Saab<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
@@ -601,7 +606,8 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"mercedes"</span>&gt;</span>Mercedes<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"audi"</span>&gt;</span>Audi<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">optgroup</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+</code></pre>
 <select>
   <optgroup label="Swedish Cars">
     <option value="volvo">Volvo</option>
@@ -614,19 +620,21 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 </select>
 <h2 id="button"><a class="markdownIt-Anchor" href="#button"></a> &lt;button&gt;</h2>
 <p>通过<code>&lt;button&gt;</code>标签可以创建一个按钮</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>点我！<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>点我！<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
 <p><button type="button">点我！</button></p>
 <p>在 <code>&lt;button&gt;</code> 元素内部可以放置内容，比如文本或图像。这是该元素与使用 <code>&lt;input&gt;</code> 元素创建的按钮之间的不同之处。</p>
 <p>通过添加<code>onclick=&quot;xxx()&quot;</code>属性将单击事件与函数xxx()链接起来。<br />
 具体事件属性再议。</p>
 <h2 id="fieldset和legend"><a class="markdownIt-Anchor" href="#fieldset和legend"></a> &lt;fieldset&gt;和&lt;legend&gt;</h2>
 <p>通过<code>&lt;fieldset&gt;</code>标签对表单中的元素进行分组，即加上一个边框，通过<code>legend</code>标签为该组设定标题</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Personalia:<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
     Name: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
     Email: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
     Date of birth: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+</code></pre>
 <fieldset>
     <legend>Personalia:</legend>
     Name: <input type="text"><br>
@@ -636,11 +644,12 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 <p>为<code>&lt;fieldset&gt;</code>标签添加<code>disabled</code>属性可以使该分组内元素全部不可更改、</p>
 <h2 id="output"><a class="markdownIt-Anchor" href="#output"></a> &lt;output&gt;</h2>
 <p><code>&lt;output&gt;</code>元素跟<code>&lt;form&gt;</code>标签组合进行输出</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">oninput</span>=<span class="hljs-string">"x.value=parseInt(a.value)+parseInt(b.value)"</span>&gt;</span>0
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">oninput</span>=<span class="hljs-string">"x.value=parseInt(a.value)+parseInt(b.value)"</span>&gt;</span>0
 <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"a"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span>&gt;</span>100
 +<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"b"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"50"</span>&gt;</span>
 =<span class="hljs-tag">&lt;<span class="hljs-name">output</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"x"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"a b"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">output</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
 <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
 <input type="range" id="a" value="50">100
 +<input type="number" id="b" value="50">
@@ -648,402 +657,83 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 </form>
 <h1 id="视频"><a class="markdownIt-Anchor" href="#视频"></a> 视频</h1>
 <p>使用<code>&lt;video&gt;&lt;/video&gt;</code>标签</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"320"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"240"</span> <span class="hljs-attr">controls</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"320"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"240"</span> <span class="hljs-attr">controls</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"movie.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+</code></pre>
 <p><code>controls</code>属性规定了播放视频会不会带有进度条等控制栏内容。<br />
 详见<a href="https://www.runoob.com/try/try.php?filename=tryhtml5_video_js_prop" target="_blank" rel="noopener">链接</a>，与按钮的组合。</p>
 <h1 id="音频"><a class="markdownIt-Anchor" href="#音频"></a> 音频</h1>
 <p>使用<code>&lt;audio&gt;&lt;audio&gt;</code>标签</p>
-<div class="hljs"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>&gt;</span>
+<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">controls</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"horse.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/ogg"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span></code></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+</code></pre>
 <p><a href="https://www.runoob.com/try/try.php?filename=tryhtml5_audio_all" target="_blank" rel="noopener">链接</a></p>
 
-            </article>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/HTML/">HTML</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/HTML/">HTML</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/03/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库系统原理：第二章关系数据库（一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </div>
-                  <div class="post-next col-6">
-                    
-                    
-                      <a href="/2020/03/05/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/">
-                        <span class="hidden-mobile">java学习笔记(一)</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </div>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
-  <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
-        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
-        placeholder: "说点什么",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: true,
-        serverURLs: "",
-        mathJax: true
-      });
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+             
+            <div class="post-footer__meta">
+    <p>
+        updated at2020-03-16
+    </p>
+</div> 
+            <div class="post-meta__cats">
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
+        <a href="/categories/HTML/" class="post-cats__link button">HTML</a>
     
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  
-
-  
-
-  
-
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="/js/FunnyTitle.js"></script>
-
-  <!-- 一言 -->
-  <!-- 现代写法，推荐 -->
-  <script>
-    fetch('https://v1.hitokoto.cn/?c=c&c=d')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+        <a href="/tags/HTML/" class="post-tags__link button"># HTML</a>
+    
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
+    
+</div> 
+        </article>
+        
     </div>
 
+
+</main>
+
+            <footer class="footer">
     
 
 
-    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-    <script>
-        var now = new Date(); 
-        function createtime() { 
-            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
-            now.setTime(now.getTime()+250); 
-            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
-            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-        } 
-    setInterval("createtime()",250);
-    </script>
-
-    <p id="hitokoto">:D 获取中...</p>
-
     
+     
+ 
 
+ 
     
-
-    <span>
-      Copyrights &copy;
-      2020
-      <i class="ri-heart-fill heart_icon"></i> Cardy Tse
-    </span>
-
-  </div>
+        
+        <p class="footer-copyright">
+            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">星下小屋</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
+        </div>
+         
 
+ 
 
-  <script  src="/js/lazyload.js" ></script>
+ 
 
-
-
-  
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
+ 
 
   
-<script src="/js/mine.js"></script>
 
 
 
-<!-- Plugins -->
+ 
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "HTML5学习笔记&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+    
 
 
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-  
-  
-    <script>
-      !function (e, t, a) {
-        function r() {
-          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
-          requestAnimationFrame(r)
-        }
-
-        function n() {
-          var t = "function" == typeof e.onclick && e.onclick;
-          e.onclick = function (e) {
-            t && t(), o(e)
-          }
-        }
-
-        function o(e) {
-          var a = t.createElement("div");
-          a.className = "heart", s.push({
-            el: a,
-            x: e.clientX - 5,
-            y: e.clientY - 5,
-            scale: 1,
-            alpha: 1,
-            color: c()
-          }), t.body.appendChild(a)
-        }
-
-        function i(e) {
-          var a = t.createElement("style");
-          a.type = "text/css";
-          try {
-            a.appendChild(t.createTextNode(e))
-          } catch (t) {
-            a.styleSheet.cssText = e
-          }
-          t.getElementsByTagName("head")[0].appendChild(a)
-        }
-
-        function c() {
-          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-        }
-
-        var s = [];
-        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
-          setTimeout(e, 1e3 / 60)
-        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
-      }(window, document);
-    </script>
-  
+ 
 
 
 
@@ -1052,9 +742,5 @@ target的参数表示打开方式，常用的有两个参数，<code>_self</code
 
 
 
-
-
-
-
-</body>
+    </body>
 </html>

@@ -1,219 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>数据库系统原理：第一章绪论 | 星下小屋</title>
+
+
+    <meta name="keywords" content="笔记, 数据库系统原理">
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="数据库系统原理：第一章绪论，包括数据库系统概述、数据模型、数据库系统的结构和数据库系统的组成四部分内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统原理：第一章绪论">
+<meta property="og:url" content="http://yoursite.com/2020/02/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="数据库系统原理：第一章绪论，包括数据库系统概述、数据模型、数据库系统的结构和数据库系统的组成四部分内容。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%81%94%E7%B3%BB.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B%E4%BE%8B%E5%AD%90.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/E-R%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE.png">
+<meta property="article:published_time" content="2020-02-28T05:49:53.000Z">
+<meta property="article:modified_time" content="2020-03-07T07:38:23.994Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库系统原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
 
 
 
+    
+    
+    
 
+    
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="Cardy Tse">
-  <meta name="keywords" content="">
-  <title>数据库系统原理：第一章绪论 - 星下小屋</title>
+     
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.18.1/styles/atom-one-dark.min.css" />
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_ijqayz9ro8k.css">
-
-
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1673167_eduqakno3xu.css">
-
-
+    <!-- custom head -->
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-
-<body>
-  <a id="dark" onclick="switchDarkMode()"></a>
-  <script>
-    var isNight = new Date().getHours() >= 22 || new Date().getHours() < 7;
-    if( isNight || localStorage.getItem('dark') === '1') {
-      if(!(isNight&&localStorage.getItem('noDark') === '1')) {
-        document.body.classList.add('dark');
-        document.getElementById('dark').style.background = "url('/img/light.png')";
-      }
-    }
-    else
-      document.getElementById("dark").style.background = "url('/img/dark.png')";
-
-    document.getElementById('dark').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
-  </script>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>星下小屋</strong>&nbsp;</a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="iconfont icon-home-fill"></i>
-              首页</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/archives/">
-              <i class="iconfont icon-archive-fill"></i>
-              归档</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">
-              <i class="iconfont icon-category-fill"></i>
-              分类</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">
-              <i class="iconfont icon-tags-fill"></i>
-              标签</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">
-              <i class="iconfont icon-user-fill"></i>
-              关于</a>
-          </li>
-        
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">
-              <i class="iconfont icon-link-fill"></i>
-              友链</a>
-          </li>
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/banner_img1.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
             </span>
-
-            
-              
-                <div class="mt-3 post-meta">
-                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-                  <time datetime="2020-02-28 13:49">
-                    Friday, 2020/02/28, 13:49
-                  </time>
-                </div>
-              
-
-              <div class="mt-1">
-                
-                  
-                  <span class="post-meta mr-2">
-                    <i class="iconfont icon-chart"></i>
-                    2.7k 字
-                  </span>
-                
-
-                
-                  
-                  <span class="post-meta mr-2">
-                      <i class="iconfont icon-clock-fill"></i>
-                    
-                    
-                    28
-                     分钟
-                  </span>
-                
-
-                
-              </div>
-            
-          </div>
-
-          
-        </div>
-      </div>
+        </a>
     </div>
-  </header>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="navbar-menu button">
+                        Page
+                    </a>
+                
+            </div>
+        
+        
+        
+        
+        
 
-  <main>
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/page/" class="dropdown-menu button">
+                        Page
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    requestAnimationFrame(() => {
+                        dd.style.display = 'flex';
+                        requestAnimationFrame(() => {
+                            dd.style.transform = 'translateY(0)';
+                            dd.style.opacity = '1';
+                        });
+                    });
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
+
+
+            <main class="main">
     
-      
+<div class="post-title">
+    <h1 class="post-title__text">
+        数据库系统原理：第一章绪论
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/02/" class="post-meta__date button">
+    2020-02-28
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="button">数据库系统原理</a>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-              <p class="note note-warning">
-                本文最后更新于：Saturday, 2020/03/07, 15:38
-              </p>
-            
-            <article class="markdown-body">
-              <p>数据库系统原理：第一章绪论，包括数据库系统概述、数据模型、数据库系统的结构和数据库系统的组成四部分内容。</p>
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的四个概念"><span class="toc-text"> 数据库的四个概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-两类数据模型"><span class="toc-text"> 2.1 两类数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-概念模型"><span class="toc-text"> 2.2 概念模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23数据模型的组成要素"><span class="toc-text"> 2.3数据模型的组成要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24层次模型"><span class="toc-text"> 2.4层次模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25网状模型"><span class="toc-text"> 2.5网状模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#relation_module"><span class="toc-text">2.6关系模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27三种常用模型比较"><span class="toc-text"> 2.7三种常用模型比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#31数据库系统模式的概念"><span class="toc-text"> 3.1数据库系统模式的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32数据库的三级模式结构"><span class="toc-text"> 3.2数据库的三级模式结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33数据库的二级映像"><span class="toc-text"> 3.3数据库的二级映像</span></a></li></ol>
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header">
+                 
+                
+            </div>
+            <div class="post__content">
+                <p>数据库系统原理：第一章绪论，包括数据库系统概述、数据模型、数据库系统的结构和数据库系统的组成四部分内容。</p>
 <a id="more"></a>
 <h1 id="一-数据库系统概述"><a class="markdownIt-Anchor" href="#一-数据库系统概述"></a> 一、数据库系统概述</h1>
 <h2 id="数据库的四个概念"><a class="markdownIt-Anchor" href="#数据库的四个概念"></a> 数据库的四个概念</h2>
@@ -255,10 +251,10 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 <blockquote>
 <p>为什么说文件系统中数据操作的效率低。<br />
 ——因为文件系统是针对某一特定应用的，所以当我们修改记录的时候，需要在文件中进行对应的修改，还需要考虑不同文件之间的联系，即文件系统的独立性差，所以文件系统中数据操作（比如增、删、改、查）的效率低下。<br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.png" alt="" /></p>
 </blockquote>
 <p>附：数据管理3个阶段的比较（图源中国大学MOOC中国人民大学相关课程）<br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E5%AF%B9%E6%AF%94.png" alt="" /></p>
 <hr />
 <h1 id="二-数据模型"><a class="markdownIt-Anchor" href="#二-数据模型"></a> 二、数据模型</h1>
 <p>数据模型是数据库系统的核心和基础</p>
@@ -301,10 +297,10 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 <p>联系（Relationship）<br />
 事物 <abbr title="是指组成实体的各属性之间的联系">内部联系</abbr> 以及事物 <abbr title="通常是指不同实体集之间的联系">之间的联系</abbr></p>
 <p>其中实体之间的联系有一对一(1:1)、一对多(1:m)和多对多(m:n)等类型(一对多可包含一对一)<br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%81%94%E7%B3%BB.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%81%94%E7%B3%BB.png" alt="" /></p>
 </li>
 </ol>
-<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B%E4%BE%8B%E5%AD%90.png" srcset="/img/loading.gif" alt="" /><br />
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B%E4%BE%8B%E5%AD%90.png" alt="" /><br />
 以上图为例：</p>
 <table>
 <thead>
@@ -351,7 +347,7 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 <p><strong>概念模型的一种表示方法</strong><br />
 实体-联系方法（Entity-Relationship Approach）<br />
 例如：<br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/E-R%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/E-R%E6%A8%A1%E5%9E%8B.png" alt="" /></p>
 <h2 id="23数据模型的组成要素"><a class="markdownIt-Anchor" href="#23数据模型的组成要素"></a> 2.3数据模型的组成要素</h2>
 <p>数据模型由三部分组成</p>
 <p><strong>数据结构</strong><br />
@@ -409,7 +405,7 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 <li>一个结点可以有多于一个的双亲</li>
 </ol>
 <p>示例：<br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B.png" alt="" /></p>
 <p><strong>优点</strong></p>
 <ul>
 <li>更直接地描述现实世界，如一个结点可以有多个双亲，比层次结构更符合实际</li>
@@ -529,7 +525,7 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 </ul>
 </blockquote>
 <h2 id="32数据库的三级模式结构"><a class="markdownIt-Anchor" href="#32数据库的三级模式结构"></a> <mark>3.2数据库的三级模式结构</mark></h2>
-<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F.png" srcset="/img/loading.gif" alt="数据库系统的三级模式结构" /></p>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F.png" alt="数据库系统的三级模式结构" /></p>
 <p><strong>模式（也称逻辑模式）</strong></p>
 <ul>
 <li>是数据库中全体数据的逻辑结构和特征的描述</li>
@@ -598,392 +594,71 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 <p>分为数据库、数据库管理系统、应用程序和数据库管理员<br />
 或硬件平台及数据库、软件、人员<br />
 其中的<strong>人员</strong>分可分为数据库管理员、系统分析员和数据库设计人员、应用程序员、最终用户，<font color=#00BFFF>不同的人员涉及不同的数据抽象级别，具有不同的数据视图</font><br />
-<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE.png" srcset="/img/loading.gif" alt="" /></p>
+<img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E8%A7%86%E5%9B%BE.png" alt="" /></p>
 
-            </article>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">数据库系统原理</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">数据库系统原理</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
-                    
-                    
-                      <a href="/2020/03/03/Latex%E7%9A%84Katex%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Latex的Katex渲染引擎设置</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </div>
-                  <div class="post-next col-6">
-                    
-                    
-                      <a href="/2020/02/27/%E4%BF%A1%E5%AE%89%E5%8E%9F%E7%90%86%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81/">
-                        <span class="hidden-mobile">信安原理第一课</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </div>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
-  <div id="vcomments"></div>
-  <script defer src="https://cdn.staticfile.org/valine/1.4.4/Valine.min.js" ></script>
-
-  <script type="text/javascript">
-    var oldLoadVa = window.onload;
-    window.onload = function () {
-      oldLoadVa && oldLoadVa();
-
-      new Valine({
-        el: "#vcomments",
-        app_id: "NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI",
-        app_key: "X1aTivTeG3lS9K1o2BDkBBC3",
-        placeholder: "说点什么",
-        path: window.location.pathname,
-        avatar: "retro",
-        meta: ["nick","mail","link"],
-        pageSize: "10",
-        lang: "zh-CN",
-        highlight: true,
-        recordIP: true,
-        serverURLs: "",
-        mathJax: true
-      });
-    };
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
-      powered by Valine.</a></noscript>
-
-
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    </div>
+             
+            <div class="post-footer__meta">
+    <p>
+        updated at2020-03-07
+    </p>
+</div> 
+            <div class="post-meta__cats">
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
-
-      </div>
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="post-cats__link button">数据库系统原理</a>
     
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  
-
-  
-
-  
-
-  <!--浏览器搞笑标题-->
-  <script type="text/javascript" src="/js/FunnyTitle.js"></script>
-
-  <!-- 一言 -->
-  <!-- 现代写法，推荐 -->
-  <script>
-    fetch('https://v1.hitokoto.cn/?c=c&c=d')
-      .then(function (res){
-        return res.json();
-      })
-      .then(function (data) {
-        var hitokoto = document.getElementById('hitokoto');
-        hitokoto.innerText = data.hitokoto + "——《" + data.from + "》"; 
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  </script>
-
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
+    
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="post-tags__link button"># 数据库系统原理</a>
+    
+</div> 
+        </article>
+        
     </div>
 
+
+</main>
+
+            <footer class="footer">
     
 
 
-    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-    <script>
-        var now = new Date(); 
-        function createtime() { 
-            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
-            now.setTime(now.getTime()+250); 
-            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
-            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-        } 
-    setInterval("createtime()",250);
-    </script>
-
-    <p id="hitokoto">:D 获取中...</p>
-
     
+     
+ 
 
+ 
     
-
-    <span>
-      Copyrights &copy;
-      2020
-      <i class="ri-heart-fill heart_icon"></i> Cardy Tse
-    </span>
-
-  </div>
+        
+        <p class="footer-copyright">
+            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">星下小屋</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/main.js" ></script>
+        </div>
+         
 
+ 
 
-  <script  src="/js/lazyload.js" ></script>
+ 
 
-
-
-  
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '.post-content',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-
+ 
 
   
-<script src="/js/mine.js"></script>
 
 
 
-<!-- Plugins -->
+ 
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "数据库系统原理：第一章绪论&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+    
 
 
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      getSearchFile(path);
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-  
-  
-    <script>
-      !function (e, t, a) {
-        function r() {
-          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
-          requestAnimationFrame(r)
-        }
-
-        function n() {
-          var t = "function" == typeof e.onclick && e.onclick;
-          e.onclick = function (e) {
-            t && t(), o(e)
-          }
-        }
-
-        function o(e) {
-          var a = t.createElement("div");
-          a.className = "heart", s.push({
-            el: a,
-            x: e.clientX - 5,
-            y: e.clientY - 5,
-            scale: 1,
-            alpha: 1,
-            color: c()
-          }), t.body.appendChild(a)
-        }
-
-        function i(e) {
-          var a = t.createElement("style");
-          a.type = "text/css";
-          try {
-            a.appendChild(t.createTextNode(e))
-          } catch (t) {
-            a.styleSheet.cssText = e
-          }
-          t.getElementsByTagName("head")[0].appendChild(a)
-        }
-
-        function c() {
-          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-        }
-
-        var s = [];
-        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
-          setTimeout(e, 1e3 / 60)
-        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
-      }(window, document);
-    </script>
-  
+ 
 
 
 
@@ -992,9 +667,5 @@ DBMS是管理、建立、为何DB的必不可少的软件，一般讲DBMS及其�
 
 
 
-
-
-
-
-</body>
+    </body>
 </html>

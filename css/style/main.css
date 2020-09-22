@@ -69,7 +69,7 @@ body {
 .main.tagscloud {
   margin: 0 auto;
   padding: 0 var(--space);
-  max-width: 100%;
+  max-width: 75%;
 }
 .main.friends {
   margin: 0 auto;
@@ -996,7 +996,7 @@ a.search-result__link:hover {
   overflow: auto;
   height: calc(100vh - 60px - 20px);
   list-style-type: none;
-  padding-left: 0.6em;
+  padding-left: 1em;
 }
 .post-side .post-side__toc .toc .toc-child {
   padding-left: 1em;

@@ -27,6 +27,8 @@
     <meta name="keywords" content="git, problems, hexo">
 
 
+
+
     <!-- OpenGraph -->
  
     <meta name="description" content="Failed to connect to github.com port 443: Timed out">
@@ -43,7 +45,7 @@
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="problems">
 <meta property="article:tag" content="hexo">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
 <meta name="twitter:image" content="http://yoursite.com/img/problems/Time_out.png">
 
 
@@ -63,10 +65,6 @@
     
     
     
-
-    
-    <link rel="stylesheet" href="/css/style/note.css" media="none" onload="this.media='all'">
-
 
      
 
@@ -116,6 +114,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
     </a>
 
+
         
         
     <a href="javaScript:void(0);" id="btn-toggle-dark">
@@ -124,9 +123,9 @@
 
 
          
-    <a href="javaScript:void(0);" id="b2t" aria-label="Back to Top" title="Back to Top">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='32' height='32' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13.889,11.611c-0.17,0.17-0.443,0.17-0.612,0l-3.189-3.187l-3.363,3.36c-0.171,0.171-0.441,0.171-0.612,0c-0.172-0.169-0.172-0.443,0-0.611l3.667-3.669c0.17-0.17,0.445-0.172,0.614,0l3.496,3.493C14.058,11.167,14.061,11.443,13.889,11.611 M18.25,10c0,4.558-3.693,8.25-8.25,8.25c-4.557,0-8.25-3.692-8.25-8.25c0-4.557,3.693-8.25,8.25-8.25C14.557,1.75,18.25,5.443,18.25,10 M17.383,10c0-4.07-3.312-7.382-7.383-7.382S2.618,5.93,2.618,10S5.93,17.381,10,17.381S17.383,14.07,17.383,10"></path>
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
         </svg>
     </a>
 
@@ -138,11 +137,6 @@
                 </svg>
             </a>
             <div class="dropdown-menus" id="dropdown-menus">
-                <a class="dropback-icon button" id="btn-dropback">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
-                    </svg>
-                </a>
                 
                     <a href="/" class="dropdown-menu button">
                         首页
@@ -165,24 +159,6 @@
                     </a>
                 
             </div>
-            <script>
-                document.getElementById('btn-dropdown').addEventListener('click', () => {
-                    const dd = document.getElementById('dropdown-menus');
-                    requestAnimationFrame(() => {
-                        dd.style.display = 'flex';
-                        requestAnimationFrame(() => {
-                            dd.style.transform = 'translateY(0)';
-                            dd.style.opacity = '1';
-                        });
-                    });
-                });
-                document.getElementById('btn-dropback').addEventListener('click', () => {
-                    const dd = document.getElementById('dropdown-menus');
-                    dd.style.transform = 'translateY(2.25rem)';                    
-                    dd.style.opacity = '0';
-                    setTimeout(() => {dd.style.display = 'none';}, 350);
-                });
-            </script>
         
     </div>
 </header>
@@ -190,6 +166,7 @@
 
             <main class="main">
     
+
 <div class="post-title">
     <h1 class="post-title__text">
         Failed to connect to github.com port 443: Timed out
@@ -214,19 +191,30 @@
 </div>
 
 
-    <div class="post__with-side">
-        <aside class="post-side">
-            <div class="post-side__toc">
-                
-            </div>
-        </aside>
-        <article class="post content-card">
-            <div class="post__header">
-                 
-                
-            </div>
-            <div class="post__content">
-                <p>Failed to connect to <a href="http://github.com" target="_blank" rel="noopener">github.com</a> port 443: Timed out</p>
+    <aside class="post-side">
+        <div class="post-side__toc">
+            
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail" style="background-image: url('/img/problems/problem.png');"></div>
+    
+</div>
+    <div class="post__content">
+        <p>Failed to connect to <a href="http://github.com" target="_blank" rel="noopener">github.com</a> port 443: Timed out</p>
 <a id="more"></a>
 <h1 id="failed-to-connect-to-github-com-port-443-timed-out"><a class="markdownIt-Anchor" href="#failed-to-connect-to-github-com-port-443-timed-out"></a> Failed to connect to github. com port 443: Timed out</h1>
 <p>在使用hexo g -d部署到github上时出现了“Failed to connect to github. com port 443: Timed out”的错误提示。<br />
@@ -238,14 +226,14 @@
 git config --global https.proxy http://127.0.0.1:1080
 </code></pre>
 
-            </div>
-             
-            <div class="post-footer__meta">
+    </div>
+     
+    <div class="post-footer__meta">
     <p>
-        updated at2020-07-17
+        updated at 2020-07-17
     </p>
 </div> 
-            <div class="post-meta__cats">
+    <div class="post-meta__cats">
     
         <a href="/categories/problems/" class="post-cats__link button">problems</a>
     
@@ -257,9 +245,48 @@ git config --global https.proxy http://127.0.0.1:1080
         <a href="/tags/hexo/" class="post-tags__link button"># hexo</a>
     
 </div> 
-        </article>
-        
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/02/24/fluid%E4%B8%AA%E6%80%A7%E5%8C%96/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            fluid个性化
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/02/21/hello-world/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Hello World
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
     </div>
+
+
+
 
 
 </main>
@@ -276,7 +303,7 @@ git config --global https.proxy http://127.0.0.1:1080
     
         
         <p class="footer-copyright">
-            Copyright&nbsp;©&nbsp;2020&nbsp;<a href="/">星下小屋</a>
+            Copyright © 2020 <a href="/">星下小屋</a>
         </p>
     
     
@@ -300,7 +327,7 @@ git config --global https.proxy http://127.0.0.1:1080
 
 
     
-
+ 
 
 
     
@@ -313,7 +340,7 @@ git config --global https.proxy http://127.0.0.1:1080
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
 
     <script>
-        let lazyloadT = Boolean(''),
+        let lazyloadT = Boolean('false'),
             auto_fancybox = Boolean('false')
         if (auto_fancybox) {
             $(".post__content").find('img').each(function () {
@@ -340,10 +367,8 @@ git config --global https.proxy http://127.0.0.1:1080
  
 
  
-    <script defer src="/js/b2t.js"></script>
 
-
-
+ 
 
 
 

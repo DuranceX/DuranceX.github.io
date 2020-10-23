@@ -63,13 +63,13 @@
 
     
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
         
-            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
         
     
 
-    
     
 
      
@@ -372,11 +372,34 @@ CREATE TABLE &lt;表名&gt;<br />
 <li><strong>unique（A）：</strong> 表示每个元组在属性列A上是唯一的，即没有重复值</li>
 </ul>
 <p>【例3】建立“学生”表STUDENT，学号是主码，姓名取值唯一</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Student</span><br><span class="line">(Sno <span class="built_in">CHAR</span>(<span class="number">9</span>) PRIMARY <span class="keyword">KEY</span>,     <span class="comment">/*列级完整性约束条件，Sno是主码*/</span></span><br><span class="line">Sname <span class="built_in">CHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span>,        <span class="comment">/*列级完整性约束条件，Sname是唯一值*/</span></span><br><span class="line">Ssex <span class="built_in">CHAR</span>(<span class="number">2</span>),</span><br><span class="line">Sage <span class="built_in">SMALLINT</span>,</span><br><span class="line">Sdept <span class="built_in">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>) PRIMARY <span class="hljs-keyword">KEY</span>,     <span class="hljs-comment">/*列级完整性约束条件，Sno是主码*/</span>
+Sname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span>,        <span class="hljs-comment">/*列级完整性约束条件，Sname是唯一值*/</span>
+Ssex <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">2</span>),
+Sage <span class="hljs-built_in">SMALLINT</span>,
+Sdept <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>),
+);</code></pre>
 <p>【例4】建立一个“课程”表Course</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Course</span><br><span class="line">(Sno <span class="built_in">CHAR</span>(<span class="number">4</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">Cname <span class="built_in">CHAR</span>(<span class="number">40</span>),</span><br><span class="line">Cpno <span class="built_in">CHAR</span>(<span class="number">4</span>),     <span class="comment">/*先修课*/</span></span><br><span class="line">Ccredit <span class="built_in">SMALLINT</span>,</span><br><span class="line"><span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(Cpno) <span class="keyword">REFERENCES</span> Course(Cno)     </span><br><span class="line"><span class="comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>) PRIMARY <span class="hljs-keyword">KEY</span>,
+Cname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">40</span>),
+Cpno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),     <span class="hljs-comment">/*先修课*/</span>
+Ccredit <span class="hljs-built_in">SMALLINT</span>,
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cpno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)     
+<span class="hljs-comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span>
+);</code></pre>
 <p>【例5】建立一个学生选课表SC</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SC</span><br><span class="line">(Sno <span class="built_in">CHAR</span>(<span class="number">9</span>),</span><br><span class="line">Cno <span class="built_in">CHAR</span>(<span class="number">4</span>),</span><br><span class="line">Grade <span class="built_in">SMALLINT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span>(Sno, Cno),</span><br><span class="line"><span class="comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line"><span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(Sno) <span class="keyword">REFERENCES</span> Student(Sno),</span><br><span class="line"><span class="comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span></span><br><span class="line"><span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(Cno) <span class="keyword">REFERENCES</span> Course(Cno)</span><br><span class="line"><span class="comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>),
+Cno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),
+Grade <span class="hljs-built_in">SMALLINT</span>,
+PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
+<span class="hljs-comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span>
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Sno) <span class="hljs-keyword">REFERENCES</span> Student(Sno),
+<span class="hljs-comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span>
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)
+<span class="hljs-comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span>
+);</code></pre>
 <h3 id="修改基本表"><a class="markdownIt-Anchor" href="#修改基本表"></a> 修改基本表</h3>
 <p>ALTER TABLE &lt;表名&gt;<br />
 [ ADD &lt;新列名&gt; &lt;数据类型&gt; [ 完整性约束 ]]<br />

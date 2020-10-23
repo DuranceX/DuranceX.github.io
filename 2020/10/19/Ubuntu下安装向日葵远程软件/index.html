@@ -63,13 +63,13 @@
 
     
     
-        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
         
-            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
         
     
 
-    
     
 
      
@@ -219,22 +219,23 @@
         <p>在Ubuntu 20.04下安装向日葵远程软件。</p>
 <a id="more"></a>
 <p>先在向日葵官网下载对应的.deb文件，然后在终端中执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i SunloginClient-10.0.2.24779_amd64.deb</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">sudo dpkg -i SunloginClient-10.0.2.24779_amd64.deb</code></pre>
 <p>此时可能会报错说缺少 <code>libwebkitgtk-3.0-0</code>如下图所示：</p>
 <p><img src="/img/problems/libwebkitgtk-3.0-0.webp" alt="libwebkitgtk-3.0-0" /></p>
 <p>解决方法：</p>
 <ol>
 <li>打开系统的源列表文件</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">sudo gedit /etc/apt/sources.list</code></pre>
 <ol start="2">
 <li>添加一项</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://cz.archive.ubuntu.com/ubuntu bionic main universe</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">deb http://cz.archive.ubuntu.com/ubuntu bionic main universe</code></pre>
 <ol start="3">
 <li>然后再执行下列操作</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install -f</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">sudo apt update
+sudo apt install -f</code></pre>
 <p>然后找到向日葵打开即可运行。</p>
 <p><img src="/img/problems/SunloginClient.webp" alt="image-20201019164808406" /></p>
 

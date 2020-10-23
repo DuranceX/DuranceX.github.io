@@ -60,6 +60,13 @@
 
     
     
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
     
 
      
@@ -213,9 +220,7 @@
 <p><strong>解决</strong><br />
 是环境变量的配置问题，因为重新安装了anaconda所以环境变量没有配置<br />
 在环境变量中上半部分的用户变量中的<code>path</code>中添加下列路径</p>
-<pre class="highlight"><code class="">D:\anaconda
-D:\anaconda\Library\bin
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\anaconda</span><br><span class="line">D:\anaconda\Library\bin</span><br></pre></td></tr></table></figure>
 <p>视具体类路径而言，总之就是anaconda的安装文件夹和其下的<code>Library\bin</code>文件夹</p>
 
     </div>

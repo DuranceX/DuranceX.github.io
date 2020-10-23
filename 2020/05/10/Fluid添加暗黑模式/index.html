@@ -60,6 +60,13 @@
 
     
     
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
     
 
      
@@ -215,225 +222,21 @@
 <p>之前一直就想为博客添加个暗色模式，但是拖延症晚期😿，所以一直拖到了现在，主要的代码参考自<a href="https://royce2003.top/posts/41212.html" target="_blank" rel="noopener">Royce</a>的博客，emmm，这里还是把代码搬一下。。</p>
 <h3 id="html"><a class="markdownIt-Anchor" href="#html"></a> HTML</h3>
 <p>首先是HTML，在<code>\themes\fluid\layout\layout.ejs</code>中找到<code>&lt;body&gt;</code>标签，然后在下方加入以下代码</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dark"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"switchDarkMode()"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-  <span class="hljs-keyword">var</span> isNight = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getHours() &gt;= <span class="hljs-number">22</span> || <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getHours() &lt; <span class="hljs-number">7</span>;
-  <span class="hljs-keyword">if</span>( isNight || localStorage.getItem(<span class="hljs-string">'dark'</span>) === <span class="hljs-string">'1'</span>) {
-    <span class="hljs-keyword">if</span>(!(isNight&amp;&amp;localStorage.getItem(<span class="hljs-string">'noDark'</span>) === <span class="hljs-string">'1'</span>)) {
-      <span class="hljs-built_in">document</span>.body.classList.add(<span class="hljs-string">'dark'</span>);
-    }
-  }
-  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'dark'</span>).innerHTML = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"body"</span>).classList.contains(<span class="hljs-string">"dark"</span>)?<span class="hljs-string">"🌙"</span>:<span class="hljs-string">"🌞"</span>;
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"dark"</span> <span class="attr">onclick</span>=<span class="string">"switchDarkMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> isNight = <span class="keyword">new</span> <span class="built_in">Date</span>().getHours() &gt;= <span class="number">22</span> || <span class="keyword">new</span> <span class="built_in">Date</span>().getHours() &lt; <span class="number">7</span>;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">if</span>( isNight || localStorage.getItem(<span class="string">'dark'</span>) === <span class="string">'1'</span>) &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">if</span>(!(isNight&amp;&amp;localStorage.getItem(<span class="string">'noDark'</span>) === <span class="string">'1'</span>)) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.body.classList.add(<span class="string">'dark'</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.getElementById(<span class="string">'dark'</span>).innerHTML = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>).classList.contains(<span class="string">"dark"</span>)?<span class="string">"🌙"</span>:<span class="string">"🌞"</span>;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>这里原本是用了媒体查询的，可以根据浏览器是否开启深色模式来对应开启深色模式，不过貌似有点小问题😓，比如我的浏览器开了深色模式，但我点击了按钮，切换成了亮色模式，那肯定是说明我是喜欢以亮色模式访问该网站，但当我换了一个页面的时候（比如换了一个文章或回到首页）它又会检测到深色模式后切换到深色模式，emmmm，所以就先删了。。</p>
 </blockquote>
 <h3 id="js"><a class="markdownIt-Anchor" href="#js"></a> JS</h3>
 <p>然后是JS，在主题下的<code>source\js</code>文件夹下新建一个 DarkMode.js 文件，在其中加入以下代码</p>
-<pre class="highlight"><code class="js"><span class="hljs-comment">//点击事件</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">switchDarkMode</span>(<span class="hljs-params"></span>) </span>{
-	<span class="hljs-keyword">if</span> ($(<span class="hljs-string">'body'</span>).hasClass(<span class="hljs-string">'dark'</span>)) {
-        <span class="hljs-comment">/*$("#dark").html("🌞");*/</span>
-       <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"dark"</span>).style.background = <span class="hljs-string">"url('/img/dark.png')"</span>;
-		<span class="hljs-built_in">document</span>.body.classList.remove(<span class="hljs-string">'dark'</span>);
-		localStorage.setItem(<span class="hljs-string">'noDark'</span>, <span class="hljs-string">'1'</span>);
-		localStorage.setItem(<span class="hljs-string">'dark'</span>, <span class="hljs-string">'0'</span>);
-	} <span class="hljs-keyword">else</span> {
-        <span class="hljs-comment">/*$("#dark").html("🌙"); */</span>
-        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"dark"</span>).style.background = <span class="hljs-string">"url('/img/light.png')"</span>;
-		<span class="hljs-built_in">document</span>.body.classList.add(<span class="hljs-string">'dark'</span>);
-		localStorage.setItem(<span class="hljs-string">'dark'</span>, <span class="hljs-string">'1'</span>);
-		localStorage.setItem(<span class="hljs-string">'noDark'</span>, <span class="hljs-string">'0'</span>);
-	}
-}
-</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">switchDarkMode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ($(<span class="string">'body'</span>).hasClass(<span class="string">'dark'</span>)) &#123;</span><br><span class="line">        <span class="comment">/*$("#dark").html("🌞");*/</span></span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">"dark"</span>).style.background = <span class="string">"url('/img/dark.png')"</span>;</span><br><span class="line">		<span class="built_in">document</span>.body.classList.remove(<span class="string">'dark'</span>);</span><br><span class="line">		localStorage.setItem(<span class="string">'noDark'</span>, <span class="string">'1'</span>);</span><br><span class="line">		localStorage.setItem(<span class="string">'dark'</span>, <span class="string">'0'</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/*$("#dark").html("🌙"); */</span></span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">"dark"</span>).style.background = <span class="string">"url('/img/light.png')"</span>;</span><br><span class="line">		<span class="built_in">document</span>.body.classList.add(<span class="string">'dark'</span>);</span><br><span class="line">		localStorage.setItem(<span class="string">'dark'</span>, <span class="string">'1'</span>);</span><br><span class="line">		localStorage.setItem(<span class="string">'noDark'</span>, <span class="string">'0'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后在Fluid主题的<code>_config.yml</code>中找到<code>custom_js</code>项，加入新建的 js 文件。</p>
 <p>这个原版代码是通过注释中的两个字符——“🌞“和“🌙”来进行区分暗色模式和亮色模式。但个人觉得不太美观，同样，他的博客中也有一篇提到了 “返回页面顶”的一个类似于小挂件的效果，于是就想将那个挂件的效果改为更改模式，因此用PS粗粗地P了两个图，分别是带月亮dark.png和带太阳的light.png，在该段JS代码中，在切换模式的同时，将两个图片进行了切换。</p>
 <h3 id="css"><a class="markdownIt-Anchor" href="#css"></a> CSS</h3>
 <p>最后是CSS，在主题下的<code>source\css</code>文件夹下，新建一个<code>DarkMode.styl</code>因为使用的是 style 文件，所以可以不在 <code>_config.yml</code>中引入，直接在同目录下的<code>main.styl</code>中进行导入即可。添加以下代码。</p>
-<pre class="highlight"><code class="css"><span class="hljs-comment">/* 切换按钮 */</span>
-<span class="hljs-selector-id">#dark</span>
-  <span class="hljs-selector-tag">cursor</span> <span class="hljs-selector-tag">pointer</span>
-  <span class="hljs-selector-tag">position</span> <span class="hljs-selector-tag">fixed</span>
-  <span class="hljs-selector-tag">z-index</span> 100
-  <span class="hljs-selector-tag">left</span> 50<span class="hljs-selector-tag">px</span> 
-  <span class="hljs-selector-tag">width</span> 70<span class="hljs-selector-tag">px</span>
-  <span class="hljs-selector-tag">height</span> 600<span class="hljs-selector-tag">px</span>
-  <span class="hljs-selector-tag">top</span> <span class="hljs-selector-tag">-350px</span>
-  <span class="hljs-selector-tag">box-shadow</span> 0 0 <span class="hljs-comment">/* 去除外边框的阴影 */</span>
-
-  &amp; &gt; <span class="hljs-selector-tag">i</span>
-    <span class="hljs-selector-tag">display</span> <span class="hljs-selector-tag">none</span> <span class="hljs-comment">/* 隐藏一个小箭头图标，否则会在图片上出现箭头 */</span>
-
-<span class="hljs-comment">/*暗黑模式*/</span>
-<span class="hljs-selector-class">.dark</span>
-  <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-tag">rgb</span>(31, 31, 31)
-  
-
-  <span class="hljs-comment">/* 主体 */</span>
-  <span class="hljs-selector-id">#board</span> 
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#1c1c21</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#a09c9c</span>
-  
-  <span class="hljs-selector-tag">blockquote</span>
-    <span class="hljs-selector-tag">border-left</span> <span class="hljs-selector-class">.25em</span> <span class="hljs-selector-tag">solid</span> <span class="hljs-selector-id">#68696a</span>
-  <span class="hljs-selector-tag">img</span>  
-    <span class="hljs-selector-tag">filter</span> <span class="hljs-selector-tag">brightness</span>(50%)
-
-  <span class="hljs-selector-tag">p</span>
-  <span class="hljs-selector-class">.index-info</span> <span class="hljs-selector-tag">a</span>  
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#718096</span>
-
-  <span class="hljs-selector-class">.index-info</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#3aa7f9</span>
-
-  <span class="hljs-selector-class">.markdown-body</span>
-    <span class="hljs-selector-tag">h1</span>,<span class="hljs-selector-tag">h2</span>,<span class="hljs-selector-tag">h3</span>,<span class="hljs-selector-tag">h4</span>,<span class="hljs-selector-tag">h5</span>,<span class="hljs-selector-tag">h6</span>,<span class="hljs-selector-tag">s</span>,<span class="hljs-selector-tag">li</span>  
-      <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(191, 191, 191) !<span class="hljs-selector-tag">important</span>
-
-    
-  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">a</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(153, 189, 230)
-
-  <span class="hljs-comment">/* 顶栏 */</span>
-  <span class="hljs-selector-class">.navbar-col-show</span>
-  <span class="hljs-selector-class">.top-nav-collapse</span>  
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#282c34</span>
-    
-  <span class="hljs-selector-class">.navbar</span> <span class="hljs-selector-tag">a</span>  
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(191, 191, 191) !<span class="hljs-selector-tag">important</span>
-    
-  <span class="hljs-selector-class">.animated-icon</span> <span class="hljs-selector-tag">span</span>   <span class="hljs-comment">/* 手机端 */</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-tag">rgb</span>(191, 191, 191)
-
-
-  <span class="hljs-comment">/* page-number */</span>
-  <span class="hljs-selector-class">.pagination</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>
-  <span class="hljs-selector-class">.pagination</span> <span class="hljs-selector-class">.current</span>  
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#6b6b6b73</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(191,191,191)
-
-
-  <span class="hljs-comment">/* 打字机 */</span>
-  <span class="hljs-selector-id">#subtitle</span>
-  <span class="hljs-selector-class">.dark</span><span class="hljs-selector-class">.typed-cursor--blink</span>
-  <span class="hljs-selector-class">.scroll-down-arrow</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#dfdfdf</span>
-
-
-  <span class="hljs-comment">/* back to top */</span>
-  <span class="hljs-selector-id">#scroll-top-button</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#282c34</span>
-
-    <span class="hljs-selector-tag">i</span>
-      <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#a09c9c</span>
-    
-
-  <span class="hljs-comment">/* Toc */</span>
-  <span class="hljs-selector-class">.tocbot-list</span> <span class="hljs-selector-tag">a</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#a09c9c</span>
-
-  <span class="hljs-selector-class">.tocbot-active-link</span>
-  <span class="hljs-selector-tag">footer</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#3aa7f9</span> !<span class="hljs-selector-tag">important</span>
-
-  <span class="hljs-comment">/* footer */</span>
-  <span class="hljs-selector-tag">footer</span>
-  <span class="hljs-selector-tag">footer</span> <span class="hljs-selector-tag">a</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#718096</span>
-    
-  <span class="hljs-comment">/* 表格 */</span>
-  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">td</span>
-  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">th</span> 
-    <span class="hljs-selector-tag">padding</span>: 6<span class="hljs-selector-tag">px</span> 13<span class="hljs-selector-tag">px</span>;
-    <span class="hljs-selector-tag">border-width</span>: 1<span class="hljs-selector-tag">px</span>;
-    <span class="hljs-selector-tag">border-style</span>: <span class="hljs-selector-tag">solid</span>;
-    <span class="hljs-selector-tag">border-color</span>: <span class="hljs-selector-tag">rgb</span>(54, 54, 54);
-    <span class="hljs-selector-tag">border-image</span>: <span class="hljs-selector-tag">initial</span>;
-
-
-  <span class="hljs-comment">/* 归档页 */</span>
-  <span class="hljs-selector-class">.list-group-item</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(191, 191, 191)
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#282c34</span>
-    
-  <span class="hljs-selector-class">.list-group-item</span><span class="hljs-selector-pseudo">:hover</span>
-  <span class="hljs-selector-class">.tagcloud</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#46484d</span>
-
-
-  <span class="hljs-comment">/* 友链页 */</span>
-  <span class="hljs-selector-class">.links</span>
-    <span class="hljs-selector-class">.card</span>  
-      <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#1c1c21</span>
-        
-    <span class="hljs-selector-class">.card-body</span><span class="hljs-selector-pseudo">:hover</span>  
-      <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#46484d</span>
-        
-    <span class="hljs-selector-class">.link-title</span>
-    <span class="hljs-selector-class">.link-intro</span>  
-      <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">rgb</span>(191, 191, 191)
-    
-
-  <span class="hljs-comment">/* note标签 可能这配色有点丑 */</span>
-  <span class="hljs-selector-class">.note-info</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#3b5359</span>
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-id">#006d80</span>
-
-  <span class="hljs-selector-class">.note-danger</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#783f42</span>
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-id">#670009</span>
-
-  <span class="hljs-selector-class">.note-success</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#2a3e2e</span>
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-id">#005915</span>
-
-  <span class="hljs-selector-class">.note-warning</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-id">#5b543e</span>
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-id">#846500</span>
-
-  <span class="hljs-selector-class">.note-primary</span>
-    <span class="hljs-selector-tag">background-color</span> <span class="hljs-selector-tag">rgb</span>(69, 89, 110)
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-tag">rgb</span>(28, 67, 110)
-
-  <span class="hljs-comment">/* aPlayer */</span>
-  <span class="hljs-selector-class">.aplayer</span> 
-    <span class="hljs-selector-tag">background</span> <span class="hljs-selector-tag">rgb</span>(28, 28, 33)  !<span class="hljs-selector-tag">important</span>
-
-  <span class="hljs-selector-class">.aplayer-lrc</span><span class="hljs-selector-pseudo">:after</span>
-    <span class="hljs-selector-tag">background</span> <span class="hljs-selector-tag">linear-gradient</span>(<span class="hljs-selector-tag">rgba</span>(28, 28, 33, 0) 0<span class="hljs-selector-tag">px</span>, <span class="hljs-selector-tag">rgba</span>(28, 28, 33, 0<span class="hljs-selector-class">.8</span>)) !<span class="hljs-selector-tag">important</span>
-
-  <span class="hljs-selector-class">.aplayer-lrc</span><span class="hljs-selector-pseudo">:before</span>
-    <span class="hljs-selector-tag">background</span> <span class="hljs-selector-tag">linear-gradient</span>(<span class="hljs-selector-tag">rgb</span>(28, 28, 33) 0<span class="hljs-selector-tag">px</span>, <span class="hljs-selector-tag">rgba</span>(28, 28, 33, 0)) !<span class="hljs-selector-tag">important</span>
-
-  <span class="hljs-selector-class">.aplayer</span><span class="hljs-selector-class">.aplayer-withlist</span> <span class="hljs-selector-class">.aplayer-info</span>
-    <span class="hljs-selector-tag">border-bottom</span> 1<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">solid</span> <span class="hljs-selector-tag">rgb</span>(48, 48, 48) !<span class="hljs-selector-tag">important</span>
-
-  <span class="hljs-comment">/* valine */</span>
-  <span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vwrap</span> 
-    <span class="hljs-selector-tag">margin-bottom</span> 10<span class="hljs-selector-tag">px</span>
-    <span class="hljs-selector-tag">position</span> <span class="hljs-selector-tag">relative</span>
-    <span class="hljs-selector-tag">border-width</span> 1<span class="hljs-selector-tag">px</span>
-    <span class="hljs-selector-tag">border-style</span> <span class="hljs-selector-tag">solid</span>
-    <span class="hljs-selector-tag">border-color</span> <span class="hljs-selector-tag">rgb</span>(41, 41, 41)
-    <span class="hljs-selector-tag">border-image</span> <span class="hljs-selector-tag">initial</span>
-    <span class="hljs-selector-tag">border-radius</span> 4<span class="hljs-selector-tag">px</span>
-    <span class="hljs-selector-tag">overflow</span> <span class="hljs-selector-tag">hidden</span>
-    <span class="hljs-selector-tag">padding</span> 10<span class="hljs-selector-tag">px</span>
-
-  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#3aa7f9</span> 
-
-  <span class="hljs-selector-class">.drop-cap</span> <span class="hljs-selector-class">.index-card</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-class">.post-meta</span> <span class="hljs-selector-tag">p</span>
-    <span class="hljs-selector-tag">color</span> <span class="hljs-selector-id">#a09c9c</span>
-
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 切换按钮 */</span></span><br><span class="line"><span class="selector-id">#dark</span></span><br><span class="line">  <span class="selector-tag">cursor</span> <span class="selector-tag">pointer</span></span><br><span class="line">  <span class="selector-tag">position</span> <span class="selector-tag">fixed</span></span><br><span class="line">  <span class="selector-tag">z-index</span> 100</span><br><span class="line">  <span class="selector-tag">left</span> 50<span class="selector-tag">px</span> </span><br><span class="line">  <span class="selector-tag">width</span> 70<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">height</span> 600<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">top</span> <span class="selector-tag">-350px</span></span><br><span class="line">  <span class="selector-tag">box-shadow</span> 0 0 <span class="comment">/* 去除外边框的阴影 */</span></span><br><span class="line"></span><br><span class="line">  &amp; &gt; <span class="selector-tag">i</span></span><br><span class="line">    <span class="selector-tag">display</span> <span class="selector-tag">none</span> <span class="comment">/* 隐藏一个小箭头图标，否则会在图片上出现箭头 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*暗黑模式*/</span></span><br><span class="line"><span class="selector-class">.dark</span></span><br><span class="line">  <span class="selector-tag">background-color</span> <span class="selector-tag">rgb</span>(31, 31, 31)</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 主体 */</span></span><br><span class="line">  <span class="selector-id">#board</span> </span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#1c1c21</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">blockquote</span></span><br><span class="line">    <span class="selector-tag">border-left</span> <span class="selector-class">.25em</span> <span class="selector-tag">solid</span> <span class="selector-id">#68696a</span></span><br><span class="line">  <span class="selector-tag">img</span>  </span><br><span class="line">    <span class="selector-tag">filter</span> <span class="selector-tag">brightness</span>(50%)</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">p</span></span><br><span class="line">  <span class="selector-class">.index-info</span> <span class="selector-tag">a</span>  </span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#718096</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.index-info</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#3aa7f9</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.markdown-body</span></span><br><span class="line">    <span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">s</span>,<span class="selector-tag">li</span>  </span><br><span class="line">      <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(191, 191, 191) !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(153, 189, 230)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 顶栏 */</span></span><br><span class="line">  <span class="selector-class">.navbar-col-show</span></span><br><span class="line">  <span class="selector-class">.top-nav-collapse</span>  </span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.navbar</span> <span class="selector-tag">a</span>  </span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(191, 191, 191) !<span class="selector-tag">important</span></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.animated-icon</span> <span class="selector-tag">span</span>   <span class="comment">/* 手机端 */</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-tag">rgb</span>(191, 191, 191)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* page-number */</span></span><br><span class="line">  <span class="selector-class">.pagination</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">  <span class="selector-class">.pagination</span> <span class="selector-class">.current</span>  </span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#6b6b6b73</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(191,191,191)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 打字机 */</span></span><br><span class="line">  <span class="selector-id">#subtitle</span></span><br><span class="line">  <span class="selector-class">.dark</span><span class="selector-class">.typed-cursor--blink</span></span><br><span class="line">  <span class="selector-class">.scroll-down-arrow</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#dfdfdf</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* back to top */</span></span><br><span class="line">  <span class="selector-id">#scroll-top-button</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">i</span></span><br><span class="line">      <span class="selector-tag">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Toc */</span></span><br><span class="line">  <span class="selector-class">.tocbot-list</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.tocbot-active-link</span></span><br><span class="line">  <span class="selector-tag">footer</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#3aa7f9</span> !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* footer */</span></span><br><span class="line">  <span class="selector-tag">footer</span></span><br><span class="line">  <span class="selector-tag">footer</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#718096</span></span><br><span class="line">    </span><br><span class="line">  <span class="comment">/* 表格 */</span></span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">table</span> <span class="selector-tag">td</span></span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">table</span> <span class="selector-tag">th</span> </span><br><span class="line">    <span class="selector-tag">padding</span>: 6<span class="selector-tag">px</span> 13<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">border-width</span>: 1<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">border-style</span>: <span class="selector-tag">solid</span>;</span><br><span class="line">    <span class="selector-tag">border-color</span>: <span class="selector-tag">rgb</span>(54, 54, 54);</span><br><span class="line">    <span class="selector-tag">border-image</span>: <span class="selector-tag">initial</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 归档页 */</span></span><br><span class="line">  <span class="selector-class">.list-group-item</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(191, 191, 191)</span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.list-group-item</span><span class="selector-pseudo">:hover</span></span><br><span class="line">  <span class="selector-class">.tagcloud</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#46484d</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 友链页 */</span></span><br><span class="line">  <span class="selector-class">.links</span></span><br><span class="line">    <span class="selector-class">.card</span>  </span><br><span class="line">      <span class="selector-tag">background-color</span> <span class="selector-id">#1c1c21</span></span><br><span class="line">        </span><br><span class="line">    <span class="selector-class">.card-body</span><span class="selector-pseudo">:hover</span>  </span><br><span class="line">      <span class="selector-tag">background-color</span> <span class="selector-id">#46484d</span></span><br><span class="line">        </span><br><span class="line">    <span class="selector-class">.link-title</span></span><br><span class="line">    <span class="selector-class">.link-intro</span>  </span><br><span class="line">      <span class="selector-tag">color</span> <span class="selector-tag">rgb</span>(191, 191, 191)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* note标签 可能这配色有点丑 */</span></span><br><span class="line">  <span class="selector-class">.note-info</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#3b5359</span></span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-id">#006d80</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-danger</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#783f42</span></span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-id">#670009</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-success</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#2a3e2e</span></span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-id">#005915</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-warning</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#5b543e</span></span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-id">#846500</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-primary</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-tag">rgb</span>(69, 89, 110)</span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-tag">rgb</span>(28, 67, 110)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* aPlayer */</span></span><br><span class="line">  <span class="selector-class">.aplayer</span> </span><br><span class="line">    <span class="selector-tag">background</span> <span class="selector-tag">rgb</span>(28, 28, 33)  !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.aplayer-lrc</span><span class="selector-pseudo">:after</span></span><br><span class="line">    <span class="selector-tag">background</span> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgba</span>(28, 28, 33, 0) 0<span class="selector-tag">px</span>, <span class="selector-tag">rgba</span>(28, 28, 33, 0<span class="selector-class">.8</span>)) !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.aplayer-lrc</span><span class="selector-pseudo">:before</span></span><br><span class="line">    <span class="selector-tag">background</span> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgb</span>(28, 28, 33) 0<span class="selector-tag">px</span>, <span class="selector-tag">rgba</span>(28, 28, 33, 0)) !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.aplayer</span><span class="selector-class">.aplayer-withlist</span> <span class="selector-class">.aplayer-info</span></span><br><span class="line">    <span class="selector-tag">border-bottom</span> 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">rgb</span>(48, 48, 48) !<span class="selector-tag">important</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* valine */</span></span><br><span class="line">  <span class="selector-class">.v</span> <span class="selector-class">.vwrap</span> </span><br><span class="line">    <span class="selector-tag">margin-bottom</span> 10<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">position</span> <span class="selector-tag">relative</span></span><br><span class="line">    <span class="selector-tag">border-width</span> 1<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">border-style</span> <span class="selector-tag">solid</span></span><br><span class="line">    <span class="selector-tag">border-color</span> <span class="selector-tag">rgb</span>(41, 41, 41)</span><br><span class="line">    <span class="selector-tag">border-image</span> <span class="selector-tag">initial</span></span><br><span class="line">    <span class="selector-tag">border-radius</span> 4<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">overflow</span> <span class="selector-tag">hidden</span></span><br><span class="line">    <span class="selector-tag">padding</span> 10<span class="selector-tag">px</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">a</span><span class="selector-pseudo">:active</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#3aa7f9</span> </span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.drop-cap</span> <span class="selector-class">.index-card</span> <span class="selector-tag">a</span> <span class="selector-class">.post-meta</span> <span class="selector-tag">p</span></span><br><span class="line">    <span class="selector-tag">color</span> <span class="selector-id">#a09c9c</span></span><br></pre></td></tr></table></figure>
 <p>对于原版CSS中的配色方案进行了微调，同时在CSS中添加了切换按钮的点击效果，原本是点击图片直接切换模式和图片，但感觉略显生硬，因此为它添加了一点小效果，就像是旧式的拉绳式的电灯，当按下时，“绳子变长”，即图片下移一部分，当鼠标松开时再回到原位，并更换图片。</p>
 <p>将原版HTML中的&lt;div&gt;标签改为&lt;a&gt;标签，这样便可以通过<code>:active</code>来响应鼠标按下事件，只需要在鼠标按下时将图片下移即可。即在style文件最后添加</p>
-<pre class="highlight"><code class="stylus"><span class="hljs-selector-id">#dark</span>:active
-  <span class="hljs-attribute">top</span> -<span class="hljs-number">300px</span>
-</code></pre>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#dark</span>:active</span><br><span class="line">  <span class="attribute">top</span> -<span class="number">300px</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>原本想着是不是要用贝塞尔曲线来加个动画来着。。。后来发现根本也不会按那么久。单单点击只要让图片下移就可以有差不多的效果了。🙈</p>
 </blockquote>

@@ -24,7 +24,7 @@
 <title>CSS学习笔记 | 星下小屋</title>
 
 
-    <meta name="keywords" content="笔记, css, HTML">
+    <meta name="keywords" content="css, HTML, 笔记">
 
 
 
@@ -42,9 +42,9 @@
 <meta property="article:published_time" content="2020-03-16T07:53:56.000Z">
 <meta property="article:modified_time" content="2020-03-23T05:01:21.542Z">
 <meta property="article:author" content="Cardy Tse">
-<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="HTML">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
 <meta name="twitter:image" content="http://yoursite.com/img/css/Box.png">
 
@@ -63,6 +63,13 @@
 
 
     
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
     
     
 
@@ -219,197 +226,88 @@
 <h1 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h1>
 <h2 id="元素内嵌样式表"><a class="markdownIt-Anchor" href="#元素内嵌样式表"></a> 元素内嵌样式表</h2>
 <p>作为标签的全局属性存在，可以直接通过<code>style=&quot;&quot;</code>的形式进行添加</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background:#ff0000;color:white"</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"background:#ff0000;color:white"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p style="background:#ff0000;color:white">test</p>
 <h2 id="文档内嵌样式表"><a class="markdownIt-Anchor" href="#文档内嵌样式表"></a> 文档内嵌样式表</h2>
 <p>在<code>&lt;header&gt;&lt;/header&gt;</code>标签内进行添加</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-tag">p</span>{
-            <span class="hljs-attribute">background</span>:<span class="hljs-number">#ff0000</span>;
-            <span class="hljs-attribute">color</span>:white;
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        p&#123;</span><br><span class="line"><span class="css">            <span class="selector-tag">background</span>:<span class="selector-id">#ff0000</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span><span class="selector-pseudo">:white</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="外部样式表"><a class="markdownIt-Anchor" href="#外部样式表"></a> 外部样式表</h2>
 <p>在外部新建css文件，通过html中的<code>link</code>标签进行连接,例如在同一目录下新建一个<code>styles.css</code>进行导入</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"styles.css"</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"styles.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="优先级"><a class="markdownIt-Anchor" href="#优先级"></a> 优先级</h2>
 <p>元素内嵌样式表&gt;文档内嵌样式表&gt;外部样式表</p>
 <h1 id="选择器"><a class="markdownIt-Anchor" href="#选择器"></a> 选择器</h1>
 <h2 id="元素选择器"><a class="markdownIt-Anchor" href="#元素选择器"></a> 元素选择器</h2>
 <p>直接使用元素名进行选择，对所有a元素适用</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20pt</span>;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20pt</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>选择所有元素，只要将p去掉，用<code>*</code>代替即可</p>
-<pre class="highlight"><code class="css">*{
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20pt</span>;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20pt</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="类选择器"><a class="markdownIt-Anchor" href="#类选择器"></a> 类选择器</h2>
 <p>使用html的<code>class</code>属性来进行区分，在css中使用<code>.classname</code>来进行选择</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-class">.test</span>{
-            <span class="hljs-attribute">color</span>:blue;
-            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"test"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.test</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">font-size</span><span class="selector-pseudo">:20pt</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>dddd<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>也可以指定特定的HTML元素使用class。</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.center</span> {<span class="hljs-attribute">text-align</span>:center;}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span> &#123;<span class="attribute">text-align</span>:center;&#125;</span><br></pre></td></tr></table></figure>
 <p>如上所示，所有的<code>class=&quot;center&quot;</code>的 p 元素使用该样式表，其余元素不变。</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-class">.center</span> <span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">text-align</span>:center;}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span> <span class="selector-tag">p</span>&#123;<span class="attribute">text-align</span>:center;&#125;</span><br></pre></td></tr></table></figure>
 <p>如上所示，所有的<code>class=&quot;center&quot;</code>元素内的 p 元素使用该样式表，其余元素不变。</p>
 <h2 id="id选择器"><a class="markdownIt-Anchor" href="#id选择器"></a> ID选择器</h2>
 <p>使用html的<code>id</code>属性进行区分，在css中使用<code>#idname</code>来进行选择</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-id">#test</span>{
-            <span class="hljs-attribute">color</span>:blue;
-            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"test"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-id">#test</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">font-size</span><span class="selector-pseudo">:20pt</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span>dddd<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="根据属性选择"><a class="markdownIt-Anchor" href="#根据属性选择"></a> 根据属性选择</h2>
 <p>根据属性选择元素，使用<code>[属性名]</code></p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-attr">[href]</span>{
-            <span class="hljs-attribute">color</span>:blue;
-            <span class="hljs-attribute">font-size</span>:<span class="hljs-number">20pt</span>;
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"com1"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"com2"</span>&gt;</span>dddd<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-attr">[href]</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">color</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">font-size</span><span class="selector-pseudo">:20pt</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"com1"</span>&gt;</span>dddd<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"com2"</span>&gt;</span>dddd<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>示例中通过使用<code>[href]</code>对<code>href</code>属性进行了选择，方括号中也可以添加具体的值来针对该属性值为某一具体值的元素进行选择，例如选择第一个a标签包含的元素，可使用<code>[href=&quot;com1&quot;]</code>来进行选择。</p>
 <h2 id="后代选择器"><a class="markdownIt-Anchor" href="#后代选择器"></a> 后代选择器</h2>
 <p>使用空格<code></code>符号<br />
 选中某元素中的所有后代元素，如下所示，选中是<code>&lt;div&gt;</code>中的所有<code>&lt;p&gt;</code>标签</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span>{
-    <span class="hljs-attribute">background-color</span>:yellow;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="子元素选择器"><a class="markdownIt-Anchor" href="#子元素选择器"></a> 子元素选择器</h2>
 <p>使用大于号<code>&gt;</code><br />
 选中某元素中的直接后代元素。如下所示，选中是直接在<code>div</code>之下的<code>&lt;p&gt;</code>标签</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-tag">div</span>&gt;<span class="hljs-selector-tag">p</span>{
-    <span class="hljs-attribute">background-color</span>:yellow;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-
-//示例
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行会应用样式表，因为是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>之下的第一代后代元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行不会应用样式表，因为中间隔了一个<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>，不是第一代后代元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">div&gt;p&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">//示例</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这一行会应用样式表，因为是<span class="tag">&lt;<span class="name">div</span>&gt;</span>之下的第一代后代元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这一行不会应用样式表，因为中间隔了一个<span class="tag">&lt;<span class="name">span</span>&gt;</span>，不是第一代后代元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="相邻兄弟选择器"><a class="markdownIt-Anchor" href="#相邻兄弟选择器"></a> 相邻兄弟选择器</h2>
 <p>使用加号<code>+</code><br />
 选择是在某个元素<strong>之后第一次</strong>出现的另一个元素，如下所示，选中的是<code>&lt;div&gt;</code>结束后的第一个<code>&lt;p&gt;</code>标签</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-tag">div</span>+<span class="hljs-selector-tag">p</span>
-{
-  <span class="hljs-attribute">background-color</span>:yellow;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行没被选中，因为<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>还没结束<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行被选中，是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>结束后的第一个<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行没被选中，是<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>结束后的第二个<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">div+p</span><br><span class="line">&#123;</span><br><span class="line"><span class="css">  <span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行没被选中，因为<span class="tag">&lt;<span class="name">div</span>&gt;</span>还没结束<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行被选中，是<span class="tag">&lt;<span class="name">div</span>&gt;</span>结束后的第一个<span class="tag">&lt;<span class="name">p</span>&gt;</span>元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行没被选中，是<span class="tag">&lt;<span class="name">div</span>&gt;</span>结束后的第二个<span class="tag">&lt;<span class="name">p</span>&gt;</span>元素<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="后续兄弟选择器"><a class="markdownIt-Anchor" href="#后续兄弟选择器"></a> 后续兄弟选择器</h2>
 <p>使用波浪符号<code>~</code><br />
 选择的是在某个元素<strong>之后</strong>的所有另一个元素，如下所示，选中的是<code>&lt;div&gt;</code>结束后的所有<code>&lt;p&gt;</code>标签（未包含在其他元素内）</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-tag">div</span>~<span class="hljs-selector-tag">p</span>
-{
-	<span class="hljs-attribute">background-color</span>:yellow;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这行未被选中，因为在<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>之前，不会添加背景颜色。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>未被选中，因为在 div 中。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>被选中，因为不在 div 中，且没有被其他元素包裹<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>这一行未被选中，因为包含在<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">div~p</span><br><span class="line">&#123;</span><br><span class="line"><span class="css">	<span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这行未被选中，因为在<span class="tag">&lt;<span class="name">div</span>&gt;</span>之前，不会添加背景颜色。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>未被选中，因为在 div 中。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>被选中，因为不在 div 中，且没有被其他元素包裹<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这一行未被选中，因为包含在<span class="tag">&lt;<span class="name">span</span>&gt;</span>中<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h1 id="背景background"><a class="markdownIt-Anchor" href="#背景background"></a> 背景（Background）</h1>
 <h2 id="背景颜色"><a class="markdownIt-Anchor" href="#背景颜色"></a> 背景颜色</h2>
 <p>使用<code>background-color</code>属性</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:red"</span>&gt;</span>fgffdfd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"background-color:red"</span>&gt;</span>fgffdfd<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="背景图像"><a class="markdownIt-Anchor" href="#背景图像"></a> 背景图像</h2>
 <p>使用<code>background-image</code>属性</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-image:/img/banner_img1.jpg"</span>&gt;</span>ddddd<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"background-image:/img/banner_img1.jpg"</span>&gt;</span>ddddd<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="背景的水平或垂直平铺"><a class="markdownIt-Anchor" href="#背景的水平或垂直平铺"></a> 背景的水平或垂直平铺</h2>
 <p>使用<code>background-repeat</code>属性</p>
-<pre class="highlight"><code class="html">body{
-    background-repeat:repeat-x; //在x方向平铺
-    background-repeat:repeat-y; //在y方向平铺
-    background-repeat:no-repeat; //不平铺
-}
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">    background-repeat:repeat-x; //在x方向平铺</span><br><span class="line">    background-repeat:repeat-y; //在y方向平铺</span><br><span class="line">    background-repeat:no-repeat; //不平铺</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.runoob.com/try/try.php?filename=trycss_background-image_gradient2" target="_blank" rel="noopener">示例</a></p>
 <h2 id="背景位置"><a class="markdownIt-Anchor" href="#背景位置"></a> 背景位置</h2>
 <p>使用<code>background-position</code>属性<br />
 <strong>方式1</strong></p>
-<pre class="highlight"><code class="html">background-position:center center;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position:center center;</span><br></pre></td></tr></table></figure>
 <p>可选值有<code>left</code>、<code>right</code>、<code>top</code>、<code>center</code>、<code>bottom</code><br />
 一个参数是水平方向，另一个参数是竖直方向，如果只指定一个参数，那另一值默认为center。</p>
 <hr />
 <p><strong>方式2</strong></p>
-<pre class="highlight"><code class="html">background-position: 30% 20%; 
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position: 30% 20%;</span><br></pre></td></tr></table></figure>
 <p>第一个值是水平位置，第二个值是垂直位置，左上角为0%，0%，右下角有100%，100%，如果只设定了一个值，那另一个值默认为50%。默认值0%，0%。</p>
 <hr />
 <p><strong>方式3</strong></p>
-<pre class="highlight"><code class="html">background-position: 50px 100px;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position: 50px 100px;</span><br></pre></td></tr></table></figure>
 <p>使用像素进行定位，第一个值是水平位置，第二个值是垂直位置，左上角是0，0。如果只设定了一个值，那另一个值默认为50%。可以混用%和px。</p>
 <h2 id="背景固定方式"><a class="markdownIt-Anchor" href="#背景固定方式"></a> 背景固定方式</h2>
 <p>使用<code>background-attachment</code>属性</p>
-<pre class="highlight"><code class="html">background-attachment:fixed;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-attachment:fixed;</span><br></pre></td></tr></table></figure>
 <p>可选值<code>scoll</code>、<code>fixed</code>、<code>local</code><br />
 <code>scoll</code>表示背景图片随页面滚动而滚动，是默认值<br />
 <code>fixed</code>表示背景图片固定，不会随页面滚动而滚动<br />
 <code>local</code>表示背景图片会随着元素内容的滚动而滚动</p>
 <h2 id="背景大小"><a class="markdownIt-Anchor" href="#背景大小"></a> 背景大小</h2>
 <p>使用<code>background-size</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-size</span><span class="hljs-selector-pseudo">:80px</span> 60<span class="hljs-selector-tag">px</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-size</span><span class="selector-pseudo">:80px</span> 60<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
 <p>可选值<code>length</code>、<code>percentage</code>、<code>cover</code>、<code>contain</code><br />
 <code>length</code>：通过两个像素大小来表示，第一个值为宽度，第二个值为高度，若只设置一个参数，另一个参数为<code>auto</code>（自动）<br />
 <code>perccentage</code>：通过相对于背景定位区域的比例来表示，第一个值为宽度，第二个值为高度，若只设置一个参数，另一个参数为<code>auto</code>（自动）<br />
@@ -417,8 +315,7 @@
 <code>container</code>：保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小</p>
 <h2 id="背景相对位置"><a class="markdownIt-Anchor" href="#背景相对位置"></a> 背景相对位置</h2>
 <p>使用<code>background-origin</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-origin</span><span class="hljs-selector-pseudo">:content-box</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-origin</span><span class="selector-pseudo">:content-box</span>;</span><br></pre></td></tr></table></figure>
 <p>可选值<code>padding-box</code>、<code>border-box</code>、<code>content-box</code><br />
 <code>padding-box</code>：背景图像关于填充框的相对位置<br />
 <code>border-box</code>: 背景图像关于边界框的相对位置<br />
@@ -426,8 +323,7 @@
 <a href="https://www.runoob.com/try/try.php?filename=trycss3_background-origin" target="_blank" rel="noopener">示例</a></p>
 <h2 id="指定绘图区的背景"><a class="markdownIt-Anchor" href="#指定绘图区的背景"></a> 指定绘图区的背景</h2>
 <p>使用<code>background-clip</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">background-clip</span><span class="hljs-selector-pseudo">:content-box</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background-clip</span><span class="selector-pseudo">:content-box</span>;</span><br></pre></td></tr></table></figure>
 <p>可选值<code>padding-box</code>、<code>border-box</code>、<code>content-box</code><br />
 <code>padding-box</code>：默认值。背景绘制在边框方框内（剪切成边框方框）<br />
 <code>border-box</code>: 背景绘制在衬距方框内（剪切成衬距方框）<br />
@@ -436,40 +332,26 @@
 <h1 id="文本text"><a class="markdownIt-Anchor" href="#文本text"></a> 文本（Text）</h1>
 <h2 id="颜色"><a class="markdownIt-Anchor" href="#颜色"></a> 颜色</h2>
 <p>使用<code>color</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:red;}
-<span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:<span class="hljs-number">#ff0000</span>;}
-<span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">color</span>:<span class="hljs-built_in">rgb</span>(<span class="hljs-number">255</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:red;&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:<span class="number">#ff0000</span>;&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:<span class="built_in">rgb</span>(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>);&#125;</span><br></pre></td></tr></table></figure>
 <p>可以使用颜色名、十六进制颜色、rgb颜色、rgba颜色</p>
 <h2 id="对齐方式"><a class="markdownIt-Anchor" href="#对齐方式"></a> 对齐方式</h2>
 <p>使用<code>text-align</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h3</span> {<span class="hljs-attribute">text-align</span>:right}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h3</span> &#123;<span class="attribute">text-align</span>:right&#125;</span><br></pre></td></tr></table></figure>
 <p>可选值<code>left</code>、<code>right</code>、<code>center</code>、<code>justify</code><br />
 分别对应左端对齐，右端对齐，居中，两端对齐。</p>
 <h2 id="文本修饰下划线等"><a class="markdownIt-Anchor" href="#文本修饰下划线等"></a> 文本修饰（下划线等）</h2>
 <p>使用<code>text-decoration</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {<span class="hljs-attribute">text-decoration</span>:overline}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">text-decoration</span>:overline&#125;</span><br></pre></td></tr></table></figure>
 <p>参数值<code>overline</code>、<code>underline</code>、<code>line-through</code>、<code>none</code><br />
 分别对应上划线、下划线、删除线、无线。<br />
 可以多设几个参数值添加多条线，例如</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {<span class="hljs-attribute">text-decoration</span>:overline underline line-through}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">text-decoration</span>:overline underline line-through&#125;</span><br></pre></td></tr></table></figure>
 <p>后面可以添加颜色值和线型，例如虚线——<code>dotted</code>，波浪线——<code>wavy</code><br />
 示例：</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">h1</span> {
-  <span class="hljs-attribute">text-decoration</span>: underline overline dotted red;
-}
- 
-<span class="hljs-selector-tag">h2</span> {
-  <span class="hljs-attribute">text-decoration</span>: underline overline wavy blue;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline overline dotted red;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline overline wavy blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="大小写"><a class="markdownIt-Anchor" href="#大小写"></a> 大小写</h2>
 <p>使用<code>text-transform</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">text-transform</span>:lowercase;}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">text-transform</span>:lowercase;&#125;</span><br></pre></td></tr></table></figure>
 <p>可选项<code>none</code>、<code>capitalize</code>、<code>uppercase</code>、<code>lowercase</code><br />
 <code>none</code>：默认，无格式<br />
 <code>capitalize</code>：每个单词首字母大写<br />
@@ -477,35 +359,19 @@
 <code>lowercase</code>：所有字母小写</p>
 <h2 id="缩进"><a class="markdownIt-Anchor" href="#缩进"></a> 缩进</h2>
 <p>使用<code>text-indent</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">text-indent</span><span class="hljs-selector-pseudo">:50px</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-indent</span><span class="selector-pseudo">:50px</span>;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>设置固定的缩进值，如50px;</li>
 <li>设定基于父元素宽度的百分比的缩进</li>
 </ol>
 <h2 id="行高"><a class="markdownIt-Anchor" href="#行高"></a> 行高</h2>
 <p>使用<code>line-height</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">p</span>{<span class="hljs-attribute">line-height</span>:<span class="hljs-number">200%</span>}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">line-height</span>:<span class="number">200%</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>可选项<code>number</code>、<code>length</code>、<code>%</code><br />
 <code>number</code>：设置数字，比如2-两倍行距<br />
 <code>length</code>：设置固定行间距，默认正常的行间距为20px;<br />
 <code>%</code>：用百分比来进行设置</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:50%"</span>&gt;</span>
-小行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-小行距
-<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:20px"</span>&gt;</span>
-正常行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-正常行距
-<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:2"</span>&gt;</span>
-大行距<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-大行距
-<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"line-height:50%"</span>&gt;</span></span><br><span class="line">小行距<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">小行距</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"line-height:20px"</span>&gt;</span></span><br><span class="line">正常行距<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">正常行距</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"line-height:2"</span>&gt;</span></span><br><span class="line">大行距<span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">大行距</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p style="line-height:50%">
 小行距<br />
 小行距
@@ -533,8 +399,7 @@
 <h1 id="边框border"><a class="markdownIt-Anchor" href="#边框border"></a> 边框（Border）</h1>
 <h2 id="边框样式"><a class="markdownIt-Anchor" href="#边框样式"></a> 边框样式</h2>
 <p>使用<code>border-style</code>属性</p>
-<pre class="highlight"><code class="html">border-style:solid;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-style:solid;</span><br></pre></td></tr></table></figure>
 <p>可选项：（随颜色不同，效果不同）</p>
 <style>
 p.none {border-style:none;}
@@ -575,21 +440,7 @@ p.hidden {border-style:hidden;}
 &emsp;&emsp;上下左右属性相同
 <br /><br />
 示例
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test</span>{
-    <span class="hljs-attribute">border-top</span>:thick double <span class="hljs-number">#ff0000</span>;
-    <span class="hljs-attribute">border-left</span>:<span class="hljs-number">2px</span> solid green;
-    <span class="hljs-attribute">border-right</span>:<span class="hljs-number">4px</span> dotted <span class="hljs-number">#00ffff</span>;
-    <span class="hljs-attribute">border-bottom</span>:hidden;
-}
-<span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test2</span>{
-    <span class="hljs-attribute">border-left</span>:<span class="hljs-number">4px</span> solid <span class="hljs-number">#33b6ee</span>;
-    <span class="hljs-attribute">background-color</span>:<span class="hljs-built_in">rgba</span>(<span class="hljs-number">207</span>,<span class="hljs-number">235</span>,<span class="hljs-number">246</span>);
-    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">3</span>;
-    <span class="hljs-attribute">Padding-left</span>:<span class="hljs-number">10px</span>;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-class">.test</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border-top</span><span class="selector-pseudo">:thick</span> <span class="selector-tag">double</span> <span class="selector-id">#ff0000</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border-left</span><span class="selector-pseudo">:2px</span> <span class="selector-tag">solid</span> <span class="selector-tag">green</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border-right</span><span class="selector-pseudo">:4px</span> <span class="selector-tag">dotted</span> <span class="selector-id">#00ffff</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border-bottom</span><span class="selector-pseudo">:hidden</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-class">.test2</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">border-left</span><span class="selector-pseudo">:4px</span> <span class="selector-tag">solid</span> <span class="selector-id">#33b6ee</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:rgba(207</span>,235,246);</span></span><br><span class="line"><span class="css">    <span class="selector-tag">line-height</span><span class="selector-pseudo">:3</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">Padding-left</span><span class="selector-pseudo">:10px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <style>
 p.test{
     border-top:thick double #ff0000;
@@ -608,15 +459,13 @@ p.test2{
 <p class="test2">示例2<p>
 <h2 id="轮廓-outline"><a class="markdownIt-Anchor" href="#轮廓-outline"></a> 轮廓 （outline）</h2>
 <p>轮廓（outline）是在<code>border</code>外的一条线，属性值与Border一致，outline不占用额外空间。</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"border:2px dashed black;outline:2px solid red;"</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"border:2px dashed black;outline:2px solid red;"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p style="border:2px dashed black;outline:2px solid red;">test</p>
 <h2 id="圆角border-radius"><a class="markdownIt-Anchor" href="#圆角border-radius"></a> 圆角（border-radius）</h2>
 <p>使用<code>border-radius</code>属性，单位为像素px</p>
 <h2 id="盒子阴影box-shadow"><a class="markdownIt-Anchor" href="#盒子阴影box-shadow"></a> 盒子阴影（box-shadow）</h2>
 <p>使用<code>box-shadow</code>属性</p>
-<pre class="highlight"><code class="html">box-shadow: 10px 10px 5px #888888;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 10px 10px 5px #888888;</span><br></pre></td></tr></table></figure>
 <p>第一个参数：水平阴影的位置（为正即右移xxpx，为负左移）<br />
 第二个参数：垂直阴影的位置（为正即下移，为负上移）<br />
 （第三个参数，可选）：模糊程度<br />
@@ -685,8 +534,7 @@ a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , im
 <p>例如通常将<code>&lt;ul&gt;</code>加上<code>display:inline</code>或<code>display:inline-block</code>属性，来使得列表水平显示，用作导航栏之类。</p>
 <h1 id="定位position"><a class="markdownIt-Anchor" href="#定位position"></a> 定位（position）</h1>
 <p>使用<code>position</code>属性，和<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>属性配合使用。</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">position</span><span class="hljs-selector-pseudo">:static</span>
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:static</span></span><br></pre></td></tr></table></figure>
 <p>可选项：<code>static</code>、<code>fixed</code>、<code>relative</code>、<code>absolute</code>、<code>sticky</code></p>
 <p><code>static</code>：默认值，没有定位，不受<code>top</code>、<code>left</code>等属性的影响。<br />
 <code>fixed</code>：相对于窗口的固定位置，即使窗口滚动它也不动。通过四个属性值设定具体位置。<br />
@@ -695,9 +543,7 @@ a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , im
 <code>sticky</code>：sticky定位的元素在没有移出窗口时相当于relative，在移出窗口后就位于窗口最上方，就是顶部菜单栏的形式。</p>
 <p>此外，可以通过<code>z-index</code>属性来指定元素的堆叠顺序。相当于手动规定不同的图层顺序。<code>z-index</code>的值越大，图层就在越上层。如果没有定义<code>z-index</code>属性的话，最后定位在HTML代码中的元素将在最前面。</p>
 <h1 id="裁剪clip"><a class="markdownIt-Anchor" href="#裁剪clip"></a> 裁剪（clip）</h1>
-<pre class="highlight"><code class="css">//固定格式
-<span class="hljs-selector-tag">clip</span><span class="hljs-selector-pseudo">:rect(top</span>, <span class="hljs-selector-tag">right</span>, <span class="hljs-selector-tag">bottom</span>, <span class="hljs-selector-tag">left</span>)
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//固定格式</span><br><span class="line"><span class="selector-tag">clip</span><span class="selector-pseudo">:rect(top</span>, <span class="selector-tag">right</span>, <span class="selector-tag">bottom</span>, <span class="selector-tag">left</span>)</span><br></pre></td></tr></table></figure>
 <p><code>top</code>：表示从上方截去多少像素<br />
 <code>right</code>：表示左侧剩余多少像素<br />
 <code>bottom</code>：表示上方剩余多少像素<br />
@@ -705,32 +551,21 @@ a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , im
 🐷就很诡异</p>
 <h1 id="溢出处理overflow"><a class="markdownIt-Anchor" href="#溢出处理overflow"></a> 溢出处理（overflow）</h1>
 <p>使用<code>overflow</code>属性</p>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">overflow</span><span class="hljs-selector-pseudo">:hidden</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">overflow</span><span class="selector-pseudo">:hidden</span>;</span><br></pre></td></tr></table></figure>
 <p>可选项：<code>visible</code>、<code>hidden</code>、<code>scroll</code>、<code>auto</code><br />
 <code>visible</code>：默认值，溢出了就在下方继续显示<br />
 <code>hidden</code>：溢出后将溢出内容隐藏<br />
 <code>scroll</code>：提供一个滚动条<br />
 <code>auto</code>：在溢出后再提供一个滚动条以供查看内容</p>
 <h1 id="浮动floatclear"><a class="markdownIt-Anchor" href="#浮动floatclear"></a> 浮动（float&amp;clear）</h1>
-<pre class="highlight"><code class="css"><span class="hljs-selector-tag">float</span><span class="hljs-selector-pseudo">:left</span>;
-<span class="hljs-selector-tag">clear</span><span class="hljs-selector-pseudo">:both</span>;
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">float</span><span class="selector-pseudo">:left</span>;</span><br><span class="line"><span class="selector-tag">clear</span><span class="selector-pseudo">:both</span>;</span><br></pre></td></tr></table></figure>
 <p>可选项<code>left</code>、<code>right</code>分别对应靠左和靠右<br />
 使用<code>clear</code>可规定元素周围不出现浮动元素，可选项<code>left</code>、<code>right</code>、<code>both</code><br />
 图片的浮动效果类似于word中“文字环绕型”</p>
 <h1 id="布局对齐"><a class="markdownIt-Anchor" href="#布局对齐"></a> 布局\对齐</h1>
 <h2 id="元素居中对齐"><a class="markdownIt-Anchor" href="#元素居中对齐"></a> 元素居中对齐</h2>
 <p>使用<code>margin:auto</code>来进行元素居中对齐</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"
-    margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
-"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>元素居中对齐<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">    margin: auto;</span></span></span><br><span class="line"><span class="tag"><span class="string">    width: 60%;</span></span></span><br><span class="line"><span class="tag"><span class="string">    border: 3px solid #73AD21;</span></span></span><br><span class="line"><span class="tag"><span class="string">    padding: 10px;</span></span></span><br><span class="line"><span class="tag"><span class="string">"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>元素居中对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <div style="
     margin: auto;
     width: 60%;
@@ -755,45 +590,23 @@ a , abbr , acronym , b , bdo , big , br , cite , code , dfn , em , font , i , im
 <h2 id="垂直居中对齐"><a class="markdownIt-Anchor" href="#垂直居中对齐"></a> 垂直居中对齐</h2>
 <h3 id="使用padding"><a class="markdownIt-Anchor" href="#使用padding"></a> 使用padding</h3>
 <p>即在头部顶部使用<code>padding</code>，即可实现垂直居中</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"padding: 30px 0;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"padding: 30px 0;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p style="padding: 30px 0;border: 3px solid green;">垂直居中</p>
 <h3 id="使用line-height"><a class="markdownIt-Anchor" href="#使用line-height"></a> 使用line-height</h3>
 <p>设置<code>line-hright</code>的值与<code>height</code>的值相等即可实现垂直居中</p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"line-height:50px;height:50px;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"line-height:50px;height:50px;border: 3px solid green;"</span>&gt;</span>垂直居中<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p style="line-height:50px;height:50px;border: 3px solid green;">垂直居中</p>
 <h1 id="伪类"><a class="markdownIt-Anchor" href="#伪类"></a> 伪类</h1>
 <p>在选择器后添加冒号<code>:</code>来选择伪类，常用举例：</p>
-<pre class="highlight"><code class="html">a:link{color:red;}  //未访问的链接
-a:visited{color:blue;}  //已访问的链接
-a:hover{color:aqua;}  //当鼠标悬停在上方时的样式
-a:active{color:yellow;}   //已选中的链接，即按下还未松开的状态
-
-a:before{
-    content:"Read this -";
-    background-color:yellow;
-    color:red;
-    font-weight:bold;   
-}  //在所有"a"元素前插入的内容和样式
-
-a:after{
-    content:"Read this -";
-    background-color:yellow;
-    color:red;
-    font-weight:bold;   
-}  //在所有"a"元素后插入的内容和样式
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;color:red;&#125;  //未访问的链接</span><br><span class="line">a:visited&#123;color:blue;&#125;  //已访问的链接</span><br><span class="line">a:hover&#123;color:aqua;&#125;  //当鼠标悬停在上方时的样式</span><br><span class="line">a:active&#123;color:yellow;&#125;   //已选中的链接，即按下还未松开的状态</span><br><span class="line"></span><br><span class="line">a:before&#123;</span><br><span class="line">    content:"Read this -";</span><br><span class="line">    background-color:yellow;</span><br><span class="line">    color:red;</span><br><span class="line">    font-weight:bold;   </span><br><span class="line">&#125;  //在所有"a"元素前插入的内容和样式</span><br><span class="line"></span><br><span class="line">a:after&#123;</span><br><span class="line">    content:"Read this -";</span><br><span class="line">    background-color:yellow;</span><br><span class="line">    color:red;</span><br><span class="line">    font-weight:bold;   </span><br><span class="line">&#125;  //在所有"a"元素后插入的内容和样式</span><br></pre></td></tr></table></figure>
 <h1 id="多列"><a class="markdownIt-Anchor" href="#多列"></a> 👀多列</h1>
 <h2 id="创建多列column-count"><a class="markdownIt-Anchor" href="#创建多列column-count"></a> 创建多列（column-count）</h2>
 <p>使用<code>column-count</code>属性，通过指定后面的数字来规定将元素分为几列</p>
-<pre class="highlight"><code class="html">column-count:3;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column-count:3;</span><br></pre></td></tr></table></figure>
 <p style="column-count:3">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
 <h2 id="列与列的间隙column-gap"><a class="markdownIt-Anchor" href="#列与列的间隙column-gap"></a> 列与列的间隙（column-gap）</h2>
 <p>使用<code>column-gap</code>属性来设定列与列之间的间隙，下示代码将间隙设为50px;</p>
-<pre class="highlight"><code class="html">column-gap:50px;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column-gap:50px;</span><br></pre></td></tr></table></figure>
 <p style="column-count:3;column-gap:50px;">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
 <h2 id="列边框"><a class="markdownIt-Anchor" href="#列边框"></a> 列边框</h2>
 <p><strong>边框样式</strong></p>
@@ -805,30 +618,19 @@ a:after{
 <p><strong>缩写</strong><br />
 可使用<code>column-rule</code>属性来缩写</p>
 <p><strong>示例</strong></p>
-<pre class="highlight"><code class="html">column-rule-style:solid;
-column-rule-width:1px;
-column-rule-color:#cccccc;
-
--------或者---------
-column-rule:1px solid #cccccc;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">column-rule-style:solid;</span><br><span class="line">column-rule-width:1px;</span><br><span class="line">column-rule-color:#cccccc;</span><br><span class="line"></span><br><span class="line">-------或者---------</span><br><span class="line">column-rule:1px solid #cccccc;</span><br></pre></td></tr></table></figure>
 <p style="column-count:3;column-rule:1px solid #cccccc;">上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----上述代码说明将元素分成3列-----分割一下-----</p>
 <h2 id="指定元素跨越多少列column-span"><a class="markdownIt-Anchor" href="#指定元素跨越多少列column-span"></a> 指定元素跨越多少列（column-span）</h2>
 <p>使用<code>column-span</code>属性</p>
-<pre class="highlight"><code class="html">column-span:all;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column-span:all;</span><br></pre></td></tr></table></figure>
 <p>可选项<code>1</code>、<code>all</code>，<a href="https://www.runoob.com/try/try.php?filename=trycss3_column-span" target="_blank" rel="noopener">示例</a></p>
 <h2 id="列宽度column-width"><a class="markdownIt-Anchor" href="#列宽度column-width"></a> 列宽度（column-width）</h2>
 <p>使用<code>column-width</code>属性可以设定每列的宽度，会根据宽度自动分列，不用规定列数。</p>
-<pre class="highlight"><code class="html">column-width:100px;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column-width:100px;</span><br></pre></td></tr></table></figure>
 <p style="column-width:100px">上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。上述代码将列宽度设定为100px，在电脑上一般为5列。。</p>
 <h1 id="多媒体查询media"><a class="markdownIt-Anchor" href="#多媒体查询media"></a> 多媒体查询（@media）</h1>
 <p>格式：</p>
-<pre class="highlight"><code class="css"><span class="hljs-keyword">@media</span> <span class="hljs-keyword">not</span>|<span class="hljs-keyword">only</span> mediatype <span class="hljs-keyword">and</span> (expressions) {
-    <span class="hljs-selector-tag">CSS</span> 代码...;
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">not</span>|<span class="keyword">only</span> mediatype <span class="keyword">and</span> (expressions) &#123;</span><br><span class="line">    <span class="selector-tag">CSS</span> 代码...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>mediatype</code>表示媒体类型，通过<code>not|only|all</code>来进行筛选</p>
 <p><code>mediatype</code>的可选项：<br />
 <code>print</code>：打印机<br />
@@ -841,18 +643,7 @@ column-rule:1px solid #cccccc;
 <p>expressions：<br />
 表达式，当所选设备满足表达式时应用css样式</p>
 <p><a href="https://www.runoob.com/try/try.php?filename=trycss3_media_queries1" target="_blank" rel="noopener">示例：</a></p>
-<pre class="highlight"><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test-media</span>{
-        <span class="hljs-attribute">background-color</span>:pink;
-    }
-
-    <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span><span class="hljs-number">480px</span>){
-        <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.test-media</span>{
-        <span class="hljs-attribute">background-color</span>:lightgreen;
-        }
-    }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">p</span><span class="selector-class">.test-media</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:pink</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">480px</span>)&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">p</span><span class="selector-class">.test-media</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:lightgreen</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
     </div>
      
@@ -866,11 +657,11 @@ column-rule:1px solid #cccccc;
         <a href="/categories/HTML/" class="post-cats__link button">HTML</a>
     
     
-        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
-    
         <a href="/tags/css/" class="post-tags__link button"># css</a>
     
         <a href="/tags/HTML/" class="post-tags__link button"># HTML</a>
+    
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
     
 </div> 
 </article>

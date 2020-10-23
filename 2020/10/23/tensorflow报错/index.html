@@ -60,6 +60,13 @@
 
     
     
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
     
 
      
@@ -214,9 +221,7 @@
 <p><strong>解决方法</strong><br />
 方法一：<br />
 在项目中添加</p>
-<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> os
-os.environ[<span class="hljs-string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="hljs-string">'/gpu:0'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="string">'/gpu:0'</span></span><br></pre></td></tr></table></figure>
 <p>可以正常运行，但此时没有使用GPU，而是使用的CPU进行运算</p>
 <p>方法二：<br />
 重新安装cuDNN，在官网上下载对应的<a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cuDNN</a>版本，解压，将文件夹内的所有文件复制到CUDA安装目录<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</code>下<br />

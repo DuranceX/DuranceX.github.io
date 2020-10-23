@@ -21,20 +21,27 @@
     <!-- meta -->
 
 
-<title>Tag: css | 星下小屋</title>
+<title>tensorflow报错 | 星下小屋</title>
 
+
+    <meta name="keywords" content="problems">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="星下小屋">
-<meta property="og:url" content="http://yoursite.com/tags/css/index.html">
+    <meta name="description" content="tensorflow报错UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow报错">
+<meta property="og:url" content="http://yoursite.com/2020/10/23/tensorflow%E6%8A%A5%E9%94%99/index.html">
 <meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="tensorflow报错UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-23T04:26:23.000Z">
+<meta property="article:modified_time" content="2020-10-23T04:33:03.968Z">
 <meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="problems">
 <meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
 
 
@@ -153,72 +160,114 @@
 </header>
 
 
-    <div class="cover">
-        <div class="cover__logo">
-            
-                <h1>SkyHouse</h1>
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        tensorflow报错
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/10/" class="post-meta__date button">
+    2020-10-23
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/problems/" class="button">problems</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
             
         </div>
-        
-        
-            <div class="cover__intro">
-                <p>Hi, nice to meet you!</p>
- 
-            </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
         
     </div>
 
-            
 
-    
-        <main class="main">
-            
-    <div class="post-list">
-        
-            
-                <div class='post-entry content-card'>
-                    <div class="post-entry__header">
-    
-        <div class="post-thumbnail" style="background-image: url('/img/css/header.png');"></div>
-    
-</div>
-<div class="post-entry__content">
-    <h2 class="post-entry__title">
-        CSS学习笔记
-    </h2>
-    
-        <p>css的一些学习笔记</p>
-    
-</div>
-<div class="post-entry__meta">
-    <a href="/archives/2020/03/" class="post-meta__date button">
-    2020-03-16
-</a>
-    
-    <span class="separate-dot"></span><a href="/categories/HTML/" class="button">HTML</a>
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>tensorflow报错<code>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.</code></p>
+<a id="more"></a>
+<br />
+<p><strong>问题</strong><br />
+在运行tensorflow时出现报错信息<code>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.</code></p>
+<p><strong>解决方法</strong><br />
+方法一：<br />
+在项目中添加</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> os
+os.environ[<span class="hljs-string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="hljs-string">'/gpu:0'</span>
+</code></pre>
+<p>可以正常运行，但此时没有使用GPU，而是使用的CPU进行运算</p>
+<p>方法二：<br />
+重新安装cuDNN，在官网上下载对应的<a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cuDNN</a>版本，解压，将文件夹内的所有文件复制到CUDA安装目录<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</code>下<br />
+再次运行可正常使用GPU进行运算</p>
 
- 
-</div>
-<div class="post-entry__tags">
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-10-23
+    </p>
+</div> 
+    <div class="post-meta__cats">
     
-        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
+        <a href="/categories/problems/" class="post-cats__link button">problems</a>
     
-        <a href="/tags/css/" class="post-tags__link button"># css</a>
     
-        <a href="/tags/HTML/" class="post-tags__link button"># HTML</a>
+        <a href="/tags/problems/" class="post-tags__link button"># problems</a>
     
 </div> 
-<a href="/2020/03/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-entry__link">Link</a>
-                </div>
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-        
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/10/23/anaconda%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E6%8A%A5%E9%94%99/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            anaconda导入模块报错
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
     </div>
-    
 
 
-        </main>
-    
 
+
+
+</main>
 
             <footer class="footer">
     

@@ -372,34 +372,11 @@ CREATE TABLE &lt;表名&gt;<br />
 <li><strong>unique（A）：</strong> 表示每个元组在属性列A上是唯一的，即没有重复值</li>
 </ul>
 <p>【例3】建立“学生”表STUDENT，学号是主码，姓名取值唯一</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student
-(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>) PRIMARY <span class="hljs-keyword">KEY</span>,     <span class="hljs-comment">/*列级完整性约束条件，Sno是主码*/</span>
-Sname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span>,        <span class="hljs-comment">/*列级完整性约束条件，Sname是唯一值*/</span>
-Ssex <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">2</span>),
-Sage <span class="hljs-built_in">SMALLINT</span>,
-Sdept <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>),
-);</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student<br>(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>) PRIMARY <span class="hljs-keyword">KEY</span>,     <span class="hljs-comment">/*列级完整性约束条件，Sno是主码*/</span><br>Sname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span>,        <span class="hljs-comment">/*列级完整性约束条件，Sname是唯一值*/</span><br>Ssex <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">2</span>),<br>Sage <span class="hljs-built_in">SMALLINT</span>,<br>Sdept <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>),<br>);<br></code></pre></td></tr></table></figure>
 <p>【例4】建立一个“课程”表Course</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course
-(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>) PRIMARY <span class="hljs-keyword">KEY</span>,
-Cname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">40</span>),
-Cpno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),     <span class="hljs-comment">/*先修课*/</span>
-Ccredit <span class="hljs-built_in">SMALLINT</span>,
-<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cpno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)     
-<span class="hljs-comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span>
-);</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course<br>(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>) PRIMARY <span class="hljs-keyword">KEY</span>,<br>Cname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">40</span>),<br>Cpno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),     <span class="hljs-comment">/*先修课*/</span><br>Ccredit <span class="hljs-built_in">SMALLINT</span>,<br><span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cpno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)     <br><span class="hljs-comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span><br>);<br></code></pre></td></tr></table></figure>
 <p>【例5】建立一个学生选课表SC</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC
-(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>),
-Cno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),
-Grade <span class="hljs-built_in">SMALLINT</span>,
-PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
-<span class="hljs-comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span>
-<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Sno) <span class="hljs-keyword">REFERENCES</span> Student(Sno),
-<span class="hljs-comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span>
-<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)
-<span class="hljs-comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span>
-);</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC<br>(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>),<br>Cno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),<br>Grade <span class="hljs-built_in">SMALLINT</span>,<br>PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),<br><span class="hljs-comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span><br><span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Sno) <span class="hljs-keyword">REFERENCES</span> Student(Sno),<br><span class="hljs-comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span><br><span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)<br><span class="hljs-comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span><br>);<br></code></pre></td></tr></table></figure>
 <h3 id="修改基本表"><a class="markdownIt-Anchor" href="#修改基本表"></a> 修改基本表</h3>
 <p>ALTER TABLE &lt;表名&gt;<br />
 [ ADD &lt;新列名&gt; &lt;数据类型&gt; [ 完整性约束 ]]<br />
@@ -527,6 +504,24 @@ DROP INDEX &lt;索引名&gt;;<br />
 
 
 
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
 
 
 </main>
@@ -546,6 +541,25 @@ DROP INDEX &lt;索引名&gt;;<br />
             Copyright © 2020 <a href="/">星下小屋</a>
         </p>
     
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
     
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
@@ -610,6 +624,65 @@ DROP INDEX &lt;索引名&gt;;<br />
 
  
 
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'Nicycoco',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/03/29/数据库系统原理：第三章关系数据库语言（一）/',
+                    url: 'http://yoursite.com/2020/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80%EF%BC%88%E4%B8%80%EF%BC%89/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 

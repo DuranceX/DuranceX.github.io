@@ -219,23 +219,22 @@
         <p>在Ubuntu 20.04下安装向日葵远程软件。</p>
 <a id="more"></a>
 <p>先在向日葵官网下载对应的.deb文件，然后在终端中执行</p>
-<pre><code class="hljs shell">sudo dpkg -i SunloginClient-10.0.2.24779_amd64.deb</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo dpkg -i SunloginClient-10.0.2.24779_amd64.deb<br></code></pre></td></tr></table></figure>
 <p>此时可能会报错说缺少 <code>libwebkitgtk-3.0-0</code>如下图所示：</p>
 <p><img src="/img/problems/libwebkitgtk-3.0-0.webp" alt="libwebkitgtk-3.0-0" /></p>
 <p>解决方法：</p>
 <ol>
 <li>打开系统的源列表文件</li>
 </ol>
-<pre><code class="hljs shell">sudo gedit /etc/apt/sources.list</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo gedit /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
 <ol start="2">
 <li>添加一项</li>
 </ol>
-<pre><code class="hljs shell">deb http://cz.archive.ubuntu.com/ubuntu bionic main universe</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">deb http://cz.archive.ubuntu.com/ubuntu bionic main universe<br></code></pre></td></tr></table></figure>
 <ol start="3">
 <li>然后再执行下列操作</li>
 </ol>
-<pre><code class="hljs shell">sudo apt update
-sudo apt install -f</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt update<br>sudo apt install -f<br></code></pre></td></tr></table></figure>
 <p>然后找到向日葵打开即可运行。</p>
 <p><img src="/img/problems/SunloginClient.webp" alt="image-20201019164808406" /></p>
 
@@ -296,6 +295,24 @@ sudo apt install -f</code></pre>
 
 
 
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
 
 
 </main>
@@ -315,6 +332,25 @@ sudo apt install -f</code></pre>
             Copyright © 2020 <a href="/">星下小屋</a>
         </p>
     
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
     
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
@@ -379,6 +415,65 @@ sudo apt install -f</code></pre>
 
  
 
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'Nicycoco',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/10/19/Ubuntu下安装向日葵远程软件/',
+                    url: 'http://yoursite.com/2020/10/19/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85%E5%90%91%E6%97%A5%E8%91%B5%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 

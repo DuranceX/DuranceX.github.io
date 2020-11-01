@@ -242,16 +242,13 @@
 </ul>
 <h3 id="select"><a class="markdownIt-Anchor" href="#select"></a> SELECT</h3>
 <p>【例1】查询全体学生的学号与姓名</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname
-<span class="hljs-keyword">FROM</span> Student;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname<br><span class="hljs-keyword">FROM</span> Student;<br></code></pre></td></tr></table></figure>
 <p>【例2】查询全体学生的详细记录（全部信息）<br />
 全部信息用<code>*</code>代替</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *
-<span class="hljs-keyword">FROM</span> Student;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *<br><span class="hljs-keyword">FROM</span> Student;<br></code></pre></td></tr></table></figure>
 <p>SELECT子句的&lt;目标列表达式&gt;还可以是表达式<br />
 【例3】查询全体学生的姓名及其出生年份</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, <span class="hljs-number">2020</span>-Sage
-<span class="hljs-keyword">FROM</span> Student;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, <span class="hljs-number">2020</span>-Sage<br><span class="hljs-keyword">FROM</span> Student;<br></code></pre></td></tr></table></figure>
 <h3 id="where"><a class="markdownIt-Anchor" href="#where"></a> WHERE</h3>
 <p><strong>常用的查询条件</strong></p>
 <table>
@@ -290,39 +287,17 @@
 </table>
 <p><strong>比较</strong></p>
 <p>【例4】查询计算机科学系全体学生的名单</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept=<span class="hljs-string">"CS"</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept=<span class="hljs-string">"CS"</span><br></code></pre></td></tr></table></figure>
 <p>【例5】查询所有年龄在20岁以下的学生姓名及其年龄</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sage
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sage&lt;<span class="hljs-number">20</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sage<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sage&lt;<span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
 <p>【例6】查询考试成绩有不及格的学生的学号</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> Sno
-<span class="hljs-keyword">FROM</span> SC
-<span class="hljs-keyword">WHERE</span> Grage&lt;<span class="hljs-number">60</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> Sno<br><span class="hljs-keyword">FROM</span> SC<br><span class="hljs-keyword">WHERE</span> Grage&lt;<span class="hljs-number">60</span>;<br></code></pre></td></tr></table></figure>
 <p><strong>确定范围</strong><br />
 【例7】查询年龄在20-23岁（包括20岁和23岁）之间的学生的姓名、系别和年龄</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sdept, Sage
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sage <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">20</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">23</span>;
-
-//等效于
-
-<span class="hljs-keyword">SELECT</span> Sname, Sdept, Sage
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sage &gt;=<span class="hljs-number">20</span> <span class="hljs-keyword">AND</span> Sage&lt;=<span class="hljs-number">23</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sdept, Sage<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sage <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">20</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">23</span>;<br><br>//等效于<br><br><span class="hljs-keyword">SELECT</span> Sname, Sdept, Sage<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sage &gt;=<span class="hljs-number">20</span> <span class="hljs-keyword">AND</span> Sage&lt;=<span class="hljs-number">23</span>;<br></code></pre></td></tr></table></figure>
 <p><strong>确定集合</strong><br />
 【例8】查询计算机科学系CS、数学系MA和信息系IS学生的姓名和性别</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Ssex
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept <span class="hljs-keyword">IN</span> (<span class="hljs-string">'CS'</span>,<span class="hljs-string">'MA'</span>,<span class="hljs-string">'IS'</span>);
-
-//等效于
-
-<span class="hljs-keyword">SELECT</span> Sname, Ssex
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span> <span class="hljs-keyword">OR</span> Sdept = <span class="hljs-string">'MA'</span> <span class="hljs-keyword">OR</span> Sdept = <span class="hljs-string">'IS'</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Ssex<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept <span class="hljs-keyword">IN</span> (<span class="hljs-string">'CS'</span>,<span class="hljs-string">'MA'</span>,<span class="hljs-string">'IS'</span>);<br><br>//等效于<br><br><span class="hljs-keyword">SELECT</span> Sname, Ssex<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span> <span class="hljs-keyword">OR</span> Sdept = <span class="hljs-string">'MA'</span> <span class="hljs-keyword">OR</span> Sdept = <span class="hljs-string">'IS'</span>;<br></code></pre></td></tr></table></figure>
 <p><strong>字符匹配</strong><br />
 格式：<br />
 [ NOT ] LIKE ‘&lt;匹配字符串&gt;’ [ ESCAPE ‘&lt;转义字符&gt;’]</p>
@@ -340,18 +315,12 @@
 </li>
 </ul>
 <p>【例9】查询所有姓刘学生的姓名、学号和性别</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sno, Ssex
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sname <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'刘%'</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sno, Ssex<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sname <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'刘%'</span>;<br></code></pre></td></tr></table></figure>
 <p>【例10】查询以“DB_”开头，且倒数第3个字符为i的课程的详细信息</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *
-<span class="hljs-keyword">FROM</span> Course
-<span class="hljs-keyword">WHERE</span> Cname <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'DB\_%i_ _'</span> ESCAPE <span class="hljs-string">'\'</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *<br><span class="hljs-keyword">FROM</span> Course<br><span class="hljs-keyword">WHERE</span> Cname <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'DB\_%i_ _'</span> ESCAPE <span class="hljs-string">'\'</span>;<br></code></pre></td></tr></table></figure>
 <p><strong>涉及空值的查询</strong><br />
 【例11】查询缺少成绩的学生的学号和相应的课程号</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Cno
-<span class="hljs-keyword">FROM</span> SC
-<span class="hljs-keyword">WHERE</span> Grade <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Cno<br><span class="hljs-keyword">FROM</span> SC<br><span class="hljs-keyword">WHERE</span> Grade <span class="hljs-keyword">IS</span> <span class="hljs-literal">NULL</span>;<br></code></pre></td></tr></table></figure>
 <p class="note note-primary">其中 “IS” 不能用 “=” 代替</p>
 <p><strong>多重条件查询</strong></p>
 <ul>
@@ -361,9 +330,7 @@
 <h3 id="order-by子句"><a class="markdownIt-Anchor" href="#order-by子句"></a> ORDER BY子句</h3>
 <p>可以按一个或多个属性列排序</p>
 <p>【例12】查询全体学生情况，查询结果按所在系的系号升序排列，同一系中的学生按年龄降序排列</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Sdept, Sage <span class="hljs-keyword">DESC</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> *<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Sdept, Sage <span class="hljs-keyword">DESC</span>;<br></code></pre></td></tr></table></figure>
 <h3 id="juji">聚集函数</h3>
 <ul>
 <li>统计元组个数<br />
@@ -380,19 +347,13 @@ MAX( [ DISTINCT | ALL ] &lt;列名&gt; )<br />
 MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 </ul>
 <p>【例13】查询学生总人数</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*)
-<span class="hljs-keyword">FROM</span> Student;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*)<br><span class="hljs-keyword">FROM</span> Student;<br></code></pre></td></tr></table></figure>
 <p>【例14】查询选修了课程的学生人数</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> Sno)
-<span class="hljs-keyword">FROM</span> SC;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> Sno)<br><span class="hljs-keyword">FROM</span> SC;<br></code></pre></td></tr></table></figure>
 <p>【例15】计算1号课程的学生平均成绩</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(Grade)
-<span class="hljs-keyword">FROM</span> SC
-<span class="hljs-keyword">WHERE</span> Cno=<span class="hljs-string">"1"</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(Grade)<br><span class="hljs-keyword">FROM</span> SC<br><span class="hljs-keyword">WHERE</span> Cno=<span class="hljs-string">"1"</span>;<br></code></pre></td></tr></table></figure>
 <p>【例16】查询学生201215012选修课程的总学分数</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(Ccredit)
-<span class="hljs-keyword">FROM</span> SC, Course
-<span class="hljs-keyword">WHERE</span> Sno=<span class="hljs-string">"201215012"</span> <span class="hljs-keyword">AND</span> SC.Cno=Course.Cno;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">SUM</span>(Ccredit)<br><span class="hljs-keyword">FROM</span> SC, Course<br><span class="hljs-keyword">WHERE</span> Sno=<span class="hljs-string">"201215012"</span> <span class="hljs-keyword">AND</span> SC.Cno=Course.Cno;<br></code></pre></td></tr></table></figure>
 <h3 id="group-by"><a class="markdownIt-Anchor" href="#group-by"></a> GROUP BY</h3>
 <p>细化聚集函数的作用对象</p>
 <ul>
@@ -401,9 +362,7 @@ MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 <li>按指定的一列或多列值分组，值相等的为一组</li>
 </ul>
 <p>【例17】求各个课程号及相应的选课人数</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Cno, <span class="hljs-keyword">COUNT</span>(Sno)
-<span class="hljs-keyword">FROM</span> SC
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Cno;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Cno, <span class="hljs-keyword">COUNT</span>(Sno)<br><span class="hljs-keyword">FROM</span> SC<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Cno;<br></code></pre></td></tr></table></figure>
 <p>那么输出结果可能为:</p>
 <table>
 <thead>
@@ -440,17 +399,13 @@ MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 &lt;表名1&gt;.&lt;列名1&gt; 比较运算符 &lt;表名2&gt;.&lt;列名2&gt;</p>
 <h3 id="等值与非等值连接查询自然连接"><a class="markdownIt-Anchor" href="#等值与非等值连接查询自然连接"></a> 等值与非等值连接查询（自然连接）</h3>
 <p><strong>自然连接</strong></p>
-<pre><code class="hljs sql">WHERE Student.Sno = SC.Sno;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">WHERE Student.Sno = SC.Sno;<br></code></pre></td></tr></table></figure>
 <p>【例18】查询选修2号课程且成绩在90分以上的所有学生的学号和姓名</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student, Sno, Sname
-<span class="hljs-keyword">FROM</span> Student, SC
-<span class="hljs-keyword">WHERE</span> Student.Sno = SC.Sno <span class="hljs-keyword">AND</span> SC.Cno = <span class="hljs-string">'2'</span> <span class="hljs-keyword">AND</span> SC.Grade &gt; <span class="hljs-number">90</span>;</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student, Sno, Sname<br><span class="hljs-keyword">FROM</span> Student, SC<br><span class="hljs-keyword">WHERE</span> Student.Sno = SC.Sno <span class="hljs-keyword">AND</span> SC.Cno = <span class="hljs-string">'2'</span> <span class="hljs-keyword">AND</span> SC.Grade &gt; <span class="hljs-number">90</span>;<br></code></pre></td></tr></table></figure>
 <p><strong>自身连接</strong><br />
 因为是自身与自身连接，所以所有的属性名都是同名属性，因此必须使用别名前缀进行区分。</p>
 <p>【例19】查询每一门课的直接先修课的名称</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> FIRST.Cname, SECOND.Cname
-<span class="hljs-keyword">FROM</span> Course <span class="hljs-keyword">As</span> <span class="hljs-keyword">FIRST</span>, Course <span class="hljs-keyword">As</span> <span class="hljs-keyword">SECOND</span>     <span class="hljs-comment">/*取别名为FIRST和SECOND*/</span>
-<span class="hljs-keyword">WHERE</span> FIRST.Cpno = SECOND.Cno        <span class="hljs-comment">/*Cpno为先修课*/</span></code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> FIRST.Cname, SECOND.Cname<br><span class="hljs-keyword">FROM</span> Course <span class="hljs-keyword">As</span> <span class="hljs-keyword">FIRST</span>, Course <span class="hljs-keyword">As</span> <span class="hljs-keyword">SECOND</span>     <span class="hljs-comment">/*取别名为FIRST和SECOND*/</span><br><span class="hljs-keyword">WHERE</span> FIRST.Cpno = SECOND.Cno        <span class="hljs-comment">/*Cpno为先修课*/</span><br></code></pre></td></tr></table></figure>
 <p><strong>外连接</strong><br />
 通过外连接来实现“连接”操作中的悬浮元组</p>
 <ul>
@@ -466,14 +421,11 @@ MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 </li>
 </ul>
 <p>【例20】</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student.Sno, Sname, Cno, Grade
-<span class="hljs-keyword">FROM</span> Student <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUT</span> <span class="hljs-keyword">JOIN</span> SC <span class="hljs-keyword">ON</span> (Student.Sno = SC.Sno);</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student.Sno, Sname, Cno, Grade<br><span class="hljs-keyword">FROM</span> Student <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUT</span> <span class="hljs-keyword">JOIN</span> SC <span class="hljs-keyword">ON</span> (Student.Sno = SC.Sno);<br></code></pre></td></tr></table></figure>
 <p><strong>多表连接</strong><br />
 即使用多个自然连接</p>
 <p>【例21】查询每个学生的学号、姓名、选修的课程名及成绩</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student.Sno, Sname, Cname, Grade
-<span class="hljs-keyword">FROM</span> Student, SC, Course
-<span class="hljs-keyword">WHERE</span> Student.Sno = SC.Sno <span class="hljs-keyword">AND</span> SC.Cno = Course.Cno</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Student.Sno, Sname, Cname, Grade<br><span class="hljs-keyword">FROM</span> Student, SC, Course<br><span class="hljs-keyword">WHERE</span> Student.Sno = SC.Sno <span class="hljs-keyword">AND</span> SC.Cno = Course.Cno<br></code></pre></td></tr></table></figure>
 <h2 id="嵌套查询"><a class="markdownIt-Anchor" href="#嵌套查询"></a> 嵌套查询</h2>
 <ol>
 <li>查询块：一个SELECT-FROM—WHERE 语句</li>
@@ -481,14 +433,7 @@ MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 <li>外层查询/父查询：上层/外层的查询块</li>
 <li>内层查询/子查询：下层/内层的查询块</li>
 </ol>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname, Sdept        <span class="hljs-comment">/*外层查询/父查询*/</span>
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept <span class="hljs-keyword">IN</span>
-            (
-                <span class="hljs-keyword">SELECT</span> Sdept    <span class="hljs-comment">/*内层查询/子查询*/</span>
-                <span class="hljs-keyword">FROM</span> Student
-                <span class="hljs-keyword">WHERE</span> Sname=<span class="hljs-string">'刘晨'</span>
-            );</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname, Sdept        <span class="hljs-comment">/*外层查询/父查询*/</span><br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept <span class="hljs-keyword">IN</span><br>            (<br>                <span class="hljs-keyword">SELECT</span> Sdept    <span class="hljs-comment">/*内层查询/子查询*/</span><br>                <span class="hljs-keyword">FROM</span> Student<br>                <span class="hljs-keyword">WHERE</span> Sname=<span class="hljs-string">'刘晨'</span><br>            );<br></code></pre></td></tr></table></figure>
 <br />
 <p><strong>分类</strong></p>
 <ul>
@@ -506,42 +451,16 @@ MIN( [ DISTINCT | ALL ] &lt;列名&gt; )</li>
 （4）然后外层查询取出下一个元组重复做步骤1-3，直到外层的元组全部处理完毕。</li>
 </ul>
 <p>【示例】查询Booka表中大于该类图书价格平均值的图书信息</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 图书名,出版社,类编号,价格 
-<span class="hljs-keyword">FROM</span> Books <span class="hljs-keyword">As</span> a
-  <span class="hljs-keyword">WHERE</span> 价格 &gt;
-  (
-    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(价格)
-    <span class="hljs-keyword">FROM</span> Books <span class="hljs-keyword">AS</span> b
-    <span class="hljs-keyword">WHERE</span> a.类编号=b.类编号
-  )</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 图书名,出版社,类编号,价格 <br><span class="hljs-keyword">FROM</span> Books <span class="hljs-keyword">As</span> a<br>  <span class="hljs-keyword">WHERE</span> 价格 &gt;<br>  (<br>    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(价格)<br>    <span class="hljs-keyword">FROM</span> Books <span class="hljs-keyword">AS</span> b<br>    <span class="hljs-keyword">WHERE</span> a.类编号=b.类编号<br>  )<br></code></pre></td></tr></table></figure>
 <p>这里的子查询中用到了父查询的表a，所以依赖于父查询中的数据，不能独立执行</p>
 <blockquote><p>参考自  <a href="https://blog.csdn.net/shiyong1949/article/details/80923083" target="_blank" rel="noopener">https://blog.csdn.net/shiyong1949/article/details/80923083</a></p>
 </blockquote>
 <h3 id="带有in谓词的子查询"><a class="markdownIt-Anchor" href="#带有in谓词的子查询"></a> 带有IN谓词的子查询</h3>
 <p>【例22】查询选修了课程名为“信息系统”的学生学号和姓名</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname                           <span class="hljs-comment">/*(三)最后在Student关系中取出Sno和Sname*/</span>
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sno <span class="hljs-keyword">IN</span>
-    (
-        <span class="hljs-keyword">SELECT</span> Sno                          <span class="hljs-comment">/*(二)然后在SC关系中找出选修了3号课程的学生学号*/</span>
-        <span class="hljs-keyword">FROM</span> SC
-        <span class="hljs-keyword">WHERE</span> Cno <span class="hljs-keyword">IN</span>
-            (
-                <span class="hljs-keyword">SELECT</span> Cno                  <span class="hljs-comment">/*(一)首先在Course关系中找出“信息系统的课程号”*/</span>
-                <span class="hljs-keyword">FROM</span> Course
-                <span class="hljs-keyword">WHERE</span> Cname = <span class="hljs-string">'信息系统'</span>
-            )
-    )</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Sname                           <span class="hljs-comment">/*(三)最后在Student关系中取出Sno和Sname*/</span><br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sno <span class="hljs-keyword">IN</span><br>    (<br>        <span class="hljs-keyword">SELECT</span> Sno                          <span class="hljs-comment">/*(二)然后在SC关系中找出选修了3号课程的学生学号*/</span><br>        <span class="hljs-keyword">FROM</span> SC<br>        <span class="hljs-keyword">WHERE</span> Cno <span class="hljs-keyword">IN</span><br>            (<br>                <span class="hljs-keyword">SELECT</span> Cno                  <span class="hljs-comment">/*(一)首先在Course关系中找出“信息系统的课程号”*/</span><br>                <span class="hljs-keyword">FROM</span> Course<br>                <span class="hljs-keyword">WHERE</span> Cname = <span class="hljs-string">'信息系统'</span><br>            )<br>    )<br></code></pre></td></tr></table></figure>
 <h3 id="带有比较运算符的子查询"><a class="markdownIt-Anchor" href="#带有比较运算符的子查询"></a> 带有比较运算符的子查询</h3>
 <p>【例23】找出每个学生超过他选修课程平均成绩的课程号</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Cno
-<span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> x
-<span class="hljs-keyword">WHERE</span> Grade &gt;=                         <span class="hljs-comment">/*这是相关子查询*/</span>
-    (
-        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(Grade)
-        <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> y
-        <span class="hljs-keyword">WHERE</span> y.Sno = x.Sno
-    );</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sno, Cno<br><span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> x<br><span class="hljs-keyword">WHERE</span> Grade &gt;=                         <span class="hljs-comment">/*这是相关子查询*/</span><br>    (<br>        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">AVG</span>(Grade)<br>        <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> y<br>        <span class="hljs-keyword">WHERE</span> y.Sno = x.Sno<br>    );<br></code></pre></td></tr></table></figure>
 <h3 id="带有anysome或all谓词的子查询"><a class="markdownIt-Anchor" href="#带有anysome或all谓词的子查询"></a> 带有ANY（SOME）或ALL谓词的子查询</h3>
 <p>ANY——存在量词<br />
 ALL——全称量词</p>
@@ -550,25 +469,7 @@ ALL——全称量词</p>
 &gt; ALL     大于子查询结果中的所有值<br />
 …</p>
 <p>【例24】查询非计算机科学系中比计算机科学系任意一个学生年龄小的学生姓名和年龄</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sage
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept != <span class="hljs-string">'CS'</span> <span class="hljs-keyword">AND</span> Sage &lt; <span class="hljs-keyword">ANY</span>
-    (
-        <span class="hljs-keyword">SELECT</span> Sage
-        <span class="hljs-keyword">FROM</span> Student
-        <span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span>
-    ); 
-
-<span class="hljs-comment">/*也可以用聚集函数来实现*/</span>
-
-<span class="hljs-keyword">SELECT</span> Sname, Sage
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> Sdept != <span class="hljs-string">'CS'</span> <span class="hljs-keyword">AND</span> Sage &lt;
-    (
-        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MAX</span>(Sage)
-        <span class="hljs-keyword">FROM</span> Student
-        <span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span>
-    );</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname, Sage<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept != <span class="hljs-string">'CS'</span> <span class="hljs-keyword">AND</span> Sage &lt; <span class="hljs-keyword">ANY</span><br>    (<br>        <span class="hljs-keyword">SELECT</span> Sage<br>        <span class="hljs-keyword">FROM</span> Student<br>        <span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span><br>    ); <br><br><span class="hljs-comment">/*也可以用聚集函数来实现*/</span><br><br><span class="hljs-keyword">SELECT</span> Sname, Sage<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> Sdept != <span class="hljs-string">'CS'</span> <span class="hljs-keyword">AND</span> Sage &lt;<br>    (<br>        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">MAX</span>(Sage)<br>        <span class="hljs-keyword">FROM</span> Student<br>        <span class="hljs-keyword">WHERE</span> Sdept = <span class="hljs-string">'CS'</span><br>    );<br></code></pre></td></tr></table></figure>
 <p><strong>ANY,ALL谓词与聚集函数、IN谓词的等价转换关系</strong></p>
 <table>
 <thead>
@@ -614,14 +515,7 @@ ALL——全称量词</p>
 <li>由EXISTS引出的子查询，其目标列表达式通常都用*，因为带EXISTS的子查询只返回真值或假值，给出列名无实际意义。</li>
 </ul>
 <p>【例25】查询所有选修了1号课程的学生姓名</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname
-<span class="hljs-keyword">FROM</span> Student
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span>
-    (
-        <span class="hljs-keyword">SELECT</span> *
-        <span class="hljs-keyword">FROM</span> SC
-        <span class="hljs-keyword">WHERE</span> Sno=Student.Sno <span class="hljs-keyword">AND</span> Cno=<span class="hljs-string">'1'</span>
-    );</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Sname<br><span class="hljs-keyword">FROM</span> Student<br><span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span><br>    (<br>        <span class="hljs-keyword">SELECT</span> *<br>        <span class="hljs-keyword">FROM</span> SC<br>        <span class="hljs-keyword">WHERE</span> Sno=Student.Sno <span class="hljs-keyword">AND</span> Cno=<span class="hljs-string">'1'</span><br>    );<br></code></pre></td></tr></table></figure>
 <p>上述代码执行思路：<br />
 从Student中提取第一个元组，带入子查询中，若结果不为空，则返回真值，说明该学生选修了1号课程，输出，再读取下一个值。</p>
 <p><strong>用EXISTS实现全称量词</strong><br />
@@ -639,19 +533,7 @@ q：学生x选了课程y<br />
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∃</mi><mi>y</mi><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>p</mi><mo>⋁</mo><mi>q</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\equiv \lnot (\exists y (\lnot (\lnot p \bigvee q)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord">∃</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord">¬</span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋁</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span><br />
 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≡</mo><mi mathvariant="normal">¬</mi><mi mathvariant="normal">∃</mi><mi>y</mi><mo stretchy="false">(</mo><mi>p</mi><mo>⋀</mo><mi mathvariant="normal">¬</mi><mi>q</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\equiv \lnot \exists y (p \bigwedge \lnot q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mord">¬</span><span class="mord">∃</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">⋀</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">¬</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span><br />
 得到可以用EXISTS表示的式子，语义为不存在这样的课程y，学生201215122选修了，而学生x没有选</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> SCX.Sno
-<span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCX
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>
-    (
-        <span class="hljs-keyword">SELECT</span> *
-        <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCY
-        <span class="hljs-keyword">WHERE</span> SCY.Sno = <span class="hljs-string">'201215122'</span> <span class="hljs-keyword">AND</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>
-            (
-                <span class="hljs-keyword">SELECT</span> *
-                <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCZ
-                <span class="hljs-keyword">WHERE</span> SCZ.Sno = SCX.Sno <span class="hljs-keyword">AND</span> SCZ.Cno = SCY.Cno
-            )
-    );</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> SCX.Sno<br><span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCX<br><span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span><br>    (<br>        <span class="hljs-keyword">SELECT</span> *<br>        <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCY<br>        <span class="hljs-keyword">WHERE</span> SCY.Sno = <span class="hljs-string">'201215122'</span> <span class="hljs-keyword">AND</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span><br>            (<br>                <span class="hljs-keyword">SELECT</span> *<br>                <span class="hljs-keyword">FROM</span> SC <span class="hljs-keyword">As</span> SCZ<br>                <span class="hljs-keyword">WHERE</span> SCZ.Sno = SCX.Sno <span class="hljs-keyword">AND</span> SCZ.Cno = SCY.Cno<br>            )<br>    );<br></code></pre></td></tr></table></figure>
     </div>
      
     <div class="post-footer__meta">
@@ -711,6 +593,24 @@ q：学生x选了课程y<br />
 
 
 
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
 
 
 </main>
@@ -730,6 +630,25 @@ q：学生x选了课程y<br />
             Copyright © 2020 <a href="/">星下小屋</a>
         </p>
     
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
     
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
@@ -794,6 +713,65 @@ q：学生x选了课程y<br />
 
  
 
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'Nicycoco',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/04/02/数据库系统原理：第三章关系数据库语言（二）/',
+                    url: 'http://yoursite.com/2020/04/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%AD%E8%A8%80%EF%BC%88%E4%BA%8C%EF%BC%89/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 

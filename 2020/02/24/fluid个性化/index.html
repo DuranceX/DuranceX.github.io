@@ -226,26 +226,9 @@
 <h1 id="fluid个性化及小插件的使用"><a class="markdownIt-Anchor" href="#fluid个性化及小插件的使用"></a> fluid个性化及小插件的使用</h1>
 <h2 id="网页标题浏览器恶搞"><a class="markdownIt-Anchor" href="#网页标题浏览器恶搞"></a> 网页标题浏览器恶搞</h2>
 <p>在<code>\themes\fluid\source\js</code> 下创建一个新的js文件，例如<code>FunnyTitle.js</code>，输入如下内容：</p>
-<pre><code class="hljs lua&#123;javascript,&#125;">&#x2F;&#x2F; 浏览器搞笑标题
-var OriginTitle &#x3D; document.title;
-var titleTime;
-document.addEventListener(&#39;visibilitychange&#39;, function () &#123;
-    if (document.hidden) &#123;
-        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;avatar.png&quot;);
-        document.title &#x3D; &#39;╭(°A°&#96;)╮ 页面崩溃啦 ~&#39;;
-        clearTimeout(titleTime);
-    &#125;
-    else &#123;
-        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;favicon.png&quot;);
-        document.title &#x3D; &#39;(ฅ&gt;ω&lt;*ฅ) 噫又好啦 ~&#39; + OriginTitle;
-        titleTime &#x3D; setTimeout(function () &#123;
-            document.title &#x3D; OriginTitle;
-        &#125;, 2000);
-    &#125;
-&#125;);</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs lua&#123;javascript,&#125;">&#x2F;&#x2F; 浏览器搞笑标题<br>var OriginTitle &#x3D; document.title;<br>var titleTime;<br>document.addEventListener(&#39;visibilitychange&#39;, function () &#123;<br>    if (document.hidden) &#123;<br>        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;avatar.png&quot;);<br>        document.title &#x3D; &#39;╭(°A°&#96;)╮ 页面崩溃啦 ~&#39;;<br>        clearTimeout(titleTime);<br>    &#125;<br>    else &#123;<br>        $(&#39;[rel&#x3D;&quot;icon&quot;]&#39;).attr(&#39;href&#39;, &quot;&#x2F;img&#x2F;favicon.png&quot;);<br>        document.title &#x3D; &#39;(ฅ&gt;ω&lt;*ฅ) 噫又好啦 ~&#39; + OriginTitle;<br>        titleTime &#x3D; setTimeout(function () &#123;<br>            document.title &#x3D; OriginTitle;<br>        &#125;, 2000);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
 <p>之后在<code>\themes\fluid\layout.ejs</code>中末尾输入</p>
-<pre><code class="hljs javascript">&lt;!--浏览器搞笑标题--&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/FunnyTitle.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;!--浏览器搞笑标题--&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/FunnyTitle.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <h2 id="fluid鼠标点击效果更改"><a class="markdownIt-Anchor" href="#fluid鼠标点击效果更改"></a> fluid鼠标点击效果更改</h2>
 <p>fluid主题的鼠标特效在<code>\themes\fluid\layout\_partial\plugins\mouse-click.ejs</code>中，找到如下图所示的代码<br />
 <img src="/img/%E7%BE%8E%E5%8C%96/mouse-click.png" alt="" />将数组中的字符串进行更改即可进行自定义<br />
@@ -253,54 +236,14 @@ document.addEventListener(&#39;visibilitychange&#39;, function () &#123;
 <h2 id="一言"><a class="markdownIt-Anchor" href="#一言"></a> 一言</h2>
 <p><a href="https://hitokoto.cn/" target="_blank" rel="noopener">一言官网</a></p>
 <p>根据官网提供的示例，在<code>\themes\fluid\layout\layout.ejs</code>中添加如下代码</p>
-<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 以下写法，选取一种即可 --&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 现代写法，推荐 --&gt;</span>
-<span class="hljs-comment">&lt;!-- 兼容低版本浏览器 (包括 IE)，可移除 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-comment">&lt;!--End--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-  fetch(<span class="hljs-string">'https://v1.hitokoto.cn'</span>)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>)</span>&#123;
-      <span class="hljs-keyword">return</span> res.json();
-    &#125;)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
-      <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);
-      hitokoto.innerText = data.hitokoto; 
-    &#125;)
-    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;
-      <span class="hljs-built_in">console</span>.error(err);
-    &#125;)
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 老式写法，兼容性最忧 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-  <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
-  xhr.open(<span class="hljs-string">'get'</span>, <span class="hljs-string">'https://v1.hitokoto.cn'</span>);
-  xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-    <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) &#123;
-      <span class="hljs-keyword">var</span> data = <span class="hljs-built_in">JSON</span>.parse(xhr.responseText);
-      <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);
-      hitokoto.innerText = data.hitokoto;
-    &#125;
-  &#125;
-  xhr.send();
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 新 API 方法， 十分简洁 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 以下写法，选取一种即可 --&gt;</span><br><br><span class="hljs-comment">&lt;!-- 现代写法，推荐 --&gt;</span><br><span class="hljs-comment">&lt;!-- 兼容低版本浏览器 (包括 IE)，可移除 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!--End--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><br>  fetch(<span class="hljs-string">'https://v1.hitokoto.cn'</span>)<br>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>)</span>&#123;<br>      <span class="hljs-keyword">return</span> res.json();<br>    &#125;)<br>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);<br>      hitokoto.innerText = data.hitokoto; <br>    &#125;)<br>    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.error(err);<br>    &#125;)<br></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 老式写法，兼容性最忧 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><br>  <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();<br>  xhr.open(<span class="hljs-string">'get'</span>, <span class="hljs-string">'https://v1.hitokoto.cn'</span>);<br>  xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) &#123;<br>      <span class="hljs-keyword">var</span> data = <span class="hljs-built_in">JSON</span>.parse(xhr.responseText);<br>      <span class="hljs-keyword">var</span> hitokoto = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitokoto'</span>);<br>      hitokoto.innerText = data.hitokoto;<br>    &#125;<br>  &#125;<br>  xhr.send();<br></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 新 API 方法， 十分简洁 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>然后在任意想要加入一言的位置添加</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"hitokoto"</span>&gt;</span>:D 获取中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"hitokoto"</span>&gt;</span>:D 获取中...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>例如我在页面的最底部，即hexo❤Fluid下方加入一言，即在<code>\themes\fluid\layout\_partial\footer.ejs</code>中加入该行代码。在页面中显示的具体位置由代码所在位置决定。</p>
 <p>一言官网举例了几个网址供读取信息</p>
-<pre><code class="hljs html">https://v1.hitokoto.cn/（从7种分类中随机抽取）
-
-https://v1.hitokoto.cn/?c=b （请求获得一个分类是漫画的句子）
-
-https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的句子，并以纯文本格式输出</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html">https://v1.hitokoto.cn/（从7种分类中随机抽取）<br><br>https://v1.hitokoto.cn/?c=b （请求获得一个分类是漫画的句子）<br><br>https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的句子，并以纯文本格式输出<br></code></pre></td></tr></table></figure>
 <p>在本部分第一个代码块中将对应的网址更改即可，同样可以通过“&amp;”的方式指定多个特定的类型</p>
-<pre><code class="hljs html">https://v1.hitokoto.cn/?c=c&amp;c=d （从游戏分类和小说分类中获取一个句子）</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">https://v1.hitokoto.cn/?c=c&amp;c=d （从游戏分类和小说分类中获取一个句子）<br></code></pre></td></tr></table></figure>
 <p>参数列表如下，通过c=xx来使用</p>
 <table border="0">
 <tr>
@@ -343,139 +286,10 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 🎶Wow, such a beautiful HTML5 music player<br />
 原本用的是网易云的的外链播放器，然鹅！网易云几乎所有的歌都因版权问题无法生成外链播放器，即使通过一些方法生成了也无法播放，因此采用了APlayer。</p>
 <p>首先安装Aplayer</p>
-<pre><code class="hljs git">cnpm install aplayer --save</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">cnpm install aplayer --save<br></code></pre></td></tr></table></figure>
 <p>我因为网络的问题替换了成了淘宝的镜像，若没有设置过直接使用npm即可。</p>
 <p>在想要加入网页播放器的地方输入以下代码</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-          <span class="hljs-selector-class">.demo</span>&#123;<span class="hljs-attribute">width</span>:<span class="hljs-number">360px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0px</span> auto <span class="hljs-number">20px</span> auto&#125;
-          <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">padding</span>:<span class="hljs-number">10px</span> <span class="hljs-number">0</span>&#125;
-      </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"player1"</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"aplayer-lrc-content"</span>&gt;</span>
-                [00:00.00]鹿先森乐队 - 华年
-                [00:00.30]
-                [00:00.91]作曲：倍倍
-                [00:01.66]作词：倍倍
-                [00:01.26]编曲：鹿先森乐队
-                [00:01.52]木吉他：杨博士
-                [00:01.77]电吉他：董二胖
-                [00:02.28]贝斯：李斯
-                [00:02.17]键盘：冰冰
-                [00:02.38]鼓：PP
-                [00:02.48]和音：鱼椒盐、杨博士
-                [00:02.83]弦乐：国际首席爱乐乐团
-                [00:03.24]录音棚：55T.E.C、Big.J Studio
-                [00:03.49]混音助理：茆博文
-                [00:03.79]制作人：李卓
-                [00:04.10]弦乐编写：李卓
-                [00:04.25]混音：李卓
-                [00:04.40]母带处理：周天澈
-                [00:05.00]
-                [00:05.80]在夏天结束的瞬间
-                [00:07.42]怀念你年轻身影
-                [00:11.42]你每天都在说的那些话
-                [00:13.90]如今讲给谁人听
-                [00:16.94]当过往散了爱慕
-                [00:19.16]与光阴相向而行
-                [00:22.71]你眼神烙印岁月最后的深情
-                [00:25.88]
-                [00:28.42]也许一次离别
-                [00:29.69]就能抹去再多的重逢
-                [00:33.91]那年一起种下的树啊
-                [00:36.55]如今飘荡着一样的风
-                [00:39.59]当誓言终将欺了日月
-                [00:42.32]这爱恋不澈不浓
-                [00:45.25]你裙摆绽放走向我脚步轻松
-                [00:48.88]
-                [00:50.61]可是命运啊
-                [00:51.52]渴望啊和热烈啊
-                [00:55.92]非将这生长赋予
-                [00:57.39]悲欢交织的感动
-                [01:01.93]夏日轻柔的晚风
-                [01:04.81]壮阔波澜的相拥
-                [01:07.16]已杂草丛生
-                [01:10.56]都不及你第一次
-                [01:12.13]望向我的面容
-                [01:14.55]
-                [01:19.23]也许一次离别
-                [01:20.50]就能抹去再多的重逢
-                [01:24.61]那年一起种下的树啊
-                [01:27.44]如今飘荡着一样的风
-                [01:30.37]当誓言终将欺了日月
-                [01:33.16]这爱恋不澈不浓
-                [01:36.21]你裙摆绽放走向我脚步轻松
-                [01:39.55]
-                [01:40.77]可是命运啊
-                [01:42.44]渴望啊和热烈啊
-                [01:46.69]非将这生长赋予
-                [01:48.26]悲欢交织的感动
-                [01:52.76]夏日轻柔的晚风
-                [01:55.56]壮阔波澜的相拥
-                [01:57.99]已杂草丛生
-                [02:01.64]都不及你第一次
-                [02:03.70]望向我的面容
-                [02:05.10]
-                [02:06.29]可是青春啊
-                [02:07.82]鲜血啊和真切啊
-                [02:12.18]请铭记呀
-                [02:13.22]即使从未有过年轻
-                [02:18.18]阳光穿过你的脖颈
-                [02:20.96]酒杯碰碎的声音
-                [02:23.27]时光忽暗忽明
-                [02:27.68]都忘却吧
-                [02:28.80]就像从未有过年轻
-                [02:30.55]
-                [03:02.65]可是命运啊
-                [03:04.37]渴望啊和热烈啊
-                [03:08.47]非将这生长赋予
-                [03:10.94]悲欢交织的感动
-                [03:14.65]夏日轻柔的晚风
-                [03:17.47]壮阔波澜的相拥
-                [03:19.69]已杂草丛生
-                [03:23.54]都不及你第一次
-                [03:24.91]望向我的面容
-                [03:26.88]
-                [03:28.94]可是青春啊
-                [03:29.71]鲜血啊和真切啊
-                [03:35.28]请铭记呀
-                [03:36.50]即使从未有过年轻
-                [03:41.50]阳光穿过你的脖颈
-                [03:44.23]酒杯碰碎的声音
-                [03:46.52]时光忽暗忽明
-                [03:50.37]都忘却吧
-                [03:51.33]就像从未有过年轻
-                [03:55.73]都忘却吧
-                [03:56.94]就像从未有过年轻
-                [04:01.40]都忘却吧
-                [04:02.56]就像从未有过年轻
-                [04:06.91]书终烟灭夜深水静
-              <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-        <span class="hljs-keyword">var</span> ap = <span class="hljs-keyword">new</span> APlayer
-                (&#123;
-                    <span class="hljs-attr">element</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'player1'</span>),
-                    <span class="hljs-attr">narrow</span>: <span class="hljs-literal">false</span>,
-                    <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,
-                    <span class="hljs-attr">showlrc</span>: <span class="hljs-literal">true</span>,
-                    <span class="hljs-attr">music</span>: &#123;
-                            <span class="hljs-attr">title</span>: <span class="hljs-string">'华年'</span>,
-                            <span class="hljs-attr">author</span>: <span class="hljs-string">'鹿先森乐队'</span>,
-                            <span class="hljs-attr">url</span>: <span class="hljs-string">'http://music.163.com/song/media/outer/url?id=542667160.mp3'</span>,
-                            <span class="hljs-attr">pic</span>: <span class="hljs-string">'http://p2.music.126.net/r94mVfx8ERhRr7Zzemhd_w==/109951163405599390.jpg'</span>
-                            &#125;
-                &#125;);
-        ap.init();
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"><br>          <span class="hljs-selector-class">.demo</span>&#123;<span class="hljs-attribute">width</span>:<span class="hljs-number">360px</span>;<span class="hljs-attribute">margin</span>:<span class="hljs-number">0px</span> auto <span class="hljs-number">20px</span> auto&#125;<br>          <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">p</span>&#123;<span class="hljs-attribute">padding</span>:<span class="hljs-number">10px</span> <span class="hljs-number">0</span>&#125;<br>      </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-center"</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"demo"</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"player1"</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"aplayer-lrc-content"</span>&gt;</span><br>                [00:00.00]鹿先森乐队 - 华年<br>                [00:00.30]<br>                [00:00.91]作曲：倍倍<br>                [00:01.66]作词：倍倍<br>                [00:01.26]编曲：鹿先森乐队<br>                [00:01.52]木吉他：杨博士<br>                [00:01.77]电吉他：董二胖<br>                [00:02.28]贝斯：李斯<br>                [00:02.17]键盘：冰冰<br>                [00:02.38]鼓：PP<br>                [00:02.48]和音：鱼椒盐、杨博士<br>                [00:02.83]弦乐：国际首席爱乐乐团<br>                [00:03.24]录音棚：55T.E.C、Big.J Studio<br>                [00:03.49]混音助理：茆博文<br>                [00:03.79]制作人：李卓<br>                [00:04.10]弦乐编写：李卓<br>                [00:04.25]混音：李卓<br>                [00:04.40]母带处理：周天澈<br>                [00:05.00]<br>                [00:05.80]在夏天结束的瞬间<br>                [00:07.42]怀念你年轻身影<br>                [00:11.42]你每天都在说的那些话<br>                [00:13.90]如今讲给谁人听<br>                [00:16.94]当过往散了爱慕<br>                [00:19.16]与光阴相向而行<br>                [00:22.71]你眼神烙印岁月最后的深情<br>                [00:25.88]<br>                [00:28.42]也许一次离别<br>                [00:29.69]就能抹去再多的重逢<br>                [00:33.91]那年一起种下的树啊<br>                [00:36.55]如今飘荡着一样的风<br>                [00:39.59]当誓言终将欺了日月<br>                [00:42.32]这爱恋不澈不浓<br>                [00:45.25]你裙摆绽放走向我脚步轻松<br>                [00:48.88]<br>                [00:50.61]可是命运啊<br>                [00:51.52]渴望啊和热烈啊<br>                [00:55.92]非将这生长赋予<br>                [00:57.39]悲欢交织的感动<br>                [01:01.93]夏日轻柔的晚风<br>                [01:04.81]壮阔波澜的相拥<br>                [01:07.16]已杂草丛生<br>                [01:10.56]都不及你第一次<br>                [01:12.13]望向我的面容<br>                [01:14.55]<br>                [01:19.23]也许一次离别<br>                [01:20.50]就能抹去再多的重逢<br>                [01:24.61]那年一起种下的树啊<br>                [01:27.44]如今飘荡着一样的风<br>                [01:30.37]当誓言终将欺了日月<br>                [01:33.16]这爱恋不澈不浓<br>                [01:36.21]你裙摆绽放走向我脚步轻松<br>                [01:39.55]<br>                [01:40.77]可是命运啊<br>                [01:42.44]渴望啊和热烈啊<br>                [01:46.69]非将这生长赋予<br>                [01:48.26]悲欢交织的感动<br>                [01:52.76]夏日轻柔的晚风<br>                [01:55.56]壮阔波澜的相拥<br>                [01:57.99]已杂草丛生<br>                [02:01.64]都不及你第一次<br>                [02:03.70]望向我的面容<br>                [02:05.10]<br>                [02:06.29]可是青春啊<br>                [02:07.82]鲜血啊和真切啊<br>                [02:12.18]请铭记呀<br>                [02:13.22]即使从未有过年轻<br>                [02:18.18]阳光穿过你的脖颈<br>                [02:20.96]酒杯碰碎的声音<br>                [02:23.27]时光忽暗忽明<br>                [02:27.68]都忘却吧<br>                [02:28.80]就像从未有过年轻<br>                [02:30.55]<br>                [03:02.65]可是命运啊<br>                [03:04.37]渴望啊和热烈啊<br>                [03:08.47]非将这生长赋予<br>                [03:10.94]悲欢交织的感动<br>                [03:14.65]夏日轻柔的晚风<br>                [03:17.47]壮阔波澜的相拥<br>                [03:19.69]已杂草丛生<br>                [03:23.54]都不及你第一次<br>                [03:24.91]望向我的面容<br>                [03:26.88]<br>                [03:28.94]可是青春啊<br>                [03:29.71]鲜血啊和真切啊<br>                [03:35.28]请铭记呀<br>                [03:36.50]即使从未有过年轻<br>                [03:41.50]阳光穿过你的脖颈<br>                [03:44.23]酒杯碰碎的声音<br>                [03:46.52]时光忽暗忽明<br>                [03:50.37]都忘却吧<br>                [03:51.33]就像从未有过年轻<br>                [03:55.73]都忘却吧<br>                [03:56.94]就像从未有过年轻<br>                [04:01.40]都忘却吧<br>                [04:02.56]就像从未有过年轻<br>                [04:06.91]书终烟灭夜深水静<br>              <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><br>        <span class="hljs-keyword">var</span> ap = <span class="hljs-keyword">new</span> APlayer<br>                (&#123;<br>                    <span class="hljs-attr">element</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'player1'</span>),<br>                    <span class="hljs-attr">narrow</span>: <span class="hljs-literal">false</span>,<br>                    <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,<br>                    <span class="hljs-attr">showlrc</span>: <span class="hljs-literal">true</span>,<br>                    <span class="hljs-attr">music</span>: &#123;<br>                            <span class="hljs-attr">title</span>: <span class="hljs-string">'华年'</span>,<br>                            <span class="hljs-attr">author</span>: <span class="hljs-string">'鹿先森乐队'</span>,<br>                            <span class="hljs-attr">url</span>: <span class="hljs-string">'http://music.163.com/song/media/outer/url?id=542667160.mp3'</span>,<br>                            <span class="hljs-attr">pic</span>: <span class="hljs-string">'http://p2.music.126.net/r94mVfx8ERhRr7Zzemhd_w==/109951163405599390.jpg'</span><br>                            &#125;<br>                &#125;);<br>        ap.init();<br>    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>例如我将播放器加入到“关于”界面，就在<code>\themes\fluid\layout\about.ejs</code>中加入这段代码，在这里我将代码嵌入跟原有代码进入了稍微的整合，使结构清晰。<br />
 在上述代码的<code>script</code>块中，<code>autoplay</code>是自动播放，改为true则会在打开该页面时自动播放。<br />
 在网页版网易云音乐搜索歌曲，打开后将网址的最后一串数字替换到<code>url</code>中对应的数字部分即可更换歌曲<img src="/img/%E7%BE%8E%E5%8C%96/music.png" alt="" /><br />
@@ -483,10 +297,7 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 <p>参考网址：<a href="https://blog.csdn.net/jclian91/article/details/80876198" target="_blank" rel="noopener">https://blog.csdn.net/jclian91/article/details/80876198</a></p>
 <h2 id="背景添加动态线条"><a class="markdownIt-Anchor" href="#背景添加动态线条"></a> 背景添加动态线条</h2>
 <p>在<code>\theme\fluid\layout\layout.ejs</code>文件中添加如下代码</p>
-<pre><code class="hljs javascript">&lt;!--动态线条背景--&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>
-<span class="hljs-attr">color</span>=<span class="hljs-string">"140,140,140"</span> <span class="hljs-attr">opacity</span>=<span class="hljs-string">'0.7'</span> <span class="hljs-attr">zIndex</span>=<span class="hljs-string">"-2"</span> <span class="hljs-attr">count</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;!--动态线条背景--&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span><br><span class="hljs-attr">color</span>=<span class="hljs-string">"140,140,140"</span> <span class="hljs-attr">opacity</span>=<span class="hljs-string">'0.7'</span> <span class="hljs-attr">zIndex</span>=<span class="hljs-string">"-2"</span> <span class="hljs-attr">count</span>=<span class="hljs-string">"200"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li>color：表示线条颜色，三个数字分别为(R,G,B)，默认：（0,0,0）</li>
@@ -497,23 +308,7 @@ https://v1.hitokoto.cn/?c=f&amp;encode=text （请求获得一个来自网络的
 </ul>
 <h2 id="网站运行时间"><a class="markdownIt-Anchor" href="#网站运行时间"></a> 网站运行时间</h2>
 <p>在<code>\themes\fluid\layout\_partial\footer.ejs</code>中添加以下代码</p>
-<pre><code class="hljs javascript">&lt;span id=<span class="hljs-string">"timeDate"</span>&gt;载入天数...&lt;<span class="hljs-regexp">/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/</span>span&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; 
-        <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"21/02/2020 17:38:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span>
-        now.setTime(now.getTime()+<span class="hljs-number">250</span>); 
-        days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); 
-        hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); 
-        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); 
-        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; 
-        seconds = (now - grt ) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum); 
-        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; 
-        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已勉强运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; 
-        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; 
-    &#125; 
-setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;span id=<span class="hljs-string">"timeDate"</span>&gt;载入天数...&lt;<span class="hljs-regexp">/span&gt;&lt;span id="times"&gt;载入时分秒...&lt;/</span>span&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><br>    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); <br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; <br>        <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"21/02/2020 17:38:00"</span>);<span class="hljs-comment">//在此处修改你的建站时间，格式：月/日/年 时:分:秒</span><br>        now.setTime(now.getTime()+<span class="hljs-number">250</span>); <br>        days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); <br>        hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); <br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); <br>        mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; <br>        seconds = (now - grt ) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum); <br>        snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; <br>        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已勉强运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; <br>        <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; <br>    &#125; <br>setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);<br></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
 <blockquote><p>转自</p>
 <footer><strong>THRX博客 -</strong><cite><a href="https://www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间" target="_blank" rel="noopener">www.itrhx.com/2018/08/27/A04-Hexo-blog-topic-personalization/#【10】添加网站运行时间</a></cite></footer></blockquote>
     </div>
@@ -575,6 +370,24 @@ setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-nu
 
 
 
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
 
 
 </main>
@@ -594,6 +407,25 @@ setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-nu
             Copyright © 2020 <a href="/">星下小屋</a>
         </p>
     
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
     
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
 </footer>
@@ -658,6 +490,65 @@ setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-nu
 
  
 
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'Nicycoco',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/02/24/fluid个性化/',
+                    url: 'http://yoursite.com/2020/02/24/fluid%E4%B8%AA%E6%80%A7%E5%8C%96/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
 
 
 

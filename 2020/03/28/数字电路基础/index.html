@@ -569,9 +569,9 @@
     <h4>Comments</h4>
     
     
-    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
-
     
+    <div id="valine_container" class="valine_thread"></div>
+
     
     
     
@@ -688,26 +688,21 @@
     
 
     
+    
+    
     <script>
         function loadComment() {
-            let e, i;
-            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
             document.body.appendChild(e);
             e.onload = () => {
-                new DisqusJS({
-                    shortname: 'Nicycoco',
-                    siteName: '星下小屋',
-                    api: '',
-                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
-                    admin: '',
-                    identifier: '2020/03/28/数字电路基础/',
-                    url: 'http://yoursite.com/2020/03/28/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/',
-                    nesting: '2'
-                });
+                var valineConfig = {&#34;appId&#34;:&#34;NCeqF4vVdTcWN9aU0Qaxd1Ai-MdYXbMMI&#34;,&#34;appKey&#34;:&#34;X1aTivTeG3lS9K1o2BDkBBC3&#34;,&#34;placeholder&#34;:&#34;说点什么吧~&#34;,&#34;path&#34;:&#34;window.location.pathname&#34;,&#34;avatar&#34;:&#34;retro&#34;,&#34;meta&#34;:[&#34;nick&#34;,&#34;mail&#34;,&#34;link&#34;],&#34;pageSize&#34;:10,&#34;lang&#34;:&#34;zh-CN&#34;,&#34;visitor&#34;:false,&#34;highlight&#34;:true,&#34;avatarForce&#34;:false,&#34;recordIP&#34;:true,&#34;serverURLs&#34;:false,&#34;enableQQ&#34;:false,&#34;requiredFields&#34;:[&#34;nick&#34;,&#34;mail&#34;],&#34;emojiCDN&#34;:false,&#34;emojiMaps&#34;:false};
+                valineConfig.el = '#valine_container';
+                for (var i in valineConfig) {
+                    if (valineConfig[i] === null) delete valineConfig[i];
+                }
+                new Valine(valineConfig);
             };
-            (i = document.createElement("link")).rel = "stylesheet",
-            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
-            document.head.appendChild(i);
         }
     
         var runningOnBrowser = typeof window !== "undefined";
@@ -729,8 +724,6 @@
         }, 1);
     </script>
 
-    
-    
 
     
     

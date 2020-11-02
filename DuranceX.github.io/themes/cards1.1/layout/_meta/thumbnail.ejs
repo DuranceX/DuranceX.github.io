@@ -1,0 +1,7 @@
+<% if (theme.meta.thumbnail.enable === true && (post.index_img || theme.meta.thumbnail.default)) { %>
+    <% if (theme.lazyload && theme.lazyload.enable === true) { %>
+        <div class="post-thumbnail lazyload" data-bg="<%= post.index_img || theme.meta.thumbnail.default %>"></div>
+    <% } else { %>
+        <div class="post-thumbnail" style="background-image: url('<%= post.index_img || theme.meta.thumbnail.default %>');"></div>
+    <% } %>
+<% } %>

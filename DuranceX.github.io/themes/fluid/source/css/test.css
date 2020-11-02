@@ -1,0 +1,31 @@
+#dark:active{
+    animation: down 0.5s cubic-bezier();
+}
+
+@keyframes down{
+    0%{
+        top:-350px;
+    }
+
+    100%{
+        top:-300px;
+    }
+}
+
+#dark1:active{
+    animation: changecolor 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+@keyframes changecolor{
+    0%{
+        color: aqua;
+    }
+
+    100%{
+        color: black;
+    }
+}
+
+#dark2:hover{
+    background-color: black;
+}

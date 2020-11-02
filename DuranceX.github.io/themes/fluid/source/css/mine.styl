@@ -1,0 +1,185 @@
+/* 切换按钮 */
+#dark
+  cursor pointer
+  position fixed
+  z-index 100
+  left 50px 
+  width 70px
+  height 600px
+  top -350px
+  box-shadow 0 0 /* 去除外边框的阴影 */
+
+  & > i
+    display none /* 隐藏一个小箭头图标，否则会在图片上出现箭头 */
+
+/*暗黑模式*/
+.dark
+  background-color rgb(31, 31, 31)
+  
+
+  /* 主体 */
+  #board 
+    background-color #1c1c21
+    color #a09c9c
+  
+  blockquote
+    border-left .25em solid #68696a
+  img  
+    filter brightness(50%)
+
+  p
+  .index-info a  
+    color #718096
+
+  .index-info a:hover
+    color #3aa7f9
+
+  .markdown-body
+    h1,h2,h3,h4,h5,h6,s,li  
+      color rgb(191, 191, 191) !important
+
+    
+  .markdown-body a
+    color rgb(153, 189, 230)
+
+  /* 顶栏 */
+  .navbar-col-show
+  .top-nav-collapse  
+    background-color #282c34
+    
+  .navbar a  
+    color rgb(191, 191, 191) !important
+    
+  .animated-icon span   /* 手机端 */
+    background-color rgb(191, 191, 191)
+
+
+  /* page-number */
+  .pagination a:hover
+  .pagination .current  
+    background-color #6b6b6b73
+    color rgb(191,191,191)
+
+
+  /* 打字机 */
+  #subtitle
+  .dark.typed-cursor--blink
+  .scroll-down-arrow
+    color #dfdfdf
+
+
+  /* back to top */
+  #scroll-top-button
+    background-color #282c34
+
+    i
+      color #a09c9c
+    
+
+  /* Toc */
+  .tocbot-list a
+    color #a09c9c
+
+  .tocbot-active-link
+  footer a:hover
+    color #3aa7f9 !important
+
+  /* footer */
+  footer
+  footer a
+    color #718096
+    
+  /* 表格 */
+  .markdown-body table td
+  .markdown-body table th 
+    padding: 6px 13px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(54, 54, 54);
+    border-image: initial;
+
+
+  /* 归档页 */
+  .list-group-item
+    color rgb(191, 191, 191)
+    background-color #282c34
+    
+  .list-group-item:hover
+  .tagcloud a:hover
+    background-color #46484d
+
+
+  /* 友链页 */
+  .links
+    .card  
+      background-color #1c1c21
+        
+    .card-body:hover  
+      background-color #46484d
+        
+    .link-title
+    .link-intro  
+      color rgb(191, 191, 191)
+    
+
+  /* note标签 可能这配色有点丑 */
+  .note-info
+    background-color #3b5359
+    border-color #006d80
+
+  .note-danger
+    background-color #783f42
+    border-color #670009
+
+  .note-success
+    background-color #2a3e2e
+    border-color #005915
+
+  .note-warning
+    background-color #5b543e
+    border-color #846500
+
+  .note-primary
+    background-color rgb(69, 89, 110)
+    border-color rgb(28, 67, 110)
+
+  /* aPlayer */
+  .aplayer 
+    background rgb(28, 28, 33)  !important
+
+  .aplayer-lrc:after
+    background linear-gradient(rgba(28, 28, 33, 0) 0px, rgba(28, 28, 33, 0.8)) !important
+
+  .aplayer-lrc:before
+    background linear-gradient(rgb(28, 28, 33) 0px, rgba(28, 28, 33, 0)) !important
+
+  .aplayer.aplayer-withlist .aplayer-info
+    border-bottom 1px solid rgb(48, 48, 48) !important
+
+  /* valine */
+  .v .vwrap 
+    margin-bottom 10px
+    position relative
+    border-width 1px
+    border-style solid
+    border-color rgb(41, 41, 41)
+    border-image initial
+    border-radius 4px
+    overflow hidden
+    padding 10px
+
+  a:active
+    color #3aa7f9 
+
+  .drop-cap .index-card a .post-meta p
+    color #a09c9c
+
+#dark:active
+  top -300px
+
+
+@keyframes change
+  100% background-color black
+
+
+

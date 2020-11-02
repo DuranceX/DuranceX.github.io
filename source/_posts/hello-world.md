@@ -1,6 +1,7 @@
 ---
 title: Hello World
 tag: hexo
+date: 2020-01-24 10:23:23
 index_img: /img/hello_world/hello.png
 # categories: 分类示意 
 ---

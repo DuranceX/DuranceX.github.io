@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>MyBatis基础使用 | 星下小屋</title>
+
+
+    <meta name="keywords" content="Java">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="MyBatis的一些基础使用方法和配置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis基础使用">
+<meta property="og:url" content="http://yoursite.com/2020/11/19/MyBatis%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="MyBatis的一些基础使用方法和配置。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-19T04:53:29.000Z">
+<meta property="article:modified_time" content="2020-11-19T08:37:32.829Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="navbar-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="dropdown-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        MyBatis基础使用
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/11/" class="post-meta__date button">
+    2020-11-19
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/Java/" class="button">Java</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要内容"><span class="toc-text">概要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#POJO类"><span class="toc-text">POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置映射文件"><span class="toc-text">配置映射文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用"><span class="toc-text">调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件详解"><span class="toc-text">配置文件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#properties"><span class="toc-text">properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typeAliases"><span class="toc-text">typeAliases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#environments"><span class="toc-text">environments</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射文件详解"><span class="toc-text">映射文件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#select"><span class="toc-text">select</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert等元素"><span class="toc-text">insert等元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql"><span class="toc-text">sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resultMap"><span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联映射"><span class="toc-text">关联映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一"><span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对多"><span class="toc-text">一对多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主键映射"><span class="toc-text">主键映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态SQL"><span class="toc-text">动态SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if"><span class="toc-text">if</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#choose、when、otherwise"><span class="toc-text">choose、when、otherwise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where"><span class="toc-text">where</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解"><span class="toc-text">注解</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概要内容"><span class="toc-text">概要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#POJO类"><span class="toc-text">POJO类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置映射文件"><span class="toc-text">配置映射文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用"><span class="toc-text">调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件详解"><span class="toc-text">配置文件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#properties"><span class="toc-text">properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typeAliases"><span class="toc-text">typeAliases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#environments"><span class="toc-text">environments</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射文件详解"><span class="toc-text">映射文件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#select"><span class="toc-text">select</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert等元素"><span class="toc-text">insert等元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql"><span class="toc-text">sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resultMap"><span class="toc-text">resultMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关联映射"><span class="toc-text">关联映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一"><span class="toc-text">一对一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对多"><span class="toc-text">一对多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主键映射"><span class="toc-text">主键映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态SQL"><span class="toc-text">动态SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if"><span class="toc-text">if</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#choose、when、otherwise"><span class="toc-text">choose、when、otherwise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where"><span class="toc-text">where</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解"><span class="toc-text">注解</span></a></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail" style="background-image: url('/img/java/MyBatis.webp');"></div>
+    
+</div>
+    <div class="post__content">
+        <p>MyBatis的一些基础使用方法和配置。</p>
+<a id="more"></a>
+
+<h1 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><h2 id="概要内容"><a href="#概要内容" class="headerlink" title="概要内容"></a>概要内容</h2><h3 id="POJO类"><a href="#POJO类" class="headerlink" title="POJO类"></a>POJO类</h3><p>相当于Bean类，在POJO包下创建对象类</p>
+<hr />
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置环境 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span></span></span><br><span class="line"><span class="tag">					<span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/j2ee&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置映射文件的位置 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mapper/Login.xml&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;dataSource&gt;</code>元素的四个属性用于配置数据库的驱动、URL、用户名和密码</p>
+<p><code>&lt;mapper&gt;</code>元素用于指定配置映射文件的位置，这里是<code>mapper</code>包下的<code>Login.xml</code>文件，如有多个文件都应该在这里进行引入。</p>
+<hr />
+
+<h3 id="配置映射文件"><a href="#配置映射文件" class="headerlink" title="配置映射文件"></a>配置映射文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;login&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findUserByID&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;String&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">resultType</span>=<span class="string">&quot;pojo.User&quot;</span>&gt;</span></span><br><span class="line">			select * from User where id = #&#123;id&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>即在该文件里写Sql语句，查询用<code>select</code>，插入用<code>insert</code>等，其余类似，通过标签来区分。<code>id</code>为方法名，<code>parameterType</code>为所需的参数类型，<code>resultType</code>为返回类型</p>
+<hr />
+
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取配置文件</span></span><br><span class="line">String resource = <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	InputStream in = Resources.getResourceAsStream(resource);</span><br><span class="line">	<span class="comment">//创建SQLSessionFactory对象</span></span><br><span class="line">	SqlSessionFactory factory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(in);</span><br><span class="line">	<span class="comment">//创建SqlSession对象</span></span><br><span class="line">	SqlSession sqlSession = factory.openSession();</span><br><span class="line">    <span class="comment">//调用SqlSession对象的方法，例如</span></span><br><span class="line">    User user = sqlSession.selectOne(<span class="string">&quot;login.findUserByID&quot;</span>,ID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>selectone</code>表示返回一条记录信息，两个参数，前者是调用的方法名，即<code>Login</code>文件中<code>login</code>命名空间下的<code>findUserByID</code>方法，后者是方法所需的参数。</p>
+<p>需要返回多条信息可以使用<code>selectList</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; selectList = sqlSession.selectList(<span class="string">&quot;student.findStudentBySname&quot;</span>, <span class="string">&quot;ZhangSan&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (Student student : selectList) &#123;</span><br><span class="line">	System.out.println(student.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+
+<h2 id="配置文件详解"><a href="#配置文件详解" class="headerlink" title="配置文件详解"></a>配置文件详解</h2><h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><p><code>&lt;properties&gt;</code>元素有两种定义方法。</p>
+<p>一是通过其子元素<code>&lt;property&gt;</code>完成属性传递。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span><span class="comment">&lt;!--属性--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span></span></span><br><span class="line"><span class="tag">					<span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/j2ee&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>和之前的<code>&lt;dataSource&gt;</code>里的配置并无两异，只不过在这里对其进行了事先的定义，之后直接调用即可，相当于定义了变量。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>= <span class="string">&quot;$&#123;driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 下略 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>二是通过<code>properties</code>文件实现</p>
+<p>在<code>src</code>目录下新建一个<code>db.properties</code>文件</p>
+<figure class="highlight plain"><figcaption><span>text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driver&#x3D;com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;j2ee</span><br><span class="line">下略</span><br></pre></td></tr></table></figure>
+<p>然后在配置文件中进行引用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;database.properties&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在后续代码中同样可以直接引用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>= <span class="string">&quot;$&#123;jdbc.driver&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 下略 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h3><p>别名，通过使用别名来缩短类的完全限定名长度。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">alias</span>=<span class="string">&quot;user&quot;</span> <span class="attr">type</span>=<span class="string">&quot;pojo.User&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过上述配置即可用<code>user</code>代替<code>pojo.User</code></p>
+<p>另外，MyBatis支持通过扫描包的形式设置别名。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;pojo&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过扫描包，包内所有类都将获得一个首字母小写的别名，例如<code>pojo.User</code>的别名即为<code>user</code></p>
+<p>也可以通过使用注解的方式设置别名，在<code>pojo</code>类中加入注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Alias(value=&quot;user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="environments"><a href="#environments" class="headerlink" title="environments"></a>environments</h3><p>用于定义数据库相关信息。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/j2ee&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>default</code>用于指定默认运行环境的id值，一个<code>&lt;environments&gt;</code>可以有多个<code>&lt;environment&gt;</code>子元素，每个<code>&lt;environment&gt;</code>用于定义一个运行环境。</p>
+<p><code>&lt;transactionManager&gt;</code>中的<code>type</code>属性用于定义事务管理器的类型，有两种可选项<code>JDBC</code>和<code>MANAGED</code>，<code>JDBC</code>直接调用JDBC的提交和回滚设置。</p>
+<p>MyBatis提供了三种数据源，即<code>POOLED</code>、<code>UNPOOLED</code>和<code>JNDI</code></p>
+<p><strong>UNPOOLED</strong></p>
+<p>非连接池请求，该类型数据源只是在被需求时才打开、关闭连接，适用于对性能要求不高的简单应用程序。有五个配置项。</p>
+<p><code>driver</code>、<code>url</code>、<code>username</code>、<code>password</code></p>
+<p><strong>POOLED</strong></p>
+<p>连接池类型，批量创建连接，使用时从池中取一，使用完释放为池中，使并发Web应用快速响应。</p>
+<p>仍需配置上述四个选项，另有一些额外配置项，暂不提及。</p>
+<p><strong>JNDI</strong></p>
+<p>详见P29，暂不需使用。</p>
+<hr />
+
+<h2 id="映射文件详解"><a href="#映射文件详解" class="headerlink" title="映射文件详解"></a>映射文件详解</h2><h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findUserByID&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;String&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">resultType</span>=<span class="string">&quot;pojo.User&quot;</span>&gt;</span></span><br><span class="line">    select * from User where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用<code>&lt;select&gt;</code>标签来映射一个查询语句，<code>id</code>为方法名，<code>parameterType</code>为所需的参数类型，<code>resultType</code>为返回类型。用<code>#&#123;&#125;</code>来表示通过占位符接收参数id。</p>
+<hr />
+
+<h3 id="insert等元素"><a href="#insert等元素" class="headerlink" title="insert等元素"></a>insert等元素</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;pojo.User&quot;</span> &gt;</span></span><br><span class="line">	insert into User(id,name,psw) values(#&#123;id&#125;,#&#123;name&#125;,#&#123;psw&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;pojo.User&quot;</span> &gt;</span></span><br><span class="line">	update user set name = #&#123;name&#125;, psw = #&#123;psw&#125; where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Integer&quot;</span>&gt;</span></span><br><span class="line">	delete from student where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h3><p><code>&lt;sql&gt;</code>元素用于定义重用的Sql代码片段</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;studentCols&quot;</span>&gt;</span></span><br><span class="line">	sid,sname,age,course</span><br><span class="line"><span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在后续代码中调用该代码片段</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;finbStudent&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Integer&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;pojo.Student&quot;</span>&gt;</span></span><br><span class="line">	select <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">&quot;studentCols&quot;</span> /&gt;</span>from student where sid = #&#123;sid&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h3><p>用于映射结果集，包括<code>&lt;association&gt;</code>、<code>&lt;collection&gt;</code>、<code>&lt;discriminator&gt;</code>等子元素，详见下一部分内容。</p>
+<hr />
+
+<h2 id="关联映射"><a href="#关联映射" class="headerlink" title="关联映射"></a>关联映射</h2><h3 id="一对一"><a href="#一对一" class="headerlink" title="一对一"></a>一对一</h3><p>在映射文件中添加<code>&lt;resultMap&gt;</code>元素的子元素<code>&lt;association&gt;</code>来进行一对一映射关系的配置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findUserInfoByID&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Integer&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">resultMap</span>=<span class="string">&quot;userInfoResultMap&quot;</span>&gt;</span></span><br><span class="line">    select u.*, ui.* from User u, user_information ui where u.ID = ui.ID and u.ID = #&#123;ID&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;pojo.User&quot;</span> <span class="attr">id</span>=<span class="string">&quot;userInfoResultMap&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;ID&quot;</span> <span class="attr">property</span>=<span class="string">&quot;ID&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;psw&quot;</span> <span class="attr">property</span>=<span class="string">&quot;psw&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;user_info&quot;</span> <span class="attr">javaType</span>=<span class="string">&quot;pojo.user_information&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;ID&quot;</span> <span class="attr">property</span>=<span class="string">&quot;ID&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;birthday&quot;</span> <span class="attr">property</span>=<span class="string">&quot;birthday&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">property</span>=<span class="string">&quot;sex&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;nation&quot;</span> <span class="attr">property</span>=<span class="string">&quot;nation&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;hometown&quot;</span> <span class="attr">property</span>=<span class="string">&quot;hometown&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在User类中添加user_information的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_information user_info;</span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><p>在一对多的情况下就不是定义一个对象类，而是定义一个对象数组\列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;StuInfo&gt; stuInfoList;</span><br></pre></td></tr></table></figure>
+<p>在配置文件中，用<code>&lt;collection&gt;</code>来进行配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findStuClassByCid&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Integer&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">resultMap</span>=<span class="string">&quot;stuClassResultsMap&quot;</span>&gt;</span></span><br><span class="line">    select c.*,s.sid,s.sname,s.age,s.course from stu_class c ,</span><br><span class="line">    stu_info</span><br><span class="line">    s where s.classid = c.cid and c.cid = #&#123;cid&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">&quot;stuClass&quot;</span> <span class="attr">id</span>=<span class="string">&quot;stuClassResultsMap&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cid&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;cname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;cname&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;sum&quot;</span> <span class="attr">property</span>=<span class="string">&quot;sum&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">&quot;stuInfoList&quot;</span> <span class="attr">ofType</span>=<span class="string">&quot;stuInfo&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;sid&quot;</span> <span class="attr">property</span>=<span class="string">&quot;sid&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;sname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;sname&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;age&quot;</span> <span class="attr">property</span>=<span class="string">&quot;age&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;course&quot;</span> <span class="attr">property</span>=<span class="string">&quot;course&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="主键映射"><a href="#主键映射" class="headerlink" title="主键映射"></a>主键映射</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addStuClass01&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;stuClass&quot;</span> <span class="attr">useGeneratedKeys</span>=<span class="string">&quot;true&quot;</span> 	       <span class="attr">keyProperty</span>=<span class="string">&quot;cid&quot;</span>&gt;</span></span><br><span class="line">	insert into stu_class(cname,sum) values(#&#123;cname&#125;, #&#123;sum&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>useGeneratedKeys</code>属性用于获取数据库内部产生的主键值，<code>KeyProperty</code>属性用于指定主键。</p>
+<p>以上适用于主键自增的情况。如果不支持自增，则需要适用<code>&lt;selectKey&gt;</code>子元素来获取主键值。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addStuClass02&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;stuClass&quot;</span>&gt;</span></span><br><span class="line">		insert into stu_class(cname,sum) values (#&#123;cname&#125;,#&#123;sum&#125;)</span><br><span class="line">		<span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">keyColumn</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">keyProperty</span>=<span class="string">&quot;cid&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Integer&quot;</span> <span class="attr">order</span>=<span class="string">&quot;AFTER&quot;</span>&gt;</span></span><br><span class="line">			select LAST_INSERT_ID()</span><br><span class="line">		<span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>keyProperty</code>属性用于指定数据表主键，<code>keyColumn</code>用于指定POJO对象的成员属性，<code>resultType</code>属性用于指定返回值类型，<code>order</code>属性即排序规则，视数据库而异。</p>
+<hr />
+
+<h2 id="动态SQL"><a href="#动态SQL" class="headerlink" title="动态SQL"></a>动态SQL</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p><code>&lt;if&gt;</code>元素用于条件判断，类似于Java中的if，示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findStudentBySnameAndCourse&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;student&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    select * from student where sname = #&#123;sname&#125;</span><br><span class="line">    <span class="comment">&lt;!--根据条件动态拼装SQL语句 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot; null!=course and &#x27;&#x27;!=course&quot;</span>&gt;</span></span><br><span class="line">        and course =#&#123;course&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上述默认语句是<code>select * from student where sname = #&#123;sname&#125;</code>，而如果course不为空，则在后方加上<code>and course = #&#123;course&#125;</code>，<code>&lt;if&gt;</code>通常跟<code>test</code>属性一起使用。</p>
+<hr />
+
+<h3 id="choose、when、otherwise"><a href="#choose、when、otherwise" class="headerlink" title="choose、when、otherwise"></a>choose、when、otherwise</h3><p><code>&lt;choose&gt;</code>类似于switch语句，每个<code>&lt;choose&gt;</code>元素中至少要包含1个<code>&lt;when&gt;</code>子元素，0个或1个<code>&lt;otherwise&gt;</code>子元素。示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findStudentByChoose&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;student&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    select * from student where 1=1</span><br><span class="line">    <span class="tag">&lt;<span class="name">choose</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--如果sid不为null或空字符串--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;null!=sid and&#x27;&#x27;!=sid&quot;</span>&gt;</span></span><br><span class="line">            and sid = #&#123;sid&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--如果sname不为null或空字符串--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;null!=sname and &#x27;&#x27;!=sname&quot;</span>&gt;</span></span><br><span class="line">            and sname like &#x27;%$&#123;sname&#125;%&#x27;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--如果以上两个条件都不满足，则执行下列内容--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">otherwise</span>&gt;</span></span><br><span class="line">            and course = &#x27;Java&#x27;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">otherwise</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">choose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="where"><a href="#where" class="headerlink" title="where"></a>where</h3><p><code>&lt;where&gt;</code>元素通常跟<code>&lt;if&gt;</code>语句搭配使用，实现的仍是动态装配SQL语句，示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findStudentByChoose&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;student&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">resultType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    select * from student</span><br><span class="line">    <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null!=sid and &#x27;&#x27;!=sid&quot;</span>&gt;</span></span><br><span class="line">        	and sid = #&#123;sid&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null!=sname and &#x27;&#x27;!=sname&quot;</span>&gt;</span></span><br><span class="line">        	and sname like &#x27;% $&#123;sname&#125; %&#x27;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null==course&quot;</span>&gt;</span></span><br><span class="line">        	and course = &#x27;Java&#x27;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以注意到，之前的案例中使用了<code>where 1=1</code>的语句，这是为了避免出现<code>select * from student where and course = ‘Java’</code>之类的错误，而使用<code>&lt;where&gt;</code>元素的话则可以略去，<code>&lt;where&gt;</code>元素会在相应的语句后面添加<code>and</code>，之后，如果where后有以<code>and</code>或<code>or</code>开头的语句，则会将其去除。</p>
+<hr />
+
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p><code>&lt;set&gt;</code>元素和<code>&lt;where&gt;</code>元素类似，不过<code>&lt;set&gt;</code>元素用于<code>&lt;update&gt;</code>，当<code>&lt;set&gt;</code>中的列有返回值（判断成功）时，会自动追加一个<code>set</code>语句。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateStudent&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    update student</span><br><span class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null!=sname and &#x27;&#x27;!=sname&quot;</span>&gt;</span></span><br><span class="line">            sname = #&#123;sname&#125;,</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;null!=age and &#x27;&#x27;!=age&quot;</span>&gt;</span></span><br><span class="line">            age  = #&#123;age&#125;, </span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    where sid = #&#123;sid&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>不做具体讨论，详见P67-72</p>
+<p><code>&lt;trim&gt;</code>用于删除多余关键字，可以实现<code>&lt;where&gt;</code>和<code>&lt;set&gt;</code>的功能</p>
+<p><code>&lt;foreach&gt;</code>元素用于遍历，完成批量查询</p>
+<p><code>&lt;bind&gt;</code>元素相当于设置一个变量，将SQL语句的部分内容设为变量，方便更换不同数据库时的修改维护。</p>
+<hr />
+
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解直接写在接口中，相对简单。接口文件为.java，创建在mapper包下，示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">    <span class="comment">//select语句</span></span><br><span class="line">	<span class="meta">@Select(&quot;select * from student where sid = #&#123;sid&#125;&quot;)</span></span><br><span class="line">	<span class="function">Student <span class="title">selectStudent</span><span class="params">(<span class="keyword">int</span> sid)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//insert语句</span></span><br><span class="line">	<span class="meta">@Insert(&quot;insert into student(sname,age,course) &quot;</span></span><br><span class="line"><span class="meta">			+ &quot; values(#&#123;sname&#125;,#&#123;age&#125;,#&#123;course&#125;)&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">insertStudent</span><span class="params">(Student student)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//update语句</span></span><br><span class="line">	<span class="meta">@Update(&quot;update student &quot;</span></span><br><span class="line"><span class="meta">    		+ &quot;set sname = #&#123;sname&#125;,age = #&#123;age&#125; where sid = #&#123;sid&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">updateStudent</span><span class="params">(Student student)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//delete语句</span></span><br><span class="line">	<span class="meta">@Delete(&quot;delete from student where sid = #&#123;sid&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">deleteStudent</span><span class="params">(<span class="keyword">int</span> sid)</span></span>;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//通过Param传递多个参数</span></span><br><span class="line">	<span class="meta">@Select(&quot;select * from student where sname = #&#123;param01&#125; &quot;</span></span><br><span class="line"><span class="meta">    		+ &quot;and course = #&#123;param02&#125;&quot;)</span></span><br><span class="line">	<span class="function">Student <span class="title">selectBySnameAndCourse</span><span class="params">(<span class="meta">@Param(&quot;param01&quot;)</span>String sname ,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@Param(&quot;param02&quot;)</span>String course)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-11-19
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/Java/" class="post-cats__link button">Java</a>
+    
+    
+        <a href="/tags/Java/" class="post-tags__link button"># Java</a>
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/11/29/Spring%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            Spring基础使用
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/11/13/Hexo-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AE%BE%E7%BD%AE/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            Hexo 数学公式设置
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021 <a href="/">星下小屋</a>
+        </p>
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'skyhouse',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/11/19/MyBatis基础使用/',
+                    url: 'http://yoursite.com/2020/11/19/MyBatis%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

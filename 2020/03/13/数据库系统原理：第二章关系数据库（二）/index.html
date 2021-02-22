@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>数据库系统原理：第二章关系数据库（二） | 星下小屋</title>
+
+
+    <meta name="keywords" content="笔记, 数据库系统原理">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content=":star: 数据库系统原理：第二章关系数据库中的关系代数的相关内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统原理：第二章关系数据库（二）">
+<meta property="og:url" content="http://yoursite.com/2020/03/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content=":star: 数据库系统原理：第二章关系数据库中的关系代数的相关内容。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B9%B6.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%80%89%E6%8B%A9.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%8A%95%E5%BD%B1.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B1.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B2.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B3.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B4.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%A4%96%E8%BF%9E%E6%8E%A5.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B7%A6%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97%E7%A4%BA%E4%BE%8B.png">
+<meta property="article:published_time" content="2020-03-13T10:44:09.000Z">
+<meta property="article:modified_time" content="2020-03-14T09:51:07.729Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库系统原理">
+<meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
+<meta name="twitter:image" content="http://yoursite.com/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="navbar-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="dropdown-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        数据库系统原理：第二章关系数据库（二）
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/03/" class="post-meta__date button">
+    2020-03-13
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="button">数据库系统原理</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本运算"><span class="toc-text">一、基本运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、传统集合运算"><span class="toc-text">二、传统集合运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#并"><span class="toc-text">并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#差"><span class="toc-text">差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交"><span class="toc-text">交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#笛卡尔积（积）"><span class="toc-text">笛卡尔积（积）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、关系特有操作"><span class="toc-text">三、关系特有操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择"><span class="toc-text">选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#投影"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接"><span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#除运算"><span class="toc-text">除运算</span></a></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本运算"><span class="toc-text">一、基本运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、传统集合运算"><span class="toc-text">二、传统集合运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#并"><span class="toc-text">并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#差"><span class="toc-text">差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交"><span class="toc-text">交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#笛卡尔积（积）"><span class="toc-text">笛卡尔积（积）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、关系特有操作"><span class="toc-text">三、关系特有操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择"><span class="toc-text">选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#投影"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接"><span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#除运算"><span class="toc-text">除运算</span></a></li></ol></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail" style="background-image: url('/img/数据库系统/header.png');"></div>
+    
+</div>
+    <div class="post__content">
+        <p>:star: 数据库系统原理：第二章关系数据库中的关系代数的相关内容。</p>
+<a id="more"></a>
+
+<h1 id="star-关系代数"><a href="#star-关系代数" class="headerlink" title=":star:关系代数"></a>:star:关系代数</h1><p>关系代数式一种抽象的查询语言，它用对关系的运算来表达查询。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6.png"><br>其中基本运算为（5种）：</p>
+<p>并 $∪$ 、 差 $-$ 、笛卡尔积 $×$ 、 选择 $\sigma$ 、 投影 $\prod$</p>
+<p>剩余运算（3种）：</p>
+<p>交 $∩$ 、 连接 $\bowtie$ 、 除 $÷$</p>
+<p>剩余运算都可以用基本运算表示：</p>
+<ul>
+<li>交运算 &emsp;&emsp; $R∩S=R-(R-S)$</li>
+<li>连接运算 &emsp;&emsp; $R\mathop{\bowtie}\limits_{AθB} = \sigma_{AθB}(R×B)$</li>
+<li>除运算 &emsp;&emsp; $R(X,Y)÷S(Y)=\prod_X(R)-\prod_X(\prod_X(R)×\prod_Y(S)-R)$</li>
+</ul>
+<h2 id="一、基本运算"><a href="#一、基本运算" class="headerlink" title="一、基本运算"></a>一、基本运算</h2><p><strong>（1）R，t∈R，t[A<del>i</del>]</strong><br>设关系模式为 R(A<del>1</del>,A<del>2</del>,…,A<del>n</del>)<br>它的一个关系设为<font color=blue><b>R</b></font><br><font color=blue><b>t∈R</b></font>表示 t 是 R 的一个元组<br><font color=blue><b>t[A<sub>i</sub>]</b></font>则表示元组 t 中相应于属性 A<del>i</del> 的一个分量</p>
+<p><strong>（2）A，t[A]，$\overline{A}$</strong><br>若<font color=blue><b>A</b></font>={A<del>i1</del>，A<del>i2</del>,…,A<del>ik</del>}，其中A<del>i1</del>，A<del>i2</del>,…,A<del>in</del>是A<del>1</del>,A<del>2</del>,…,A<del>n</del>中的一部分，则A称为属性列或属性组<br><font color=blue><b>t[A]</b></font>=(t[A<del>i1</del>]，t[A<del>i2</del>],…,t[A<del>ik</del>])表示元组t在属性列A上诸分量的集合。<br><font color=blue><b>$\overline{A}$</b></font>则表示{A<del>1</del>,A<del>2</del>,…,A<del>n</del>}中去掉{A<del>i1</del>，A<del>i2</del>,…,A<del>ik</del>}后剩余的属性组</p>
+<p><strong>（3）$\overgroup{t_rt_s}$</strong><br>R为n目关系，S为m目关系。<br>t<del>r</del>∈R，t<del>s</del>∈S，<font color=blue><b>$\overgroup{t_rt_s}$</b></font>称为元组的连接<br><font color=blue><b>$\overgroup{t_rt_s}$</b></font>是一个n+m列的元组，前n个分量是R中的一个n元组，后m个分量是S中的一个m元组</p>
+<p><strong>（4）象集Z<del>x</del></strong><br>给定一个关系R（X，Z），X和Z为属性组。<br>当t[X]=x时，x在R中的象集为：<br>$$Z_x={t[Z]|t∈R,t[X]=x}$$<br>它表示R中属性组X上值为x的诸元组在Z上分量的集合<br>示例：<br>|   X   |   Z   |<br>| :—: | :—: |<br>| X<del>1</del>  | Z<del>1</del>  |<br>| X<del>1</del>  | Z<del>2</del>  |<br>| X<del>1</del>  | Z<del>3</del>  |<br>| X<del>2</del>  | Z<del>2</del>  |<br>| X<del>2</del>  | Z<del>3</del>  |<br>| X<del>3</del>  | Z<del>1</del>  |<br>| X<del>3</del>  | Z<del>3</del>  |</p>
+<p>则：</p>
+<ul>
+<li>X<del>1</del>在R中的象集：&emsp;&emsp;Z<del>x1</del>={Z<del>1</del>,Z<del>2</del>,Z<del>3</del>}</li>
+<li>X<del>2</del>在R中的象集：&emsp;&emsp;Z<del>x2</del>={Z<del>2</del>,Z<del>3</del>}</li>
+<li>X<del>3</del>在R中的象集：&emsp;&emsp;Z<del>x3</del>={Z<del>1</del>,Z<del>3</del>}</li>
+</ul>
+<h2 id="二、传统集合运算"><a href="#二、传统集合运算" class="headerlink" title="二、传统集合运算"></a>二、传统集合运算</h2><h3 id="并"><a href="#并" class="headerlink" title="并"></a>并</h3><p>R和S</p>
+<ul>
+<li><p>具有相同的目n</p>
+</li>
+<li><p>相应的属性取自同一个域</p>
+<p>R∪S</p>
+</li>
+<li><p>仍为n目关系，由属于R或属于S的元组组成<br>$$R∪S={t|t∈R∨t∈S}$$<br>示例：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B9%B6.png"></p>
+</li>
+</ul>
+<h3 id="差"><a href="#差" class="headerlink" title="差"></a>差</h3><p>R和S</p>
+<ul>
+<li><p>具有相同的目n</p>
+</li>
+<li><p>相应的属性取自同一个域</p>
+<p>R-S</p>
+</li>
+<li><p>仍为n目关系，由属于R而不属于S的元组组成<br>$$R-S={t|t∈R∧t\notin S}$$<br>示例：</p>
+</li>
+</ul>
+<p>以上图为例，则R-S为:</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a1</td>
+<td align="center">b1</td>
+<td align="center">c1</td>
+</tr>
+</tbody></table>
+<p>S-R为:</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a1</td>
+<td align="center">b3</td>
+<td align="center">c2</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="交"><a href="#交" class="headerlink" title="交"></a>交</h3><p>R和S</p>
+<ul>
+<li><p>具有相同的目n</p>
+</li>
+<li><p>相应的属性取自同一个域</p>
+<p>R∪S</p>
+</li>
+<li><p>仍为n目关系，由既属于R又属于S的元组组成<br>$$R∪S={t|t∈R∧t∈S}$$<br>示例：<br>以上图为例，则R∩S为:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a1</td>
+<td align="center">b2</td>
+<td align="center">c2</td>
+</tr>
+<tr>
+<td align="center">a2</td>
+<td align="center">b2</td>
+<td align="center">c1</td>
+</tr>
+</tbody></table>
+<h3 id="笛卡尔积（积）"><a href="#笛卡尔积（积）" class="headerlink" title="笛卡尔积（积）"></a>笛卡尔积（积）</h3><p>R：n目关系，k<del>1</del>个元组；S：m目关系，k<del>2</del>个元组<br>R$×$S</p>
+<ul>
+<li>列：（n+m）列元组的集合</li>
+<li>行：k<del>1</del>$×$k<del>2</del>个元组</li>
+</ul>
+<h2 id="三、关系特有操作"><a href="#三、关系特有操作" class="headerlink" title="三、关系特有操作"></a>三、关系特有操作</h2><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><ul>
+<li>选择又称为限制</li>
+<li>选择元素符的含义<ul>
+<li>在关系R中选择满足给定条件的诸元组</li>
+<li>$\sigma_F(R)$，F为选择条件，是一个逻辑表达式<ul>
+<li>基本形式为：XθY</li>
+<li>θ表示比较运算符，它可以是$&gt;,\ge,&lt;,\le,=,或\neq$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%80%89%E6%8B%A9.png"><br>例如：<br>查询信息系（IS系）全体学生<br>$\sigma_{Sdept=’IS’}(Student)$<br>结果：<br>|    Sno    | Sname | Ssex  | Sage  | Sdept |<br>| :——-: | :—: | :—: | :—: | :—: |  |<br>| 201215125 | 张立  |  男   |  19   |  IS   |<br>| 201215126 | 李四  |  女   |  20   |  IS   |<br>可以看出选择出来都是Sdept属性为IS的信息。</p>
+<h3 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h3><p>从R中选择若干属性列组成新的关系<br>$$\prod_A(R)={t[A]|t∈R}，A:R中的属性列$$<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%8A%95%E5%BD%B1.png"><br>例如：<br>查询学生的姓名和所在系。即求Student关系上学生姓名和所在系两个属性上的投影$\prod_{Sname,Sdept}(Student)$<br>结果：<br>| Sname | Sdept |<br>| :—: | :—: |<br>| 李勇  |  CS   |<br>| 刘晨  |  CS   |<br>| 王铭  |  MA   |<br>| 张三  |  IS   |</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接运算的含义：<br>从两个关系的笛卡尔积中选取属性间满足一定条件的元组<br>$$R\mathop{\bowtie}\limits_{AθB}S ={ \overgroup{t_rt_s}|t_r∈R∧t_s∈S∧t_r[A]θt_s[B]}$$</p>
+<ul>
+<li>A和B：分别为R和S上度数相等且可比的属性组</li>
+<li>θ比较运算符</li>
+</ul>
+<blockquote>
+<p>连接运算从R和S关系的广义笛卡尔积R$×$S中选取R关系在A属性组上的值与S关系在B属性组上的值满足比较关系θ的元组。</p>
+</blockquote>
+<p><strong>两类常用连接运算</strong></p>
+<ul>
+<li>等值连接<ul>
+<li>θ为“=”的连接运算称为等值连接</li>
+<li>从关系R和S的广义笛卡尔积中选取A、B属性值相等的那些元组。</li>
+</ul>
+</li>
+<li>自然连接<ul>
+<li>自然连接是一种特殊的等值连接<ul>
+<li>两个关系中进行比较的分量必须是相同的属性组</li>
+<li>在结果中会把重复的属性列去掉</li>
+</ul>
+</li>
+<li>R和S需要具有相同的属性组</li>
+</ul>
+</li>
+</ul>
+<p>示例：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B1.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B2.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B3.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B4.png"></p>
+<ul>
+<li>悬浮元组<ul>
+<li>在两个关系R和S做自然连接中，关系R上的某些元组可能在关系S上没有属性值相等的元组，那么这些元组会被遗弃，称为悬浮元组</li>
+</ul>
+</li>
+<li>外连接<ul>
+<li>如果把悬浮元组也保存在结果关系中，而在其他属性上填空值（NULL），称为外连接</li>
+<li>如果只保留左边关系R中的悬浮元组，则称为左外连接</li>
+<li>如果只保留右边关系S中的悬浮元组，则称为右外连接<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%A4%96%E8%BF%9E%E6%8E%A5.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B7%A6%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="除运算"><a href="#除运算" class="headerlink" title="除运算"></a>除运算</h3><p>给定关系R（X，Y）和S（Y，Z），其中X，Y，Z为属性组<br>R与S除运算得到一个新关系P（X），P是R中满足<strong>元组在X上分量值x的象集Y<del>x</del>包含S在Y上投影的集合</strong>的元组在X属性列上的投影。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97%E7%A4%BA%E4%BE%8B.png"></p>
+<p>这里可以看到，在关系R中，A可以取四个值（a1，a2，a3，a4）<br>&emsp;&emsp;&emsp;&emsp;a1的象集为 <strong>{(b1，c2)，(b2，c3)，(b2，c1)}</strong><br>&emsp;&emsp;&emsp;&emsp;a2的象集为 <strong>{(b3，c7)，(b2，c3)}</strong><br>&emsp;&emsp;&emsp;&emsp;a3的象集为 <strong>{(b4，c6)}</strong><br>&emsp;&emsp;&emsp;&emsp;a4的象集为 <strong>{(b6，c6)}</strong><br>而S在（B，C）上的投影为<br>&emsp;&emsp;&emsp;&emsp; <strong>{(b1，c2)，(b2，c1)，(b2，c3)}</strong><br>在这个例子中，只有a1的象集包含了S在（B，C）属性组上的投影<br>所以R÷S={a1}</p>
+<p class="note note-primary">只要出现了<b>全部、所有</b>字样的题目都需要用到除运算</p>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-03-14
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="post-cats__link button">数据库系统原理</a>
+    
+    
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="post-tags__link button"># 笔记</a>
+    
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="post-tags__link button"># 数据库系统原理</a>
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/03/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            CSS学习笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/03/12/%E5%AE%9A%E7%82%B9%E6%95%B0%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            定点数与浮点数
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021 <a href="/">星下小屋</a>
+        </p>
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'skyhouse',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/03/13/数据库系统原理：第二章关系数据库（二）/',
+                    url: 'http://yoursite.com/2020/03/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

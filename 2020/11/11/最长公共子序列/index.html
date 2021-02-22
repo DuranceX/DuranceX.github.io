@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>最长公共子序列 | 星下小屋</title>
+
+
+    <meta name="keywords" content="算法, 动态规划">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="动态规划的中的最长公共子序列示例题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最长公共子序列">
+<meta property="og:url" content="http://yoursite.com/2020/11/11/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="动态规划的中的最长公共子序列示例题。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-11T09:44:32.000Z">
+<meta property="article:modified_time" content="2020-11-13T06:00:08.308Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="navbar-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="dropdown-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        最长公共子序列
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/11/" class="post-meta__date button">
+    2020-11-11
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E7%AE%97%E6%B3%95/" class="button">算法</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        
+动态规划的中的最长公共子序列示例题。
+
+<a id="more"></a>
+
+### 示例
+
+**题目**
+
+设计一个O(n^2^)时间的算法，找出由n个数组成的序列的最长单调递增子序列。
+
+**简要分析**
+
+题目可以看做原序列和排序后序列求最长公共子序列。
+
+### 基础
+
+一个给定序列的子序列是在该序列中删去若干元素后得到的序列。
+
+设给定序列$X=\\{x_1,x_2,x_3,...x_m\\}$，若存在子序列$Z=\\{z_1,z_2,z_3,....,z_k\\}$，那么，
+
+必定存在一个严格递增的下标序列$\\{i_1,i_2,i_3,....i_k\\}$，使得所有$j$=1,2,3,...,k，都有$z_j=x_{i_j}$
+
+> 例如：
+>
+> $X$=$\\{A,B,C,B,D,B,A\\}$，则其子序列$Z$=$\\{B,C,D,A\\}$，相应的下标序列为{2,3,5,7}*(下标从1开始)*
+>
+> 此时，当$j$=1时，$z_1$=$B$，x的下标为$i_1$，即$x_{i_1}$，$i_1$也就是下标序列中的第一位，即2，
+>
+> 所以，$z_1=x_2=B$，同理，当$j$=4时，$z_4=x_{i_4}=x_7=A$
+
+当给定两个序列$X$和$Y$，且$Z$同时为两者的子序列时，则称$Z$为$X$和$Y$的公共子序列
+
+>例如：
+>
+>$X=\\{A,B,C,B,D,B,A\\},Y=\\{B,D,C,A,B,A\\}$
+>
+>若$Z=\\{B,C,A\\}$，则$Z$是$X,Y$的公共子序列
+>
+>若$Z=\\{B,C,B,A\\}$，则$Z$是$X,Y$的公共子序列，同时也是最长公共子序列
+
+### 计算最长公共子序列
+
+设序列$X=\\{x_1,x_2,x_3,...x_m\\}$，和序列$Y=\\{y_1,y_2,y_3,....,y_n\\}$的最长公共子序列为$Z=\\{z_1,z_2,z_3,....,z_k\\}$，则有三种情况
+
+1. 若$x_m=y_n$，则$z_k=x_m=y_n$，且$z_{k-1}$是$X_{m-1}$和$Y_{n-1}$的最长公共子序列
+2. 若$x_m \ne y_n$且$z_k \ne x_m$，则$Z$是$X_{m-1}$和$Y_n$的最长公共子序列
+3. 若$x_m \ne y_n$且$z_k \ne y_n$，则$Z$是$X_m$和$Y_{n-1}$的最长公共子序列
+
+<font color="deepskyblue">①$x_m=y_n$，说明$X$和$Y$的最后一个元素相同，而$Z$是$X$和$Y$的最长公共子序列，而最长自然最好是从头到尾，既然两者的尾元素相同，那自然应该包含在最长公共子序列中，且应是最后一位。三者同时将最后一位去掉，即得到$Z_{k-1}$是$X_{m-1}$和$Y_{n-1}$的最长公共子序列</font>
+
+> 证：
+>
+> 若$z_k \ne x_m$，则因为$Z$是$X$和$Y$的最长公共子序列，且$x_m=y_n$，则说明$\\{Z,x_m/y_n\\}$也应该是$X$和$Y$的公共子序列，因为$Z$的长度是$k$，而$\\{Z,x_m/y_n\\}$的长度为$k+1$，$k+1>k$，这与”$Z$是$X$和$Y$的最长公共子序列设定“冲突，所以必有$z_k=x_m=y_n$，即当$x_m=y_n$时，$x_m/y_n$必定在最长子序列$Z$中。
+
+<font color="deepskyblue">②/③$Z$是$X$和$Y$的最长公共子序列，而$z_k$是$Z$中的最后一位，$x_m$是$X$中的最后一位，若$z_k \ne x_m$，说明$x_m$不包含于$Z$中，即$X_m$不是最长公共子序列的一部分，那么可以将其去掉，即最长公共子序列存在于$X_{m-1}和Y_n$中</font>
+
+### 分析递归结构
+
+由上可知，当$x_m=y_n$时，找出$x_{m-1}和y_{n-1}$的最长公共子序列，在气候加上$x_m$，即是X和Y的最长公共子序列；当$x_m \ne y_n$时，则分别求$X_{m-1}和Y_n$的最长公共子序列，以及$X_m和Y_{n-1}$的最长公共子序列，并比较得到较长的那个序列，即为$X,Y$的最长公共子序列。
+
+用C\[i][j]记录序列$X_i和Y_j$的最长公共子序列的长度。
+
+> 例：
+>
+> C\[5][7]即是$X_5=\\{x_1,x_2,....,x_5\\}$和$Y_7=\\{y_1,y_2,....,y_7\\}$的最长公共子序列
+
+当$i=j=0$时，说明$X$和$Y$都是空序列，那么最长公共子序列的长度也自然是0，得到公式
+
+   ![DP数组C](/img/algorithm/DP.webp)
+
+### 图表分析
+
+另外设一个数组b\[i][j]用来记录符合哪一种情况，即上述方式中的四种情况。
+
+X=[5,2,3,4,8,6,9]，Y为升序的X，Y=[2,3,4,5,6,8,9]
+
+C表：
+
+![DP数组C](/img/algorithm/DP数组C.webp)
+
+b表：（第一种情况用作边界条件，设上述第二种情况为1，第三种情况的左侧大为2，右侧大为3）
+
+![DP数组b](/img/algorithm/DP数组b.webp)
+
+示例：
+
+当$i$=1的时候，$x_1 \ne y_1，i,j \ne 0$那么看第三种方案中的两种情况，$C[i-1][j]=C[0][1]=0$，$C[i][j-1]=C[1][0]=0$，这里将他归入”2“，即$C[i-1][j]\ge C[i][j-1]$，所以此时$C[1][1]=C[i-1][j]=C[0][1]=0$，为”2“情况，所以$b[1][1]=2$，依次类推，直到$j=4$时，$x_1=y_4$，此时满足第二种情况，所以$C[1][4]=C[0][3]+1=1$，$b[1][4]=1$
+
+依次类推，当$i=7,j=7$时，返回$C[7][7]$即为最长子公共序列的长度，并返回$b$数组用于输出该最长子公共序列。
+
+![DP数组b](/img/algorithm/DP根据b.webp)
+
+如上图所示，根据b数组进行查找输出。
+
+首先$b[7][7]=1$，说明$x_7$在最长公共子序列中可以输出，但应是最晚输出，因为是1，所以找$C[6][6]$，即左上角，左上角为2，则说明该值由$C[i-1][j]$得来，找上方一格，即$C[5][6]$，此时$C[5][6]=1$，说明该值在最长公共子序列中，即$x_5$在最长公共子序列中，再找左上角，为3，找左边，为3，找左边，为1，说明可输出，找左上角。类推。
+
+最终输出结果$x_2,x_3,x_4,x_5,x_7$，即23489。
+
+<blockquote class="blockquote-note blockquote-note__tip"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></div>注意点</div><div class="blockquote-note__content">
+这里我们可以注意到除了23489之外，23469也可以，这点取决于当$C[i-1][j]和C[i][j-1]$相等时取谁。
+</div></blockquote>
+
+
+
+### 代码
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] Sort(<span class="hljs-keyword">int</span>[] arr) &#123;<br>   	<span class="hljs-keyword">int</span> length = arr.length;<br>       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>           <span class="hljs-comment">//每一趟循环比较时，min用于存放较小元素的数组下标，</span><br>           <span class="hljs-comment">//这样当前批次比较完毕最终存放的就是此趟内最小的元素的下标，避免每次遇到较小元素都要进行交换。</span><br>           <span class="hljs-keyword">int</span> min = i;<br>           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; arr.length; j++) &#123;<br>               <span class="hljs-keyword">if</span> (arr[j] &lt; arr[min]) &#123;<br>                   min = j;<br>               &#125;<br>           &#125;<br>           <span class="hljs-comment">//进行交换，如果min发生变化，则进行交换</span><br>           <span class="hljs-keyword">if</span> (min != i) &#123;<br>               <span class="hljs-keyword">int</span> temp = arr[i];<br>               arr[i] = arr[min];<br>               arr[min] = temp;<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br><br>       <span class="hljs-comment">//去重</span><br>       <span class="hljs-keyword">while</span>(i&lt;length-<span class="hljs-number">1</span>)<br>       &#123;<br>       	<span class="hljs-keyword">if</span>(arr[i] == arr[i+<span class="hljs-number">1</span>])<br>       	&#123;<br>       		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;length;j++)<br>       		&#123;<br>       			arr[j]=arr[j+<span class="hljs-number">1</span>];<br>       		&#125;<br>       		length--;<br>       	&#125;<br>       	<span class="hljs-keyword">else</span><br>       		i++;<br>       &#125;<br>       <span class="hljs-keyword">int</span> []b = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length];<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;length;j++)<br>       &#123;<br>       	b[j] = arr[j];<br>       &#125;<br>       <span class="hljs-keyword">return</span> b;<br>   &#125; <br><br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 构建最长公共子序列</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> i x序列的下标?</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> j y序列的下标?</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> x 序列x</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> b 通过lcsLength()得到的状态数组?</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lcs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i,<span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span>[]x,<span class="hljs-keyword">int</span> [][]b)</span></span><br><span class="hljs-function">   </span>&#123;<br>       <span class="hljs-keyword">if</span>(i==<span class="hljs-number">0</span> || j == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;<br>       <span class="hljs-keyword">if</span>(b[i][j] == <span class="hljs-number">1</span>)<br>       &#123;<br>           <span class="hljs-comment">//即第二种情况，X和Y最后一个元素相同</span><br>           lcs(i-<span class="hljs-number">1</span>,j-<span class="hljs-number">1</span>,x,b); <span class="hljs-comment">//递归调用</span><br>           System.out.print(x[i-<span class="hljs-number">1</span>]);<br>       &#125;<br>       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(b[i][j] == <span class="hljs-number">2</span>)<br>       &#123;<br>           <span class="hljs-comment">//即第三种情况中的第一种情况，右侧大于左侧</span><br>           lcs(i-<span class="hljs-number">1</span>,j,x,b);<br>       &#125;<br>       <span class="hljs-keyword">else</span><br>       &#123;<br>           <span class="hljs-comment">//即第三种情况中的第二种情况，左侧大于右侧</span><br>           lcs(i,j-<span class="hljs-number">1</span>,x,b);<br>       &#125;<br>   &#125;<br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * P58页，最长公共子序列代码</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> x 序列X</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> y 序列Y</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> b 状态字，用于判断序列满足哪种情况</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span> 返回X和Y的最长公共子序列长度</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcsLength</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[]x,<span class="hljs-keyword">int</span>[]y,<span class="hljs-keyword">int</span> [][]b)</span></span><br><span class="hljs-function">   </span>&#123;<br>       <span class="hljs-keyword">int</span> m = x.length;<br>       <span class="hljs-keyword">int</span> n = y.length;<br>       <span class="hljs-keyword">int</span> [][]c = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m+<span class="hljs-number">1</span>][n+<span class="hljs-number">1</span>];<br><br>       <span class="hljs-comment">//初始化边界条件</span><br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=m;i++)<br>           c[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)<br>           c[<span class="hljs-number">0</span>][i] = <span class="hljs-number">0</span>;<br><br>       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)<br>       &#123;<br>           <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)<br>           &#123;<br>               <span class="hljs-keyword">if</span>(x[i-<span class="hljs-number">1</span>] == y[j-<span class="hljs-number">1</span>])<br>               &#123;<br>                   <span class="hljs-comment">//第二种情况，即此部分X和Y最后一个元素相同，那么最长公共子序列长度为之前的序列的最长公共子序列的长度+1</span><br>                   c[i][j] = c[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;  <br>                   b[i][j] = <span class="hljs-number">1</span>;<br>               &#125;<br>               <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(c[i-<span class="hljs-number">1</span>][j] &gt;= c[i][j-<span class="hljs-number">1</span>])<br>               &#123;<br>                   <span class="hljs-comment">//第三种情况中的第一种，即右侧的最长公共子序列的长度大于左侧，那么X和Y的最长公共子序列长度即为右侧</span><br>                   c[i][j] = c[i-<span class="hljs-number">1</span>][j];<br>                   b[i][j] = <span class="hljs-number">2</span>;<br>               &#125;<br>               <span class="hljs-keyword">else</span><br>               &#123;<br>                   <span class="hljs-comment">//第三种情况中的第二种，即左侧的最长公共子序列的长度大于右侧，那么X和Y的最长公共子序列长度即为左侧</span><br>                   c[i][j] = c[i][j-<span class="hljs-number">1</span>];<br>                   b[i][j] = <span class="hljs-number">3</span>;<br>               &#125;<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> c[m][n];<br>   &#125;<br><br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>       <span class="hljs-comment">//char []X = &#123;&#x27; &#x27;,&#x27;A&#x27;,&#x27;B&#x27;,&#x27;E&#x27;,&#x27;B&#x27;,&#x27;D&#x27;,&#x27;A&#x27;,&#x27;B&#x27;&#125;;</span><br>       <span class="hljs-comment">//char []Y = &#123;&#x27;B&#x27;,&#x27;D&#x27;,&#x27;C&#x27;,&#x27;A&#x27;,&#x27;B&#x27;,&#x27;A&#x27;&#125;;</span><br>   	<span class="hljs-comment">//char []X = &#123;&#x27;C&#x27;,&#x27;B&#x27;,&#x27;A&#x27;&#125;;</span><br>   	<span class="hljs-comment">//char []Y = new char[X.length];</span><br>   	<span class="hljs-keyword">int</span> []X = &#123;<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">8</span>,<span class="hljs-number">6</span>,<span class="hljs-number">9</span>&#125;;<br>   	<span class="hljs-keyword">int</span> []Y = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[X.length];<br>   	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;Y.length;i++)<br>   		Y[i]=X[i];<br>   	Y = Sort(Y);<br>       <span class="hljs-keyword">int</span> [][]b = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[X.length+<span class="hljs-number">1</span>][Y.length+<span class="hljs-number">1</span>];<br>       <span class="hljs-keyword">int</span> x = lcsLength(X,Y,b);<br>       System.out.println(x);<br>       lcs(X.length,Y.length,X,b);<br>       x+=<span class="hljs-number">1</span>;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-11-13
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-cats__link button">算法</a>
+    
+    
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="post-tags__link button"># 算法</a>
+    
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-tags__link button"># 动态规划</a>
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/11/13/Hexo-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AE%BE%E7%BD%AE/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            Hexo 数学公式设置
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/11/02/%E5%A4%9A%E7%94%B5%E8%84%91%E5%90%8C%E6%AD%A5hexo/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            多电脑同步hexo
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021 <a href="/">星下小屋</a>
+        </p>
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+
+    <script>
+        if (typeof MathJax === 'undefined') {
+            window.MathJax = {
+                loader: {
+                    source: {
+                        '[tex]/amsCd': '[tex]/amscd',
+                        '[tex]/AMScd': '[tex]/amscd'
+                    }
+                },
+                tex: {
+                    inlineMath: {'[+]': [['$', '$']]},
+                    tags: 'ams'
+                },
+                options: {
+                    renderActions: {
+                        findScript: [10, doc => {
+                            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                                const display = !!node.type.match(/; *mode=display/);
+                                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                                const text = document.createTextNode('');
+                                node.parentNode.replaceChild(text, node);
+                                math.start = {node: text, delim: '', n: 0};
+                                math.end = {node: text, delim: '', n: 0};
+                                doc.math.push(math);
+                            });
+                        }, '', false],
+                        insertedScript: [200, () => {
+                            document.querySelectorAll('mjx-container').forEach(node => {
+                                let target = node.parentNode;
+                                if (target.nodeName.toLowerCase() === 'li') {
+                                    target.parentNode.classList.add('has-jax');
+                                }
+                            });
+                        }, '', false]
+                    }
+                }
+            };
+            (function () {
+                var script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+                script.defer = true;
+                document.head.appendChild(script);
+            })();
+        } else {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+        }
+    </script>
+ 
+
+ 
+
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'skyhouse',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/11/11/最长公共子序列/',
+                    url: 'http://yoursite.com/2020/11/11/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    <link rel="shortcut icon" type='image/x-icon' href="/img/house.png">
+
+
+    <!-- meta -->
+
+
+<title>Fluid添加暗黑模式 | 星下小屋</title>
+
+
+    <meta name="keywords" content="hexo 美化">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="为Fluid添加暗色模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluid添加暗黑模式">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/Fluid%E6%B7%BB%E5%8A%A0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="星下小屋">
+<meta property="og:description" content="为Fluid添加暗色模式">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-10T06:54:32.000Z">
+<meta property="article:modified_time" content="2020-05-10T08:13:44.868Z">
+<meta property="article:author" content="Cardy Tse">
+<meta property="article:tag" content="hexo 美化">
+<meta name="twitter:card" content="&#x2F;img&#x2F;house.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+    
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-light.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.2/styles/atom-one-dark.min.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')!==-1)this.media='all'">
+        
+    
+
+    
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                星下小屋
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="navbar-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="navbar-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="navbar-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="navbar-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+         
+    <a href="#" class="button" id="b2t" aria-label="Back to Top" title="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">
+                        首页
+                    </a>
+                
+                    <a href="/tags/" class="dropdown-menu button">
+                        标签
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        归档
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        友链
+                    </a>
+                
+                    <a href="/about/" class="dropdown-menu button">
+                        关于
+                    </a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Fluid添加暗黑模式
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/05/" class="post-meta__date button">
+    2020-05-10
+</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" class="button">博客美化</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS"><span class="toc-text">JS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">Article Directory</div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS"><span class="toc-text">JS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li></ol>
+    </div>
+
+
+<article class="post content-card">
+    <div class="post__header">
+    
+        <div class="post-thumbnail" style="background-image: url('/img/美化/darkmode.jpg');"></div>
+    
+</div>
+    <div class="post__content">
+        <p>为Fluid添加暗色模式</p>
+<a id="more"></a>
+
+<p>之前一直就想为博客添加个暗色模式，但是拖延症晚期:crying_cat_face:，所以一直拖到了现在，主要的代码参考自<a href="https://royce2003.top/posts/41212.html" target="_blank" rel="noopener">Royce</a>的博客，emmm，这里还是把代码搬一下。。</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>首先是HTML，在<code>\themes\fluid\layout\layout.ejs</code>中找到<code>&lt;body&gt;</code>标签，然后在下方加入以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;dark&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;switchDarkMode()&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> isNight = <span class="keyword">new</span> <span class="built_in">Date</span>().getHours() &gt;= <span class="number">22</span> || <span class="keyword">new</span> <span class="built_in">Date</span>().getHours() &lt; <span class="number">7</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">if</span>( isNight || <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;dark&#x27;</span>) === <span class="string">&#x27;1&#x27;</span>) &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span>(!(isNight&amp;&amp;<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;noDark&#x27;</span>) === <span class="string">&#x27;1&#x27;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.body.classList.add(<span class="string">&#x27;dark&#x27;</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;dark&#x27;</span>).innerHTML = <span class="built_in">document</span>.querySelector(<span class="string">&quot;body&quot;</span>).classList.contains(<span class="string">&quot;dark&quot;</span>)?<span class="string">&quot;🌙&quot;</span>:<span class="string">&quot;🌞&quot;</span>;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里原本是用了媒体查询的，可以根据浏览器是否开启深色模式来对应开启深色模式，不过貌似有点小问题:sweat:，比如我的浏览器开了深色模式，但我点击了按钮，切换成了亮色模式，那肯定是说明我是喜欢以亮色模式访问该网站，但当我换了一个页面的时候（比如换了一个文章或回到首页）它又会检测到深色模式后切换到深色模式，emmmm，所以就先删了。。</p>
+</blockquote>
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><p>然后是JS，在主题下的<code>source\js</code>文件夹下新建一个 DarkMode.js 文件，在其中加入以下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击事件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">switchDarkMode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ($(<span class="string">&#x27;body&#x27;</span>).hasClass(<span class="string">&#x27;dark&#x27;</span>)) &#123;</span><br><span class="line">        <span class="comment">/*$(&quot;#dark&quot;).html(&quot;🌞&quot;);*/</span></span><br><span class="line">       <span class="built_in">document</span>.getElementById(<span class="string">&quot;dark&quot;</span>).style.background = <span class="string">&quot;url(&#x27;/img/dark.png&#x27;)&quot;</span>;</span><br><span class="line">		<span class="built_in">document</span>.body.classList.remove(<span class="string">&#x27;dark&#x27;</span>);</span><br><span class="line">		<span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;noDark&#x27;</span>, <span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">		<span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;dark&#x27;</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/*$(&quot;#dark&quot;).html(&quot;🌙&quot;); */</span></span><br><span class="line">        <span class="built_in">document</span>.getElementById(<span class="string">&quot;dark&quot;</span>).style.background = <span class="string">&quot;url(&#x27;/img/light.png&#x27;)&quot;</span>;</span><br><span class="line">		<span class="built_in">document</span>.body.classList.add(<span class="string">&#x27;dark&#x27;</span>);</span><br><span class="line">		<span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;dark&#x27;</span>, <span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">		<span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;noDark&#x27;</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在Fluid主题的<code>_config.yml</code>中找到<code>custom_js</code>项，加入新建的 js 文件。</p>
+<p>这个原版代码是通过注释中的两个字符——“🌞“和“🌙”来进行区分暗色模式和亮色模式。但个人觉得不太美观，同样，他的博客中也有一篇提到了 “返回页面顶”的一个类似于小挂件的效果，于是就想将那个挂件的效果改为更改模式，因此用PS粗粗地P了两个图，分别是带月亮dark.png和带太阳的light.png，在该段JS代码中，在切换模式的同时，将两个图片进行了切换。</p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>最后是CSS，在主题下的<code>source\css</code>文件夹下，新建一个<code>DarkMode.styl</code>因为使用的是 style 文件，所以可以不在 <code>_config.yml</code>中引入，直接在同目录下的<code>main.styl</code>中进行导入即可。添加以下代码。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 切换按钮 */</span></span><br><span class="line"><span class="selector-id">#dark</span></span><br><span class="line">  <span class="attribute">cursor</span> pointer</span><br><span class="line">  <span class="attribute">position</span> fixed</span><br><span class="line">  <span class="attribute">z-index</span> <span class="number">100</span></span><br><span class="line">  <span class="attribute">left</span> <span class="number">50px</span> </span><br><span class="line">  <span class="attribute">width</span> <span class="number">70px</span></span><br><span class="line">  <span class="attribute">height</span> <span class="number">600px</span></span><br><span class="line">  <span class="attribute">top</span> -<span class="number">350px</span></span><br><span class="line">  <span class="attribute">box-shadow</span> <span class="number">0</span> <span class="number">0</span> <span class="comment">/* 去除外边框的阴影 */</span></span><br><span class="line"></span><br><span class="line">  &amp; &gt; <span class="selector-tag">i</span></span><br><span class="line">    <span class="attribute">display</span> <span class="attribute">none</span> <span class="comment">/* 隐藏一个小箭头图标，否则会在图片上出现箭头 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*暗黑模式*/</span></span><br><span class="line"><span class="selector-class">.dark</span></span><br><span class="line">  <span class="attribute">background-color</span> rgb(<span class="number">31</span>, <span class="number">31</span>, <span class="number">31</span>)</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 主体 */</span></span><br><span class="line">  <span class="selector-id">#board</span> </span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#1c1c21</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line">  </span><br><span class="line">  <span class="selector-tag">blockquote</span></span><br><span class="line">    <span class="attribute">border-left</span> .<span class="number">25em</span> solid <span class="selector-id">#68696a</span></span><br><span class="line">  <span class="selector-tag">img</span>  </span><br><span class="line">    <span class="attribute">filter</span> brightness(<span class="number">50%</span>)</span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">p</span></span><br><span class="line">  <span class="selector-class">.index-info</span> <span class="selector-tag">a</span>  </span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#718096</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.index-info</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#3aa7f9</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.markdown-body</span></span><br><span class="line">    <span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,s,<span class="selector-tag">li</span>  </span><br><span class="line">      <span class="attribute">color</span> rgb(<span class="number">191</span>, <span class="number">191</span>, <span class="number">191</span>) !important</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="attribute">color</span> rgb(<span class="number">153</span>, <span class="number">189</span>, <span class="number">230</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 顶栏 */</span></span><br><span class="line">  <span class="selector-class">.navbar-col-show</span></span><br><span class="line">  <span class="selector-class">.top-nav-collapse</span>  </span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.navbar</span> <span class="selector-tag">a</span>  </span><br><span class="line">    <span class="attribute">color</span> rgb(<span class="number">191</span>, <span class="number">191</span>, <span class="number">191</span>) !important</span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.animated-icon</span> <span class="selector-tag">span</span>   <span class="comment">/* 手机端 */</span></span><br><span class="line">    <span class="attribute">background-color</span> rgb(<span class="number">191</span>, <span class="number">191</span>, <span class="number">191</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* page-number */</span></span><br><span class="line">  <span class="selector-class">.pagination</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">  <span class="selector-class">.pagination</span> <span class="selector-class">.current</span>  </span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#6b6b6b73</span></span><br><span class="line">    <span class="attribute">color</span> rgb(<span class="number">191</span>,<span class="number">191</span>,<span class="number">191</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 打字机 */</span></span><br><span class="line">  <span class="selector-id">#subtitle</span></span><br><span class="line">  <span class="selector-class">.dark</span><span class="selector-class">.typed-cursor--blink</span></span><br><span class="line">  <span class="selector-class">.scroll-down-arrow</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#dfdfdf</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* back to top */</span></span><br><span class="line">  <span class="selector-id">#scroll-top-button</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">i</span></span><br><span class="line">      <span class="attribute">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Toc */</span></span><br><span class="line">  <span class="selector-class">.tocbot-list</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#a09c9c</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.tocbot-active-link</span></span><br><span class="line">  <span class="selector-tag">footer</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#3aa7f9</span> !important</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* footer */</span></span><br><span class="line">  <span class="selector-tag">footer</span></span><br><span class="line">  <span class="selector-tag">footer</span> <span class="selector-tag">a</span></span><br><span class="line">    <span class="attribute">color</span> <span class="selector-id">#718096</span></span><br><span class="line">    </span><br><span class="line">  <span class="comment">/* 表格 */</span></span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">table</span> <span class="selector-tag">td</span></span><br><span class="line">  <span class="selector-class">.markdown-body</span> <span class="selector-tag">table</span> <span class="selector-tag">th</span> </span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">13px</span>;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">border-style</span>: solid;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="built_in">rgb</span>(<span class="number">54</span>, <span class="number">54</span>, <span class="number">54</span>);</span><br><span class="line">    <span class="attribute">border-image</span>: initial;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 归档页 */</span></span><br><span class="line">  <span class="selector-class">.list-group-item</span></span><br><span class="line">    <span class="attribute">color</span> rgb(<span class="number">191</span>, <span class="number">191</span>, <span class="number">191</span>)</span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#282c34</span></span><br><span class="line">    </span><br><span class="line">  <span class="selector-class">.list-group-item</span><span class="selector-pseudo">:hover</span></span><br><span class="line">  <span class="selector-class">.tagcloud</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#46484d</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 友链页 */</span></span><br><span class="line">  <span class="selector-class">.links</span></span><br><span class="line">    <span class="selector-class">.card</span>  </span><br><span class="line">      <span class="attribute">background-color</span> <span class="selector-id">#1c1c21</span></span><br><span class="line">        </span><br><span class="line">    <span class="selector-class">.card-body</span><span class="selector-pseudo">:hover</span>  </span><br><span class="line">      <span class="attribute">background-color</span> <span class="selector-id">#46484d</span></span><br><span class="line">        </span><br><span class="line">    <span class="selector-class">.link-title</span></span><br><span class="line">    <span class="selector-class">.link-intro</span>  </span><br><span class="line">      <span class="attribute">color</span> rgb(<span class="number">191</span>, <span class="number">191</span>, <span class="number">191</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">  <span class="comment">/* note标签 可能这配色有点丑 */</span></span><br><span class="line">  <span class="selector-class">.note-info</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#3b5359</span></span><br><span class="line">    <span class="attribute">border-color</span> <span class="selector-id">#006d80</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-danger</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#783f42</span></span><br><span class="line">    <span class="attribute">border-color</span> <span class="selector-id">#670009</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-success</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#2a3e2e</span></span><br><span class="line">    <span class="attribute">border-color</span> <span class="selector-id">#005915</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-warning</span></span><br><span class="line">    <span class="attribute">background-color</span> <span class="selector-id">#5b543e</span></span><br><span class="line">    <span class="attribute">border-color</span> <span class="selector-id">#846500</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.note-primary</span></span><br><span class="line">    <span class="attribute">background-color</span> rgb(<span class="number">69</span>, <span class="number">89</span>, <span class="number">110</span>)</span><br><span class="line">    <span class="attribute">border-color</span> rgb(<span class="number">28</span>, <span class="number">67</span>, <span class="number">110</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* aPlayer */</span></span><br><span class="line">  <span class="selector-class">.aplayer</span> </span><br><span class="line">    <span class="attribute">background</span> rgb(<span class="number">28</span>, <span class="number">28</span>, <span class="number">33</span>)  !important</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.aplayer-lrc</span>:after</span><br><span class="line">    background <span class="built_in">linear-gradient</span>(<span class="built_in">rgba</span>(<span class="number">28</span>, <span class="number">28</span>, <span class="number">33</span>, <span class="number">0</span>) <span class="number">0px</span>, <span class="built_in">rgba</span>(<span class="number">28</span>, <span class="number">28</span>, <span class="number">33</span>, <span class="number">0.8</span>)) <span class="meta">!important</span></span><br><span class="line"></span><br><span class="line">  .aplayer-lrc:before</span><br><span class="line">    background <span class="built_in">linear-gradient</span>(<span class="built_in">rgb</span>(<span class="number">28</span>, <span class="number">28</span>, <span class="number">33</span>) <span class="number">0px</span>, <span class="built_in">rgba</span>(<span class="number">28</span>, <span class="number">28</span>, <span class="number">33</span>, <span class="number">0</span>)) <span class="meta">!important</span></span><br><span class="line"></span><br><span class="line">  .aplayer.aplayer-withlist .aplayer-info</span><br><span class="line">    border-bottom <span class="number">1px</span> solid <span class="built_in">rgb</span>(<span class="number">48</span>, <span class="number">48</span>, <span class="number">48</span>) <span class="meta">!important</span></span><br><span class="line"></span><br><span class="line">  /* valine */</span><br><span class="line">  .v .vwrap </span><br><span class="line">    margin-bottom <span class="number">10px</span></span><br><span class="line">    position relative</span><br><span class="line">    border-width <span class="number">1px</span></span><br><span class="line">    border-style solid</span><br><span class="line">    border-color <span class="built_in">rgb</span>(<span class="number">41</span>, <span class="number">41</span>, <span class="number">41</span>)</span><br><span class="line">    border-image initial</span><br><span class="line">    border-radius <span class="number">4px</span></span><br><span class="line">    overflow hidden</span><br><span class="line">    padding <span class="number">10px</span></span><br><span class="line"></span><br><span class="line">  a:active</span><br><span class="line">    color <span class="number">#3aa7f9</span> </span><br><span class="line"></span><br><span class="line">  .drop-cap .index-card a .post-meta p</span><br><span class="line">    color <span class="number">#a09c9c</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>对于原版CSS中的配色方案进行了微调，同时在CSS中添加了切换按钮的点击效果，原本是点击图片直接切换模式和图片，但感觉略显生硬，因此为它添加了一点小效果，就像是旧式的拉绳式的电灯，当按下时，“绳子变长”，即图片下移一部分，当鼠标松开时再回到原位，并更换图片。</p>
+<p>将原版HTML中的&lt;div&gt;标签改为&lt;a&gt;标签，这样便可以通过<code>:active</code>来响应鼠标按下事件，只需要在鼠标按下时将图片下移即可。即在style文件最后添加</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#dark</span>:active</span><br><span class="line">  <span class="attribute">top</span> -<span class="number">300px</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原本想着是不是要用贝塞尔曲线来加个动画来着。。。后来发现根本也不会按那么久。单单点击只要让图片下移就可以有差不多的效果了。:see_no_evil:</p>
+</blockquote>
+<div>
+<a class="btn"  href="https://cdn.jsdelivr.net/gh/DuranceX/BlogPhoto/img/light.png" target="_blank" rel="noopener">light图片</a>
+<a class="btn" href="https://cdn.jsdelivr.net/gh/DuranceX/BlogPhoto/img/dark.png" target="_blank" rel="noopener"">dark图片</a>
+</div>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-05-10
+    </p>
+</div> 
+    <div class="post-meta__cats">
+    
+        <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" class="post-cats__link button">博客美化</a>
+    
+    
+        <a href="/tags/hexo-%E7%BE%8E%E5%8C%96/" class="post-tags__link button"># hexo 美化</a>
+    
+</div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2020/07/17/%E5%90%8E%E7%BD%91%E8%AF%BE%E6%97%B6%E6%9C%9F/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            后网课时期
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/04/16/DRAM%E4%B8%89%E7%A7%8D%E5%88%B7%E6%96%B0%E6%96%B9%E5%BC%8F/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            DRAM三种刷新方式
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>Comments</h4>
+    
+    
+    <div id="disqus_thread">Unable to load Disqus, please make sure your network can access.</div>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021 <a href="/">星下小屋</a>
+        </p>
+    
+    
+
+    <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+            var grt= new Date("02/21/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已勉强运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        } 
+    setInterval("createtime()",250);
+    </script>
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+  
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    <script>
+        function loadComment() {
+            let e, i;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                new DisqusJS({
+                    shortname: 'skyhouse',
+                    siteName: '星下小屋',
+                    api: '',
+                    apikey: '4QMVgGPftwCFSlb1OoNdYK29je8reSo5t21dBPim2pVfY4QF6RnuAbVTJqzMh5bi',
+                    admin: '',
+                    identifier: '2020/05/10/Fluid添加暗黑模式/',
+                    url: 'http://yoursite.com/2020/05/10/Fluid%E6%B7%BB%E5%8A%A0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F/',
+                    nesting: '2'
+                });
+            };
+            (i = document.createElement("link")).rel = "stylesheet",
+            i.href = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css',
+            document.head.appendChild(i);
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

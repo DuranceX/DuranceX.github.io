@@ -31,12 +31,12 @@
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="定点数定点数的格式（小数点位置固定不变） 定点整数（小数点约定在最低位的右边，最高位为符号位）    Xn-1 Xn-2 ….. X0 . –(小数点在最低位右侧)     定点小数（最高位为符号位，小数点约定在符号位右侧）    Xn-1 . –(小数点在符号位右侧) Xn-2 ….. X0      定点数的表示范围 无符号定点整数：0 $\le$ X $\le$ 2^n^-1 有符号定点">
+    <meta name="description" content="定点数定点数的格式（小数点位置固定不变） 定点整数（小数点约定在最低位的右边，最高位为符号位） X~n-1~|X~n-2~|…..|X~0~|. —(小数点在最低位右侧) :-:|:-:|:-:|:-:|:-|  定点小数（最高位为符号位，小数点约定在符号位右侧） X~n-1~|. —(小数点在符号位右侧)|X~n-2~|…..|X~0~| :-:|:-:|:-:|:-:|:-|   定点数的表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="定点数与浮点数">
 <meta property="og:url" content="http://yoursite.com/2020/03/12/%E5%AE%9A%E7%82%B9%E6%95%B0%E4%B8%8E%E6%B5%AE%E7%82%B9%E6%95%B0/index.html">
 <meta property="og:site_name" content="星下小屋">
-<meta property="og:description" content="定点数定点数的格式（小数点位置固定不变） 定点整数（小数点约定在最低位的右边，最高位为符号位）    Xn-1 Xn-2 ….. X0 . –(小数点在最低位右侧)     定点小数（最高位为符号位，小数点约定在符号位右侧）    Xn-1 . –(小数点在符号位右侧) Xn-2 ….. X0      定点数的表示范围 无符号定点整数：0 $\le$ X $\le$ 2^n^-1 有符号定点">
+<meta property="og:description" content="定点数定点数的格式（小数点位置固定不变） 定点整数（小数点约定在最低位的右边，最高位为符号位） X~n-1~|X~n-2~|…..|X~0~|. —(小数点在最低位右侧) :-:|:-:|:-:|:-:|:-|  定点小数（最高位为符号位，小数点约定在符号位右侧） X~n-1~|. —(小数点在符号位右侧)|X~n-2~|…..|X~0~| :-:|:-:|:-:|:-:|:-|   定点数的表">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4.png">
 <meta property="og:image" content="http://yoursite.com/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%BC%E5%BC%8F.png">
@@ -224,33 +224,10 @@
 </div>
     <div class="post__content">
         <a id="more"></a>
-
 <h1 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h1><h2 id="定点数的格式（小数点位置固定不变）"><a href="#定点数的格式（小数点位置固定不变）" class="headerlink" title="定点数的格式（小数点位置固定不变）"></a>定点数的格式（小数点位置固定不变）</h2><ol>
-<li><p>定点整数（小数点约定在最低位的右边，最高位为符号位）</p>
-<table>
-<thead>
-<tr>
-<th align="center"><font color=red>X<del>n-1</del></font></th>
-<th align="center">X<del>n-2</del></th>
-<th align="center">…..</th>
-<th align="center">X<del>0</del></th>
-<th align="left">. –(小数点在最低位右侧)</th>
-</tr>
-</thead>
-</table>
+<li><p>定点整数（小数点约定在最低位的右边，最高位为符号位）<br> <font color=red>X~n-1~</font>|X~n-2~|…..|X~0~|. —(小数点在最低位右侧)<br> :-:|:-:|:-:|:-:|:-|</p>
 </li>
-<li><p>定点小数（最高位为符号位，小数点约定在符号位右侧）</p>
-<table>
-<thead>
-<tr>
-<th align="center"><font color=red>X<del>n-1</del></font></th>
-<th align="center">. –(小数点在符号位右侧)</th>
-<th align="center">X<del>n-2</del></th>
-<th align="center">…..</th>
-<th align="left">X<del>0</del></th>
-</tr>
-</thead>
-</table>
+<li><p>定点小数（最高位为符号位，小数点约定在符号位右侧）<br> <font color=red>X~n-1~</font>|. —(小数点在符号位右侧)|X~n-2~|…..|X~0~|<br> :-:|:-:|:-:|:-:|:-|</p>
 </li>
 </ol>
 <h2 id="定点数的表示范围"><a href="#定点数的表示范围" class="headerlink" title="定点数的表示范围"></a>定点数的表示范围</h2><ol>
@@ -258,18 +235,18 @@
 <li>有符号定点整数（补码）：-2^n-1^ $\le$ X$\le$ 2^n-1^-1</li>
 <li>有符号定点小数（补码）：-1 $\le$ X $\le$ 1-2^-n+1^</li>
 </ol>
-<p>定点整数的真值是定点小数的真值的2^n+1^倍<br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4.png"></p>
+<p>定点整数的真值是定点小数的真值的2^n+1^倍<br><img src="/img/计算机组成原理/定点数范围.png" alt=""></p>
 <h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p>定点数与浮点数的比较：</p>
 <ul>
 <li>定点数表示数的范围比较小，运算容易发生溢出</li>
 <li>浮点数表示数的范围比较大，运算不容易发生溢出</li>
 </ul>
-<p>浮点数格式：<br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%BC%E5%BC%8F.png"><br>尾数决定了数的精度，阶码决定了数的范围。<br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.png"><br>其中E<del>s</del>为阶符，即从这开始到尾符之间是阶码<br>M<del>s</del>为尾符，表明尾数部分从此开始。</p>
+<p>浮点数格式：<br><img src="/img/计算机组成原理/浮点数格式.png" alt=""><br>尾数决定了数的精度，阶码决定了数的范围。<br><img src="/img/计算机组成原理/浮点数一般格式.png" alt=""><br>其中E~s~为阶符，即从这开始到尾符之间是阶码<br>M~s~为尾符，表明尾数部分从此开始。</p>
 <h2 id="浮点数的规格化表示"><a href="#浮点数的规格化表示" class="headerlink" title="浮点数的规格化表示"></a>浮点数的规格化表示</h2><p><strong>浮点数的规格化形式</strong></p>
 <ul>
 <li>M&gt;0（正数形式）：0.1xx…..，即$\frac{1}{2}\le M\le$ 1-2^-n+1^</li>
 <li>M&lt;0（负数形式）：1.0xx…..，即-1 $\le M \le -\frac{1}{2}-$ 2^-n+1^<blockquote>
-<p>（-1/2）<del>补</del> = 1.100…0</p>
+<p>（-1/2）~补~ = 1.100…0</p>
 </blockquote>
 </li>
 </ul>
@@ -283,12 +260,12 @@
 <li>使机器真值的表示形式唯一</li>
 <li>充分利用尾数更多的有效数字</li>
 </ul>
-<p><strong>✨规格化浮点数的表数范围</strong><br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%A7%84%E6%A0%BC%E5%8C%96%E6%B5%AE%E7%82%B9%E6%95%B0%E8%8C%83%E5%9B%B4.png"><br>设阶码：p位（含阶符），移码；尾数：m位（含尾符），补码</p>
+<p><strong>✨规格化浮点数的表数范围</strong><br><img src="/img/计算机组成原理/规格化浮点数范围.png" alt=""><br>设阶码：p位（含阶符），移码；尾数：m位（含尾符），补码</p>
 <ul>
-<li>最大正数：0.11…1$×$ 2^11…1^<br>$$(1-2^{-m+1})·2^{(2^{p-1}-1)}$$</li>
-<li>最小正数：0.10…0$×$ 2^00…0^<br>$$\frac{1}{2}·2^{-2^{p-1}}$$</li>
-<li>最大负数：1.01…1$×$ 2^00…0^<br>$$-(\frac{1}{2}+2^{-m+1})·2^{-2^{p-1}}$$</li>
-<li>最小负数：1.00…0$×$ 2^11…1^<br>$$-2^{(2^{p-1}-1)}$$</li>
+<li>最大正数：0.11…1$×$ 2^11…1^ <script type="math/tex; mode=display">(1-2^{-m+1})·2^{(2^{p-1}-1)}</script></li>
+<li>最小正数：0.10…0$×$ 2^00…0^ <script type="math/tex; mode=display">\frac{1}{2}·2^{-2^{p-1}}</script></li>
+<li>最大负数：1.01…1$×$ 2^00…0^ <script type="math/tex; mode=display">-(\frac{1}{2}+2^{-m+1})·2^{-2^{p-1}}</script></li>
+<li>最小负数：1.00…0$×$ 2^11…1^ <script type="math/tex; mode=display">-2^{(2^{p-1}-1)}</script></li>
 </ul>
 <p class="note note-primary">
 浮点数既可以表示数值范围很大的数，也可以表示数值范围很小但精确度很高的数

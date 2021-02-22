@@ -213,14 +213,10 @@
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>tensorflow报错<code>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.</code></p>
-<a id="more"></a>
-<br />
-
+        <p>tensorflow报错<code>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.</code><br><a id="more"></a><br><br /></p>
 <p><strong>问题</strong><br>在运行tensorflow时出现报错信息<code>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.</code></p>
-<p><strong>解决方法</strong><br>方法一：<br>在项目中添加</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&#x27;CUDA_VISIBLE_DEVICES&#x27;</span>] = <span class="string">&#x27;/gpu:0&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>可以正常运行，但此时没有使用GPU，而是使用的CPU进行运算</p>
+<p><strong>解决方法</strong><br>方法一：<br>在项目中添加<br><pre><code class="hljs python"><span class="hljs-keyword">import</span> os
+os.environ[<span class="hljs-string">'CUDA_VISIBLE_DEVICES'</span>] = <span class="hljs-string">'/gpu:0'</span></code></pre><br>可以正常运行，但此时没有使用GPU，而是使用的CPU进行运算</p>
 <p>方法二：<br>重新安装cuDNN，在官网上下载对应的<a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">cuDNN</a>版本，解压，将文件夹内的所有文件复制到CUDA安装目录<code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</code>下<br>再次运行可正常使用GPU进行运算</p>
 
     </div>

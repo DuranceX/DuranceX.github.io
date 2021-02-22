@@ -233,8 +233,7 @@
     <div class="post__content">
         <p>:star: 数据库系统原理：第二章关系数据库中的关系代数的相关内容。</p>
 <a id="more"></a>
-
-<h1 id="star-关系代数"><a href="#star-关系代数" class="headerlink" title=":star:关系代数"></a>:star:关系代数</h1><p>关系代数式一种抽象的查询语言，它用对关系的运算来表达查询。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6.png"><br>其中基本运算为（5种）：</p>
+<h1 id="star-关系代数"><a href="#star-关系代数" class="headerlink" title=":star:关系代数"></a>:star:关系代数</h1><p>关系代数式一种抽象的查询语言，它用对关系的运算来表达查询。<br><img src="/img/数据库系统/关系代数运算符.png" alt=""><br>其中基本运算为（5种）：</p>
 <p>并 $∪$ 、 差 $-$ 、笛卡尔积 $×$ 、 选择 $\sigma$ 、 投影 $\prod$</p>
 <p>剩余运算（3种）：</p>
 <p>交 $∩$ 、 连接 $\bowtie$ 、 除 $÷$</p>
@@ -244,104 +243,114 @@
 <li>连接运算 &emsp;&emsp; $R\mathop{\bowtie}\limits_{AθB} = \sigma_{AθB}(R×B)$</li>
 <li>除运算 &emsp;&emsp; $R(X,Y)÷S(Y)=\prod_X(R)-\prod_X(\prod_X(R)×\prod_Y(S)-R)$</li>
 </ul>
-<h2 id="一、基本运算"><a href="#一、基本运算" class="headerlink" title="一、基本运算"></a>一、基本运算</h2><p><strong>（1）R，t∈R，t[A<del>i</del>]</strong><br>设关系模式为 R(A<del>1</del>,A<del>2</del>,…,A<del>n</del>)<br>它的一个关系设为<font color=blue><b>R</b></font><br><font color=blue><b>t∈R</b></font>表示 t 是 R 的一个元组<br><font color=blue><b>t[A<sub>i</sub>]</b></font>则表示元组 t 中相应于属性 A<del>i</del> 的一个分量</p>
-<p><strong>（2）A，t[A]，$\overline{A}$</strong><br>若<font color=blue><b>A</b></font>={A<del>i1</del>，A<del>i2</del>,…,A<del>ik</del>}，其中A<del>i1</del>，A<del>i2</del>,…,A<del>in</del>是A<del>1</del>,A<del>2</del>,…,A<del>n</del>中的一部分，则A称为属性列或属性组<br><font color=blue><b>t[A]</b></font>=(t[A<del>i1</del>]，t[A<del>i2</del>],…,t[A<del>ik</del>])表示元组t在属性列A上诸分量的集合。<br><font color=blue><b>$\overline{A}$</b></font>则表示{A<del>1</del>,A<del>2</del>,…,A<del>n</del>}中去掉{A<del>i1</del>，A<del>i2</del>,…,A<del>ik</del>}后剩余的属性组</p>
-<p><strong>（3）$\overgroup{t_rt_s}$</strong><br>R为n目关系，S为m目关系。<br>t<del>r</del>∈R，t<del>s</del>∈S，<font color=blue><b>$\overgroup{t_rt_s}$</b></font>称为元组的连接<br><font color=blue><b>$\overgroup{t_rt_s}$</b></font>是一个n+m列的元组，前n个分量是R中的一个n元组，后m个分量是S中的一个m元组</p>
-<p><strong>（4）象集Z<del>x</del></strong><br>给定一个关系R（X，Z），X和Z为属性组。<br>当t[X]=x时，x在R中的象集为：<br>$$Z_x={t[Z]|t∈R,t[X]=x}$$<br>它表示R中属性组X上值为x的诸元组在Z上分量的集合<br>示例：<br>|   X   |   Z   |<br>| :—: | :—: |<br>| X<del>1</del>  | Z<del>1</del>  |<br>| X<del>1</del>  | Z<del>2</del>  |<br>| X<del>1</del>  | Z<del>3</del>  |<br>| X<del>2</del>  | Z<del>2</del>  |<br>| X<del>2</del>  | Z<del>3</del>  |<br>| X<del>3</del>  | Z<del>1</del>  |<br>| X<del>3</del>  | Z<del>3</del>  |</p>
+<h2 id="一、基本运算"><a href="#一、基本运算" class="headerlink" title="一、基本运算"></a>一、基本运算</h2><p><strong>（1）R，t∈R，t[A~i~]</strong><br>设关系模式为 R(A~1~,A~2~,…,A~n~)<br>它的一个关系设为<font color=blue><b>R</b></font></p>
+<p><font color=blue><b>t∈R</b></font>表示 t 是 R 的一个元组</p>
+<p><font color=blue><b>t[A<sub>i</sub>]</b></font>则表示元组 t 中相应于属性 A~i~ 的一个分量</p>
+<p><strong>（2）A，t[A]，$\overline{A}$</strong><br>若<font color=blue><b>A</b></font>={A~i1~，A~i2~,…,A~ik~}，其中A~i1~，A~i2~,…,A~in~是A~1~,A~2~,…,A~n~中的一部分，则A称为属性列或属性组</p>
+<p><font color=blue><b>t[A]</b></font>=(t[A~i1~]，t[A~i2~],…,t[A~ik~])表示元组t在属性列A上诸分量的集合。</p>
+<p><font color=blue><b>$\overline{A}$</b></font>则表示{A~1~,A~2~,…,A~n~}中去掉{A~i1~，A~i2~,…,A~ik~}后剩余的属性组</p>
+<p><strong>（3）$\overgroup{t_rt_s}$</strong><br>R为n目关系，S为m目关系。<br>t~r~∈R，t~s~∈S，<font color=blue><b>$\overgroup{t_rt_s}$</b></font>称为元组的连接</p>
+<p><font color=blue><b>$\overgroup{t_rt_s}$</b></font>是一个n+m列的元组，前n个分量是R中的一个n元组，后m个分量是S中的一个m元组</p>
+<p><strong>（4）象集Z~x~</strong><br>给定一个关系R（X，Z），X和Z为属性组。<br>当t[X]=x时，x在R中的象集为：</p>
+<script type="math/tex; mode=display">Z_x=\{t[Z]|t∈R,t[X]=x\}</script><p>它表示R中属性组X上值为x的诸元组在Z上分量的集合<br>示例：<br>|   X   |   Z   |<br>| :—-: | :—-: |<br>| X~1~  | Z~1~  |<br>| X~1~  | Z~2~  |<br>| X~1~  | Z~3~  |<br>| X~2~  | Z~2~  |<br>| X~2~  | Z~3~  |<br>| X~3~  | Z~1~  |<br>| X~3~  | Z~3~  |</p>
 <p>则：</p>
 <ul>
-<li>X<del>1</del>在R中的象集：&emsp;&emsp;Z<del>x1</del>={Z<del>1</del>,Z<del>2</del>,Z<del>3</del>}</li>
-<li>X<del>2</del>在R中的象集：&emsp;&emsp;Z<del>x2</del>={Z<del>2</del>,Z<del>3</del>}</li>
-<li>X<del>3</del>在R中的象集：&emsp;&emsp;Z<del>x3</del>={Z<del>1</del>,Z<del>3</del>}</li>
+<li>X~1~在R中的象集：&emsp;&emsp;Z~x1~={Z~1~,Z~2~,Z~3~}</li>
+<li>X~2~在R中的象集：&emsp;&emsp;Z~x2~={Z~2~,Z~3~}</li>
+<li>X~3~在R中的象集：&emsp;&emsp;Z~x3~={Z~1~,Z~3~}</li>
 </ul>
 <h2 id="二、传统集合运算"><a href="#二、传统集合运算" class="headerlink" title="二、传统集合运算"></a>二、传统集合运算</h2><h3 id="并"><a href="#并" class="headerlink" title="并"></a>并</h3><p>R和S</p>
 <ul>
-<li><p>具有相同的目n</p>
-</li>
-<li><p>相应的属性取自同一个域</p>
+<li>具有相同的目n</li>
+<li>相应的属性取自同一个域</li>
+</ul>
 <p>R∪S</p>
-</li>
-<li><p>仍为n目关系，由属于R或属于S的元组组成<br>$$R∪S={t|t∈R∨t∈S}$$<br>示例：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B9%B6.png"></p>
-</li>
+<ul>
+<li>仍为n目关系，由属于R或属于S的元组组成<script type="math/tex; mode=display">R∪S={t|t∈R∨t∈S}</script>示例：<br><img src="/img/数据库系统/并.png" alt=""></li>
 </ul>
 <h3 id="差"><a href="#差" class="headerlink" title="差"></a>差</h3><p>R和S</p>
 <ul>
-<li><p>具有相同的目n</p>
-</li>
-<li><p>相应的属性取自同一个域</p>
+<li>具有相同的目n</li>
+<li>相应的属性取自同一个域</li>
+</ul>
 <p>R-S</p>
-</li>
-<li><p>仍为n目关系，由属于R而不属于S的元组组成<br>$$R-S={t|t∈R∧t\notin S}$$<br>示例：</p>
-</li>
+<ul>
+<li>仍为n目关系，由属于R而不属于S的元组组成<script type="math/tex; mode=display">R-S={t|t∈R∧t\notin S}</script>示例：</li>
 </ul>
 <p>以上图为例，则R-S为:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">A</th>
-<th align="center">B</th>
-<th align="center">C</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">a1</td>
-<td align="center">b1</td>
-<td align="center">c1</td>
+<tbody>
+<tr>
+<td style="text-align:center">a1</td>
+<td style="text-align:center">b1</td>
+<td style="text-align:center">c1</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>S-R为:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">A</th>
-<th align="center">B</th>
-<th align="center">C</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">a1</td>
-<td align="center">b3</td>
-<td align="center">c2</td>
-</tr>
+<tbody>
 <tr>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">a1</td>
+<td style="text-align:center">b3</td>
+<td style="text-align:center">c2</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="交"><a href="#交" class="headerlink" title="交"></a>交</h3><p>R和S</p>
 <ul>
-<li><p>具有相同的目n</p>
-</li>
-<li><p>相应的属性取自同一个域</p>
-<p>R∪S</p>
-</li>
-<li><p>仍为n目关系，由既属于R又属于S的元组组成<br>$$R∪S={t|t∈R∧t∈S}$$<br>示例：<br>以上图为例，则R∩S为:</p>
-</li>
+<li>具有相同的目n</li>
+<li>相应的属性取自同一个域</li>
 </ul>
+<p>R∪S</p>
+<ul>
+<li>仍为n目关系，由既属于R又属于S的元组组成<script type="math/tex; mode=display">R∪S={t|t∈R∧t∈S}</script>示例：<br>以上图为例，则R∩S为:</li>
+</ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">A</th>
-<th align="center">B</th>
-<th align="center">C</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">a1</td>
-<td align="center">b2</td>
-<td align="center">c2</td>
+<tbody>
+<tr>
+<td style="text-align:center">a1</td>
+<td style="text-align:center">b2</td>
+<td style="text-align:center">c2</td>
 </tr>
 <tr>
-<td align="center">a2</td>
-<td align="center">b2</td>
-<td align="center">c1</td>
+<td style="text-align:center">a2</td>
+<td style="text-align:center">b2</td>
+<td style="text-align:center">c1</td>
 </tr>
-</tbody></table>
-<h3 id="笛卡尔积（积）"><a href="#笛卡尔积（积）" class="headerlink" title="笛卡尔积（积）"></a>笛卡尔积（积）</h3><p>R：n目关系，k<del>1</del>个元组；S：m目关系，k<del>2</del>个元组<br>R$×$S</p>
+</tbody>
+</table>
+</div>
+<h3 id="笛卡尔积（积）"><a href="#笛卡尔积（积）" class="headerlink" title="笛卡尔积（积）"></a>笛卡尔积（积）</h3><p>R：n目关系，k~1~个元组；S：m目关系，k~2~个元组<br>R$×$S</p>
 <ul>
 <li>列：（n+m）列元组的集合</li>
-<li>行：k<del>1</del>$×$k<del>2</del>个元组</li>
+<li>行：k~1~$×$k~2~个元组</li>
 </ul>
 <h2 id="三、关系特有操作"><a href="#三、关系特有操作" class="headerlink" title="三、关系特有操作"></a>三、关系特有操作</h2><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><ul>
 <li>选择又称为限制</li>
@@ -355,10 +364,11 @@
 </ul>
 </li>
 </ul>
-<p><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%80%89%E6%8B%A9.png"><br>例如：<br>查询信息系（IS系）全体学生<br>$\sigma_{Sdept=’IS’}(Student)$<br>结果：<br>|    Sno    | Sname | Ssex  | Sage  | Sdept |<br>| :——-: | :—: | :—: | :—: | :—: |  |<br>| 201215125 | 张立  |  男   |  19   |  IS   |<br>| 201215126 | 李四  |  女   |  20   |  IS   |<br>可以看出选择出来都是Sdept属性为IS的信息。</p>
-<h3 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h3><p>从R中选择若干属性列组成新的关系<br>$$\prod_A(R)={t[A]|t∈R}，A:R中的属性列$$<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%8A%95%E5%BD%B1.png"><br>例如：<br>查询学生的姓名和所在系。即求Student关系上学生姓名和所在系两个属性上的投影$\prod_{Sname,Sdept}(Student)$<br>结果：<br>| Sname | Sdept |<br>| :—: | :—: |<br>| 李勇  |  CS   |<br>| 刘晨  |  CS   |<br>| 王铭  |  MA   |<br>| 张三  |  IS   |</p>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接运算的含义：<br>从两个关系的笛卡尔积中选取属性间满足一定条件的元组<br>$$R\mathop{\bowtie}\limits_{AθB}S ={ \overgroup{t_rt_s}|t_r∈R∧t_s∈S∧t_r[A]θt_s[B]}$$</p>
-<ul>
+<p><img src="/img/数据库系统/选择.png" alt=""><br>例如：<br>查询信息系（IS系）全体学生<br>$\sigma_{Sdept=’IS’}(Student)$<br>结果：<br>|    Sno    | Sname | Ssex  | Sage  | Sdept |<br>| :———-: | :—-: | :—-: | :—-: | :—-: |  |<br>| 201215125 | 张立  |  男   |  19   |  IS   |<br>| 201215126 | 李四  |  女   |  20   |  IS   |<br>可以看出选择出来都是Sdept属性为IS的信息。</p>
+<h3 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h3><p>从R中选择若干属性列组成新的关系</p>
+<script type="math/tex; mode=display">\prod_A(R)={t[A]|t∈R}，A:R中的属性列</script><p><img src="/img/数据库系统/投影.png" alt=""><br>例如：<br>查询学生的姓名和所在系。即求Student关系上学生姓名和所在系两个属性上的投影$\prod_{Sname,Sdept}(Student)$<br>结果：<br>| Sname | Sdept |<br>| :—-: | :—-: |<br>| 李勇  |  CS   |<br>| 刘晨  |  CS   |<br>| 王铭  |  MA   |<br>| 张三  |  IS   |</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接运算的含义：<br>从两个关系的笛卡尔积中选取属性间满足一定条件的元组</p>
+<script type="math/tex; mode=display">R\mathop{\bowtie}\limits_{AθB}S =\{ \overgroup{t_rt_s}|t_r∈R∧t_s∈S∧t_r[A]θt_s[B]\}</script><ul>
 <li>A和B：分别为R和S上度数相等且可比的属性组</li>
 <li>θ比较运算符</li>
 </ul>
@@ -382,7 +392,7 @@
 </ul>
 </li>
 </ul>
-<p>示例：<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B1.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B2.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B3.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E8%BF%9E%E6%8E%A5%E7%A4%BA%E4%BE%8B4.png"></p>
+<p>示例：<br><img src="/img/数据库系统/连接示例1.png" alt=""><br><img src="/img/数据库系统/连接示例2.png" alt=""><br><img src="/img/数据库系统/连接示例3.png" alt=""><br><img src="/img/数据库系统/连接示例4.png" alt=""></p>
 <ul>
 <li>悬浮元组<ul>
 <li>在两个关系R和S做自然连接中，关系R上的某些元组可能在关系S上没有属性值相等的元组，那么这些元组会被遗弃，称为悬浮元组</li>
@@ -391,11 +401,11 @@
 <li>外连接<ul>
 <li>如果把悬浮元组也保存在结果关系中，而在其他属性上填空值（NULL），称为外连接</li>
 <li>如果只保留左边关系R中的悬浮元组，则称为左外连接</li>
-<li>如果只保留右边关系S中的悬浮元组，则称为右外连接<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%A4%96%E8%BF%9E%E6%8E%A5.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E5%B7%A6%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5.png"></li>
+<li>如果只保留右边关系S中的悬浮元组，则称为右外连接<br><img src="/img/数据库系统/外连接.png" alt=""><br><img src="/img/数据库系统/左右外连接.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<h3 id="除运算"><a href="#除运算" class="headerlink" title="除运算"></a>除运算</h3><p>给定关系R（X，Y）和S（Y，Z），其中X，Y，Z为属性组<br>R与S除运算得到一个新关系P（X），P是R中满足<strong>元组在X上分量值x的象集Y<del>x</del>包含S在Y上投影的集合</strong>的元组在X属性列上的投影。<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97.png"><br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E9%99%A4%E8%BF%90%E7%AE%97%E7%A4%BA%E4%BE%8B.png"></p>
+<h3 id="除运算"><a href="#除运算" class="headerlink" title="除运算"></a>除运算</h3><p>给定关系R（X，Y）和S（Y，Z），其中X，Y，Z为属性组<br>R与S除运算得到一个新关系P（X），P是R中满足<strong>元组在X上分量值x的象集Y~x~包含S在Y上投影的集合</strong>的元组在X属性列上的投影。<br><img src="/img/数据库系统/除运算.png" alt=""><br><img src="/img/数据库系统/除运算示例.png" alt=""></p>
 <p>这里可以看到，在关系R中，A可以取四个值（a1，a2，a3，a4）<br>&emsp;&emsp;&emsp;&emsp;a1的象集为 <strong>{(b1，c2)，(b2，c3)，(b2，c1)}</strong><br>&emsp;&emsp;&emsp;&emsp;a2的象集为 <strong>{(b3，c7)，(b2，c3)}</strong><br>&emsp;&emsp;&emsp;&emsp;a3的象集为 <strong>{(b4，c6)}</strong><br>&emsp;&emsp;&emsp;&emsp;a4的象集为 <strong>{(b6，c6)}</strong><br>而S在（B，C）上的投影为<br>&emsp;&emsp;&emsp;&emsp; <strong>{(b1，c2)，(b2，c1)，(b2，c3)}</strong><br>在这个例子中，只有a1的象集包含了S在（B，C）属性组上的投影<br>所以R÷S={a1}</p>
 <p class="note note-primary">只要出现了<b>全部、所有</b>字样的题目都需要用到除运算</p>
     </div>

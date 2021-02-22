@@ -233,45 +233,177 @@
 <p>将Spring依赖jar包引用到工程中。</p>
 <p><strong>2. 创建Bean</strong></p>
 <p>在bean包中创建两个Bean类，Student和Teacher。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.SpringTest.bean;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 无参构造</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		System.out.println(<span class="string">&quot;Student对象创建了&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建一个成员变量，并给出get/set方法</span></span><br><span class="line">	<span class="keyword">private</span> String msg = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.msg = msg;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> msg;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// study()方法中引用成员变量</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">study</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;学生在学习&quot;</span> + msg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.SpringTest.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		System.out.println(<span class="string">&quot;Teacher对象创建了&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String msg = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.msg = msg;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> msg;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">teach</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;老师讲解&quot;</span> + msg + <span class="string">&quot;知识&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.SpringTest.bean;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> </span>&#123;
+	<span class="hljs-comment">// 无参构造</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Student</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">super</span>();
+		System.out.println(<span class="hljs-string">"Student对象创建了"</span>);
+	&#125;
+
+	<span class="hljs-comment">// 创建一个成员变量，并给出get/set方法</span>
+	<span class="hljs-keyword">private</span> String msg = <span class="hljs-keyword">null</span>;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMsg</span><span class="hljs-params">(String msg)</span> </span>&#123;
+		<span class="hljs-keyword">this</span>.msg = msg;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getMsg</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">return</span> msg;
+	&#125;
+
+	<span class="hljs-comment">// study()方法中引用成员变量</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">study</span><span class="hljs-params">()</span> </span>&#123;
+		System.out.println(<span class="hljs-string">"学生在学习"</span> + msg);
+	&#125;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.SpringTest.bean;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span> </span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Teacher</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">super</span>();
+		System.out.println(<span class="hljs-string">"Teacher对象创建了"</span>);
+	&#125;
+
+	<span class="hljs-keyword">private</span> String msg = <span class="hljs-keyword">null</span>;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMsg</span><span class="hljs-params">(String msg)</span> </span>&#123;
+		<span class="hljs-keyword">this</span>.msg = msg;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getMsg</span><span class="hljs-params">()</span> </span>&#123;
+		<span class="hljs-keyword">return</span> msg;
+	&#125;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">teach</span><span class="hljs-params">()</span> </span>&#123;
+		System.out.println(<span class="hljs-string">"老师讲解"</span> + msg + <span class="hljs-string">"知识"</span>);
+	&#125;
+&#125;</code></pre>
 <p><strong>3. 创建配置文件</strong></p>
 <p>在src目录下创建<code>applicationContext.xml</code>文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 将指定的类配置给Spring --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;student&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Student&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>Java<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Teacher&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span></span>
+<span class="hljs-tag">	<span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span>
+<span class="hljs-tag">	<span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span>
+	<span class="hljs-comment">&lt;!-- 将指定的类配置给Spring --&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"student"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Student"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msg"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Java<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Teacher"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msg"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Spring<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
 <p>在上述代码中，<code>&lt;bean&gt;</code>元素指定了一个由Spring容器管理的Bean类，<code>id</code>即为唯一标识符，<code>class</code>为该Bean类的完全限定名，<code>&lt;property&gt;</code>子元素用于指定属性名，<code>&lt;value&gt;</code>用于指定该属性的值。在这里我们定义了两个Bean类，分别是Student和Teacher。</p>
 <p><strong>4. 使用Bean</strong></p>
 <p>在src目录下新建test.java文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.SpringTest.test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"><span class="keyword">import</span> com.SpringTest.bean.Student;</span><br><span class="line"><span class="keyword">import</span> com.SpringTest.bean.Teacher;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSpring</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception  </span>&#123;</span><br><span class="line">		<span class="comment">//通过读取配置信息获取ApplicationContext对象</span></span><br><span class="line">		ApplicationContext  applicationContext = <span class="keyword">new</span> </span><br><span class="line">         	    ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">		<span class="comment">//通过id值获取Student对象</span></span><br><span class="line">		Student student = applicationContext.getBean</span><br><span class="line">             (<span class="string">&quot;student&quot;</span>,Student.class);</span><br><span class="line">		<span class="comment">//调用Student对象的方法</span></span><br><span class="line">		student.study();</span><br><span class="line">		Teacher teacher = applicationContext.getBean(<span class="string">&quot;teacher&quot;</span>,Teacher.class);</span><br><span class="line">		teacher.teach();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.SpringTest.test;
+<span class="hljs-keyword">import</span> org.springframework.context.ApplicationContext;
+<span class="hljs-keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;
+<span class="hljs-keyword">import</span> com.SpringTest.bean.Student;
+<span class="hljs-keyword">import</span> com.SpringTest.bean.Teacher;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSpring</span> </span>&#123;
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception  </span>&#123;
+		<span class="hljs-comment">//通过读取配置信息获取ApplicationContext对象</span>
+		ApplicationContext  applicationContext = <span class="hljs-keyword">new</span> 
+         	    ClassPathXmlApplicationContext(<span class="hljs-string">"applicationContext.xml"</span>);
+		<span class="hljs-comment">//通过id值获取Student对象</span>
+		Student student = applicationContext.getBean
+             (<span class="hljs-string">"student"</span>,Student<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+		<span class="hljs-comment">//调用Student对象的方法</span>
+		student.study();
+		Teacher teacher = applicationContext.getBean(<span class="hljs-string">"teacher"</span>,Teacher<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+		teacher.teach();
+	&#125;
+&#125;</code></pre>
 <p>这里通过<code>ClassPathXmlApplicationContext</code>接口实现类来获取ApplicationContext实例，然后通过ApplicationContext实例的getBean()方法来获取Bean类。</p>
 <p>输出结果：</p>
-<p><img src="/img/java/Spring-test.webp"></p>
+<p><img src="/img/java/Spring-test.webp" alt=""></p>
 <p>由于在Spring容器中配置的类在容器创建时会全部实例化，所以这里可以看到Teacher类虽然在Student.study()后调用，但其构造函数的输出仍在study()之前，说明在容器创建时便已实例化。可以在xml文件中进行修改，添加<code>lazy-init</code>属性，这样只有在用户第一次索取Bean类的时候才会实例化该类。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Teacher&quot;</span> <span class="attr">lazy-init</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Teacher"</span> <span class="hljs-attr">lazy-init</span>=<span class="hljs-string">"true"</span>&gt;</span></code></pre>
 <h2 id="Bean的管理"><a href="#Bean的管理" class="headerlink" title="Bean的管理"></a>Bean的管理</h2><h3 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h3><p><strong>1. 构造器注入</strong></p>
 <p>被注入的类创建有参/无参构造函数，在ApplicationContext.xml文件中通过<code>&lt;constructor-arg&gt;</code>元素为类的构造方法的参数注入值。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">&quot;student&quot;</span> <span class="attr">class</span> = <span class="string">&quot;com.SpringTest.bean.Student&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;sid&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;ZhangSan&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&quot;20&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;course&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Java&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span> = <span class="hljs-string">"student"</span> <span class="hljs-attr">class</span> = <span class="hljs-string">"com.SpringTest.bean.Student"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sid"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">constructor-arg</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ZhangSan"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">constructor-arg</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"20"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">constructor-arg</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"course"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Java"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">constructor-arg</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <p><strong>2. 属性注入</strong></p>
 <p>属性注入需要被注入的类提供对应的setter函数，然后再ApplicationContext.xml文件中通过<code>&lt;property&gt;</code>元素进行注入。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Teacher&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sid&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Lisi&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"teacher"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Teacher"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sid"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Lisi"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <p><strong>注入集合</strong></p>
 <p>设定setter函数，并配合<code>&lt;property&gt;</code>元素来完成集合类的注入（List,Set,Map,Array等) </p>
 <p>如下创建一个Mix类（部分代码）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;String&gt; mylist;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setMyList</span><span class="params">(List&lt;String myList)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.mylist = myList;</span><br><span class="line">&#125;</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">private</span> List&lt;String&gt; mylist;
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMyList</span><span class="hljs-params">(List&lt;String myList)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">this</span>.mylist = myList;
+&#125;
+....</code></pre>
 <p>ApplicationContext.xml文件配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;mix&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Mix&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--注入List--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> =<span class="string">&quot;mylist&quot;</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">value</span>&gt;</span>list1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>list2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--注入Map--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;myMap&quot;</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;key01&quot;</span> <span class="attr">value</span>=<span class="string">&quot;map01&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">&quot;key02&quot;</span> <span class="attr">value</span>=<span class="string">&quot;map02&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--注入Array--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;myArray&quot;</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">value</span>&gt;</span>array01<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>array02<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mix"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Mix"</span>&gt;</span>
+	<span class="hljs-comment">&lt;!--注入List--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span> =<span class="hljs-string">"mylist"</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>list1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>list2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!--注入Map--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myMap"</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">map</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"key01"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"map01"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">entry</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"key02"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"map02"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">entry</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!--注入Array--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myArray"</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>array01<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>array02<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <p><strong>注入其他类型的Bean</strong></p>
 <p>通过setter函数和<code>&lt;property&gt;</code>元素的<code>ref</code>属性或<code>ref</code>子元素实现</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;school&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.school&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--ref子元素--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;stu&quot;</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;student&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ref</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--ref属性--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;stu&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;student&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"school"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.school"</span>&gt;</span>
+	<span class="hljs-comment">&lt;!--ref子元素--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stu"</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">ref</span> <span class="hljs-attr">bean</span>=<span class="hljs-string">"student"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ref</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    
+    <span class="hljs-comment">&lt;!--ref属性--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stu"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"student"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <p><strong>使用SpEL注入</strong></p>
 <p>SpEL可以实现动态赋值，由于SpEL需要获取对象的属性值，所以需要声明getter方法。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;employee&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Employee&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sid&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">vlaue</span>=<span class="string">&quot;WangWu&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;department&quot;</span> <span class="attr">value</span>=<span class="string">&quot;研发部&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;person&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Person&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;pid&quot;</span> <span class="attr">value</span>=<span class="string">&quot;#&#123;employee.sid&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;#&#123;employee.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"employee"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Employee"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sid"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">vlaue</span>=<span class="hljs-string">"WangWu"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"department"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"研发部"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"person"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Person"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"pid"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"#&#123;employee.sid&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"#&#123;employee.name&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <h3 id="作用域和生命周期"><a href="#作用域和生命周期" class="headerlink" title="作用域和生命周期"></a>作用域和生命周期</h3><p><strong>作用域</strong></p>
 <p>常用的作用域有两个，分别是<code>Singleton</code>和<code>Prototype</code></p>
 <ul>
 <li>Singleton：单例模式，默认作用域，在Spring容器中只会存在一个id相同的Bean，所有调用该id得到的Bean都是同一个共享的Bean，Spring容器可以管理该Bean的生命周期</li>
 <li>Prototype：每次从容器中调用Bean时，都会产生一个新的Bean实例，两个实例不相同，Spring容器只负责创建Bean实例而不管理其生命周期</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;person&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Person&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;prototype&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--singleton的话scope可以省略不写--&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"person"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Person"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"prototype"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--singleton的话scope可以省略不写--&gt;</span></code></pre>
 <p><strong>生命周期</strong></p>
 <p>Bean的生命周期是指Bean实例被创建、初始化和销毁的过程。</p>
 <p>主要关注两点，一点是Bean实例初始化之后执行指定方法，另一点是Bean实例销毁之前执行指定方法。</p>
@@ -279,26 +411,52 @@
 <ol>
 <li><p>通过<code>&lt;init-method&gt;</code>属性</p>
 <p>在Java文件中定义一个方法，例如init()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;调用init()方法&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    System.out.println(<span class="hljs-string">"调用init()方法"</span>);
+&#125;</code></pre>
 <p>在xml文件中设置属性</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;bean1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.bean1&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;init&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">.....</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"bean1"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.bean1"</span> <span class="hljs-attr">init-method</span>=<span class="hljs-string">"init"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">.....</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
+</li>
 <li><p>通过实现<code>initializingBean</code>接口</p>
 <p>通过重写该接口的<code>afterPropertiesSet()</code>方法，在实例初始化后会自动调用该方法，不需要在xml中设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bean2</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span></span>&#123;</span><br><span class="line">    ...;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用afterPropertiesSet()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bean2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span></span>&#123;
+    ...;
+    <span class="hljs-meta">@override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;
+        System.out.println(<span class="hljs-string">"调用afterPropertiesSet()方法"</span>);
+    &#125;
+&#125;</code></pre>
+</li>
 </ol>
 <p><em>销毁</em></p>
 <ol>
 <li><p>通过<code>&lt;destroy-method&gt;</code>属性</p>
 <p>同样先在Java中创建一个方法来调用，例如close()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;调用close()方法&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    System.out.println(<span class="hljs-string">"调用close()方法"</span>);
+&#125;</code></pre>
 <p>在xml中设置<code>&lt;destroy-method&gt;</code>属性</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;bean3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.SpringTest.bean.Bean3&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;close&quot;</span>&gt;</span></span><br><span class="line">	...</span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"bean3"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.SpringTest.bean.Bean3"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"close"</span>&gt;</span>
+	...
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
+</li>
 <li><p>通过实现<code>DisposableBean</code>接口</p>
 <p>通过重写该接口的<code>destory()</code>方法，在实例被销毁前会自动调用该方法，同样不需要配置xml文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bean4</span> <span class="keyword">implements</span> <span class="title">DisposableBean</span></span>&#123;</span><br><span class="line">    ...;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用destroy()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3></li>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bean4</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DisposableBean</span></span>&#123;
+    ...;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;
+        System.out.println(<span class="hljs-string">"调用destroy()方法"</span>);
+    &#125;
+&#125;</code></pre>
+</li>
 </ol>
-<p><strong>常用注解</strong></p>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><strong>常用注解</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -306,7 +464,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>@Component</td>
 <td>指定一个普通的Bean</td>
 </tr>
@@ -346,18 +505,40 @@
 <td>@PreDestroy</td>
 <td>指定销毁前调用的方法</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>使用</strong></p>
 <ol>
 <li><p>导入spring-aop的jar包，配置applicationContext.xml文件</p>
 </li>
 <li><p>配置注解扫描</p>
 <p>在applicationContext.xml的<code>&lt;beans&gt;</code>元素中添加配置信息</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.SpringTest.bean&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.SpringTest.bean"</span> /&gt;</span></code></pre>
 <p>即扫描bean包下所有类的注解</p>
 </li>
 <li><p>新建类，例如Sch</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component(&quot;sth&quot;)</span></span><br><span class="line"><span class="meta">@Scope(scopeName = &quot;singleton&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sch</span></span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;005&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sid;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;stu&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Stu stu;</span><br><span class="line">    ....;</span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用init()方法&quot;</span>)；</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用close()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-meta">@Component</span>(<span class="hljs-string">"sth"</span>)
+<span class="hljs-meta">@Scope</span>(scopeName = <span class="hljs-string">"singleton"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sch</span></span>&#123;
+    <span class="hljs-meta">@Value</span>(<span class="hljs-string">"005"</span>)
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> sid;
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-meta">@Qualifier</span>(<span class="hljs-string">"stu"</span>)
+    <span class="hljs-keyword">private</span> Stu stu;
+    ....;
+    <span class="hljs-meta">@PostConstruct</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>
+<span class="hljs-function">    </span>&#123;
+        System.out.println(<span class="hljs-string">"调用init()方法"</span>)；
+	&#125;
+    
+    <span class="hljs-meta">@PreDestroy</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span></span>
+<span class="hljs-function">    </span>&#123;
+        System.out.println(<span class="hljs-string">"调用close()方法"</span>);
+    &#125;
+&#125;</code></pre>
 <p>以上代码中，@Component注解将Sch类注册为Spring容器中的Bean，@Scope注解指定Sch类的作用域，@Value注解为Sch类的sid属性注入值，@Autowired和@Qualifier注解为Sch类的stu属性注入另一个Bean实例。@PostConstruct注解指完成实例化后调用的方法，@PreDestroy注解指销毁前调用的方法。</p>
 </li>
 </ol>
@@ -368,34 +549,7 @@
 </li>
 <li><p>通知（Advice）：</p>
 <p>通知是在目标类连接点上执行的一段代码，有如下几种方式。</p>
-<table>
-<thead>
-<tr>
-<th>通知类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>前置通知（Before）</td>
-<td>在目标方法被调用之前调用通知</td>
-</tr>
-<tr>
-<td>后置通知（After）</td>
-<td>在目标方法被调用之后调用通知</td>
-</tr>
-<tr>
-<td>返回通知（After-returning）</td>
-<td>在目标方法成功执行之后调用通知</td>
-</tr>
-<tr>
-<td>异常通知（After-throwing）</td>
-<td>在目标方法抛出异常之后调用通知</td>
-</tr>
-<tr>
-<td>环绕通知（Around）</td>
-<td>在目标方法调用前和调用后调用通知</td>
-</tr>
-</tbody></table>
+<p>| 通知类型                    | 描述                             |<br>| —————————————- | ———————————————— |<br>| 前置通知（Before）          | 在目标方法被调用之前调用通知     |<br>| 后置通知（After）           | 在目标方法被调用之后调用通知     |<br>| 返回通知（After-returning） | 在目标方法成功执行之后调用通知   |<br>| 异常通知（After-throwing）  | 在目标方法抛出异常之后调用通知   |<br>| 环绕通知（Around）          | 在目标方法调用前和调用后调用通知 |</p>
 </li>
 <li><p>切点（Pointcut）：</p>
 <p>匹配连接点的断言，AOP通过切点来定位特定的连接点。通知和一个切入点表达式关联，并在满足这个切入点的连接点上运行（例如执行某个特定名称的方法）</p>
@@ -420,10 +574,46 @@
 <p>Proxy利用InvocationHandler动态生成目标类的代理对象。</p>
 <p>示例：</p>
 <p>新建四个类。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LoginService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginServiceImpl</span> <span class="keyword">implements</span> <span class="title">LoginService</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行login()方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PerformHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="comment">//目标对象</span></span><br><span class="line">    <span class="keyword">private</span> Object target;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PerformHandler</span><span class="params">(Object target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.target=target;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="comment">//实现InvocationHandler接口</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> </span></span><br><span class="line"><span class="function">        Throwable</span>&#123;</span><br><span class="line">        <span class="comment">//增强的方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;方法开始执行&quot;</span>);</span><br><span class="line">        <span class="comment">//执行被代理类的原方法</span></span><br><span class="line">        Object invoke = method.invoke(target, args);</span><br><span class="line">        <span class="comment">//增强的方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;方法执行完毕&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        LoginService loginService = <span class="keyword">new</span> LoginServiceImpl();</span><br><span class="line">        PerformHandler performHandler = <span class="keyword">new</span> PerformHandler(loginService);</span><br><span class="line">        <span class="comment">//创建代理对象</span></span><br><span class="line">        loginService = (LoginService) Proxy.newProxyInstance</span><br><span class="line">			(loginService.getClass().getClassLoader(),</span><br><span class="line">			LoginService.getClass().getInterfaces().performHandler);</span><br><span class="line">        loginService.login();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">LoginService</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">LoginService</span></span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">()</span></span>
+<span class="hljs-function">    </span>&#123;
+        System.out.println(<span class="hljs-string">"执行login()方法"</span>);
+    &#125;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PerformHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InvocationHandler</span></span>&#123;
+    <span class="hljs-comment">//目标对象</span>
+    <span class="hljs-keyword">private</span> Object target;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PerformHandler</span><span class="hljs-params">(Object target)</span></span>&#123;
+        <span class="hljs-keyword">this</span>.target=target;
+    &#125;
+    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-comment">//实现InvocationHandler接口</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">invoke</span><span class="hljs-params">(Object proxy, Method method, Object[] args)</span> <span class="hljs-keyword">throws</span> </span>
+<span class="hljs-function">        Throwable</span>&#123;
+        <span class="hljs-comment">//增强的方法</span>
+        System.out.println(<span class="hljs-string">"方法开始执行"</span>);
+        <span class="hljs-comment">//执行被代理类的原方法</span>
+        Object invoke = method.invoke(target, args);
+        <span class="hljs-comment">//增强的方法</span>
+        System.out.println(<span class="hljs-string">"方法执行完毕"</span>);
+    &#125;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;
+        LoginService loginService = <span class="hljs-keyword">new</span> LoginServiceImpl();
+        PerformHandler performHandler = <span class="hljs-keyword">new</span> PerformHandler(loginService);
+        <span class="hljs-comment">//创建代理对象</span>
+        loginService = (LoginService) Proxy.newProxyInstance
+			(loginService.getClass().getClassLoader(),
+			LoginService.getClass().getInterfaces().performHandler);
+        loginService.login();
+    &#125;
+&#125;</code></pre>
 <p>最后得到结果</p>
 <blockquote>
 <p>方法开始执行</p>
@@ -434,8 +624,32 @@
 <p>JDK动态代理只能为接口创建代理，而CGLib可以为类创建代理。</p>
 <p>CGLib动态代理依赖Enhancer类创建代理实例，依靠MethodInterceptor接口织入要增强的方法。</p>
 <p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CgLibProxy</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">    <span class="comment">//生成代理对象的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getProxy</span><span class="params">(Class clazz)</span></span>&#123;</span><br><span class="line">        enhancer.setSuperClass(clazz);</span><br><span class="line">        enhancer.setCallback(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">return</span> enhancer.create();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//回调方法，该方法将拦截目标类中所有方法的调用。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object obj, Method method, Object[] objects, MethodProxy 			methodProxy)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;CGLib代理之前&quot;</span>);</span><br><span class="line">        Object invoke = methodProxy.invokeSuper(obj,objects);</span><br><span class="line">        System.out.println(<span class="string">&quot;CGLib代理之后&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> invoke;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCGLib</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        CgLibProxy cglibProxy = <span class="keyword">new</span> CgLibProxy();</span><br><span class="line">        <span class="comment">//创建代理对象</span></span><br><span class="line">        LoginServiceImpl userService = (LoginServiceImpl) 											cglibProxy.getProxy(LoginServiceImpl.class);</span><br><span class="line">        userService.login();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CgLibProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MethodInterceptor</span></span>&#123;
+    <span class="hljs-keyword">private</span> Enhancer enhancer = <span class="hljs-keyword">new</span> Enhancer();
+    <span class="hljs-comment">//生成代理对象的方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">getProxy</span><span class="hljs-params">(Class clazz)</span></span>&#123;
+        enhancer.setSuperClass(clazz);
+        enhancer.setCallback(<span class="hljs-keyword">this</span>);
+        <span class="hljs-keyword">return</span> enhancer.create();
+    &#125;
+    
+    <span class="hljs-comment">//回调方法，该方法将拦截目标类中所有方法的调用。</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">intercept</span><span class="hljs-params">(Object obj, Method method, Object[] objects, MethodProxy 			methodProxy)</span> <span class="hljs-keyword">throws</span> Throwable</span>&#123;
+        System.out.println(<span class="hljs-string">"CGLib代理之前"</span>);
+        Object invoke = methodProxy.invokeSuper(obj,objects);
+        System.out.println(<span class="hljs-string">"CGLib代理之后"</span>);
+        <span class="hljs-keyword">return</span> invoke;
+    &#125;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestCGLib</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;
+        CgLibProxy cglibProxy = <span class="hljs-keyword">new</span> CgLibProxy();
+        <span class="hljs-comment">//创建代理对象</span>
+        LoginServiceImpl userService = (LoginServiceImpl) 											cglibProxy.getProxy(LoginServiceImpl<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+        userService.login();
+    &#125;
+&#125;</code></pre>
 <p>得到结果：</p>
 <blockquote>
 <p>CGLib代理之前</p>
@@ -444,6 +658,7 @@
 </blockquote>
 <h3 id="开发方法"><a href="#开发方法" class="headerlink" title="开发方法"></a>开发方法</h3><p><strong>基于XML开发</strong></p>
 <p>XML中配置AOP的元素：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -451,53 +666,130 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td><a href="aop:config">aop:config</a></td>
+<tbody>
+<tr>
+<td><aop:config></td>
 <td>AOP配置的根元素</td>
 </tr>
 <tr>
-<td><a href="aop:aspect">aop:aspect</a></td>
+<td><aop:aspect></td>
 <td>指定切面</td>
 </tr>
 <tr>
-<td><a href="aop:advisor">aop:advisor</a></td>
+<td><aop:advisor></td>
 <td>指定通知器</td>
 </tr>
 <tr>
-<td><a href="aop:pointcut">aop:pointcut</a></td>
+<td><aop:pointcut></td>
 <td>指定切点</td>
 </tr>
 <tr>
-<td><a href="aop:before">aop:before</a></td>
+<td><aop:before></td>
 <td>指定前置通知</td>
 </tr>
 <tr>
-<td><a href="aop:after">aop:after</a></td>
+<td><aop:after></td>
 <td>指定后置通知</td>
 </tr>
 <tr>
-<td><a href="aop:around">aop:around</a></td>
+<td><aop:around></td>
 <td>指定环绕通知</td>
 </tr>
 <tr>
-<td><a href="aop:after-returning">aop:after-returning</a></td>
+<td><aop:after-returning></td>
 <td>指定返回通知</td>
 </tr>
 <tr>
-<td><a href="aop:after-throwing">aop:after-throwing</a></td>
+<td><aop:after-throwing></td>
 <td>指定异常通知</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>示例：</p>
 <p>首先在applicationContext.xml中引入AOP，略</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.demo02;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">select</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.demo02;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;添加用户信息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;删除用户信息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;更新用户信息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">select</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;查询用户信息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.demo02;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserService</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">delete</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">select</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.demo02;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserService</span></span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"添加用户信息"</span>);
+    &#125;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">delete</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"删除用户信息"</span>);
+    &#125;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"更新用户信息"</span>);
+    &#125;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">select</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"查询用户信息"</span>);
+    &#125;
+&#125;</code></pre>
 <p>创建类XmlAdvice用于定义通知</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.demo02;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XmlAdvice</span></span>&#123;</span><br><span class="line">    <span class="comment">//前置通知</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是前置通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是后置通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">around</span><span class="params">(ProceddingJoinPoint point)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是环绕通知之前的部分&quot;</span>);</span><br><span class="line">        <span class="comment">///调用目标方法</span></span><br><span class="line">        Object object = point.proceed();</span><br><span class="line">        System.out.println(<span class="string">&quot;这是环绕通知之后的部分&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterReturning</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是返回通知（方法不出现异常时调用）&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterException</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是异常通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.demo02;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XmlAdvice</span></span>&#123;
+    <span class="hljs-comment">//前置通知</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是前置通知"</span>);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">after</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是后置通知"</span>);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">around</span><span class="hljs-params">(ProceddingJoinPoint point)</span> <span class="hljs-keyword">throws</span> Throwable</span>&#123;
+        System.out.println(<span class="hljs-string">"这是环绕通知之前的部分"</span>);
+        <span class="hljs-comment">///调用目标方法</span>
+        Object object = point.proceed();
+        System.out.println(<span class="hljs-string">"这是环绕通知之后的部分"</span>);
+        <span class="hljs-keyword">return</span> object;
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterReturning</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是返回通知（方法不出现异常时调用）"</span>);
+    &#125;
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterException</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是异常通知"</span>);
+    &#125;
+&#125;</code></pre>
 <p>在applicationContext.xml的<code>&lt;bean&gt;</code>元素中添加配置信息</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--注册Bean--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.qfedu.demo02.UserServiceImpl&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;xmlAdvice&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.qfedu.demo02.XmlAdvice&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置Spring AOP--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--指定切点--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">&quot;pointcut&quot;</span> </span></span><br><span class="line"><span class="tag">                  <span class="attr">expression</span>=<span class="string">&quot;execution(* com.qfedu.demo02.UserServiceImpl. *(..))&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--指定切面--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;xmlAdvice&quot;</span>&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!--指定前置通知--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">&quot;before&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-returning</span> <span class="attr">method</span>=<span class="string">&quot;afterReturning&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">mehtod</span>=<span class="string">&quot;around&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-throwing</span> <span class="attr">method</span>=<span class="string">&quot;afterException&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">&quot;after&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--注册Bean--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.qfedu.demo02.UserServiceImpl"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"xmlAdvice"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.qfedu.demo02.XmlAdvice"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--配置Spring AOP--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
+	<span class="hljs-comment">&lt;!--指定切点--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pointcut"</span> </span>
+<span class="hljs-tag">                  <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* com.qfedu.demo02.UserServiceImpl. *(..))"</span> /&gt;</span>
+    <span class="hljs-comment">&lt;!--指定切面--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"xmlAdvice"</span>&gt;</span>
+    	<span class="hljs-comment">&lt;!--指定前置通知--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:before</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"before"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"pointcut"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:after-returning</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"afterReturning"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"pointcut"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:around</span> <span class="hljs-attr">mehtod</span>=<span class="hljs-string">"around"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"pointcut"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:after-throwing</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"afterException"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"pointcut"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:after</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"after"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"pointcut"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span></code></pre>
 <p>测试类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfdeu.demo02;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestXml</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mian</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        ApplicationContext context = <span class="keyword">new</span> 															ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">    	UserService userService = context.getBean(<span class="string">&quot;userService&quot;</span>,UserService.class);</span><br><span class="line">        userService.delete();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfdeu.demo02;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestXml</span></span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mian</span><span class="hljs-params">(String[] args)</span></span>&#123;
+        ApplicationContext context = <span class="hljs-keyword">new</span> 															ClassPathXmlApplicationContext(<span class="hljs-string">"applicationContext.xml"</span>);
+    	UserService userService = context.getBean(<span class="hljs-string">"userService"</span>,UserService<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+        userService.delete();
+    &#125;
+&#125;</code></pre>
 <p>得到结果：</p>
 <blockquote>
 <p>这是前置通知</p>
@@ -509,6 +801,7 @@
 </blockquote>
 <p><strong>基于注解开发</strong></p>
 <p>支持的注解类型如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -516,7 +809,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>@Aspect</td>
 <td>指定切面</td>
 </tr>
@@ -544,23 +838,95 @@
 <td>@AfterThrowing</td>
 <td>指定异常通知</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.demo02;</span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnnoAdvice</span></span>&#123;</span><br><span class="line">    <span class="comment">//切点</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* com.qfedu.demo02.UserServiceImpl.* (..))&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pointcut</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//前置通知</span></span><br><span class="line">    <span class="meta">@Before(&quot;pointcut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是前置通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//后置通知</span></span><br><span class="line">    <span class="meta">@After(&quot;pointcut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">after</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是后置通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Around(&quot;pointcut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">around</span><span class="params">(ProceedingJoinPoint point)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是环绕通知之前的部分&quot;</span>);</span><br><span class="line">        Object object = point.proceed();</span><br><span class="line">        System.out.println(<span class="string">&quot;这是环绕通知之后的部分&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> object;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterReturning(&quot;pointcut()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterReturning</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是返回通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterThrowing(&quot;pointcut()&quot;)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是异常通知&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.demo02;
+<span class="hljs-meta">@Aspect</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AnnoAdvice</span></span>&#123;
+    <span class="hljs-comment">//切点</span>
+    <span class="hljs-meta">@Pointcut</span>(<span class="hljs-string">"execution(* com.qfedu.demo02.UserServiceImpl.* (..))"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pointcut</span><span class="hljs-params">()</span></span>&#123;
+    &#125;
+    
+    <span class="hljs-comment">//前置通知</span>
+    <span class="hljs-meta">@Before</span>(<span class="hljs-string">"pointcut()"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是前置通知"</span>);
+    &#125;
+    <span class="hljs-comment">//后置通知</span>
+    <span class="hljs-meta">@After</span>(<span class="hljs-string">"pointcut()"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">after</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是后置通知"</span>);
+    &#125;
+    <span class="hljs-meta">@Around</span>(<span class="hljs-string">"pointcut()"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">around</span><span class="hljs-params">(ProceedingJoinPoint point)</span> <span class="hljs-keyword">throws</span> Throwable</span>&#123;
+        System.out.println(<span class="hljs-string">"这是环绕通知之前的部分"</span>);
+        Object object = point.proceed();
+        System.out.println(<span class="hljs-string">"这是环绕通知之后的部分"</span>);
+        <span class="hljs-keyword">return</span> object;
+    &#125;
+    <span class="hljs-meta">@AfterReturning</span>(<span class="hljs-string">"pointcut()"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterReturning</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">"这是返回通知"</span>);
+    &#125;
+    <span class="hljs-meta">@AfterThrowing</span>(<span class="hljs-string">"pointcut()"</span>)&#123;
+        System.out.println(<span class="hljs-string">"这是异常通知"</span>);
+    &#125;
+&#125;</code></pre>
 <p>配置applicationContext.xml文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--注册Bean--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.qfedu.demo02.UserServiceImpl&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;annoAdvice&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.qfedu.demo02.AnnoAdvice&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--开启@aspectj的自动代理支持--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--注册Bean--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.qfedu.demo02.UserServiceImpl"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"annoAdvice"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.qfedu.demo02.AnnoAdvice"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--开启@aspectj的自动代理支持--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> /&gt;</span></code></pre>
 <p>测试如上</p>
 <h3 id="多个切面优先级"><a href="#多个切面优先级" class="headerlink" title="多个切面优先级"></a>多个切面优先级</h3><p> <strong>基于注解配置</strong></p>
 <p>只需要添加<code>@Order</code>注解即可</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如两个类Aspect1和Aspect2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Order(1)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">aspect1</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Order(0)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">aspect2</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-comment">//例如两个类Aspect1和Aspect2</span>
+
+<span class="hljs-meta">@Aspect</span>
+<span class="hljs-meta">@Order</span>(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aspect1</span></span>&#123;
+&#125;
+
+<span class="hljs-meta">@Aspect</span>
+<span class="hljs-meta">@Order</span>(<span class="hljs-number">0</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aspect2</span></span>&#123;
+&#125;</code></pre>
 <p>Order注解中的值越小，优先级越高，所以aspect2会优先于aspect1</p>
 <p><strong>基于Ordered接口配置</strong></p>
 <p>Ordered接口提供了一个getOrder()方法来设置优先级</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同样两个类Aspect1和Aspect2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">aspect1</span> <span class="keyword">implements</span> <span class="title">Ordered</span></span>&#123;</span><br><span class="line">    ....;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">aspect2</span> <span class="keyword">implements</span> <span class="title">Ordered</span></span>&#123;</span><br><span class="line">    ....;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-comment">//同样两个类Aspect1和Aspect2</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aspect1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Ordered</span></span>&#123;
+    ....;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getOrder</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">aspect2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Ordered</span></span>&#123;
+    ....;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getOrder</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125;
+&#125;</code></pre>
 <p>同样，值越小，优先级越高，所有Aspect2的优先级大于Aspect1</p>
 <p><strong>基于XML配置</strong></p>
 <p>主要通过<code>&lt;aop:aspect&gt;</code>元素的<code>&lt;order&gt;</code>元素实现，在配置切面时添加Order属性</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line"><span class="comment">&lt;!--配置切面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;aspect1&quot;</span> <span class="attr">order</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">	....;</span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;aspect2&quot;</span> <span class="attr">order</span>=<span class="string">&quot;0&quot;</span>&gt;</span></span><br><span class="line">	....;</span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml">....
+<span class="hljs-comment">&lt;!--配置切面--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"aspect1"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"1"</span>&gt;</span>
+	....;
+<span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"aspect2"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"0"</span>&gt;</span>
+	....;
+<span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span></code></pre>
 <p>同样，这里也是Aspect2的优先级大于Aspect1</p>
 <h2 id="Spring-MVC基础"><a href="#Spring-MVC基础" class="headerlink" title="Spring MVC基础"></a>Spring MVC基础</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p><strong>功能组件</strong></p>
 <ol>
@@ -603,38 +969,126 @@
 </li>
 </ol>
 <h3 id="简单应用-1"><a href="#简单应用-1" class="headerlink" title="简单应用"></a>简单应用</h3><p>先在web.xml中配置DispatcherServlet</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/springMVC-config.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 访问DispatcherServlet对应的路径 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springMVC<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+             <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>/WEB-INF/springMVC-config.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+ <span class="hljs-comment">&lt;!-- 访问DispatcherServlet对应的路径 --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springMVC<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span> 
+ <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span></code></pre>
 <p>contextConfigLocation表示引入springMVC配置文件所在位置</p>
 <p><code>&lt;load-on-startup&gt;</code>表示优先级</p>
 <p><code>&lt;url-pattern&gt;</code>元素的值为”/”，表示将所有的请求都映射到DispatcherSevelet</p>
 <p><strong>XML实现</strong></p>
 <p>在WebContent/WEB-INF目录下新建spring-MVC的配置文件springMVC-config.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&#x27;1.0&#x27; encoding=&#x27;UTF-8&#x27;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context/spring-context.xsd&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置Controller类 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;/controller01&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">class</span>=<span class="string">&quot;com.qfedu.controller.MyController01&quot;</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置处理器映射器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置处理器适配器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置视图解析器 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version='1.0' encoding='UTF-8'?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span></span>
+<span class="hljs-tag">	<span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span></span>
+<span class="hljs-tag">	<span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span></span>
+<span class="hljs-tag">	<span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/context</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span>
+	<span class="hljs-comment">&lt;!-- 配置Controller类 --&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"/controller01"</span></span>
+<span class="hljs-tag">		<span class="hljs-attr">class</span>=<span class="hljs-string">"com.qfedu.controller.MyController01"</span> /&gt;</span>
+	<span class="hljs-comment">&lt;!-- 配置处理器映射器 --&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"</span> /&gt;</span>
+	<span class="hljs-comment">&lt;!-- 配置处理器适配器 --&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"</span> /&gt;</span>
+	<span class="hljs-comment">&lt;!-- 配置视图解析器 --&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
 <p>在src中新建com.qfedu.controller包，新建MyController01类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController01</span> <span class="keyword">implements</span> <span class="title">Controller</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">handleRequest</span><span class="params">(HttpServletRequest request, HttpServletResponse 			response)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.addObject(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">        mv.setViewName(<span class="string">&quot;/WEB-INF/page/page01/jsp&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyController01</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Controller</span></span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">handleRequest</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse 			response)</span> <span class="hljs-keyword">throws</span> Exception</span>&#123;
+        ModelAndView mv = <span class="hljs-keyword">new</span> ModelAndView();
+        mv.addObject(<span class="hljs-string">"msg"</span>,<span class="hljs-string">"Hello World"</span>);
+        mv.setViewName(<span class="hljs-string">"/WEB-INF/page/page01/jsp"</span>);
+        <span class="hljs-keyword">return</span> mv;
+    &#125;
+&#125;</code></pre>
 <p>handlerRequest()方法用于处理客户端请求，其中先新建了一个ModelAndView对象，然后为ModelAndView对象设置模型数据和View名称，最后将该对象返回。</p>
 <p>在WebContent/WEB-INF/page/page01.jsp中通过下述代码调用程序</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    $ &#123;requestScope.msg&#125;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsp">&lt;body&gt;
+    $ &#123;requestScope.msg&#125;
+&lt;/body&gt;</code></pre>
 <p><strong>注解实现</strong></p>
 <p>新建类MyController02</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.controller;</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController02</span></span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/execute&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.addObject(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">        mv.setViewName(<span class="string">&quot;page01&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.controller;
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyController02</span></span>&#123;
+    <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/execute"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">execute</span><span class="hljs-params">()</span></span>&#123;
+        ModelAndView mv = <span class="hljs-keyword">new</span> ModelAndView();
+        mv.addObject(<span class="hljs-string">"msg"</span>,<span class="hljs-string">"Hello World"</span>);
+        mv.setViewName(<span class="hljs-string">"page01"</span>);
+        <span class="hljs-keyword">return</span> mv;
+    &#125;
+&#125;</code></pre>
 <p>@Controller注解将类作为一个Controller类配置到Spring容器中，@RequestMapping注解指定了execute()方法的映射路径。</p>
 <p>修改springMVC-config.xml配置文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--扫描Controller--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.qfedu.controller&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置视图解析器--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/page/&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs xml"><span class="hljs-comment">&lt;!--扫描Controller--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.qfedu.controller"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--配置视图解析器--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/WEB-INF/page/"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
 <p>prefix用于指定View名称的前缀，suffix用于指定View名称的后缀</p>
 <h3 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h3><p>除了上述使用到的@Controller，还有一些常用的注解</p>
 <p><strong>@RequestMapping</strong></p>
 <p>@RequestMapping注解用于处理请求地址映射，示例如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController03</span></span>&#123;</span><br><span class="line">    <span class="comment">//访问page02.jsp</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/toWelcome&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">toWelcome</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.setViewName(<span class="string">&quot;page02&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//访问page01.jsp</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/welcome&quot;, method=RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">welcome</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">        mv.addObject(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">        mv.setViewName(<span class="string">&quot;page01&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-meta">@Controller</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyController03</span></span>&#123;
+    <span class="hljs-comment">//访问page02.jsp</span>
+    <span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">"/toWelcome"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">toWelcome</span><span class="hljs-params">()</span></span>&#123;
+        ModelAndView mv = <span class="hljs-keyword">new</span> ModelAndView();
+        mv.setViewName(<span class="hljs-string">"page02"</span>);
+        <span class="hljs-keyword">return</span> mv;
+    &#125;
+    <span class="hljs-comment">//访问page01.jsp</span>
+    <span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">"/welcome"</span>, method=RequestMethod.POST)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">welcome</span><span class="hljs-params">()</span></span>&#123;
+        ModelAndView mv = <span class="hljs-keyword">new</span> ModelAndView();
+        mv.addObject(<span class="hljs-string">"msg"</span>,<span class="hljs-string">"Hello World"</span>);
+        mv.setViewName(<span class="hljs-string">"page01"</span>);
+        <span class="hljs-keyword">return</span> mv;
+    &#125;
+&#125;</code></pre>
 <p>上述代码中，第一个@RequestMapping注解的value值为”/toWelcome”，表明访问路径为“/toWelcome”的请求将由toWelcome()方法处理，处理完成后请求被转发到page02.jsp。</p>
 <p>第二个@RequestMapping注解的value值为”/welcome”，methdo属性值为”RequestMethod.POST“，表明访问路径为”/welcome“，并且访问方式为”POST“的请求将由welcome()方法处理，处理完成后请求被转发到page01.jsp。</p>
 <p><strong>@RequestParam</strong></p>
 <p>@RequestParam注解用于获取请求参数的值，将请求参数赋值给方法中的形参。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value=&quot;/login&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">login</span><span class="params">(<span class="meta">@RequestParam(value=&quot;username&quot;, defaultValue=&quot;xiaofeng&quot;)</span> String username, <span class="meta">@ReqeustParam(value=&quot;password&quot;, defaultValue=&quot;123abc&quot;)</span> String password)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;用户名:&quot;</span> + username);</span><br><span class="line">    System.out.println(<span class="string">&quot;密码:&quot;</span> + password);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">"/login"</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">login</span><span class="hljs-params">(@RequestParam(value=<span class="hljs-string">"username"</span>, defaultValue=<span class="hljs-string">"xiaofeng"</span>)</span> String username, @<span class="hljs-title">ReqeustParam</span><span class="hljs-params">(value=<span class="hljs-string">"password"</span>, defaultValue=<span class="hljs-string">"123abc"</span>)</span> String password)</span>&#123;
+    System.out.println(<span class="hljs-string">"用户名:"</span> + username);
+    System.out.println(<span class="hljs-string">"密码:"</span> + password);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+&#125;</code></pre>
 <p>上述代码中，第一个@RequestParam注解的value属性值为username，defaultValue为xiaofeng，即将请求参数username的值赋值给login()方法中的形参username，当请求参数没有提交值时，采用默认值”xiaofeng“，password同理。</p>
 <p><strong>@PathVariable</strong></p>
 <p>@PathVariable注解用于获取URL中的动态参数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qfedu.comtroller;</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/claList/&#123;cid&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController05</span></span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/stuList/&#123;sid&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findStudent</span><span class="params">(<span class="meta">@PathVariable(value=&quot;cid&quot;)</span> Integer cid, <span class="meta">@PathVariable(value=&quot;sid&quot;)</span> Integer sid)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;班级ID为：&quot;</span> + cid);</span><br><span class="line">        System.out.println(<span class="string">&quot;学生ID为：&quot;</span> + sid);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.qfedu.comtroller;
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">"/claList/&#123;cid&#125;"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyController05</span></span>&#123;
+    <span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">"/stuList/&#123;sid&#125;"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">findStudent</span><span class="hljs-params">(@PathVariable(value=<span class="hljs-string">"cid"</span>)</span> Integer cid, @<span class="hljs-title">PathVariable</span><span class="hljs-params">(value=<span class="hljs-string">"sid"</span>)</span> Integer sid)</span>&#123;
+        System.out.println(<span class="hljs-string">"班级ID为："</span> + cid);
+        System.out.println(<span class="hljs-string">"学生ID为："</span> + sid);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    &#125;
+&#125;</code></pre>
 <p>@RequestMapping注解的value属性使用的为动态参数，@PathVariable注解将动态参数cid，sid映射为findStudent()方法中的形参cid，sid。</p>
 
     </div>

@@ -197,7 +197,7 @@
 
     <aside class="post-side">
         <div class="post-side__toc">
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#重装渲染引擎"><span class="toc-text">重装渲染引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用hexo-renderer-mathjax"><span class="toc-text">使用hexo-renderer-mathjax</span></a></li></ol>
         </div>
     </aside>
     <a class="btn-toc button" id="btn-toc">
@@ -207,71 +207,46 @@
     </a>
     <div class="toc-menus" id="toc-menus">
         <div class="toc-title">Article Directory</div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#重装渲染引擎"><span class="toc-text">重装渲染引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用hexo-renderer-mathjax"><span class="toc-text">使用hexo-renderer-mathjax</span></a></li></ol>
     </div>
 
 
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        
-Hexo关于Latex的一些设置，避免重复渲染等问题。
-
+        <p>Hexo关于Latex的一些设置，避免重复渲染等问题。</p>
 <a id="more"></a>
-
-## 重装渲染引擎
-
-由于需要在markdown中插入数学公式，因此了解到了Latex，但是在完成了公式的输入后发现hexo中并不能成功渲染Latex公式。为什么呢？这是因为hexo使用自带的`hexo-renderer-marked`引擎来渲染页面，但是`hexo-renderer-marked`引擎不能渲染Latex引擎，因此我们需要更换引擎。
-
-在更换渲染引擎时首先需要先卸载原先的渲染引擎，再安装新引擎。
-
-这里使用`kramed`引擎，虽然`kramed`引擎不能渲染markdown all in one中的下标"~ ~"以及 上标"^ ^"这类格式，但姑且可以用Mathjax的`_{}`和`^{}`代替
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">npm uninstall hexo-renderer-marked --save<br>npm install hexo-renderer-kramed --save<br></code></pre></td></tr></table></figure>
-如果出现**数学公式重复渲染**的情况，在`<your-priject-dir>/node_modules/hexo-renderer-kramed/lib/renderer.js`中，将
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatText</span>(<span class="hljs-params">text</span>) </span>&#123;<br>    <span class="hljs-comment">// Fit kramed&#x27;s rule: $$ + \1 + $$</span><br>    <span class="hljs-keyword">return</span> text.replace(<span class="hljs-regexp">/`\$(.*?)\$`/g</span>, <span class="hljs-string">&#x27;$$$$$1$$$$&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-改为
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatText</span>(<span class="hljs-params">text</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> text;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-如果出现**行内公式无法渲染**的情况，在`<your-project-dir>/node_modules/kramed/lib/rules/inline.js`中，将
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/</span>,<br></code></pre></td></tr></table></figure>
-改为
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,<br></code></pre></td></tr></table></figure>
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">em: <span class="hljs-regexp">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,<br></code></pre></td></tr></table></figure>
-改为
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,<br></code></pre></td></tr></table></figure>
-
-
-## 使用hexo-renderer-mathjax
-
-首先卸载原本的`hexo-math`
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm uninstall hexo-math --save<br></code></pre></td></tr></table></figure>
-然后安装`hexo-renderer-mathjax`
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install hexo-renderer-mathjax --save<br></code></pre></td></tr></table></figure>
-
-
-若渲染出现问题，则更换Mathjax的CDN
-
-在`<path-to-your-project>/node_modules/hexo-renderer-mathjax/mathjax.html`中，将
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
-改为
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-
-<blockquote class="blockquote-note blockquote-note__caution"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></div>Tips</div><div class="blockquote-note__content">
-要想用Latex渲染花括号$\\{\\}$，如果`\{\}`不生效的话，可以改成`\\{\\}`
+<h2 id="重装渲染引擎"><a href="#重装渲染引擎" class="headerlink" title="重装渲染引擎"></a>重装渲染引擎</h2><p>由于需要在markdown中插入数学公式，因此了解到了Latex，但是在完成了公式的输入后发现hexo中并不能成功渲染Latex公式。为什么呢？这是因为hexo使用自带的<code>hexo-renderer-marked</code>引擎来渲染页面，但是<code>hexo-renderer-marked</code>引擎不能渲染Latex引擎，因此我们需要更换引擎。</p>
+<p>在更换渲染引擎时首先需要先卸载原先的渲染引擎，再安装新引擎。</p>
+<p>这里使用<code>kramed</code>引擎，虽然<code>kramed</code>引擎不能渲染markdown all in one中的下标”~ ~”以及 上标”^ ^”这类格式，但姑且可以用Mathjax的<code>_{}</code>和<code>^{}</code>代替</p>
+<pre><code class="hljs git">npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save</code></pre>
+<p>如果出现<strong>数学公式重复渲染</strong>的情况，在<code>&lt;your-priject-dir&gt;/node_modules/hexo-renderer-kramed/lib/renderer.js</code>中，将</p>
+<pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatText</span>(<span class="hljs-params">text</span>) </span>&#123;
+    <span class="hljs-comment">// Fit kramed's rule: $$ + \1 + $$</span>
+    <span class="hljs-keyword">return</span> text.replace(<span class="hljs-regexp">/`\$(.*?)\$`/g</span>, <span class="hljs-string">'$$$$$1$$$$'</span>);
+&#125;</code></pre>
+<p>改为</p>
+<pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatText</span>(<span class="hljs-params">text</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> text;
+&#125;</code></pre>
+<p>如果出现<strong>行内公式无法渲染</strong>的情况，在<code>&lt;your-project-dir&gt;/node_modules/kramed/lib/rules/inline.js</code>中，将</p>
+<pre><code class="hljs js"><span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/</span>,</code></pre>
+<p>改为</p>
+<pre><code class="hljs js"><span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</code></pre>
+<pre><code class="hljs js">em: <span class="hljs-regexp">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</code></pre>
+<p>改为</p>
+<pre><code class="hljs js">em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</code></pre>
+<h2 id="使用hexo-renderer-mathjax"><a href="#使用hexo-renderer-mathjax" class="headerlink" title="使用hexo-renderer-mathjax"></a>使用hexo-renderer-mathjax</h2><p>首先卸载原本的<code>hexo-math</code></p>
+<pre><code class="hljs git">npm uninstall hexo-math --save</code></pre>
+<p>然后安装<code>hexo-renderer-mathjax</code></p>
+<pre><code class="hljs git">npm install hexo-renderer-mathjax --save</code></pre>
+<p>若渲染出现问题，则更换Mathjax的CDN</p>
+<p>在<code>&lt;path-to-your-project&gt;/node_modules/hexo-renderer-mathjax/mathjax.html</code>中，将</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span></code></pre>
+<p>改为</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<blockquote class="blockquote-note blockquote-note__caution"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></div>Tips</div><div class="blockquote-note__content"><p>要想用Latex渲染花括号$\{\}$，如果<code>\{\}</code>不生效的话，可以改成<code>\\{\\}</code></p>
 </div></blockquote>
     </div>
      

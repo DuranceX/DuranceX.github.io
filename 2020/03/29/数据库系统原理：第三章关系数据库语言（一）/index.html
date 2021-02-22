@@ -222,7 +222,6 @@
     <div class="post__content">
         <p>数据库系统原理第三章的部分内容，主要包括SQL概述和数据定义。</p>
 <a id="more"></a>
-
 <h1 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h1><h2 id="SQL的特点"><a href="#SQL的特点" class="headerlink" title="SQL的特点"></a>SQL的特点</h2><ol>
 <li>综合统一<br>集数据定义语言（DDL）、数据操纵语言（DML）、数据控制语言（DCL）于一体<br>DDL：Create（创建）、Alter（修改）、Drop（删除）<br>DML：Insert、 Delete、Update、Select<br>DCL：Grant、 Revoke</li>
 <li>高度非过程化</li>
@@ -232,33 +231,9 @@
 <li>SQL又是一种嵌入式语言，可以嵌入到C++、Java等高级语言中使用</li>
 </ul>
 </li>
-<li>语言简洁，易学易用<table>
-<thead>
-<tr>
-<th align="center">SQL功能</th>
-<th align="center">动词</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">数据查询</td>
-<td align="center">SELECT</td>
-</tr>
-<tr>
-<td align="center">数据定义</td>
-<td align="center">CREATE、DROP、ALTER</td>
-</tr>
-<tr>
-<td align="center">数据操纵</td>
-<td align="center">INSERT、UPDATE、DELETE</td>
-</tr>
-<tr>
-<td align="center">数据控制</td>
-<td align="center">GRANT</td>
-</tr>
-</tbody></table>
-</li>
+<li>语言简洁，易学易用<br>SQL功能|动词<br>:-:|:-:|<br>数据查询|SELECT<br>数据定义|CREATE、DROP、ALTER<br>数据操纵|INSERT、UPDATE、DELETE<br>数据控制|GRANT|REVOKE</li>
 </ol>
-<h2 id="SQL的基本概念"><a href="#SQL的基本概念" class="headerlink" title="SQL的基本概念"></a>SQL的基本概念</h2><p>SQL支持关系数据库的三级模式结构<br><img src="/img/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/SQL%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F.png"></p>
+<h2 id="SQL的基本概念"><a href="#SQL的基本概念" class="headerlink" title="SQL的基本概念"></a>SQL的基本概念</h2><p>SQL支持关系数据库的三级模式结构<br><img src="/img/数据库系统/SQL三级模式.png" alt=""></p>
 <p><strong>基本表</strong><br>本身独立存在的表。存储在数据库中，所以基本表是实表。</p>
 <p><strong>视图</strong><br>从一个或几个基本表导出的表。不独立存储在数据库中，数据库中只存储视图的定义，不存储视图的数据，视图的数据来源于基本表，所以视图是虚表。</p>
 <p>用户可以在视图上再定义新的视图。</p>
@@ -314,7 +289,7 @@
 </ul>
 <p>示例：<br>【例1】为用户WANG定义一个学生-课程模式S-T<br><strong>CREATE SCHEMA “S-T” AUTHORIZATION WANG;</strong></p>
 <p>【例2】若没有指定模式名，则默认为用户名<br><strong>CREATE SCHEMA AUTHORIZATION WANG;</strong></p>
-<h3 id="删除模式"><a href="#删除模式" class="headerlink" title="删除模式"></a>删除模式</h3><p>格式：<br>DROP SCHEMA &lt;模式名&gt; &lt;CASCADE|RESTRICT&gt;</p>
+<h3 id="删除模式"><a href="#删除模式" class="headerlink" title="删除模式"></a>删除模式</h3><p>格式：<br>DROP SCHEMA &lt;模式名&gt; <CASCADE|RESTRICT></p>
 <ul>
 <li>CASCADE（级联）<ul>
 <li>删除模式的同时把该模式中所有数据库对象全部删除</li>
@@ -341,11 +316,34 @@
 <li><strong>unique（A）：</strong> 表示每个元组在属性列A上是唯一的，即没有重复值</li>
 </ul>
 <p>【例3】建立“学生”表STUDENT，学号是主码，姓名取值唯一</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Student</span><br><span class="line">(Sno <span class="type">CHAR</span>(<span class="number">9</span>) <span class="keyword">PRIMARY</span> KEY,     <span class="comment">/*列级完整性约束条件，Sno是主码*/</span></span><br><span class="line">Sname <span class="type">CHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span>,        <span class="comment">/*列级完整性约束条件，Sname是唯一值*/</span></span><br><span class="line">Ssex <span class="type">CHAR</span>(<span class="number">2</span>),</span><br><span class="line">Sage <span class="type">SMALLINT</span>,</span><br><span class="line">Sdept <span class="type">CHAR</span>(<span class="number">20</span>),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>) PRIMARY <span class="hljs-keyword">KEY</span>,     <span class="hljs-comment">/*列级完整性约束条件，Sno是主码*/</span>
+Sname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">UNIQUE</span>,        <span class="hljs-comment">/*列级完整性约束条件，Sname是唯一值*/</span>
+Ssex <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">2</span>),
+Sage <span class="hljs-built_in">SMALLINT</span>,
+Sdept <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">20</span>),
+);</code></pre>
 <p>【例4】建立一个“课程”表Course</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Course</span><br><span class="line">(Sno <span class="type">CHAR</span>(<span class="number">4</span>) <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">Cname <span class="type">CHAR</span>(<span class="number">40</span>),</span><br><span class="line">Cpno <span class="type">CHAR</span>(<span class="number">4</span>),     <span class="comment">/*先修课*/</span></span><br><span class="line">Ccredit <span class="type">SMALLINT</span>,</span><br><span class="line"><span class="keyword">FOREIGN</span> KEY(Cpno) <span class="keyword">REFERENCES</span> Course(Cno)     </span><br><span class="line"><span class="comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Course
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>) PRIMARY <span class="hljs-keyword">KEY</span>,
+Cname <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">40</span>),
+Cpno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),     <span class="hljs-comment">/*先修课*/</span>
+Ccredit <span class="hljs-built_in">SMALLINT</span>,
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cpno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)     
+<span class="hljs-comment">/*Cpno是外码，被参照表是Course，被参照列是Cno*/</span>
+);</code></pre>
 <p>【例5】建立一个学生选课表SC</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SC</span><br><span class="line">(Sno <span class="type">CHAR</span>(<span class="number">9</span>),</span><br><span class="line">Cno <span class="type">CHAR</span>(<span class="number">4</span>),</span><br><span class="line">Grade <span class="type">SMALLINT</span>,</span><br><span class="line"><span class="keyword">PRIMARY</span> KEY(Sno, Cno),</span><br><span class="line"><span class="comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span></span><br><span class="line"><span class="keyword">FOREIGN</span> KEY(Sno) <span class="keyword">REFERENCES</span> Student(Sno),</span><br><span class="line"><span class="comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span></span><br><span class="line"><span class="keyword">FOREIGN</span> KEY(Cno) <span class="keyword">REFERENCES</span> Course(Cno)</span><br><span class="line"><span class="comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> SC
+(Sno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">9</span>),
+Cno <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">4</span>),
+Grade <span class="hljs-built_in">SMALLINT</span>,
+PRIMARY <span class="hljs-keyword">KEY</span>(Sno, Cno),
+<span class="hljs-comment">/*主码由两个属性构成，必须作为表级完整性进行定义*/</span>
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Sno) <span class="hljs-keyword">REFERENCES</span> Student(Sno),
+<span class="hljs-comment">/*表级完整性约束条件，Sno是外码，被参照表是Student*/</span>
+<span class="hljs-keyword">FOREIGN</span> <span class="hljs-keyword">KEY</span>(Cno) <span class="hljs-keyword">REFERENCES</span> Course(Cno)
+<span class="hljs-comment">/*表级完整性约束条件，Cno是外码，被参照表是Course*/</span>
+);</code></pre>
 <h3 id="修改基本表"><a href="#修改基本表" class="headerlink" title="修改基本表"></a>修改基本表</h3><p>ALTER TABLE &lt;表名&gt;<br>[ ADD &lt;新列名&gt; &lt;数据类型&gt; [ 完整性约束 ]]<br>[ ADD &lt;表级完整性约束&gt; ]<br>[ DROP &lt;列名&gt; [ CASCADE|RESTRICT ]]<br>[ DROP &lt;完整性约束条件&gt; ]<br>[ ALTER &lt;列名&gt; &lt;数据类型&gt;];</p>
 <ul>
 <li>表名：要修改的基本表</li>
@@ -373,7 +371,7 @@
 </ul>
 </li>
 <li>次序：指定索引值的排列次序，升序：ASC，降序：DESC，缺省值为ASC</li>
-<li>UNIQUE：此索引的每一个索引值只对应唯一的数据记录<a href="%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E6%98%AF%E4%B8%8D%E5%85%81%E8%AE%B8%E5%85%B6%E4%B8%AD%E4%BB%BB%E4%BD%95%E4%B8%A4%E8%A1%8C%E5%85%B7%E6%9C%89%E7%9B%B8%E5%90%8C%E7%B4%A2%E5%BC%95%E5%80%BC%E7%9A%84%E7%B4%A2%E5%BC%95%E3%80%82">^唯一索引</a></li>
+<li>UNIQUE：此索引的每一个索引值只对应唯一的数据记录<sup><a href="#fn_唯一索引" id="reffn_唯一索引">唯一索引</a></sup></li>
 </ul>
 <ul>
 <li>CLUSTERED：表示要建立的索引是 聚簇索引</li>

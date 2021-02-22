@@ -218,26 +218,25 @@
     
 </div>
     <div class="post__content">
-        <p>包括原码、反码、补码、移码的一些操作。</p>
-<a id="more"></a>
+        <p>包括原码、反码、补码、移码的一些操作。<br><a id="more"></a></p>
 <h1 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h1><p>用最高位表示符号（0——正，1——负），其他位表示数值的绝对值</p>
 <blockquote>
-<p>例如：<br>x1=+45 ===&gt; [x1]<del>原</del> = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]<del>原</del> = <font color=red>1</font>0101101B</p>
+<p>例如：<br>x1=+45 ===&gt; [x1]~原~ = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]~原~ = <font color=red>1</font>0101101B</p>
 </blockquote>
-<p>在原码中，0的表示不唯一<br>[+0]<del>原</del> = <font color=red>0</font>0000000B<br>[- 0]<del>原</del> = <font color=red>1</font>0000000B</p>
+<p>在原码中，0的表示不唯一<br>[+0]~原~ = <font color=red>0</font>0000000B<br>[- 0]~原~ = <font color=red>1</font>0000000B</p>
 <h1 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h1><ul>
 <li>用最高位表示符号（0——正，1——负）</li>
 <li><font color=blue>正数</font>的反码：与原码相同</li>
 <li><font color=blue>负数</font>的反码：符号位不变，其余位按位取反</li>
 </ul>
 <blockquote>
-<p>例如：<br>x1=+45 ===&gt; [x1]<del>原</del> = <font color=red>0</font>0101101B ===&gt; [x1]<del>反</del> = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]<del>原</del> = <font color=red>1</font>0101101B ===&gt; [x2]<del>反</del> = <font color=red>1</font>1010010B</p>
+<p>例如：<br>x1=+45 ===&gt; [x1]~原~ = <font color=red>0</font>0101101B ===&gt; [x1]~反~ = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]~原~ = <font color=red>1</font>0101101B ===&gt; [x2]~反~ = <font color=red>1</font>1010010B</p>
 </blockquote>
-<p>在反码中，0的表示不唯一<br>[+0]<del>反</del> = <font color=red>0</font>0000000B<br>[- 0]<del>反</del> = <font color=red>1</font>1111111B</p>
+<p>在反码中，0的表示不唯一<br>[+0]~反~ = <font color=red>0</font>0000000B<br>[- 0]~反~ = <font color=red>1</font>1111111B</p>
 <h1 id="star-补码"><a href="#star-补码" class="headerlink" title=":star:补码"></a>:star:补码</h1><ul>
 <li>用最高位表示符号（0——正，1——负）</li>
 </ul>
-<p>在补码中，0的表示唯一<br>[+0]<del>补</del> = <font color=red>0</font>0000000B<br>[- 0]<del>补</del> = <font color=red>0</font>0000000B</p>
+<p>在补码中，0的表示唯一<br>[+0]~补~ = <font color=red>0</font>0000000B<br>[- 0]~补~ = <font color=red>0</font>0000000B</p>
 <p>所以将剩下的[100…..0]位表示为最大负数，-2^n^</p>
 <h2 id="补码的几种计算方式"><a href="#补码的几种计算方式" class="headerlink" title="补码的几种计算方式"></a>补码的几种计算方式</h2><p>本例中的取反+1等效于-1取反</p>
 <p><strong>第一种方法</strong></p>
@@ -246,7 +245,7 @@
 <li>负数的补码：符号位不变，==数值位按位取反== ，末位+1</li>
 </ul>
 <blockquote>
-<p>例如：<br>x1=+45 ===&gt; [x1]<del>原</del> = <font color=red>0</font>0101101B ===&gt; [x1]<del>补</del> = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]<del>原</del> = <font color=red>1</font>0101101B ===&gt; [x2]<del>补</del> = <font color=red>1</font>1010011B</p>
+<p>例如：<br>x1=+45 ===&gt; [x1]~原~ = <font color=red>0</font>0101101B ===&gt; [x1]~补~ = <font color=red>0</font>0101101B<br>x2= -45 ===&gt; [x2]~原~ = <font color=red>1</font>0101101B ===&gt; [x2]~补~ = <font color=red>1</font>1010011B</p>
 </blockquote>
 <p><strong>第二种方法</strong></p>
 <ul>
@@ -254,7 +253,7 @@
 <li>负数的补码：从最低位（最右侧）起，到出现第一个1以前原码中的数字不变，以后逐位取反，符号位不变。</li>
 </ul>
 <blockquote>
-<p>例如：<br>x1=-101 0111B  &emsp; X2=-111 0000B<br>[x1]<del>原</del> = <font color=red>1</font>101 011<font color=red>1</font>B ===&gt; [x1]<del>补</del> = <font color=red>1</font>010 100<font color=red>1</font>B<br>//最右侧起第一个1是右侧第一位，所以从右侧第二位起到符号位为止，中间的位全部取反<br /><br>[x2]<del>原</del> = <font color=red>1</font>11<font color=red>1 0000</font>B ===&gt; [x2]<del>补</del> = <font color=red>1</font>00<font color=red>1 0000</font>B<br>//最右侧起第一个1是右侧第5位，所以从右侧第一位到第五位不变，第六位起到符号位为止，中间全部取反</p>
+<p>例如：<br>x1=-101 0111B  &emsp; X2=-111 0000B<br>[x1]~原~ = <font color=red>1</font>101 011<font color=red>1</font>B ===&gt; [x1]~补~ = <font color=red>1</font>010 100<font color=red>1</font>B<br>//最右侧起第一个1是右侧第一位，所以从右侧第二位起到符号位为止，中间的位全部取反<br /><br>[x2]~原~ = <font color=red>1</font>11<font color=red>1 0000</font>B ===&gt; [x2]~补~ = <font color=red>1</font>00<font color=red>1 0000</font>B<br>//最右侧起第一个1是右侧第5位，所以从右侧第一位到第五位不变，第六位起到符号位为止，中间全部取反</p>
 </blockquote>
 <p><strong>第三种方法</strong></p>
 <ul>
@@ -262,7 +261,7 @@
 <li>负数的补码：相对应的正数的补码全部取反（包括符号位），在末位+1</li>
 </ul>
 <blockquote>
-<p>例如：<br>[x1] = -45 &emsp;[-x1] = +45<br>[-x1]<del>补</del> = [-x1]<del>原</del> = <font color=red>0</font>010 1101B<br>[x1]<del>补</del> = <font color=red>1</font>1010011B</p>
+<p>例如：<br>[x1] = -45 &emsp;[-x1] = +45<br>[-x1]~补~ = [-x1]~原~ = <font color=red>0</font>010 1101B<br>[x1]~补~ = <font color=red>1</font>1010011B</p>
 </blockquote>
 <p class="note note-primary">同样的，[-x1]<sub>补</sub>也可以通过[x1]<sub>补</sub>全部取反+1得到，说明一个数的正负补码可以互相通过全部位取反+1得到</p>
 
@@ -277,29 +276,28 @@
 <blockquote>
 <p>例如：<br>求-7的补码，因为-7需要四位二进制表示[1111B]，所以2^n^=2^4^=16<br>那么2^4^-|-7|=9，所以-7的补码就是9的补码，即1001B</p>
 </blockquote>
-<h2 id="补码的运算"><a href="#补码的运算" class="headerlink" title="补码的运算"></a>补码的运算</h2><p><strong>补码的符号位也参与运算</strong><br>加法：[X+Y]<del>补</del> = [X]<del>补</del> + [Y]<del>补</del><br>减法：[X-Y]<del>补</del> = [X]<del>补</del> + [-Y]<del>补</del></p>
+<h2 id="补码的运算"><a href="#补码的运算" class="headerlink" title="补码的运算"></a>补码的运算</h2><p><strong>补码的符号位也参与运算</strong><br>加法：[X+Y]~补~ = [X]~补~ + [Y]~补~<br>减法：[X-Y]~补~ = [X]~补~ + [-Y]~补~</p>
 <h2 id="补码的算术移位"><a href="#补码的算术移位" class="headerlink" title="补码的算术移位"></a>补码的算术移位</h2><p>符号位在移位时不变，正数左右移位都补0，负数向右移位空来的位补1，左移空出来的位补0</p>
 <blockquote>
-<p>例如：<br>[X]<del>原</del> = 1001 ==&gt; [x]<del>补</del> = 1111<br>右移一位（相当于除以2（位数越高越接近除以2））：1111 -&gt; 1111 = 1001 = -1，因为1除以2余1<br>左移一位（相当于乘以2，同理）：1111 -&gt; 1110 = 1010 = -2</p>
+<p>例如：<br>[X]~原~ = 1001 ==&gt; [x]~补~ = 1111<br>右移一位（相当于除以2（位数越高越接近除以2））：1111 -&gt; 1111 = 1001 = -1，因为1除以2余1<br>左移一位（相当于乘以2，同理）：1111 -&gt; 1110 = 1010 = -2</p>
 </blockquote>
 <p>✨当符号位与最高位（最左位）不同时，左移会溢出</p>
 <blockquote>
-<p>例如：<br>0.1101<del>[补]</del> = 0.1101<del>[原]</del> = +13<br>那么左移乘以2应该为26，但26无法用4位二进制表示，所以溢出<br>0.1101左移后为0.1010 = +12 != 26<br /><br>1.0110<del>[补]</del> = 1.1010<del>[原]</del> = -10<br>那么左移乘以2应该为-20，同样无法用4位二进制表示，所以溢出<br>1.0110左移后为1.1100<del>[补]</del> = 1.0101<del>[原]</del> = -5 != -20</p>
+<p>例如：<br>0.1101~[补]~ = 0.1101~[原]~ = +13<br>那么左移乘以2应该为26，但26无法用4位二进制表示，所以溢出<br>0.1101左移后为0.1010 = +12 != 26<br /><br>1.0110~[补]~ = 1.1010~[原]~ = -10<br>那么左移乘以2应该为-20，同样无法用4位二进制表示，所以溢出<br>1.0110左移后为1.1100~[补]~ = 1.0101~[原]~ = -5 != -20</p>
 </blockquote>
 <h1 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h1><ul>
-<li>定义：[X]<del>移</del> = 2^n^ +X (-2^n^ &lt;= X &lt;= 2^n^-1)</li>
+<li>定义：[X]~移~ = 2^n^ +X (-2^n^ &lt;= X &lt;= 2^n^-1)</li>
 <li>用最高位表示符号，其中1——正，0——负</li>
 <li>移码的计算方法：补码的符号位取反，数值位不变</li>
 </ul>
 <blockquote>
-<p>例如：<br>x = -4, [x]<del>原</del> = 1100 -&gt; [x]<del>补</del> = 1100 -&gt; [x]<del>移</del> = 0100<br>or<br>2^n^ = 2^3^ = 8 = 1000, [x]<del>移</del> = [8]<del>原</del> + [x]<del>原</del> = 1000+1100 = 0100</p>
+<p>例如：<br>x = -4, [x]~原~ = 1100 -&gt; [x]~补~ = 1100 -&gt; [x]~移~ = 0100<br>or<br>2^n^ = 2^3^ = 8 = 1000, [x]~移~ = [8]~原~ + [x]~原~ = 1000+1100 = 0100</p>
 </blockquote>
 <ul>
-<li><p>真值越大，对应的移码也越大</p>
-<p>在移码中，0的表示是唯一的<br>[x]<del>移</del> = 2^n^+0 = 1000….0 </p>
-</li>
+<li>真值越大，对应的移码也越大</li>
 </ul>
-<p><strong>移码的加减运算</strong><br>加法：[X]<del>移</del> + [Y]<del>移</del> = [X+Y]<del>补</del> 然后符号位取反<br>减法：[X]<del>移</del> - [Y]<del>移</del> = [X-Y]<del>补</del> 然后符号位取反</p>
+<p>在移码中，0的表示是唯一的<br>[x]~移~ = 2^n^+0 = 1000….0 </p>
+<p><strong>移码的加减运算</strong><br>加法：[X]~移~ + [Y]~移~ = [X+Y]~补~ 然后符号位取反<br>减法：[X]~移~ - [Y]~移~ = [X-Y]~补~ 然后符号位取反</p>
 
     </div>
      

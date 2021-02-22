@@ -220,7 +220,6 @@
     <div class="post__content">
         <p>java课程的学习笔记，部分和c++重合的内容不做描述</p>
 <a id="more"></a>
-
 <h1 id="一、安装java"><a href="#一、安装java" class="headerlink" title="一、安装java"></a>一、安装java</h1><h2 id="下载java"><a href="#下载java" class="headerlink" title="下载java"></a>下载java</h2><p>去<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">Oracle</a>官网下载。</p>
 <h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>在”系统变量”中进行添加</p>
 <ol>
@@ -229,7 +228,7 @@
 <li>添加Path<br>找到<code>Path</code>项，双击打开（win7等直接在变量值最前面加），选择“新建”，变量值为jdk目录下bin文件夹的路径，例如<code>C:\Program Files\Java\jdk-12.0.2\bin</code></li>
 </ol>
 <h2 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h2><p>打开<code>CMD</code>窗口，输入<code>java -version</code>，有输出则说明安装完成。</p>
-<h1 id="二、基本数据类型"><a href="#二、基本数据类型" class="headerlink" title="二、基本数据类型"></a>二、基本数据类型</h1><h2 id="分类和长度"><a href="#分类和长度" class="headerlink" title="分类和长度"></a>分类和长度</h2><p>与c++一致，其中注意char型<br>| 类型  |  长度   |  初始值  |      范围       |<br>| :—: | :—–: | :——: | :————-: |<br>| char  | 16 bits | ‘\u0000’ | ‘\u0000~\uffff’ |</p>
+<h1 id="二、基本数据类型"><a href="#二、基本数据类型" class="headerlink" title="二、基本数据类型"></a>二、基本数据类型</h1><h2 id="分类和长度"><a href="#分类和长度" class="headerlink" title="分类和长度"></a>分类和长度</h2><p>与c++一致，其中注意char型<br>| 类型  |  长度   |  初始值  |      范围       |<br>| :—-: | :——-: | :———: | :——————-: |<br>| char  | 16 bits | ‘\u0000’ | ‘\u0000~\uffff’ |</p>
 <h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>默认为double型</p>
 <ul>
 <li>十进制数形式<br>由数字和小数点组成，且必须有小数点。<br>如：0.123,  1.23, 123.0</li>
@@ -237,68 +236,120 @@
 <li>float型的值,必须在数字后加f或F,如1.23f。</li>
 <li>double型的值,可以在数字后加d或D,如1.23D。</li>
 </ul>
-<h2 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h2><table>
+<h2 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">转义字符</th>
-<th align="left">含义</th>
+<th style="text-align:left">转义字符</th>
+<th style="text-align:left">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">\n</td>
-<td align="left">回车(\u000a)</td>
+<tbody>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">回车(\u000a)</td>
 </tr>
 <tr>
-<td align="left">\t</td>
-<td align="left">Tab(\u0009)</td>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">Tab(\u0009)</td>
 </tr>
 <tr>
-<td align="left">\b</td>
-<td align="left">空格(\u0008)</td>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">空格(\u0008)</td>
 </tr>
 <tr>
-<td align="left">\r</td>
-<td align="left">换行(\u000d)</td>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">换行(\u000d)</td>
 </tr>
 <tr>
-<td align="left">\f</td>
-<td align="left">换页(\u000c)</td>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页(\u000c)</td>
 </tr>
 <tr>
-<td align="left">\‘</td>
-<td align="left">单引号(\u0027)</td>
+<td style="text-align:left">\‘</td>
+<td style="text-align:left">单引号(\u0027)</td>
 </tr>
 <tr>
-<td align="left">\“</td>
-<td align="left">双引号(\u0022)</td>
+<td style="text-align:left">\“</td>
+<td style="text-align:left">双引号(\u0022)</td>
 </tr>
 <tr>
-<td align="left">\ddd</td>
-<td align="left">三位八进制</td>
+<td style="text-align:left">\ddd</td>
+<td style="text-align:left">三位八进制</td>
 </tr>
 <tr>
-<td align="left">\udddd</td>
-<td align="left">四位16进制</td>
+<td style="text-align:left">\udddd</td>
+<td style="text-align:left">四位16进制</td>
 </tr>
 <tr>
-<td align="left">\\</td>
-<td align="left">反斜杠(\u005c)</td>
+<td style="text-align:left">\\</td>
+<td style="text-align:left">反斜杠(\u005c)</td>
 </tr>
-</tbody></table>
-<h1 id="三、输入输出"><a href="#三、输入输出" class="headerlink" title="三、输入输出"></a>三、输入输出</h1><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>使用<code>System.out.print</code>进行输出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">System.out.print();  \\输出内容</span><br><span class="line">System.out.println();  \\输出内容，并换行</span><br><span class="line">System.out.printf();   \*支持占位符</span><br><span class="line">%d: 输出<span class="keyword">int</span>型数据</span><br><span class="line">%c: 输出<span class="keyword">char</span>型数据</span><br><span class="line">%f: 输出浮点型数据，小数部分最多保留<span class="number">6</span>位     </span><br><span class="line">%s: 输出字符串数据</span><br><span class="line">%md: 输出的<span class="keyword">int</span>型数据占m列   </span><br><span class="line">%m.nf:输出的浮点型数据占m列，小数点保留n位。</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>使用输入需要先导入文件，<code> import java.utli.*;</code>或<code>import java.utli.Scanner;</code></p>
-<p>进行使用时，需要先创建Scanner对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
-<p>在使用时使用<code>input.next类型()</code>来读取输入内容，例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = input.nextInt();</span><br><span class="line"><span class="keyword">float</span> y = input.nextFloat();</span><br></pre></td></tr></table></figure>
-<h1 id="四、函数、类格式差异"><a href="#四、函数、类格式差异" class="headerlink" title="四、函数、类格式差异"></a>四、函数、类格式差异</h1><h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p>java main函数格式为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">balabala</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="五、数组"><a href="#五、数组" class="headerlink" title="五、数组"></a>五、数组</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建</span></span><br><span class="line">arrayType arrayName[];  </span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">arrayType []arrayName;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态初始化</span></span><br><span class="line">arrayType arrayName[] = &#123;elem1, elem2, elem3, ...&#125;;</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">arrayType []arrayName = &#123;elem1, elem2, elem3, ...&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//动态初始化</span></span><br><span class="line">arrayTyoe arrayName[] = <span class="keyword">new</span> arrayType[x];</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">arrayTyoe []arrayName = <span class="keyword">new</span> arrayType[x];</span><br><span class="line"></span><br><span class="line"><span class="comment">//复合数据类型动态初始化</span></span><br><span class="line">arrayType arrayName[] = <span class="keyword">new</span> arrayTyppe[x];</span><br><span class="line"><span class="comment">//然后依次为数据元素开辟空间，相当于二维数组</span></span><br><span class="line">arrayName[i] = <span class="keyword">new</span> arrayType[paramList]; <span class="comment">//i=0,1,2,...,paramList-1</span></span><br><span class="line"><span class="comment">//例如</span></span><br><span class="line">String stringArray[] = <span class="keyword">new</span> String[<span class="number">4</span>];</span><br><span class="line">stringArray[<span class="number">0</span>] = <span class="keyword">new</span> String(<span class="string">&quot;Welcome&quot;</span>);</span><br><span class="line">stringArray[<span class="number">1</span>] = <span class="keyword">new</span> String(<span class="string">&quot;To&quot;</span>);</span><br><span class="line">stringArray[<span class="number">2</span>] = <span class="keyword">new</span> String(<span class="string">&quot;My&quot;</span>);</span><br><span class="line">stringArray[<span class="number">3</span>] = <span class="keyword">new</span> String(<span class="string">&quot;Blog&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>数组的复制操作，java提供<code>System.arraycopy</code>函数来进行操作，格式为<br><code>System.arraycopy(SourceArray,sourcePositon,DestinationArray,DestinationPositon,number)</code><br><code>SourceArray</code>表示被复制的数组，<code>DestinationArray</code>表示复制的数组，即Source-&gt;Destination<br><code>SourcePosition</code>表示从下标几开始复制，<code>DestinationPosition</code>表示从下标几开始粘贴，<code>number</code>表示复制几位。<br>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> array1[ ]=&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>,<span class="number">17</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] array2=&#123;<span class="number">101</span>,<span class="number">102</span>,<span class="number">103</span>,<span class="number">104</span>,<span class="number">105</span>,<span class="number">106</span>,<span class="number">107</span>,<span class="number">108</span>&#125;;</span><br><span class="line">System.arraycopy(array1,<span class="number">2</span>,array2,<span class="number">3</span>,<span class="number">4</span>);   <span class="comment">//表示从array1[2]开始复制，即5，从array2[3]开始粘贴，即104，复制4位</span></span><br><span class="line">System.out.println(<span class="string">&quot;After copy, array2:&quot;</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt; array2.length;i++)</span><br><span class="line">  System.out.println(<span class="string">&quot;array2[&quot;</span>+i+<span class="string">&quot;]=&quot;</span>+array2[i]);</span><br><span class="line"><span class="comment">//最后结果为</span></span><br><span class="line">After copy, array2:</span><br><span class="line">array2[<span class="number">0</span>]=<span class="number">101</span></span><br><span class="line">array2[<span class="number">1</span>]=<span class="number">102</span></span><br><span class="line">array2[<span class="number">2</span>]=<span class="number">103</span></span><br><span class="line">array2[<span class="number">3</span>]=<span class="number">5</span></span><br><span class="line">array2[<span class="number">4</span>]=<span class="number">7</span></span><br><span class="line">array2[<span class="number">5</span>]=<span class="number">11</span></span><br><span class="line">array2[<span class="number">6</span>]=<span class="number">13</span></span><br><span class="line">array2[<span class="number">7</span>]=<span class="number">108</span></span><br></pre></td></tr></table></figure>
+</tbody>
+</table>
+</div>
+<h1 id="三、输入输出"><a href="#三、输入输出" class="headerlink" title="三、输入输出"></a>三、输入输出</h1><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>使用<code>System.out.print</code>进行输出<br><pre><code class="hljs java">System.out.print();  \\输出内容
+System.out.println();  \\输出内容，并换行
+System.out.printf();   \*支持占位符
+%d: 输出<span class="hljs-keyword">int</span>型数据
+%c: 输出<span class="hljs-keyword">char</span>型数据
+%f: 输出浮点型数据，小数部分最多保留<span class="hljs-number">6</span>位     
+%s: 输出字符串数据
+%md: 输出的<span class="hljs-keyword">int</span>型数据占m列   
+%m.nf:输出的浮点型数据占m列，小数点保留n位。
+*/</code></pre></p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>使用输入需要先导入文件，<code>import java.utli.*;</code>或<code>import java.utli.Scanner;</code></p>
+<p>进行使用时，需要先创建Scanner对象<br><pre><code class="hljs java">Scanner input = <span class="hljs-keyword">new</span> Scanner(System.in);</code></pre><br>在使用时使用<code>input.next类型()</code>来读取输入内容，例：<br><pre><code class="hljs java"><span class="hljs-keyword">int</span> x = input.nextInt();
+<span class="hljs-keyword">float</span> y = input.nextFloat();</code></pre></p>
+<h1 id="四、函数、类格式差异"><a href="#四、函数、类格式差异" class="headerlink" title="四、函数、类格式差异"></a>四、函数、类格式差异</h1><h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p>java main函数格式为<br><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>
+<span class="hljs-function"></span>&#123;
+
+&#125;</code></pre></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>类为<br><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> class <span class="hljs-title">balabala</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    
+&#125;</code></pre></p>
+<h1 id="五、数组"><a href="#五、数组" class="headerlink" title="五、数组"></a>五、数组</h1><pre><code class="hljs java"><span class="hljs-comment">//创建</span>
+arrayType arrayName[];  
+<span class="hljs-comment">//或</span>
+arrayType []arrayName;
+
+<span class="hljs-comment">//静态初始化</span>
+arrayType arrayName[] = &#123;elem1, elem2, elem3, ...&#125;;
+<span class="hljs-comment">//或</span>
+arrayType []arrayName = &#123;elem1, elem2, elem3, ...&#125;;
+
+<span class="hljs-comment">//动态初始化</span>
+arrayTyoe arrayName[] = <span class="hljs-keyword">new</span> arrayType[x];
+<span class="hljs-comment">//或</span>
+arrayTyoe []arrayName = <span class="hljs-keyword">new</span> arrayType[x];
+
+<span class="hljs-comment">//复合数据类型动态初始化</span>
+arrayType arrayName[] = <span class="hljs-keyword">new</span> arrayTyppe[x];
+<span class="hljs-comment">//然后依次为数据元素开辟空间，相当于二维数组</span>
+arrayName[i] = <span class="hljs-keyword">new</span> arrayType[paramList]; <span class="hljs-comment">//i=0,1,2,...,paramList-1</span>
+<span class="hljs-comment">//例如</span>
+String stringArray[] = <span class="hljs-keyword">new</span> String[<span class="hljs-number">4</span>];
+stringArray[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"Welcome"</span>);
+stringArray[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"To"</span>);
+stringArray[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"My"</span>);
+stringArray[<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"Blog"</span>);</code></pre>
+<p>数组的复制操作，java提供<code>System.arraycopy</code>函数来进行操作，格式为<br><code>System.arraycopy(SourceArray,sourcePositon,DestinationArray,DestinationPositon,number)</code><br><code>SourceArray</code>表示被复制的数组，<code>DestinationArray</code>表示复制的数组，即Source-&gt;Destination<br><code>SourcePosition</code>表示从下标几开始复制，<code>DestinationPosition</code>表示从下标几开始粘贴，<code>number</code>表示复制几位。<br>示例：<br><pre><code class="hljs java"><span class="hljs-keyword">int</span> array1[ ]=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">13</span>,<span class="hljs-number">17</span>&#125;;
+<span class="hljs-keyword">int</span>[] array2=&#123;<span class="hljs-number">101</span>,<span class="hljs-number">102</span>,<span class="hljs-number">103</span>,<span class="hljs-number">104</span>,<span class="hljs-number">105</span>,<span class="hljs-number">106</span>,<span class="hljs-number">107</span>,<span class="hljs-number">108</span>&#125;;
+System.arraycopy(array1,<span class="hljs-number">2</span>,array2,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);   <span class="hljs-comment">//表示从array1[2]开始复制，即5，从array2[3]开始粘贴，即104，复制4位</span>
+System.out.println(<span class="hljs-string">"After copy, array2:"</span>);
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt; array2.length;i++)
+  System.out.println(<span class="hljs-string">"array2["</span>+i+<span class="hljs-string">"]="</span>+array2[i]);
+<span class="hljs-comment">//最后结果为</span>
+After copy, array2:
+array2[<span class="hljs-number">0</span>]=<span class="hljs-number">101</span>
+array2[<span class="hljs-number">1</span>]=<span class="hljs-number">102</span>
+array2[<span class="hljs-number">2</span>]=<span class="hljs-number">103</span>
+array2[<span class="hljs-number">3</span>]=<span class="hljs-number">5</span>
+array2[<span class="hljs-number">4</span>]=<span class="hljs-number">7</span>
+array2[<span class="hljs-number">5</span>]=<span class="hljs-number">11</span>
+array2[<span class="hljs-number">6</span>]=<span class="hljs-number">13</span>
+array2[<span class="hljs-number">7</span>]=<span class="hljs-number">108</span></code></pre></p>
 <h1 id="六、向量"><a href="#六、向量" class="headerlink" title="六、向量"></a>六、向量</h1><p>向量是java.util包中的一个类，实现了类似 ==动态数组== 的功能，跟数组的区别是向量的容量是 ==可变== 的</p>
 <ul>
 <li>向量的容量——向量的存储空间大小（最大下标）</li>
@@ -309,9 +360,46 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明格式：</span></span><br><span class="line">Vector &lt;data Type&gt; VariableName = <span class="keyword">new</span> Vector &lt;data Type&gt;(parameter)</span><br><span class="line"></span><br><span class="line"><span class="comment">//三种形式</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">()</span>   </span></span><br><span class="line"><span class="function"><span class="comment">//创建空向量，初始容量为10，容量增量为0</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"><span class="comment">//创建空向量，初始容量为x，容量增量为0</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"><span class="comment">//创建空向量，初始容量为x，容量增量为y</span></span></span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;String&gt; v1 = <span class="keyword">new</span> Vector&lt;String&gt;(<span class="number">5</span>); </span><br><span class="line">v1.addElement(<span class="keyword">new</span> String(<span class="string">&quot;one&quot;</span>));   <span class="comment">//添加元素&quot;one&quot;，下同</span></span><br><span class="line">v1.addElement(<span class="string">&quot;three&quot;</span>);</span><br><span class="line">v1.addElement(<span class="string">&quot;four&quot;</span>);</span><br><span class="line">v1.insertElementAt(<span class="string">&quot;zero&quot;</span>,<span class="number">0</span>);     <span class="comment">//在下标0位置添加元素&quot;zero&quot;，后续元素自动右移，下同</span></span><br><span class="line">v1.insertElementAt(<span class="string">&quot;two&quot;</span>,<span class="number">2</span>);</span><br><span class="line">v1.insertElementAt(<span class="string">&quot;five&quot;</span>,<span class="number">5</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;v1:&quot;</span>+v1); </span><br><span class="line">System.out.println(<span class="string">&quot;v1的容量为：&quot;</span> + v1.capacity( ));   </span><br><span class="line">Vector&lt;String&gt; v2 = <span class="keyword">new</span> Vector&lt;String&gt;(<span class="number">5</span>,<span class="number">1</span>); </span><br><span class="line">v2.addElement(<span class="string">&quot;one&quot;</span>);</span><br><span class="line">v2.addElement(<span class="string">&quot;three&quot;</span>);</span><br><span class="line">v2.addElement(<span class="string">&quot;four&quot;</span>);</span><br><span class="line">v2.insertElementAt(<span class="string">&quot;zero&quot;</span>,<span class="number">0</span>); </span><br><span class="line">v2.insertElementAt(<span class="string">&quot;two&quot;</span>,<span class="number">2</span>);</span><br><span class="line">v2.insertElementAt(<span class="string">&quot;five&quot;</span>,<span class="number">5</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;v2:&quot;</span>+v2);</span><br><span class="line">System.out.println(<span class="string">&quot;v2的容量为：&quot;</span> + v2.capacity( ));</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出为：</span></span><br><span class="line">v1:[zero, one, two, three, four, five]</span><br><span class="line">v1的容量为：<span class="number">10</span></span><br><span class="line">v2:[zero, one, two, three, four, five]</span><br><span class="line">v2的容量为：<span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">首先看第一个例子，创建方式是Vector(int x)，说明初始容量为5，容量增量为0。因此当向量的长度达到容量(5)时，向量的容量翻倍，所以输出出来的V1的容量是10。</span></span><br><span class="line"><span class="comment">第二个例子，创建方式是Vector(int x, int y)，说明初始容量为5，容量增量为0，因此当向量的长度达到容量(5)时，向量的新容量等于原容量+容量增量，即5+1=6，所以输出的V2的容量为6.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-comment">//声明格式：</span>
+Vector &lt;data Type&gt; VariableName = <span class="hljs-keyword">new</span> Vector &lt;data Type&gt;(parameter)
+
+<span class="hljs-comment">//三种形式</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Vector</span><span class="hljs-params">()</span>   </span>
+<span class="hljs-function"><span class="hljs-comment">//创建空向量，初始容量为10，容量增量为0</span></span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Vector</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>
+<span class="hljs-function"><span class="hljs-comment">//创建空向量，初始容量为x，容量增量为0</span></span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Vector</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>
+<span class="hljs-function"><span class="hljs-comment">//创建空向量，初始容量为x，容量增量为y</span></span></code></pre>
+<p>示例：<br><pre><code class="hljs java">Vector&lt;String&gt; v1 = <span class="hljs-keyword">new</span> Vector&lt;String&gt;(<span class="hljs-number">5</span>); 
+v1.addElement(<span class="hljs-keyword">new</span> String(<span class="hljs-string">"one"</span>));   <span class="hljs-comment">//添加元素"one"，下同</span>
+v1.addElement(<span class="hljs-string">"three"</span>);
+v1.addElement(<span class="hljs-string">"four"</span>);
+v1.insertElementAt(<span class="hljs-string">"zero"</span>,<span class="hljs-number">0</span>);     <span class="hljs-comment">//在下标0位置添加元素"zero"，后续元素自动右移，下同</span>
+v1.insertElementAt(<span class="hljs-string">"two"</span>,<span class="hljs-number">2</span>);
+v1.insertElementAt(<span class="hljs-string">"five"</span>,<span class="hljs-number">5</span>); 
+System.out.println(<span class="hljs-string">"v1:"</span>+v1); 
+System.out.println(<span class="hljs-string">"v1的容量为："</span> + v1.capacity( ));   
+Vector&lt;String&gt; v2 = <span class="hljs-keyword">new</span> Vector&lt;String&gt;(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>); 
+v2.addElement(<span class="hljs-string">"one"</span>);
+v2.addElement(<span class="hljs-string">"three"</span>);
+v2.addElement(<span class="hljs-string">"four"</span>);
+v2.insertElementAt(<span class="hljs-string">"zero"</span>,<span class="hljs-number">0</span>); 
+v2.insertElementAt(<span class="hljs-string">"two"</span>,<span class="hljs-number">2</span>);
+v2.insertElementAt(<span class="hljs-string">"five"</span>,<span class="hljs-number">5</span>); 
+System.out.println(<span class="hljs-string">"v2:"</span>+v2);
+System.out.println(<span class="hljs-string">"v2的容量为："</span> + v2.capacity( ));
+
+<span class="hljs-comment">//输出为：</span>
+v1:[zero, one, two, three, four, five]
+v1的容量为：<span class="hljs-number">10</span>
+v2:[zero, one, two, three, four, five]
+v2的容量为：<span class="hljs-number">6</span>
+
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">首先看第一个例子，创建方式是Vector(int x)，说明初始容量为5，容量增量为0。因此当向量的长度达到容量(5)时，向量的容量翻倍，所以输出出来的V1的容量是10。</span>
+<span class="hljs-comment">第二个例子，创建方式是Vector(int x, int y)，说明初始容量为5，容量增量为0，因此当向量的长度达到容量(5)时，向量的新容量等于原容量+容量增量，即5+1=6，所以输出的V2的容量为6.</span>
+<span class="hljs-comment">*/</span></code></pre></p>
+
     </div>
      
     <div class="post-footer__meta">

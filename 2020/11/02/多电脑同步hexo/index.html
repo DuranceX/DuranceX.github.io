@@ -196,7 +196,7 @@
 
     <aside class="post-side">
         <div class="post-side__toc">
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-GitHub操作"><span class="toc-text">1. GitHub操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装Hexo"><span class="toc-text">2. 安装Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置Git"><span class="toc-text">3. 配置Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用hexo"><span class="toc-text">4.使用hexo</span></a></li></ol>
         </div>
     </aside>
     <a class="btn-toc button" id="btn-toc">
@@ -206,57 +206,35 @@
     </a>
     <div class="toc-menus" id="toc-menus">
         <div class="toc-title">Article Directory</div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-GitHub操作"><span class="toc-text">1. GitHub操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装Hexo"><span class="toc-text">2. 安装Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-配置Git"><span class="toc-text">3. 配置Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-使用hexo"><span class="toc-text">4.使用hexo</span></a></li></ol>
     </div>
 
 
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        
-最终在Surface Go2上也安装了hexo，跟笔记本一起，同步Hexo博客，这里记录部署的一些操作。
-
+        <p>最终在Surface Go2上也安装了hexo，跟笔记本一起，同步Hexo博客，这里记录部署的一些操作。</p>
 <a id="more"></a>
-
-## 1. GitHub操作
-
-首先在GitHub的xxx.github.io库中新建一个`source`分支，用来存放博客的静态资源文件，master分支仍用于存放hexo生成的页面。
-
-在库中`Settings->Branches->Default branch`中将默认`branch`设为`source`分支。
-
-## 2. 安装Hexo
-
-安装Hexo部分见[CSDN的这篇文章](https://blog.csdn.net/sinat_37781304/article/details/82729029)
-
-## 3. 配置Git
-
-在surface Go2（第二台电脑）中，在git bash中输入
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">git config --global user.name &quot;username&quot;<br>git config --global user.email &quot;useremail&quot;<br></code></pre></td></tr></table></figure>
-建议是使用跟笔记本（原电脑）一样的内容，可以通过在原电脑的git bash中输入下述代码查看
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git config --global -l<br></code></pre></td></tr></table></figure>
-之后创建新的ssh
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">ssh-keygen -t rsa -C &quot;useremail&quot;<br></code></pre></td></tr></table></figure>
-在命令行中会给出地址，一般在`C:/user/xxx/.ssh`中，在`.ssh`文件夹中打开`id_rsa.pub`，复制里面的内容。
-
-打开GitHub的账户设置，在`Settings->SSH and GPG keys`点击右上角的`New SSH key`新建一个ssh，取个名，将复制的内容粘贴在下方的文本框中。
-
-## 4.使用hexo
-
-在新电脑上使用`git clone`将目标库的`source`分支克隆到本地，因为默认分支设为了`source`所以默认克隆的即是`source`分支下的内容。
-
-将克隆下的文件复制到新电脑的博客目录下，保险起见，执行
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git pull --rebase origin master<br></code></pre></td></tr></table></figure>
-<blockquote class="blockquote-note blockquote-note__caution"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></div>Tips</div><div class="blockquote-note__content">
-emmm，感觉git pull和git clone应该功能重合了。。
+<h2 id="1-GitHub操作"><a href="#1-GitHub操作" class="headerlink" title="1. GitHub操作"></a>1. GitHub操作</h2><p>首先在GitHub的xxx.github.io库中新建一个<code>source</code>分支，用来存放博客的静态资源文件，master分支仍用于存放hexo生成的页面。</p>
+<p>在库中<code>Settings-&gt;Branches-&gt;Default branch</code>中将默认<code>branch</code>设为<code>source</code>分支。</p>
+<h2 id="2-安装Hexo"><a href="#2-安装Hexo" class="headerlink" title="2. 安装Hexo"></a>2. 安装Hexo</h2><p>安装Hexo部分见<a href="https://blog.csdn.net/sinat_37781304/article/details/82729029" target="_blank" rel="noopener">CSDN的这篇文章</a></p>
+<h2 id="3-配置Git"><a href="#3-配置Git" class="headerlink" title="3. 配置Git"></a>3. 配置Git</h2><p>在surface Go2（第二台电脑）中，在git bash中输入</p>
+<pre><code class="hljs git">git config --global user.name &quot;username&quot;
+git config --global user.email &quot;useremail&quot;</code></pre>
+<p>建议是使用跟笔记本（原电脑）一样的内容，可以通过在原电脑的git bash中输入下述代码查看</p>
+<pre><code class="hljs git">git config --global -l</code></pre>
+<p>之后创建新的ssh</p>
+<pre><code class="hljs git">ssh-keygen -t rsa -C &quot;useremail&quot;</code></pre>
+<p>在命令行中会给出地址，一般在<code>C:/user/xxx/.ssh</code>中，在<code>.ssh</code>文件夹中打开<code>id_rsa.pub</code>，复制里面的内容。</p>
+<p>打开GitHub的账户设置，在<code>Settings-&gt;SSH and GPG keys</code>点击右上角的<code>New SSH key</code>新建一个ssh，取个名，将复制的内容粘贴在下方的文本框中。</p>
+<h2 id="4-使用hexo"><a href="#4-使用hexo" class="headerlink" title="4.使用hexo"></a>4.使用hexo</h2><p>在新电脑上使用<code>git clone</code>将目标库的<code>source</code>分支克隆到本地，因为默认分支设为了<code>source</code>所以默认克隆的即是<code>source</code>分支下的内容。</p>
+<p>将克隆下的文件复制到新电脑的博客目录下，保险起见，执行</p>
+<pre><code class="hljs git">git pull --rebase origin master</code></pre>
+<blockquote class="blockquote-note blockquote-note__caution"><div class="blockquote-note__header"><div class="blockquote-note__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></div>Tips</div><div class="blockquote-note__content"><p>emmm，感觉git pull和git clone应该功能重合了。。</p>
 </div></blockquote>
+<p>然后就可以在新电脑上编辑博客了，编辑完不要忘了<code>git push</code></p>
+<p>在原电脑上编辑时先<code>git pull</code>保持最新文件，然后继续修改即可。</p>
 
-然后就可以在新电脑上编辑博客了，编辑完不要忘了`git push`
-
-在原电脑上编辑时先`git pull`保持最新文件，然后继续修改即可。
     </div>
      
     <div class="post-footer__meta">

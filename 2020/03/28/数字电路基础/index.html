@@ -247,11 +247,9 @@
     
 </div>
     <div class="post__content">
-        <p>主要包含了数字电路概念、逻辑代数、基本公理、复合逻辑、集成门电路以及正负逻辑的相关内容。</p>
-<a id="more"></a>
-
+        <p>主要包含了数字电路概念、逻辑代数、基本公理、复合逻辑、集成门电路以及正负逻辑的相关内容。<br><a id="more"></a></p>
 <h1 id="一、数字信号及系统"><a href="#一、数字信号及系统" class="headerlink" title="一、数字信号及系统"></a>一、数字信号及系统</h1><p><strong>数字信号</strong></p>
-<p>在模拟信号通过量化和编码来转换成数字信号。<br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%87%8F%E5%8C%96%E7%BC%96%E7%A0%81.png"><br>其中每一个采样点用N位二进制描述，位数越高越精细，同样，所占用的空间也越大。</p>
+<p>在模拟信号通过量化和编码来转换成数字信号。<br><img src="/img/数电基础/量化编码.png" alt=""><br>其中每一个采样点用N位二进制描述，位数越高越精细，同样，所占用的空间也越大。</p>
 <p class="note note-primary">奈奎斯特采样定理：<br />
 如果采样频率高于原始信号的最高频率两倍的时候，就可以不失真地还原模拟信号。</p>
 
@@ -298,8 +296,8 @@
 <li>同步时序逻辑电路</li>
 <li>异步时序逻辑电路</li>
 </ul>
-<h1 id="二、逻辑代数"><a href="#二、逻辑代数" class="headerlink" title="二、逻辑代数"></a>二、逻辑代数</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>格式：$F=f(A_1,A_2,…,A_n)$<br>其中F为输出端数值，相当于y，f表示具体的函数关系，A<del>n</del>表示各个参数</p>
-<p><strong>逻辑函数的相等</strong><br>设有两个相同变量的逻辑函数<br>$F_1=f_1(A_1,A_2,…,A_n)$<br>$F_2=f_2(A_1,A_2,…,A_n)$<br>则，对于两个逻辑函数，只有当逻辑变量 $A_1,A_2,…,A_n$ 中的任何一组取值，F<del>1</del>和F<del>2</del>的值都相同，才称F<del>1</del>和F<del>2</del>相等。</p>
+<h1 id="二、逻辑代数"><a href="#二、逻辑代数" class="headerlink" title="二、逻辑代数"></a>二、逻辑代数</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>格式：$F=f(A_1,A_2,…,A_n)$<br>其中F为输出端数值，相当于y，f表示具体的函数关系，A~n~表示各个参数</p>
+<p><strong>逻辑函数的相等</strong><br>设有两个相同变量的逻辑函数<br>$F_1=f_1(A_1,A_2,…,A_n)$<br>$F_2=f_2(A_1,A_2,…,A_n)$<br>则，对于两个逻辑函数，只有当逻辑变量 $A_1,A_2,…,A_n$ 中的任何一组取值，F~1~和F~2~的值都相同，才称F~1~和F~2~相等。</p>
 <h2 id="五个公理"><a href="#五个公理" class="headerlink" title="五个公理"></a>五个公理</h2><p>+为或、$·$为与<br><strong>公理1：交换律</strong><br>对于任意逻辑变量A、B，有<br>$A+B=B+A$<br>$A \cdot B = B \cdot A$</p>
 <p><strong>公理2：结合律</strong><br>对于任意逻辑变量A、B、C，有<br>$(A+B)+C=A+(B+C)$<br>$(A \cdot B) \cdot C = A \cdot (B \cdot C)$</p>
 <p><strong>公理3：分配律</strong><br>对于任意逻辑变量A、B、C，有<br>$A+(B \cdot C)=(A+B) \cdot (B+C)$<br>$A \cdot (B + C) = A \cdot B + A \cdot C$</p>
@@ -321,15 +319,15 @@
 <p><strong>与：</strong> $F=\overline{\overline{A+0}+\overline{B+0}}=\overline{\overline{A}+\overline{B}} = A \cdot B$（根据公理4、定理6）</p>
 <p><strong>或：</strong> $F=\overline{\overline{A+B}+0}=\overline{\overline{A+B}}=A+B$（根据公理4）</p>
 <p><strong>非：</strong> $F=\overline{A+0}=\overline{A}$（根据公理4）</p>
-<h2 id="与或非逻辑"><a href="#与或非逻辑" class="headerlink" title="与或非逻辑"></a>与或非逻辑</h2><p>与或非逻辑是由与、或、非三种逻辑复合形成的，可用逻辑函数表示为<br>$$F=\overline{AB+BC+CD + \cdot\cdot\cdot}$$</p>
-<p>仅当每一个“与项”均为0时，才能使F为1，否则F为0<br>实现“与或非”运算功能的逻辑电路称为“与或非”门，符号为：<br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%8E%E6%88%96%E9%9D%9E%E9%97%A8.png"></p>
-<h2 id="异或逻辑"><a href="#异或逻辑" class="headerlink" title="异或逻辑"></a>异或逻辑</h2><p>两变量逻辑关系，可用逻辑函数表示为<br>$$F=A \oplus B = \overline{A}B + A \overline{B}$$</p>
-<p>逻辑功能：</p>
+<h2 id="与或非逻辑"><a href="#与或非逻辑" class="headerlink" title="与或非逻辑"></a>与或非逻辑</h2><p>与或非逻辑是由与、或、非三种逻辑复合形成的，可用逻辑函数表示为</p>
+<script type="math/tex; mode=display">F=\overline{AB+BC+CD + \cdot\cdot\cdot}</script><p>仅当每一个“与项”均为0时，才能使F为1，否则F为0<br>实现“与或非”运算功能的逻辑电路称为“与或非”门，符号为：<br><img src="/img/数电基础/与或非门.png" alt=""></p>
+<h2 id="异或逻辑"><a href="#异或逻辑" class="headerlink" title="异或逻辑"></a>异或逻辑</h2><p>两变量逻辑关系，可用逻辑函数表示为</p>
+<script type="math/tex; mode=display">F=A \oplus B = \overline{A}B + A \overline{B}</script><p>逻辑功能：</p>
 <ul>
 <li>变量A、B取值相同，F为0</li>
 <li>变量A、B取值相异，F为1</li>
 </ul>
-<p>实现“异或”运算功能的逻辑电路称为“异或”门，符号为：<br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E5%BC%82%E6%88%96%E9%97%A8.png"></p>
+<p>实现“异或”运算功能的逻辑电路称为“异或”门，符号为：<br><img src="/img/数电基础/异或门.png" alt=""></p>
 <p><strong>逻辑性质</strong></p>
 <ol>
 <li>$A\oplus A =0$</li>
@@ -342,13 +340,13 @@
 <li>$A(B \oplus C) = (AB)\oplus(AC)$</li>
 </ol>
 <p>异或运算的多个变量中，若有奇数个变量的值为1，则运算结果为1<br>若有偶数个变量的值为1，则运算结果为0<br>可用于奇偶校验</p>
-<h2 id="同或逻辑"><a href="#同或逻辑" class="headerlink" title="同或逻辑"></a>同或逻辑</h2><p>两变量逻辑关系，可用逻辑函数表示为<br>$$F=A\odot B = \overline{A} \cdot \overline{B} + AB$$</p>
-<p>逻辑功能：</p>
+<h2 id="同或逻辑"><a href="#同或逻辑" class="headerlink" title="同或逻辑"></a>同或逻辑</h2><p>两变量逻辑关系，可用逻辑函数表示为</p>
+<script type="math/tex; mode=display">F=A\odot B = \overline{A} \cdot \overline{B} + AB</script><p>逻辑功能：</p>
 <ul>
 <li>变量A、B取值相同，F为1</li>
 <li>变量A、B取值相异，F为0</li>
 </ul>
-<p>实现“同或”运算功能的逻辑电路称为“同或”门，符号为：<br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E5%90%8C%E6%88%96%E9%97%A8.png"></p>
+<p>实现“同或”运算功能的逻辑电路称为“同或”门，符号为：<br><img src="/img/数电基础/同或门.png" alt=""></p>
 <p>同或运算的多个变量中，若有奇数个变量的值为0，则运算结果为0<br>若有偶数个变量的值为0，则运算结果为1</p>
 <p class="note note-primary">    对偶运算是符号和数值全部相反，1->0,0->1,与->或，或->与</p>
 
@@ -364,27 +362,27 @@
 </ul>
 </li>
 </ul>
-<h2 id="简单逻辑门电路"><a href="#简单逻辑门电路" class="headerlink" title="简单逻辑门电路"></a>简单逻辑门电路</h2><p><strong>与门</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%8E%E9%97%A8.png"><br><strong>或门</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E6%88%96%E9%97%A8.png"><br><strong>非门</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E9%9D%9E%E9%97%A8.png"></p>
-<h2 id="TTL型集成门电路"><a href="#TTL型集成门电路" class="headerlink" title="TTL型集成门电路"></a>TTL型集成门电路</h2><p>在数字电路中，用逻辑电平来表示逻辑常量“1”和“0”。逻辑电平有高电平（H）和低电平（L）之分，它们表示的都是<strong>一定的电压范围</strong>，而不是一个固定不变的值。<br>例如在TTL电路中，常常规定标准高电平VH=3.6V，标准低电平VL=0.2V，一般在0<del>0.8V都算低电平，2</del>5V都算作高电平。</p>
-<h3 id="TTL与非门"><a href="#TTL与非门" class="headerlink" title="TTL与非门"></a>TTL与非门</h3><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/TTL%E4%B8%8E%E9%9D%9E%E9%97%A8.png"><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/TTL%E4%B8%8E%E9%9D%9E%E9%97%A8%E4%B8%89%E7%BA%A7%E7%BB%93%E6%9E%84.png"><br>工作原理示例：<br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%A4%BA%E4%BE%8B.png"></p>
-<h3 id="TTL非门"><a href="#TTL非门" class="headerlink" title="TTL非门"></a>TTL非门</h3><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/TTL%E9%9D%9E%E9%97%A8.png"><br>跟与非门的区别就是输入端变成了一个</p>
-<h3 id="TTL或非门"><a href="#TTL或非门" class="headerlink" title="TTL或非门"></a>TTL或非门</h3><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/TTL%E6%88%96%E9%9D%9E%E9%97%A8.png"></p>
-<h3 id="TTL与或非门"><a href="#TTL与或非门" class="headerlink" title="TTL与或非门"></a>TTL与或非门</h3><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/TTL%E4%B8%8E%E6%88%96%E9%9D%9E%E9%97%A8.png"></p>
-<h2 id="集电极开路与非门（OC门）"><a href="#集电极开路与非门（OC门）" class="headerlink" title="集电极开路与非门（OC门）"></a>集电极开路与非门（OC门）</h2><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/OC%E9%97%A8.png"></p>
-<p><strong>作用：实现“线与逻辑”</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E7%BA%BF%E4%B8%8E%E9%80%BB%E8%BE%91.png"></p>
+<h2 id="简单逻辑门电路"><a href="#简单逻辑门电路" class="headerlink" title="简单逻辑门电路"></a>简单逻辑门电路</h2><p><strong>与门</strong><br><img src="/img/数电基础/与门.png" alt=""><br><strong>或门</strong><br><img src="/img/数电基础/或门.png" alt=""><br><strong>非门</strong><br><img src="/img/数电基础/非门.png" alt=""></p>
+<h2 id="TTL型集成门电路"><a href="#TTL型集成门电路" class="headerlink" title="TTL型集成门电路"></a>TTL型集成门电路</h2><p>在数字电路中，用逻辑电平来表示逻辑常量“1”和“0”。逻辑电平有高电平（H）和低电平（L）之分，它们表示的都是<strong>一定的电压范围</strong>，而不是一个固定不变的值。<br>例如在TTL电路中，常常规定标准高电平VH=3.6V，标准低电平VL=0.2V，一般在0~0.8V都算低电平，2~5V都算作高电平。</p>
+<h3 id="TTL与非门"><a href="#TTL与非门" class="headerlink" title="TTL与非门"></a>TTL与非门</h3><p><img src="/img/数电基础/TTL与非门.png" alt=""><br><img src="/img/数电基础/TTL与非门三级结构.png" alt=""><br>工作原理示例：<br><img src="/img/数电基础/示例.png" alt=""></p>
+<h3 id="TTL非门"><a href="#TTL非门" class="headerlink" title="TTL非门"></a>TTL非门</h3><p><img src="/img/数电基础/TTL非门.png" alt=""><br>跟与非门的区别就是输入端变成了一个</p>
+<h3 id="TTL或非门"><a href="#TTL或非门" class="headerlink" title="TTL或非门"></a>TTL或非门</h3><p><img src="/img/数电基础/TTL或非门.png" alt=""></p>
+<h3 id="TTL与或非门"><a href="#TTL与或非门" class="headerlink" title="TTL与或非门"></a>TTL与或非门</h3><p><img src="/img/数电基础/TTL与或非门.png" alt=""></p>
+<h2 id="集电极开路与非门（OC门）"><a href="#集电极开路与非门（OC门）" class="headerlink" title="集电极开路与非门（OC门）"></a>集电极开路与非门（OC门）</h2><p><img src="/img/数电基础/OC门.png" alt=""></p>
+<p><strong>作用：实现“线与逻辑”</strong><br><img src="/img/数电基础/线与逻辑.png" alt=""></p>
 <ul>
 <li>只要有一个门输出为低电平，输出F便为低电平</li>
 <li>仅当两个门的输出均为高电平时，输出F才为高电平</li>
 <li>逻辑功能：两个与非门输出相“与”</li>
 </ul>
-<h2 id="三态门"><a href="#三态门" class="headerlink" title="三态门"></a>三态门</h2><p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%89%E6%80%81%E9%97%A8.png"><br>将一个输入端变成了使能信号EN</p>
+<h2 id="三态门"><a href="#三态门" class="headerlink" title="三态门"></a>三态门</h2><p><img src="/img/数电基础/三态门.png" alt=""><br>将一个输入端变成了使能信号EN</p>
 <p><strong>三态门原理</strong></p>
-<p><strong>1.当EN=1时（高电平）</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/EN=1.png"></p>
+<p><strong>1.当EN=1时（高电平）</strong><br><img src="/img/数电基础/EN=1.png" alt=""></p>
 <p>此时输出$F=\overline{AB}$</p>
-<p><strong>2.当EN=0时（低电平）</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/EN=0.png"></p>
+<p><strong>2.当EN=0时（低电平）</strong><br><img src="/img/数电基础/EN=0.png" alt=""></p>
 <p>此时F为高阻态，无输出信号。</p>
-<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%89%E6%80%81%E9%97%A8%E6%80%BB%E7%BB%93.png"></p>
-<p><strong>三态门的应用</strong><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/%E4%B8%89%E6%80%81%E9%97%A8%E5%BA%94%E7%94%A8.png"></p>
+<p><img src="/img/数电基础/三态门总结.png" alt=""></p>
+<p><strong>三态门的应用</strong><br><img src="/img/数电基础/三态门应用.png" alt=""></p>
 <h1 id="五、MOS管"><a href="#五、MOS管" class="headerlink" title="五、MOS管"></a>五、MOS管</h1><h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><p>MOS管有三个极组成，分别是</p>
 <ul>
 <li>漏极：用D（Drain）表示</li>
@@ -397,10 +395,10 @@
 <li>当栅极为低电平时，NMOS管截止，PMOS管导通</li>
 </ul>
 <p>即NMOS工作状态相当于NPN三极管，PMOS工作状态相当于PNP三极管</p>
-<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/NMOS.png"><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/PMOS.png"><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/CMOS.png"></p>
-<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/MOS%E5%8F%8D%E7%9B%B8%E5%99%A8.png"><br>当V<del>1</del>等于0时，T<del>p</del>为PMOS管，导通；T<del>N</del>为NMOS管，截止<br>所以V<del>o</del>的电压等于V<del>DD</del>的电压，为高电压，所以F为1</p>
-<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/CMOS%E4%B8%8E%E9%9D%9E%E9%97%A8.png"><br><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/CMOS%E6%88%96%E9%9D%9E%E9%97%A8.png"></p>
-<p><img src="/img/%E6%95%B0%E7%94%B5%E5%9F%BA%E7%A1%80/CMOS%E4%B8%89%E6%80%81%E9%97%A8.png"><br>当EN=0时，T<del>P</del>‘和T<del>N</del>‘都导通，相当于导线，即等效于正常的反相器<br>当EN=1时，T<del>P</del>’和T<del>N</del>‘都截止，相当于断路，即F处于断路，为高阻状态。</p>
+<p><img src="/img/数电基础/NMOS.png" alt=""><br><img src="/img/数电基础/PMOS.png" alt=""><br><img src="/img/数电基础/CMOS.png" alt=""></p>
+<p><img src="/img/数电基础/MOS反相器.png" alt=""><br>当V~1~等于0时，T~p~为PMOS管，导通；T~N~为NMOS管，截止<br>所以V~o~的电压等于V~DD~的电压，为高电压，所以F为1</p>
+<p><img src="/img/数电基础/CMOS与非门.png" alt=""><br><img src="/img/数电基础/CMOS或非门.png" alt=""></p>
+<p><img src="/img/数电基础/CMOS三态门.png" alt=""><br>当EN=0时，T~P~’和T~N~’都导通，相当于导线，即等效于正常的反相器<br>当EN=1时，T~P~’和T~N~’都截止，相当于断路，即F处于断路，为高阻状态。</p>
 <h1 id="六、正逻辑与负逻辑"><a href="#六、正逻辑与负逻辑" class="headerlink" title="六、正逻辑与负逻辑"></a>六、正逻辑与负逻辑</h1><table>
   <tr>
     <th>正逻辑</th>

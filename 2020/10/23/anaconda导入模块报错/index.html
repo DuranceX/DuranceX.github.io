@@ -213,14 +213,11 @@
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>Anaconda导入模块报错UserWarning: mkl-service package failed to import</p>
-<a id="more"></a>
-
+        <p>Anaconda导入模块报错UserWarning: mkl-service package failed to import<br><a id="more"></a></p>
 <p><strong>问题</strong></p>
 <p>用新安装的anaconda运行之前的程序报错<code>UserWarning: mkl-service package failed to import</code>无法导入numpy，提示DLL错误</p>
-<p><strong>解决</strong><br>是环境变量的配置问题，因为重新安装了anaconda所以环境变量没有配置<br>在环境变量中上半部分的用户变量中的<code>path</code>中添加下列路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\anaconda</span><br><span class="line">D:\anaconda\Library\bin</span><br></pre></td></tr></table></figure>
-<p>视具体类路径而言，总之就是anaconda的安装文件夹和其下的<code>Library\bin</code>文件夹</p>
+<p><strong>解决</strong><br>是环境变量的配置问题，因为重新安装了anaconda所以环境变量没有配置<br>在环境变量中上半部分的用户变量中的<code>path</code>中添加下列路径<br><pre><code class="hljs plain">D:\anaconda
+D:\anaconda\Library\bin</code></pre><br>视具体类路径而言，总之就是anaconda的安装文件夹和其下的<code>Library\bin</code>文件夹</p>
 
     </div>
      

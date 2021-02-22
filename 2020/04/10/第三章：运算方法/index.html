@@ -226,15 +226,14 @@
     <div class="post__content">
         <p>一些运算方法，包括定点数加减法、原码一位乘法、补码一位乘法、原码除法、浮点数加减法等</p>
 <a id="more"></a>
-
-<h1 id="定点数加减法运算"><a href="#定点数加减法运算" class="headerlink" title="定点数加减法运算"></a>定点数加减法运算</h1><h2 id="定点数加法"><a href="#定点数加法" class="headerlink" title="定点数加法"></a>定点数加法</h2><p>定义：**[X+Y]<del>补</del> = [X]<del>补</del> + [Y]<del>补</del>**</p>
-<p><strong>【例1】</strong><br>已知X = +10010 &emsp;&emsp;&emsp; Y = -10101，求X+Y<br>解：<br>[X]<del>补</del> = 010010  &emsp;&emsp;&emsp; [Y]<del>补</del> = 101011<br>[X+Y]<del>补</del> = [X]<del>补</del> + [Y]<del>补</del> = 010010 + 101011 = 111101<br>所以[X+Y]<del>原</del> = 100011<br>所以X+Y = -00011</p>
-<h2 id="定点数减法"><a href="#定点数减法" class="headerlink" title="定点数减法"></a>定点数减法</h2><p>定义：**[X-Y]<del>补</del> = [X]<del>补</del> - [Y]<del>补</del> = [X]<del>补</del> + [-Y]<del>补</del>**</p>
-<p><strong>【例2】</strong><br>已知X = + 10110  &emsp;&emsp;&emsp; Y = + 10011<br>解：<br>[X]<del>补</del> = 010110  &emsp;&emsp;&emsp; [Y]<del>补</del> = 010011  &emsp;&emsp;&emsp; [-Y]<del>补</del> = 101101<br>[X-Y]<del>补</del> = [X]<del>补</del> + [-Y]<del>补</del> = 010110 + 101101 = 000011<br>所以[X-Y]<del>原</del> = 000011<br>X-Y = + 00011</p>
-<h2 id="溢出检测方法"><a href="#溢出检测方法" class="headerlink" title="溢出检测方法"></a>溢出检测方法</h2><p>溢出只可能发生在同符号数相加时，例如[X]<del>补</del>与[Y]<del>补</del>；[X]<del>补</del>与[-Y]<del>补</del>同号</p>
-<p><strong>方法1：对操作数和运算结果的符号位进行检测</strong><br>当结果的符号位与操作数的符号位不相同时就表名发生了溢出<br>设X<del>0</del>，Y<del>0</del>为运算数的符号，S<del>0</del>为结果的符号位<br>$V=X_0Y_0\overline{S_0} + \overline{X_0}\overline{Y_0}S_0$<br>当V=1时，运算结果溢出。</p>
-<p>例如：<br>[X]<del>原</del> = <font color='orange'>0</font>100100  &emsp;&emsp;&emsp; [Y]<del>原</del> = <font color='orange'>0</font>111100<br>则[X]<del>补</del> = <font color='orange'>0</font>100100  &emsp;&emsp;&emsp; [Y]<del>补</del> = <font color='orange'>0</font>111100<br>[X+Y]<del>补</del> = [X]<del>补</del> + [Y]<del>补</del> = <font color='orange'>0</font>100100 + <font color='orange'>0</font>111100 = <font color='orange'>1</font>100000<br>可以发现，两个正数相加，却得到了一个负数，显然是错误的，根据公式<br>$V=00\overline{1} + \overline{0}\overline{0}1 = 1$说明溢出</p>
-<p><strong>方法2：对最高数据位进位和符号进位进行检测</strong><br>设运算时最高数据位产生的进位为C<del>1</del>，符号位产生的进位为C<del>0</del><br>溢出检测电路为：$V = C_0 \oplus C_1$ 同样，V=1时说明溢出<br>可以这么理解：</p>
+<h1 id="定点数加减法运算"><a href="#定点数加减法运算" class="headerlink" title="定点数加减法运算"></a>定点数加减法运算</h1><h2 id="定点数加法"><a href="#定点数加法" class="headerlink" title="定点数加法"></a>定点数加法</h2><p>定义：<strong>[X+Y]~补~ = [X]~补~ + [Y]~补~</strong></p>
+<p><strong>【例1】</strong><br>已知X = +10010 &emsp;&emsp;&emsp; Y = -10101，求X+Y<br>解：<br>[X]~补~ = 010010  &emsp;&emsp;&emsp; [Y]~补~ = 101011<br>[X+Y]~补~ = [X]~补~ + [Y]~补~ = 010010 + 101011 = 111101<br>所以[X+Y]~原~ = 100011<br>所以X+Y = -00011</p>
+<h2 id="定点数减法"><a href="#定点数减法" class="headerlink" title="定点数减法"></a>定点数减法</h2><p>定义：<strong>[X-Y]~补~ = [X]~补~ - [Y]~补~ = [X]~补~ + [-Y]~补~</strong></p>
+<p><strong>【例2】</strong><br>已知X = + 10110  &emsp;&emsp;&emsp; Y = + 10011<br>解：<br>[X]~补~ = 010110  &emsp;&emsp;&emsp; [Y]~补~ = 010011  &emsp;&emsp;&emsp; [-Y]~补~ = 101101<br>[X-Y]~补~ = [X]~补~ + [-Y]~补~ = 010110 + 101101 = 000011<br>所以[X-Y]~原~ = 000011<br>X-Y = + 00011</p>
+<h2 id="溢出检测方法"><a href="#溢出检测方法" class="headerlink" title="溢出检测方法"></a>溢出检测方法</h2><p>溢出只可能发生在同符号数相加时，例如[X]~补~与[Y]~补~；[X]~补~与[-Y]~补~同号</p>
+<p><strong>方法1：对操作数和运算结果的符号位进行检测</strong><br>当结果的符号位与操作数的符号位不相同时就表名发生了溢出<br>设X~0~，Y~0~为运算数的符号，S~0~为结果的符号位<br>$V=X_0Y_0\overline{S_0} + \overline{X_0}\overline{Y_0}S_0$<br>当V=1时，运算结果溢出。</p>
+<p>例如：<br>[X]~原~ = <font color='orange'>0</font>100100  &emsp;&emsp;&emsp; [Y]~原~ = <font color='orange'>0</font>111100<br>则[X]~补~ = <font color='orange'>0</font>100100  &emsp;&emsp;&emsp; [Y]~补~ = <font color='orange'>0</font>111100<br>[X+Y]~补~ = [X]~补~ + [Y]~补~ = <font color='orange'>0</font>100100 + <font color='orange'>0</font>111100 = <font color='orange'>1</font>100000<br>可以发现，两个正数相加，却得到了一个负数，显然是错误的，根据公式<br>$V=00\overline{1} + \overline{0}\overline{0}1 = 1$说明溢出</p>
+<p><strong>方法2：对最高数据位进位和符号进位进行检测</strong><br>设运算时最高数据位产生的进位为C~1~，符号位产生的进位为C~0~<br>溢出检测电路为：$V = C_0 \oplus C_1$ 同样，V=1时说明溢出<br>可以这么理解：</p>
 <ul>
 <li>当最高数据位进位为0，符号位进位为0，说明最高位相加没有进位，符号位也没有进位，则符号位不变，所以数据没有溢出</li>
 <li>当最高数据位进位为1，符号位进位为1，说明最高位相加得到一个进位，符号位相加也得到了一个进位，所以最后保留的符号位还是原来的符号位<blockquote>
@@ -245,27 +244,28 @@
 <li>当最高数据位进位为0，符号位进位为1，说明最高位没有进位，但符号位却进位了，说明符号位由1变成了0，发生了变化，发生溢出</li>
 </ul>
 <p><strong>方法3：用变型补码（即两位符号位）</strong><br>溢出判断为$V = X_{f1} \oplus X_{f2}$ 两个数分别为两个符号位<br>例如初始值是负数就是11，正数就是00，当溢出时会有进位到符号位，使两个符号位不一致，变为10或01，则说明发生了溢出</p>
-<p>例如：<br>已知X = -10010 ，Y = -10101， 求X+Y<br>则[X]<del>补</del> = <font color='orange'>11</font>10010， <font color='orange'>11</font>10101<br>[X+Y]<del>补</del> = [X]<del>补</del> + [Y]<del>补</del> = <font color='orange'>11</font>01110 + <font color='orange'>11</font>10101 = <font color='orange'>110</font>10001，去掉多余的符号位，得到符号位<font color='orange'>10</font>，两个符号位不一致，说明溢出。<br>用原码表示即-18-23=-41，而五位二进制表示最大为-31，溢出</p>
-<h1 id="原码一位乘法"><a href="#原码一位乘法" class="headerlink" title="原码一位乘法"></a>原码一位乘法</h1><p>移位操作[^移位]<br>[^移位]:逻辑左移：数据整体左移一位，最高位移出，最低位补0<br>算术左移：数据整体左移一位，最高位移出，最低位补0，相当于乘2<br>逻辑右移：数据整体右移一位，最低位移出，最高位补0<br>算术右移：除符号位外数据整体右移一位，最低位移出，符号位复制一份补到最高位</p>
+<p>例如：<br>已知X = -10010 ，Y = -10101， 求X+Y<br>则[X]~补~ = <font color='orange'>11</font>10010， <font color='orange'>11</font>10101<br>[X+Y]~补~ = [X]~补~ + [Y]~补~ = <font color='orange'>11</font>01110 + <font color='orange'>11</font>10101 = <font color='orange'>110</font>10001，去掉多余的符号位，得到符号位<font color='orange'>10</font>，两个符号位不一致，说明溢出。<br>用原码表示即-18-23=-41，而五位二进制表示最大为-31，溢出</p>
+<h1 id="原码一位乘法"><a href="#原码一位乘法" class="headerlink" title="原码一位乘法"></a>原码一位乘法</h1><p>移位操作<sup><a href="#fn_移位" id="reffn_移位">移位</a></sup></p>
+<p>算术左移：数据整体左移一位，最高位移出，最低位补0，相当于乘2<br>逻辑右移：数据整体右移一位，最低位移出，最高位补0<br>算术右移：除符号位外数据整体右移一位，最低位移出，符号位复制一份补到最高位</p>
 <p>采用二进制乘法，分成部分积和乘数/判断位两部分，X为被乘数，Y为乘数，根据Y的最后一位来决定部分积加的内容，若Y最后一位为1，则部分积+|X|，若Y的最后一位为0，则部分积+0，每做完一次加法，进行一次右移操作，右移移出的数加到乘数第一位。</p>
 <p class="note note-primary">数值部分取绝对值参加运算，符号位单独运算，采用双符号位</p>
 
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%8E%9F%E7%A0%81%E4%B8%80%E4%BD%8D%E4%B9%98%E6%B3%95.png"></p>
+<p><img src="/img/计算机组成原理/原码一位乘法.png" alt=""></p>
 <p class="note note-success">小数点后有n位，就进行n次加法运算和n次移位操作</p>
 
-<h1 id="补码一位乘法"><a href="#补码一位乘法" class="headerlink" title="补码一位乘法"></a>补码一位乘法</h1><p>设[X]<del>补</del> = X<del>0</del>X<del>1</del>X<del>2</del>X<del>3</del>…X<del>n</del> &emsp;&emsp;&emsp; [Y]<del>补</del> = Y<del>0</del>Y<del>1</del>Y<del>2</del>Y<del>3</del>…Y<del>n</del><br>补码一位乘法运算规则如下：</p>
+<h1 id="补码一位乘法"><a href="#补码一位乘法" class="headerlink" title="补码一位乘法"></a>补码一位乘法</h1><p>设[X]~补~ = X~0~X~1~X~2~X~3~…X~n~ &emsp;&emsp;&emsp; [Y]~补~ = Y~0~Y~1~Y~2~Y~3~…Y~n~<br>补码一位乘法运算规则如下：</p>
 <ol>
-<li>如果Y<del>n+1</del> = Y<del>n</del>，则部分积+0，部分积算术右移一位</li>
-<li>如果Y<del>n+1</del>&lt; Y<del>n</del>，即 Y<del>n</del>Y<del>n+1</del>= 10，部分积+[-X]<del>补</del>，部分积算术右移一位</li>
-<li>如果Y<del>n+1</del> &gt; Y<del>n</del>，即Y<del>n</del>Y<del>n+1</del> = 01，部分积+[X]<del>补</del>，部分积算术右移一位<br>重复进行n+1步，但最后一步不移位</li>
+<li>如果Y~n+1~ = Y~n~，则部分积+0，部分积算术右移一位</li>
+<li>如果Y~n+1~\&lt; Y~n~，即 Y~n~Y~n+1~= 10，部分积+[-X]~补~，部分积算术右移一位</li>
+<li>如果Y~n+1~ > Y~n~，即Y~n~Y~n+1~ = 01，部分积+[X]~补~，部分积算术右移一位<br>重复进行n+1步，但最后一步不移位</li>
 </ol>
 <p class="note note-primary">符号位参与运算，采用双符号位，没有Y<sub>n+1</sub>位，所以在Y末位补0，当做初始Y<sub>n+1</sub>位</p>
 
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%A1%A5%E7%A0%81%E4%B8%80%E4%BD%8D%E4%B9%98%E6%B3%95.png"></p>
+<p><img src="/img/计算机组成原理/补码一位乘法.png" alt=""></p>
 <p class="note note-success">补码有n位数（单符号位，包括符号），就进行n次加法运算，n-1次移位运算</p>
 
 
-<h1 id="定点数除法（原码一位除法）"><a href="#定点数除法（原码一位除法）" class="headerlink" title="定点数除法（原码一位除法）"></a>定点数除法（原码一位除法）</h1><h2 id="手工除法"><a href="#手工除法" class="headerlink" title="手工除法"></a>手工除法</h2><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E5%AE%9A%E7%82%B9%E6%95%B0%E9%99%A4%E6%B3%95.png"></p>
+<h1 id="定点数除法（原码一位除法）"><a href="#定点数除法（原码一位除法）" class="headerlink" title="定点数除法（原码一位除法）"></a>定点数除法（原码一位除法）</h1><h2 id="手工除法"><a href="#手工除法" class="headerlink" title="手工除法"></a>手工除法</h2><p><img src="/img/计算机组成原理/定点数除法.png" alt=""></p>
 <h2 id="恢复余数法"><a href="#恢复余数法" class="headerlink" title="恢复余数法"></a>恢复余数法</h2><p>已经除法通过减法来实现，那么通过采用双符号位可以得到余数的符号的变化</p>
 <ul>
 <li>若余数为正数，说明够减，那么商上1，将余数<font color="orange">左移</font>一位，再作为被减数</li>
@@ -273,12 +273,12 @@
 <li>重复上述步骤直到商达到所需的位数</li>
 </ul>
 <p>最后结果=符号位异或+商<br>余数R=余数 * 2^-n^ （n为左移次数）</p>
-<p>示例：<br>设X=0.1001，Y=-0.1011，用原码一位除法求X/Y<br>解：<br>[X]<del>原</del> = 0.1001 &emsp;&emsp;&emsp;&emsp; [|X|]<del>补</del> = 0.1001<br>[Y]<del>原</del> = 1.1011 &emsp;&emsp;&emsp;&emsp; [|Y|]<del>补</del> = 0.1011 &emsp;&emsp;&emsp;&emsp; [-|Y|]<del>补</del> = 1.0101</p>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%81%A2%E5%A4%8D%E4%BD%99%E6%95%B0.png"></p>
-<h2 id="不恢复余数法"><a href="#不恢复余数法" class="headerlink" title="不恢复余数法"></a>不恢复余数法</h2><p>设某次余数为R<del>i</del>，将R<del>i</del>左移一位减除数，对得到余数进行判断并上商，即：<br><strong>2R<del>i</del> - Y</strong><br>在恢复余数法中，当上述结果小于0时，商上0，再加上除数来恢复余数，之后再左移一位后再与除数比较，即：<br><strong>（2R<del>i</del> - Y）+ Y=2R<del>i</del></strong><br><strong>2 * 2R<del>i</del> - Y = 4R<del>i</del> - Y**<br>当如果我们不恢复余数，当结果小于0时，上商0后直接将余数左移一位，再加上Y，即：<br><strong>2（2R<del>i</del> - Y） + Y</strong><br>**= 2 * 2R<del>i</del> - 2Y + Y = 4R<del>i</del> - Y</strong><br>可以看到两者是等价的，那么我们便可以不进行恢复余数操作，直接将余数左移后+Y</p>
+<p>示例：<br>设X=0.1001，Y=-0.1011，用原码一位除法求X/Y<br>解：<br>[X]~原~ = 0.1001 &emsp;&emsp;&emsp;&emsp; [|X|]~补~ = 0.1001<br>[Y]~原~ = 1.1011 &emsp;&emsp;&emsp;&emsp; [|Y|]~补~ = 0.1011 &emsp;&emsp;&emsp;&emsp; [-|Y|]~补~ = 1.0101</p>
+<p><img src="/img/计算机组成原理/恢复余数.png" alt=""></p>
+<h2 id="不恢复余数法"><a href="#不恢复余数法" class="headerlink" title="不恢复余数法"></a>不恢复余数法</h2><p>设某次余数为R~i~，将R~i~左移一位减除数，对得到余数进行判断并上商，即：<br><strong>2R~i~ - Y</strong><br>在恢复余数法中，当上述结果小于0时，商上0，再加上除数来恢复余数，之后再左移一位后再与除数比较，即：<br><strong>（2R~i~ - Y）+ Y=2R~i~</strong><br><strong>2 * 2R~i~ - Y = 4R~i~ - Y</strong><br>当如果我们不恢复余数，当结果小于0时，上商0后直接将余数左移一位，再加上Y，即：<br><strong>2（2R~i~ - Y） + Y</strong><br><strong>= 2 * 2R~i~ - 2Y + Y = 4R~i~ - Y</strong><br>可以看到两者是等价的，那么我们便可以不进行恢复余数操作，直接将余数左移后+Y</p>
 <p>最后结果跟恢复余数法一致：<br>最后结果=符号位异或+商<br>余数R=余数 * 2^-n^ （n为左移次数）</p>
-<p>示例：<br>已知，X = 0.1001，Y = -0.1011，用原码一位除法求X/Y<br>解：<br>[X]<del>原</del> = 0.1001 &emsp;&emsp;&emsp;&emsp; [|X|]<del>补</del> = 0.1001<br>[Y]<del>原</del> = 1.1011 &emsp;&emsp;&emsp;&emsp; [|Y|]<del>补</del> = 0.1011 &emsp;&emsp;&emsp;&emsp; [-|Y|]<del>补</del> = 1.0101</p>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E4%B8%8D%E6%81%A2%E5%A4%8D%E4%BD%99%E6%95%B0.png"></p>
+<p>示例：<br>已知，X = 0.1001，Y = -0.1011，用原码一位除法求X/Y<br>解：<br>[X]~原~ = 0.1001 &emsp;&emsp;&emsp;&emsp; [|X|]~补~ = 0.1001<br>[Y]~原~ = 1.1011 &emsp;&emsp;&emsp;&emsp; [|Y|]~补~ = 0.1011 &emsp;&emsp;&emsp;&emsp; [-|Y|]~补~ = 1.0101</p>
+<p><img src="/img/计算机组成原理/不恢复余数.png" alt=""></p>
 <h1 id="浮点数加减法"><a href="#浮点数加减法" class="headerlink" title="浮点数加减法"></a>浮点数加减法</h1><p>首先讲一下浮点数的规格化方法<br>规格化浮点数的正数形式为：0.1xxxxx，负数形式为：1.0xxxxx</p>
 <p>那么当尾数结果为 00.0xxxx或 11.1xxxx时，需要进行左规，将尾数左移，每移动一次，阶码减1，直到尾数形式为00.1xxxx或11.0xxxx，因为如果右移的话，因为是添加的值复制左侧符号位，所以00.0xxxx无论怎么右移都是00.0xxxx，11.1xxxx无论怎么右移都是11.1xxxx</p>
 <p>当尾数的结果为 01.xxxxx或10.xxxxx时，表明尾数求和的结果&gt;1，这时候只需要执行一次右移规格化，每右移一次，阶码加1，即变为00.1xxxx和11.0xxxx</p>
@@ -290,26 +290,32 @@
 </ol>
 <p><strong>1. 对阶</strong><br>设浮点数为 $x=S_x \cdot 2^{j_x}$ &emsp;&emsp; $y=S_y \cdot 2^{j_y}$</p>
 <ol>
-<li>求阶差<br>$$ \Delta j = j_x - j_y =\left{<br>\begin{aligned}<br>= 0 &amp;, j_x = j_y &amp; 已对齐 \<br>{&gt; 0} &amp;, j_x &gt; j_y &amp; y向x看齐，S_y每左移一位，j_y加一 \<br>{&lt; 0 } &amp;, j_x &lt; j_y &amp; x向y看齐，S_x每左移一位，j_x加一 \<br>\end{aligned}<br>\right.<br>$$<br>当两者的阶码相等时，说明已经完成对阶，可以直接进行尾数求和，如果不相等，那么阶码小的向阶码大的看齐<p class="note note-primary">因为阶码变大，说明尾数右移，最后几位数值会被丢失，但因为最后几位的数值在真值中很小，所以对数值变化影响不大，但阶码变小，说明尾数右移，最高的几位会被丢失，这最高的几位在真值中的数值很大，因此损失这几位会导致较大的数据变化，因此一律选择阶码小的向阶码看齐。</p>
+<li>求阶差<script type="math/tex; mode=display">\Delta j = j_x - j_y =\left\{
+\begin{aligned}
+= 0 &, j_x = j_y & 已对齐 \\
+{> 0} &, j_x > j_y & y向x看齐，S_y每左移一位，j_y加一 \\
+{< 0 } &, j_x < j_y & x向y看齐，S_x每左移一位，j_x加一 \\
+\end{aligned}
+\right.</script>当两者的阶码相等时，说明已经完成对阶，可以直接进行尾数求和，如果不相等，那么阶码小的向阶码大的看齐<p class="note note-primary">因为阶码变大，说明尾数右移，最后几位数值会被丢失，但因为最后几位的数值在真值中很小，所以对数值变化影响不大，但阶码变小，说明尾数右移，最高的几位会被丢失，这最高的几位在真值中的数值很大，因此损失这几位会导致较大的数据变化，因此一律选择阶码小的向阶码看齐。</p>
 
 </li>
 </ol>
 <blockquote>
-<p>例如：<br>1.0110 * 2^5^左移两位变为1.1000 * 2^3^，右移两位变为 1.0001 * 2^7^<br>1.0110 * 2^5^ = -12<br>1.1000 * 2^3^ = -4<br>1.0001 * 2^7^ = -8<br>显然右移对数值的变化更小</p>
+<p>例如：<br>1.0110 <em> 2^5^左移两位变为1.1000 </em> 2^3^，右移两位变为 1.0001 <em> 2^7^<br>1.0110 </em> 2^5^ = -12<br>1.1000 <em> 2^3^ = -4<br>1.0001 </em> 2^7^ = -8<br>显然右移对数值的变化更小</p>
 </blockquote>
-<ol start="2">
+<ol>
 <li>对阶<br>得到两者的阶差n后，阶码比较小的数的尾数右规n位，阶码+n，得到新的值</li>
 </ol>
 <p><strong>2.尾数求和</strong><br>在对完阶后，将两者的尾部部分的补码进行相加</p>
 <p><strong>3.规格化</strong><br>对得到的加数进行规格化</p>
-<p><font color="orange"><b>【示例1：】</b></font><br>x = 0.1101 * 2^01^ &emsp;&emsp;&emsp; y = (-0.1010) * 2^11^，求x+y<br>解：<br>[x]<del>补</del> = 00,01（阶码部分）; 00.1101（尾数部分）&emsp;&emsp;&emsp; [y]<del>补</del> = 00,11 ; 11.0110</p>
-<p><strong>①对阶</strong><br>$\Delta j = j_x - j_y = 00,01 + 11,01 = 11,10$<br>得到阶差为 -2，即j<del>x</del> &lt; j<del>y</del>，所以x的尾数右移两位，阶码+2<br>得到x为00,11 ；00.0011</p>
-<p><strong>②尾数求和</strong><br>&emsp;&emsp;00.0011<br>+&emsp;&nbsp;11.0110<br>-——————–<br>&emsp;&emsp;11.1001</p>
-<p>所以[x+y]<del>补</del> = 00,11 ；11.1001<br>[x+y]<del>原</del> = 00,11 ；11.0111</p>
-<p><font color="orange"><b>【示例2：】</b></font><br>x = 0.1101 * 2^10^ &emsp;&emsp;&emsp; y = 0.1011 * 2^01^，求x+y<br>解：<br>[x]<del>补</del> = 00,10 ；00.1101 &emsp;&emsp;&emsp; [y]<del>补</del> = 00.01 ；00.1011</p>
-<p><strong>①对阶</strong><br>$\Delta j = j_x - j_y = 00,10 + 11,11 = 00,01$<br>得到阶差为 +1，即j<del>x</del> &gt; j<del>y</del>，所以y的尾数右移一位，阶码+2<br>得到x为00,10 ；00.0101</p>
-<p><strong>②尾数求和</strong><br>&emsp;&emsp;00.1101<br>+&emsp;&nbsp;00.0101<br>-——————–<br>&emsp;&emsp;01.0010</p>
-<p><strong>③规格化</strong><br>得到的结果为00,10 ； 01.0010<br>需要右规一位，得到结果：00,11 ；00.1001<br>所以[x+y]<del>原</del> = [x+y]<del>补</del> = 0.1001 * 2^11^</p>
+<p><font color="orange"><b>【示例1：】</b></font><br>x = 0.1101 <em> 2^01^ &emsp;&emsp;&emsp; y = (-0.1010) </em> 2^11^，求x+y<br>解：<br>[x]~补~ = 00,01（阶码部分）; 00.1101（尾数部分）&emsp;&emsp;&emsp; [y]~补~ = 00,11 ; 11.0110</p>
+<p><strong>①对阶</strong><br>$\Delta j = j_x - j_y = 00,01 + 11,01 = 11,10$<br>得到阶差为 -2，即j~x~ &lt; j~y~，所以x的尾数右移两位，阶码+2<br>得到x为00,11 ；00.0011</p>
+<p><strong>②尾数求和</strong><br>&emsp;&emsp;00.0011<br>+&emsp;&nbsp;11.0110<br>-——————————<br>&emsp;&emsp;11.1001</p>
+<p>所以[x+y]~补~ = 00,11 ；11.1001<br>[x+y]~原~ = 00,11 ；11.0111</p>
+<p><font color="orange"><b>【示例2：】</b></font><br>x = 0.1101 <em> 2^10^ &emsp;&emsp;&emsp; y = 0.1011 </em> 2^01^，求x+y<br>解：<br>[x]~补~ = 00,10 ；00.1101 &emsp;&emsp;&emsp; [y]~补~ = 00.01 ；00.1011</p>
+<p><strong>①对阶</strong><br>$\Delta j = j_x - j_y = 00,10 + 11,11 = 00,01$<br>得到阶差为 +1，即j~x~ &gt; j~y~，所以y的尾数右移一位，阶码+2<br>得到x为00,10 ；00.0101</p>
+<p><strong>②尾数求和</strong><br>&emsp;&emsp;00.1101<br>+&emsp;&nbsp;00.0101<br>-——————————<br>&emsp;&emsp;01.0010</p>
+<p><strong>③规格化</strong><br>得到的结果为00,10 ； 01.0010<br>需要右规一位，得到结果：00,11 ；00.1001<br>所以[x+y]~原~ = [x+y]~补~ = 0.1001 * 2^11^</p>
 
     </div>
      

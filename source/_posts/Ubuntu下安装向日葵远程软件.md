@@ -1,8 +1,8 @@
 ---
 title: Ubuntu下安装向日葵远程软件
 date: 2020-10-19 09:02:56
-tags: problems
-categories: problems
+tags: 杂
+categories: 杂
 ---
 
 在Ubuntu 20.04下安装向日葵远程软件。

@@ -1,7 +1,7 @@
 ---
 title: Fluid添加暗黑模式
 date: 2020-05-10 14:54:32
-tags: [hexo 美化]
+tags: [hexo, 美化]
 categories: 博客美化
 index_img: /img/美化/darkmode.jpg
 ---

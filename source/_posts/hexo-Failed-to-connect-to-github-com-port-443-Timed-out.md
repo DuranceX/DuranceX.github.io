@@ -1,8 +1,8 @@
 ---
 title: 'Failed to connect to github.com port 443: Timed out'
 date: 2020-02-22 22:54:17
-tags: [problems,hexo,git]
-categories: problems
+tags: [error,git]
+categories: error
 index_img: /img/problems/problem.png
 ---
 Failed to connect to github.com port 443: Timed out 
@@ -12,7 +12,6 @@ Failed to connect to github.com port 443: Timed out
 
  在使用hexo g -d部署到github上时出现了“Failed to connect to github. com port 443: Timed out”的错误提示。
 ![](/img/problems/Time_out.png)
-
 
 **解决办法**
 

@@ -3,18 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 星下小屋
+title: 星夜
 subtitle: ''
 description: ''
 keywords:
-author: Cardy Tse
-language: en
+author: Cardy Xie
+language: zh-CN
 timezone: ''
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: http://starnight.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -49,12 +48,12 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace: ''
-  wrap: false
-  hljs: true
+  wrap: true
+  hljs: false
 prismjs:
   enable: false
   preprocess: true
-  line_number: false
+  line_number: true
   tab_replace: ''
 
 # Home page setting
@@ -81,8 +80,8 @@ meta_generator: true
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
-## Use post's date for updated date unless set in front-matter
-use_date_for_updated: false
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -98,74 +97,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: cards1.1
+theme: fluid
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repository: https://github.com/DuranceX/DuranceX.github.io.git
-  branch: master
-
-# Markdown-it config
-## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
-# markdown:
-#   render:
-#     html: true
-#     xhtmlOut: false
-#     breaks: true
-#     linkify: true
-#     typographer: true
-#     quotes: '“”‘’'
-#   plugins:
-#     - markdown-it-abbr
-#     - markdown-it-footnote
-#     - markdown-it-ins
-#     - markdown-it-sub
-#     - markdown-it-sup
-#     - markdown-it-emoji  # add emoji
-  # anchors:
-  #   level: 2
-  #   collisionSuffix: 'v'
-  #   permalink: truw
-  #   permalinkClass: header-anchor
-  #   permalinkSymbol: 
-
-  markdown_it_plus:
-    highlight: true
-    html: true
-    xhtmlOut: true
-    breaks: true
-    langPrefix:
-    linkify: true
-    typographer:
-    quotes: “”‘’
-    pre_class: highlight
-    plugins:
-        - plugin:
-          - name: markdown-it-container
-            enable: true
-            options: success
-          - name: markdown-it-container
-            enable: true
-            options: info
-          - name: markdown-it-container
-            enable: true
-            options: warning
-          - name: markdown-it-container
-            enable: true
-            options: danger
-            # - markdown-it-deflist
-
-
-# mermaid chart
-mermaid: ## mermaid url https://github.com/knsv/mermaid
-  enable: true  # default true
-  version: "7.1.2" # default v7.1.2
-  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
-    #startOnload: true  // default true
-
-search:
-  enable: true
-  path: search.json
-  field: All  # Page | Post | All
+  type: ''

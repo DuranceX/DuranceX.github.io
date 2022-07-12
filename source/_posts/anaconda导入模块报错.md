@@ -1,8 +1,8 @@
 ---
 title: anaconda导入模块报错
 date: 2020-10-23 11:45:08
-tags: [problems]
-categories: problems
+tags: [error]
+categories: errors
 ---
 Anaconda导入模块报错UserWarning: mkl-service package failed to import
 <!-- more -->

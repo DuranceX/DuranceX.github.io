@@ -1,13 +1,12 @@
 ---
-categories:
-- 博客
-date: '2021-09-24 10:23:23'
-tags:
-- 博客
-- 美化
 title: Cards主题个性化
-updated: '2022-07-28 14:12:49'
+date: 2021-09-24 10:23:23
+tags: [博客, 美化]
+categories: 博客
 ---
+
+
+
 博客主题从Fluid更换到Cards也有一段时间了，对Cards主题做了一些自定义，包括首页的横幅图片以及一些样式的调整
 
 <!--more-->
@@ -43,7 +42,7 @@ updated: '2022-07-28 14:12:49'
         width $avatar_width
         height $avatar_height
         margin 0 auto 1rem auto
-  
+    
     .cover__intro
         color: #fcfcfc
 
@@ -78,7 +77,7 @@ cover:
     <% } else { %>
         <div class="cover_none">
     <% } %>
-  
+    
         <div class="cover__logo">
             <% if (theme.cover.avatar) { %>
                 <img no-lazy alt="author Image" class="cover__avatar" src="<%= url_for(theme.cover.avatar) %>">
@@ -88,7 +87,7 @@ cover:
                 <h1 class="cover__title" ><%= config.title %></h1>
             <% } %>
         </div>
-      
+        
         <% if (theme.cover.description) { %>
             <div class="cover__intro">
                 <%- markdown(theme.cover.description) %> 
@@ -100,7 +99,7 @@ cover:
 
 其中主要部分在第一段`if、else`中，根据主题配置文件中的属性值判断，若banner属性为空，则采用主题默认的样式，若banner属性不为空，则采用另设的样式，显示背景图片。
 
----
+------
 
 ### 一言及页尾添加自定义内容
 
@@ -110,7 +109,7 @@ cover:
 
 页脚：`\layout\_partial\source\footer.ejs`
 
----
+------
 
 ### 修改样式
 
@@ -142,7 +141,7 @@ code
     padding-left 1rem
 ```
 
----
+------
 
 ### 文章封面设置属性兼容index_img
 

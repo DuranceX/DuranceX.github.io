@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="IconFont字体的导入 正常使用 参考内容 由此本次项目中应该会多处使用到IconFont字体，以及更倾向于在xml文件中直接设置IconFont图标，而不是在Java代码中进行设置，因此采用的是自定义类的方式。 首先在IconFont网站上挑选好需要的图标，并添加到项目，然后进入到项目文件中将内容下载到本地。下载得到一个压缩包，解压后可以得到一个ttf后缀的文件，将其导入到Android S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="烟草仓储管理系统开发笔记（三）">
+<meta property="og:url" content="http://example.com/2022/04/15/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="IconFont字体的导入 正常使用 参考内容 由此本次项目中应该会多处使用到IconFont字体，以及更倾向于在xml文件中直接设置IconFont图标，而不是在Java代码中进行设置，因此采用的是自定义类的方式。 首先在IconFont网站上挑选好需要的图标，并添加到项目，然后进入到项目文件中将内容下载到本地。下载得到一个压缩包，解压后可以得到一个ttf后缀的文件，将其导入到Android S">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.starnight.top/img/20220415210907.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415211533.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415212231.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415213048.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415212837.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415213808.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415215610.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220415215914.png">
+<meta property="article:published_time" content="2022-04-15T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-18T11:50:04.945Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/20220415210907.png">
+  
+  
+  <title>烟草仓储管理系统开发笔记（三） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="烟草仓储管理系统开发笔记（三）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-15 21:00" pubdate>
+          April 15, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">烟草仓储管理系统开发笔记（三）</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1>IconFont字体的导入</h1>
+<h2 id="正常使用">正常使用</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e39b1d506a82">参考内容</a><br>
+由此本次项目中应该会多处使用到IconFont字体，以及更倾向于在xml文件中直接设置IconFont图标，而不是在Java代码中进行设置，因此采用的是自定义类的方式。</p>
+<p>首先在IconFont网站上挑选好需要的图标，并添加到项目，然后进入到项目文件中将内容下载到本地。下载得到一个压缩包，解压后可以得到一个ttf后缀的文件，将其导入到Android Studio的assets文件夹中，assets文件夹默认没有创建，需要手动新建，文件夹跟java和res位于同一层级。之后在assets文件夹中创建iconfont文件夹，将ttf文件导入到其中。<br>
+<img src="https://images.starnight.top/img/20220415210907.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>然后新建一个自定义类IconFontTextView，继承自AppCompatTextView，重写其中的构造方法，在构造方法中调用一个自己新建的方法，新建的方法通过调用Typeface来渲染字体。具体代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IconFontTextView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AppCompatTextView</span> &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">IconFontTextView</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Context context)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(context);  <br>        Init(context);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">IconFontTextView</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Context context, <span class="hljs-meta">@Nullable</span> AttributeSet attrs)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(context, attrs);  <br>        Init(context);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">IconFontTextView</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Context context, <span class="hljs-meta">@Nullable</span> AttributeSet attrs, <span class="hljs-type">int</span> defStyleAttr)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(context, attrs, defStyleAttr);  <br>        Init(context);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">Init</span><span class="hljs-params">(Context context)</span>&#123;  <br>        <span class="hljs-type">Typeface</span> <span class="hljs-variable">icon</span> <span class="hljs-operator">=</span> Typeface.createFromAsset(context.getAssets(),<span class="hljs-string">&quot;iconfont/iconfont.ttf&quot;</span>);  <br>        setTypeface(icon);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>之后在需要使用IconFont图标的时候，将默认的TextView改成自定义的IconFontTextView，并在其中填写IconFont代码即可。</p>
+<h2 id="菜单中使用">菜单中使用</h2>
+<p>之前想着将抽屉菜单中的图标也用IconFont图标进行替换，但是菜单中的文本只是<code>&lt;Item&gt;</code>标签，也无法使用<code>&lt;TextView&gt;</code>标签，自然无法用自定义的IconFontTextView来替换了，因此行不通，最后只能将图标一个个以svg的形式下载下来，再从本地文件中导入到Android Studio中，通过Icon属性，将图标设置到菜单中。<br>
+<img src="https://images.starnight.top/img/20220415211533.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>客户信息界面实现</h1>
+<h2 id="基本框架设计">基本框架设计</h2>
+<p>总体想的以简洁的信息展示为主，大致结构布局如下<br>
+<img src="https://images.starnight.top/img/20220415212231.png" srcset="/img/loading.gif" lazyload alt=""><br>
+其中的Header块内容很简单，为一个菜单中对应的IconFont图标和对应的页面名称，通过中英文的搭配使整体更美观一点。<br>
+<img src="https://images.starnight.top/img/20220415213048.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Item设计实现">Item设计实现</h2>
+<p>其中Item部分设计主要分为两部分，左侧为一个ImageView，设想是添加客户的Logo，右侧则是垂直方向的三行文本框，用于显示客户信息。每个Item设定为圆角矩形，这一块原本想使用<a target="_blank" rel="noopener" href="https://github.com/lihangleo2/ShadowLayout">ShadowLayout</a>来实现，但在使用时出现了一些兼容性问题<a href="**ShadowLayout%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98**">^ShadowLayout</a>，导致编译无法通过，所以改为使用上篇中提到的<a target="_blank" rel="noopener" href="https://github.com/RuffianZhong/RWidgetHelper">RWidgetHelper</a>来实现，最终Item的呈现结果如下：<br>
+<img src="https://images.starnight.top/img/20220415212837.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="SearchBar实现">SearchBar实现</h2>
+<p>在之前重新学习时做的一个单词本Demo，那里使用到的搜索按钮自带动画，点击可以伸开搜索框填满整个标题栏，这里感觉很适合。因此尝试了一下，将一个Toolbar组件拖至RecycleView上方，将长度与RecycleView对齐，在其中添加一个SearchView，即实现了想要的效果，但其默认的搜索图标显示在左侧，且搜索框向右展开。但因为我还需要放置一个”添加”按钮，那么都放左边感觉怪怪的，一左一右就更奇怪了。于是就是网上查了查怎么将图标放到右侧，发现可以使用<code>layout_gravity=right</code>属性来将其移动到右侧，但是并没有效果，在仔细比对了代码后才发现，我这里的SearchView使用的是<code>match_parents</code>，所以是填满整个Toolbar的，将其改成<code>wrap_content</code>即可😂</p>
+<p>然后在Toolbar组件中再使用IconFontTextView组件添加一个“+”的符号，即完成了Searchbar的效果。<br>
+<img src="https://images.starnight.top/img/20220415213808.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Adapter实现">Adapter实现</h2>
+<p>有了几个Layout文件后便是创建Adapter，这里使用的也是第三方库<a target="_blank" rel="noopener" href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper">BaseRecyclerViewAdapterHelper</a> ，虽然暂时也没用上其特定功能，但反正都是要用这个的，就先以其为框架，以后更加方便添加动画等效果。在Adapter中创建自定义的ViewHolder并继承BaseViewHolder，在其中定义视图中的组件，然后将泛型中的两个参数进行修改，前者为实例对象，即数据源，后者为自定义的ViewHolder，即视图，并重写其方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomerListAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseQuickAdapter</span>&lt;CustomerTest, MyCustomerViewHolder&gt; &#123;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">CustomerListAdapter</span><span class="hljs-params">(<span class="hljs-type">int</span> layoutResId)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(layoutResId);  <br>    &#125;  <br>  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">convert</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> MyCustomerViewHolder holder, CustomerTest customer)</span> &#123;  <br>        holder.name.setText(customer.getName());  <br>        holder.address.setText(customer.getAddress());  <br>        holder.purchase.setText(Arrays.toString(customer.getMainPurchase()).replace(<span class="hljs-string">&#x27;[&#x27;</span>,<span class="hljs-string">&#x27; &#x27;</span>).replace(<span class="hljs-string">&#x27;]&#x27;</span>,<span class="hljs-string">&#x27; &#x27;</span>));  <br>    &#125;  <br>&#125;  <br>  <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCustomerViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseViewHolder</span>&#123;  <br>    TextView name,address,purchase;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyCustomerViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> View view)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(view);  <br>        name = view.findViewById(R.id.customerName);  <br>        address = view.findViewById(R.id.customerAddress);  <br>        purchase = view.findViewById(R.id.customerMainPurchase);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>根据文档所说，在重写的convert方法中进行组件内容的赋值。</p>
+<h2 id="Fragment中使用">Fragment中使用</h2>
+<p>首先在Fragment中创建RecycleView和自定义Adapter的对象，之后通过adapter的<code>setNewInstance</code>方法为adapter赋值，再将adapter绑定到RecycleView上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onViewCreated</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> View view, <span class="hljs-meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;  <br>    <span class="hljs-built_in">super</span>.onViewCreated(view, savedInstanceState);  <br>    adapter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomerListAdapter</span>(R.layout.item_customer_information);  <br>    adapter.setAnimationEnable(<span class="hljs-literal">true</span>);  <br>    recyclerView = getView().findViewById(R.id.customerRecycleview);  <br>    recyclerView.setLayoutManager(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LinearLayoutManager</span>(getActivity()));  <br>    recyclerView.setAdapter(adapter);  <br>	<span class="hljs-comment">//获取list数据</span><br>	<span class="hljs-comment">//设定adapter数据</span><br>    adapter.setNewInstance(newList);   <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>得到如下的最终显示结果：<br>
+<img src="https://images.starnight.top/img/20220415215610.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="添加点击事件">添加点击事件</h2>
+<p>接下来为添加按钮和列表Item添加点击事件，当点击时，弹出一个底部对话框用于添加/修改信息，当是点击添加按钮弹出对话框时，则数据全为空，当点击列表Item弹出对话框时，默认数据为当前点击的Item的数据，可进行修改。<br>
+对话框使用第三方库<a target="_blank" rel="noopener" href="https://github.com/kongzue/DialogX">DialogX</a> 实现，采用其自定义视图的底部对话框进行实现，效果图如下<br>
+<img src="https://images.starnight.top/img/20220415215914.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>不知为何，这里的布局会进行压缩，此外在设计布局文件时也会出现设置为<code>wrap_content</code>时，底下仍会流出很大一块空白的情况，就像是固定了高度一样，不知什么原因，因此这个布局只是个半成品，待修改完后在下篇写。</p>
+<h1>遇到的问题</h1>
+<h2 id="ShadowLayout中的兼容性问题">ShadowLayout中的兼容性问题</h2>
+<p>在兼容性报错中，其提示ShadowLayout使用了support库，而这和AndroidX冲突，而且我这里的设定也确实是<code>useAndroidX=true</code>，因此我以为ShadowLayout不支持AndroidX，但我还是发了<a target="_blank" rel="noopener" href="https://github.com/lihangleo2/ShadowLayout/issues/140">Issue</a>提问了一下，在开发者的告知下才知道，光有<code>useAndroidX=true</code>并不是开启了AndroidX，还需要在<code>gradle.properties</code>中添加<code>android.enableJetifier=true</code>才算支持AndroidX，即在<code>gradle.properties</code>中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">android.useAndroidX=<span class="hljs-literal">true</span>  <br>android.enableJetifier=<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>才算开启AndroidX</p>
+<p>看是否需要将RWidgetHelper的那个布局改成ShadowLayout，毕竟ShadowLayout的阴影可调属性更多，更好看。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>烟草仓储管理系统开发笔记（三）</div>
+      <div>http://example.com/2022/04/15/烟草仓储管理系统开发笔记（三）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 15, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/18/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="烟草仓储管理系统开发笔记（四）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">烟草仓储管理系统开发笔记（四）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/11/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="烟草仓储管理系统开发笔记（二）">
+                        <span class="hidden-mobile">烟草仓储管理系统开发笔记（二）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

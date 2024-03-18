@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="为Fluid添加暗色模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluid添加暗黑模式">
+<meta property="og:url" content="http://example.com/2020/05/10/Fluid%E6%B7%BB%E5%8A%A0%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="为Fluid添加暗色模式">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/%E7%BE%8E%E5%8C%96/darkmode.jpg">
+<meta property="article:published_time" content="2020-05-10T06:54:32.000Z">
+<meta property="article:modified_time" content="2024-03-18T09:07:03.637Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="美化">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/%E7%BE%8E%E5%8C%96/darkmode.jpg">
+  
+  
+  <title>Fluid添加暗黑模式 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fluid添加暗黑模式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-05-10 14:54" pubdate>
+          May 10, 2020 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Fluid添加暗黑模式</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>为Fluid添加暗色模式</p>
+<span id="more"></span>
+<p>之前一直就想为博客添加个暗色模式，但是拖延症晚期:crying_cat_face:，所以一直拖到了现在，主要的代码参考自<a target="_blank" rel="noopener" href="https://royce2003.top/posts/41212.html">Royce</a>的博客，emmm，这里还是把代码搬一下。。</p>
+<h3 id="HTML">HTML</h3>
+<p>首先是HTML，在<code>\themes\fluid\layout\layout.ejs</code>中找到<code>&lt;body&gt;</code>标签，然后在下方加入以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dark&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;switchDarkMode()&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">var</span> isNight = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getHours</span>() &gt;= <span class="hljs-number">22</span> || <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">getHours</span>() &lt; <span class="hljs-number">7</span>;</span><br><span class="language-javascript">  <span class="hljs-keyword">if</span>( isNight || <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;dark&#x27;</span>) === <span class="hljs-string">&#x27;1&#x27;</span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">if</span>(!(isNight&amp;&amp;<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;noDark&#x27;</span>) === <span class="hljs-string">&#x27;1&#x27;</span>)) &#123;</span><br><span class="language-javascript">      <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;dark&#x27;</span>);</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dark&#x27;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;body&quot;</span>).<span class="hljs-property">classList</span>.<span class="hljs-title function_">contains</span>(<span class="hljs-string">&quot;dark&quot;</span>)?<span class="hljs-string">&quot;🌙&quot;</span>:<span class="hljs-string">&quot;🌞&quot;</span>;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>这里原本是用了媒体查询的，可以根据浏览器是否开启深色模式来对应开启深色模式，不过貌似有点小问题:sweat:，比如我的浏览器开了深色模式，但我点击了按钮，切换成了亮色模式，那肯定是说明我是喜欢以亮色模式访问该网站，但当我换了一个页面的时候（比如换了一个文章或回到首页）它又会检测到深色模式后切换到深色模式，emmmm，所以就先删了。。</p>
+</blockquote>
+<h3 id="JS">JS</h3>
+<p>然后是JS，在主题下的<code>source\js</code>文件夹下新建一个 DarkMode.js 文件，在其中加入以下代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//点击事件</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">switchDarkMode</span>(<span class="hljs-params"></span>) &#123;<br>	<span class="hljs-keyword">if</span> ($(<span class="hljs-string">&#x27;body&#x27;</span>).<span class="hljs-title function_">hasClass</span>(<span class="hljs-string">&#x27;dark&#x27;</span>)) &#123;<br>        <span class="hljs-comment">/*$(&quot;#dark&quot;).html(&quot;🌞&quot;);*/</span><br>       <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;dark&quot;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">background</span> = <span class="hljs-string">&quot;url(&#x27;/img/dark.png&#x27;)&quot;</span>;<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;dark&#x27;</span>);<br>		<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;noDark&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>);<br>		<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;dark&#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>);<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">/*$(&quot;#dark&quot;).html(&quot;🌙&quot;); */</span><br>        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;dark&quot;</span>).<span class="hljs-property">style</span>.<span class="hljs-property">background</span> = <span class="hljs-string">&quot;url(&#x27;/img/light.png&#x27;)&quot;</span>;<br>		<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;dark&#x27;</span>);<br>		<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;dark&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>);<br>		<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;noDark&#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后在Fluid主题的<code>_config.yml</code>中找到<code>custom_js</code>项，加入新建的 js 文件。</p>
+<p>这个原版代码是通过注释中的两个字符——“🌞“和“🌙”来进行区分暗色模式和亮色模式。但个人觉得不太美观，同样，他的博客中也有一篇提到了 “返回页面顶”的一个类似于小挂件的效果，于是就想将那个挂件的效果改为更改模式，因此用PS粗粗地P了两个图，分别是带月亮dark.png和带太阳的light.png，在该段JS代码中，在切换模式的同时，将两个图片进行了切换。</p>
+<h3 id="CSS">CSS</h3>
+<p>最后是CSS，在主题下的<code>source\css</code>文件夹下，新建一个<code>DarkMode.styl</code>因为使用的是 style 文件，所以可以不在 <code>_config.yml</code>中引入，直接在同目录下的<code>main.styl</code>中进行导入即可。添加以下代码。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 切换按钮 */</span><br><span class="hljs-selector-id">#dark</span><br>  <span class="hljs-attribute">cursor</span> pointer<br>  <span class="hljs-attribute">position</span> fixed<br>  <span class="hljs-attribute">z-index</span> <span class="hljs-number">100</span><br>  <span class="hljs-attribute">left</span> <span class="hljs-number">50px</span> <br>  <span class="hljs-attribute">width</span> <span class="hljs-number">70px</span><br>  <span class="hljs-attribute">height</span> <span class="hljs-number">600px</span><br>  <span class="hljs-attribute">top</span> -<span class="hljs-number">350px</span><br>  <span class="hljs-attribute">box-shadow</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-comment">/* 去除外边框的阴影 */</span><br><br>  &amp; &gt; <span class="hljs-selector-tag">i</span><br>    <span class="hljs-attribute">display</span> <span class="hljs-attribute">none</span> <span class="hljs-comment">/* 隐藏一个小箭头图标，否则会在图片上出现箭头 */</span><br><br><span class="hljs-comment">/*暗黑模式*/</span><br><span class="hljs-selector-class">.dark</span><br>  <span class="hljs-attribute">background-color</span> rgb(<span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>)<br>  <br><br>  <span class="hljs-comment">/* 主体 */</span><br>  <span class="hljs-selector-id">#board</span> <br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#1c1c21</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#a09c9c</span><br>  <br>  <span class="hljs-selector-tag">blockquote</span><br>    <span class="hljs-attribute">border-left</span> .<span class="hljs-number">25em</span> solid <span class="hljs-selector-id">#68696a</span><br>  <span class="hljs-selector-tag">img</span>  <br>    <span class="hljs-attribute">filter</span> brightness(<span class="hljs-number">50%</span>)<br><br>  <span class="hljs-selector-tag">p</span><br>  <span class="hljs-selector-class">.index-info</span> <span class="hljs-selector-tag">a</span>  <br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#718096</span><br><br>  <span class="hljs-selector-class">.index-info</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#3aa7f9</span><br><br>  <span class="hljs-selector-class">.markdown-body</span><br>    <span class="hljs-selector-tag">h1</span>,<span class="hljs-selector-tag">h2</span>,<span class="hljs-selector-tag">h3</span>,<span class="hljs-selector-tag">h4</span>,<span class="hljs-selector-tag">h5</span>,<span class="hljs-selector-tag">h6</span>,s,<span class="hljs-selector-tag">li</span>  <br>      <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">191</span>) !important<br><br>    <br>  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">a</span><br>    <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">153</span>, <span class="hljs-number">189</span>, <span class="hljs-number">230</span>)<br><br>  <span class="hljs-comment">/* 顶栏 */</span><br>  <span class="hljs-selector-class">.navbar-col-show</span><br>  <span class="hljs-selector-class">.top-nav-collapse</span>  <br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#282c34</span><br>    <br>  <span class="hljs-selector-class">.navbar</span> <span class="hljs-selector-tag">a</span>  <br>    <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">191</span>) !important<br>    <br>  <span class="hljs-selector-class">.animated-icon</span> <span class="hljs-selector-tag">span</span>   <span class="hljs-comment">/* 手机端 */</span><br>    <span class="hljs-attribute">background-color</span> rgb(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">191</span>)<br><br><br>  <span class="hljs-comment">/* page-number */</span><br>  <span class="hljs-selector-class">.pagination</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span><br>  <span class="hljs-selector-class">.pagination</span> <span class="hljs-selector-class">.current</span>  <br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#6b6b6b73</span><br>    <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">191</span>,<span class="hljs-number">191</span>,<span class="hljs-number">191</span>)<br><br><br>  <span class="hljs-comment">/* 打字机 */</span><br>  <span class="hljs-selector-id">#subtitle</span><br>  <span class="hljs-selector-class">.dark</span><span class="hljs-selector-class">.typed-cursor--blink</span><br>  <span class="hljs-selector-class">.scroll-down-arrow</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#dfdfdf</span><br><br><br>  <span class="hljs-comment">/* back to top */</span><br>  <span class="hljs-selector-id">#scroll-top-button</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#282c34</span><br><br>    <span class="hljs-selector-tag">i</span><br>      <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#a09c9c</span><br>    <br><br>  <span class="hljs-comment">/* Toc */</span><br>  <span class="hljs-selector-class">.tocbot-list</span> <span class="hljs-selector-tag">a</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#a09c9c</span><br><br>  <span class="hljs-selector-class">.tocbot-active-link</span><br>  <span class="hljs-selector-tag">footer</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#3aa7f9</span> !important<br><br>  <span class="hljs-comment">/* footer */</span><br>  <span class="hljs-selector-tag">footer</span><br>  <span class="hljs-selector-tag">footer</span> <span class="hljs-selector-tag">a</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#718096</span><br>    <br>  <span class="hljs-comment">/* 表格 */</span><br>  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">td</span><br>  <span class="hljs-selector-class">.markdown-body</span> <span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">th</span> <br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span> <span class="hljs-number">13px</span>;<br>    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span>;<br>    <span class="hljs-attribute">border-style</span>: solid;<br>    <span class="hljs-attribute">border-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">54</span>, <span class="hljs-number">54</span>, <span class="hljs-number">54</span>);<br>    <span class="hljs-attribute">border-image</span>: initial;<br><br><br>  <span class="hljs-comment">/* 归档页 */</span><br>  <span class="hljs-selector-class">.list-group-item</span><br>    <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">191</span>)<br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#282c34</span><br>    <br>  <span class="hljs-selector-class">.list-group-item</span><span class="hljs-selector-pseudo">:hover</span><br>  <span class="hljs-selector-class">.tagcloud</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#46484d</span><br><br><br>  <span class="hljs-comment">/* 友链页 */</span><br>  <span class="hljs-selector-class">.links</span><br>    <span class="hljs-selector-class">.card</span>  <br>      <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#1c1c21</span><br>        <br>    <span class="hljs-selector-class">.card-body</span><span class="hljs-selector-pseudo">:hover</span>  <br>      <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#46484d</span><br>        <br>    <span class="hljs-selector-class">.link-title</span><br>    <span class="hljs-selector-class">.link-intro</span>  <br>      <span class="hljs-attribute">color</span> rgb(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">191</span>)<br>    <br><br>  <span class="hljs-comment">/* note标签 可能这配色有点丑 */</span><br>  <span class="hljs-selector-class">.note-info</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#3b5359</span><br>    <span class="hljs-attribute">border-color</span> <span class="hljs-selector-id">#006d80</span><br><br>  <span class="hljs-selector-class">.note-danger</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#783f42</span><br>    <span class="hljs-attribute">border-color</span> <span class="hljs-selector-id">#670009</span><br><br>  <span class="hljs-selector-class">.note-success</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#2a3e2e</span><br>    <span class="hljs-attribute">border-color</span> <span class="hljs-selector-id">#005915</span><br><br>  <span class="hljs-selector-class">.note-warning</span><br>    <span class="hljs-attribute">background-color</span> <span class="hljs-selector-id">#5b543e</span><br>    <span class="hljs-attribute">border-color</span> <span class="hljs-selector-id">#846500</span><br><br>  <span class="hljs-selector-class">.note-primary</span><br>    <span class="hljs-attribute">background-color</span> rgb(<span class="hljs-number">69</span>, <span class="hljs-number">89</span>, <span class="hljs-number">110</span>)<br>    <span class="hljs-attribute">border-color</span> rgb(<span class="hljs-number">28</span>, <span class="hljs-number">67</span>, <span class="hljs-number">110</span>)<br><br>  <span class="hljs-comment">/* aPlayer */</span><br>  <span class="hljs-selector-class">.aplayer</span> <br>    <span class="hljs-attribute">background</span> rgb(<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">33</span>)  !important<br><br>  <span class="hljs-selector-class">.aplayer-lrc</span><span class="hljs-selector-pseudo">:after</span><br>    <span class="hljs-attribute">background</span> linear-gradient(rgba(<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">33</span>, <span class="hljs-number">0</span>) <span class="hljs-number">0px</span>, rgba(<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">33</span>, <span class="hljs-number">0.8</span>)) !important<br><br>  <span class="hljs-selector-class">.aplayer-lrc</span><span class="hljs-selector-pseudo">:before</span><br>    <span class="hljs-attribute">background</span> linear-gradient(rgb(<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">33</span>) <span class="hljs-number">0px</span>, rgba(<span class="hljs-number">28</span>, <span class="hljs-number">28</span>, <span class="hljs-number">33</span>, <span class="hljs-number">0</span>)) !important<br><br>  <span class="hljs-selector-class">.aplayer</span><span class="hljs-selector-class">.aplayer-withlist</span> <span class="hljs-selector-class">.aplayer-info</span><br>    <span class="hljs-attribute">border-bottom</span> <span class="hljs-number">1px</span> solid rgb(<span class="hljs-number">48</span>, <span class="hljs-number">48</span>, <span class="hljs-number">48</span>) !important<br><br>  <span class="hljs-comment">/* valine */</span><br>  <span class="hljs-selector-class">.v</span> <span class="hljs-selector-class">.vwrap</span> <br>    <span class="hljs-attribute">margin-bottom</span> <span class="hljs-number">10px</span><br>    <span class="hljs-attribute">position</span> relative<br>    <span class="hljs-attribute">border-width</span> <span class="hljs-number">1px</span><br>    <span class="hljs-attribute">border-style</span> solid<br>    <span class="hljs-attribute">border-color</span> rgb(<span class="hljs-number">41</span>, <span class="hljs-number">41</span>, <span class="hljs-number">41</span>)<br>    <span class="hljs-attribute">border-image</span> initial<br>    <span class="hljs-attribute">border-radius</span> <span class="hljs-number">4px</span><br>    <span class="hljs-attribute">overflow</span> hidden<br>    <span class="hljs-attribute">padding</span> <span class="hljs-number">10px</span><br><br>  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#3aa7f9</span> <br><br>  <span class="hljs-selector-class">.drop-cap</span> <span class="hljs-selector-class">.index-card</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-class">.post-meta</span> <span class="hljs-selector-tag">p</span><br>    <span class="hljs-attribute">color</span> <span class="hljs-selector-id">#a09c9c</span><br><br></code></pre></td></tr></table></figure>
+<p>对于原版CSS中的配色方案进行了微调，同时在CSS中添加了切换按钮的点击效果，原本是点击图片直接切换模式和图片，但感觉略显生硬，因此为它添加了一点小效果，就像是旧式的拉绳式的电灯，当按下时，“绳子变长”，即图片下移一部分，当鼠标松开时再回到原位，并更换图片。</p>
+<p>将原版HTML中的&lt;div&gt;标签改为&lt;a&gt;标签，这样便可以通过<code>:active</code>来响应鼠标按下事件，只需要在鼠标按下时将图片下移即可。即在style文件最后添加</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-id">#dark</span><span class="hljs-selector-pseudo">:active</span><br>  <span class="hljs-attribute">top</span> -<span class="hljs-number">300px</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>原本想着是不是要用贝塞尔曲线来加个动画来着。。。后来发现根本也不会按那么久。单单点击只要让图片下移就可以有差不多的效果了。:see_no_evil:</p>
+</blockquote>
+<div>
+<a class="btn"  target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/DuranceX/BlogPhoto/img/light.png">light图片</a>
+<a class="btn" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/DuranceX/BlogPhoto/img/dark.png"">dark图片</a>
+</div>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" class="category-chain-item">博客美化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BE%8E%E5%8C%96/">#美化</a>
+      
+        <a href="/tags/hexo/">#hexo</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fluid添加暗黑模式</div>
+      <div>http://example.com/2020/05/10/Fluid添加暗黑模式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 10, 2020</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/09/Failed%20to%20connect%20to%20githubcom%20port%20443%20Timed%20out/" title="Failed to connect to githubcom port 443 Timed out">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Failed to connect to githubcom port 443 Timed out</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/16/DRAM%E4%B8%89%E7%A7%8D%E5%88%B7%E6%96%B0%E6%96%B9%E5%BC%8F/" title="DRAM三种刷新方式">
+                        <span class="hidden-mobile">DRAM三种刷新方式</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

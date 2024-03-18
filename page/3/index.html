@@ -1,0 +1,949 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Starry Night"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/Note%20-%20Filter%20Grafting%20for%20Deep%20Neural%20Networks/" target="_self">
+          Note - Filter Grafting for Deep Neural Networks
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/11/19/Note%20-%20Filter%20Grafting%20for%20Deep%20Neural%20Networks/" target="_self">
+        <div>
+          
+          介绍 与之前所看到的一些关于 filter pruning 的文章不同，作者认为那些通过 filter pruning 方法剪去的滤波器在某些特定场景可能还是有用的，作者提到像集成学习中一样，单个分类器的效果并不理想，但多个分类器组合在一起效果就有很大提升。所以在这篇文章中，作者不考虑将这些不重要的滤波器剪去，而是为它们重新赋值，尝试重新激活它们。也就是作者所提出的嫁接方法，将其他的数据嫁接到这些
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 14:01" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/Note%20-%20Filter%20Pruning%20via%20Geometric%20Median%20for%20Deep%20Convolutional%20Neural%20Networks%20Acceleration/" target="_self">
+          Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/11/19/Note%20-%20Filter%20Pruning%20via%20Geometric%20Median%20for%20Deep%20Convolutional%20Neural%20Networks%20Acceleration/" target="_self">
+        <div>
+          
+          现况 现有的滤波器剪枝的标准是，“smaller-norm-less-important&quot;，即认为滤波器的范数（p-norm）越小，相对应的特征图越接近于 0，于是对网络对贡献越小，那么这些滤波器可以去掉而不会严重影响网络的性能。 但作者认为这个标准要达到好的效果需要满足两个前提：  不同卷积核之间的范数差距要够大 最不重要的（范数最小的）卷积核的范数要够小  即如图 (a) 可能会导致
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 14:01" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/Note%20-%20Pruning%20Filter%20In%20Filter/" target="_self">
+          Note - Pruning Filter In Filter
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/11/19/Note%20-%20Pruning%20Filter%20In%20Filter/" target="_self">
+        <div>
+          
+          介绍 现在主流的剪枝操作可以分为权重剪枝和滤波器剪枝两个类别，其中滤波器剪枝的一个标准流程是：  训练一个大网络直至收敛 根据一定的规则剪去一部分滤波器 对剪枝后的网络进行微调  这些方法多数只是对网络的结构进行调整，而作者认为，不只是网络的结构有影响，滤波器本身的结构也很重要。Christian Szegedy[^ChristianSzegedy] 等人也提出了类似的想法。他们是手动设定了不同的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 14:01" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/19/%E5%8D%B7%E7%A7%AF%E6%A0%B8kernel%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8filter%E3%80%81%E5%B1%82layer%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8C%BA%E5%88%AB/" target="_self">
+          卷积核kernel、滤波器filter、层layer的概念区别
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/11/19/%E5%8D%B7%E7%A7%AF%E6%A0%B8kernel%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8filter%E3%80%81%E5%B1%82layer%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8C%BA%E5%88%AB/" target="_self">
+        <div>
+          
+          在单通道版本中，卷积核和滤波器两者等价。滤波器相当于是卷积核的一个集合。 单通道版本  如上图所示，卷积是元素对元素的加法和乘法。这里的滤波器是一个 3*3 的矩阵[[0, 1, 2], [2, 2, 0], [0, 1, 2]]，滤波器滑过输入，在每个位置完成一次卷积，得到一个数值，最终输出仍是一个 3*3 的矩阵。这里滑动的可以说是卷积核，也可以说是滤波器，两者在单通道时等价，此时的滤波器就是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 14:01" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/10/18/%E3%80%8A%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E4%B8%83%E3%80%8B%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/" target="_self">
+          <img src="/img/Game/%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E4%B8%83.png" srcset="/img/loading.gif" lazyload alt="《仙剑奇侠传七》游后感">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/18/%E3%80%8A%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E4%B8%83%E3%80%8B%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/" target="_self">
+          《仙剑奇侠传七》游后感
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/10/18/%E3%80%8A%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E4%B8%83%E3%80%8B%E6%B8%B8%E7%8E%A9%E4%BD%93%E9%AA%8C/" target="_self">
+        <div>
+          
+          《仙剑奇侠传7》游玩体验 这次买了份仙剑7的标准版实体版，原本是没打算预购的，但是一看这实体版只比数字版贵了10块钱，真香，在14日也是终于收到了实物，不过其实也没啥东西，图个新鲜感和收藏用😂之前玩了试玩版本，感觉总体还是不错的，这也是这次预购的原因之一。最后也是在今晚给通关了（全部支线完成…应该全部了吧）  翻车的解锁之日 14日晚原本说的是8点开始预载，结果推迟到了10点，宿舍11点断电，晚
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-18 17:26" pubdate>
+              2021-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/10/10/%E3%80%8A%E4%B9%9D%E5%8D%81%E5%85%AD%E5%8F%B7%E5%85%AC%E8%B7%AF%E3%80%8B%E6%B8%B8%E5%90%8E%E6%84%9F/" target="_self">
+          <img src="/img/Game/%E4%B9%9D%E5%8D%81%E5%85%AD%E5%8F%B7%E5%85%AC%E8%B7%AF.png" srcset="/img/loading.gif" lazyload alt="《九十六号公路》游后感">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/10/%E3%80%8A%E4%B9%9D%E5%8D%81%E5%85%AD%E5%8F%B7%E5%85%AC%E8%B7%AF%E3%80%8B%E6%B8%B8%E5%90%8E%E6%84%9F/" target="_self">
+          《九十六号公路》游后感
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/10/10/%E3%80%8A%E4%B9%9D%E5%8D%81%E5%85%AD%E5%8F%B7%E5%85%AC%E8%B7%AF%E3%80%8B%E6%B8%B8%E5%90%8E%E6%84%9F/" target="_self">
+        <div>
+          
+          总览 在九十六号公路中，你将扮演佩特里亚中的年轻人，去越过边境，逃往美丽国，或者通过选举投票来更换政权……国家的命运掌握在你的手中。 先说说游戏总体的感觉吧，类似于《看火人》一般的步行模拟器体验，画面风格也十分相近，总体观感很舒服，游戏的音乐也非常的棒，整体氛围烘托得很棒。在游戏中还加入一些小游戏，些许增加了游戏的可玩性。不过用手柄玩的时候，选那个对话选项，尤其是移动中的选项，简直折磨&#x3D;&#x3D;  背景
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-10 17:26" pubdate>
+              2021-10-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%B8%E6%88%8F/" class="category-chain-item">游戏</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8Github%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/" target="_self">
+          博客使用Github作为图床
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/09/24/%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8Github%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A/" target="_self">
+        <div>
+          
+          使用GitHub作为图床，使用PicGo作为上传图片的工具
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 17:26" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/Android%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%87%BA%E7%8E%B0INSTALL_FAILED_SHARED_USER_INCOMPATIBLE/" target="_self">
+          Android 安装应用出现INSTALL_FAILED_SHARED_USER_INCOMPATIBLE
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/09/24/Android%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E5%87%BA%E7%8E%B0INSTALL_FAILED_SHARED_USER_INCOMPATIBLE/" target="_self">
+        <div>
+          
+          Android-安装应用出现INSTALL-FAILED-SHARED-USER-INCOMPATIBLE
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 11:45" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/errors/" class="category-chain-item">errors</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+            
+              <a href="/tags/error/">#error</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/Cards%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96/" target="_self">
+          Cards主题个性化
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2021/09/24/Cards%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96/" target="_self">
+        <div>
+          
+          博客主题从Fluid更换到Cards也有一段时间了，对Cards主题做了一些自定义，包括首页的横幅图片以及一些样式的调整
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 10:23" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+            
+              <a href="/tags/%E7%BE%8E%E5%8C%96/">#美化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/29/MyBatis%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_self">
+          MyBatis基础使用
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2020/11/29/MyBatis%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          
+          MyBatis的一些基础使用方法和配置。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-29 17:50" pubdate>
+              2020-11-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+            
+              <a href="/tags/Java/">#Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

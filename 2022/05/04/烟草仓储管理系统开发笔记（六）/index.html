@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="简述 好久没写笔记了，这段时间效率不是很高，中间的五一假期也没有推进进度，所以总体完成的内容不是很多，内容不多，遇到的问题却还不少💢数来这段时间主要完成的内容有：实现RecycleView中Item的添加、移动动画；重新完成了订单管理部分的界面设计；修改了库存管理部分的一些设计；正式引入的数据库，删去假数据；实现了图片的启动时加载；引入viewModel管理数据；完成了订单管理信息和库存信息的联">
+<meta property="og:type" content="article">
+<meta property="og:title" content="烟草仓储管理系统开发笔记（六）">
+<meta property="og:url" content="http://example.com/2022/05/04/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简述 好久没写笔记了，这段时间效率不是很高，中间的五一假期也没有推进进度，所以总体完成的内容不是很多，内容不多，遇到的问题却还不少💢数来这段时间主要完成的内容有：实现RecycleView中Item的添加、移动动画；重新完成了订单管理部分的界面设计；修改了库存管理部分的一些设计；正式引入的数据库，删去假数据；实现了图片的启动时加载；引入viewModel管理数据；完成了订单管理信息和库存信息的联">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.starnight.top/img/20220504233946.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220504234343.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220504234518.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220504235328.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220505105457.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220505105821.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220505105850.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220505110230.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220505110351.png">
+<meta property="article:published_time" content="2022-05-04T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-18T11:50:32.644Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/20220504233946.png">
+  
+  
+  <title>烟草仓储管理系统开发笔记（六） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="烟草仓储管理系统开发笔记（六）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-04 23:00" pubdate>
+          May 4, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          90 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">烟草仓储管理系统开发笔记（六）</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1>简述</h1>
+<p>好久没写笔记了，这段时间效率不是很高，中间的五一假期也没有推进进度，所以总体完成的内容不是很多，内容不多，遇到的问题却还不少💢数来这段时间主要完成的内容有：实现RecycleView中Item的添加、移动动画；重新完成了订单管理部分的界面设计；修改了库存管理部分的一些设计；正式引入的数据库，删去假数据；实现了图片的启动时加载；引入viewModel管理数据；完成了订单管理信息和库存信息的联动</p>
+<h1>RecycleView中的Item动画</h1>
+<p>首先时RecycleView中的添加删除Item时的动画，因为我每次添加删除数据都是从数据库获取，并且有个撤销操作，需要将数据插回到原来的位置，而这个位置不同的Item是不一样的，因此无法直接使用BRVAH提供的addData方法，此外，即使使用addData方法实现了表面的数据恢复，但由于数据库中使用的是insert方法，因此在数据库中的数据并没有插入到原有位置，而是插入到了最下方，这最终导致的问题是adapter中的数据和数据库中的数据不一致，直观的表现形式就是：“顺序为ABC，删除了B又撤销时，页面显示的为ABC，而实际的数据顺序是ACB，导致点击B Item时，显示的数据是C的。尝试了很多方法都没能实现，最后就采用setList方法重置数据，放弃动画了。</p>
+<p>后来在查看新版本的BRV时发现其可以提供我想要的实现形式，于是进行了尝试，但最终没能成功，不过这次尝试也让我又去查看了一遍BRVAH的代码，因为我发现BRV中的这部分内容貌似是直接从BRVAH中继承来的，所以BRVAH中应该也提供了这种实现形式，最终我发现了其中DiffUtil部分的内容（中文版文档还是2.9版本的，其中也没有写相关内容，Wiki中就只有一个DiffUtil的链接，连一个字的介绍都没有==）最终通过该模块实现了我想要的实现形式</p>
+<h2 id="1-新建自己的DiffCallback类">1. 新建自己的DiffCallback类</h2>
+<p>以用户管理为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserDiffCallback</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">DiffUtil</span>.ItemCallback&lt;User&gt; &#123;  <br>    <span class="hljs-comment">/**  </span><br><span class="hljs-comment">     * Determine if it is the same item     * &lt;p&gt;  </span><br><span class="hljs-comment">     * 判断是否是同一个item  </span><br><span class="hljs-comment">     *     * <span class="hljs-doctag">@param</span> oldItem New data  </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> newItem old Data  </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>  </span><br><span class="hljs-comment">     */</span>  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">areItemsTheSame</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> User oldItem, <span class="hljs-meta">@NonNull</span> User newItem)</span> &#123;  <br>        <span class="hljs-keyword">return</span> oldItem.getId().equals(newItem.getId());  <br>    &#125;  <br>  <br>    <span class="hljs-comment">/**  </span><br><span class="hljs-comment">     * When it is the same item, judge whether the content has changed.     * &lt;p&gt;  </span><br><span class="hljs-comment">     * 当是同一个item时，再判断内容是否发生改变  </span><br><span class="hljs-comment">     *  </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> oldItem New data  </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> newItem old Data  </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span>  </span><br><span class="hljs-comment">     */</span>  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">areContentsTheSame</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> User oldItem, <span class="hljs-meta">@NonNull</span> User newItem)</span> &#123;  <br>        <span class="hljs-keyword">return</span> oldItem.getUsername().equals(newItem.getUsername())  <br>                &amp;&amp; oldItem.getPassword().equals(newItem.getPassword())  <br>                &amp;&amp; oldItem.getPermission() == newItem.getPermission();  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>该DiffCallback类用于判断数据是否发现了变化，即是否Diff了。</p>
+<h2 id="2-为Adapter设置DiffCallback">2. 为Adapter设置DiffCallback</h2>
+<p>为Adapter绑定DiffCallback类，即adapter中的数据根据那个DiffCallback类判断变化，实际代码就一句话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//设置diffCallback  </span><br>adapter.setDiffCallback(<span class="hljs-keyword">new</span> <span class="hljs-title class_">UserDiffCallback</span>());<br></code></pre></td></tr></table></figure>
+<h2 id="3-更新数据">3. 更新数据</h2>
+<p>通过新的<code>setDiffNewData</code>方法来设置数据，而不再是<code>setList</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">userViewModel.getAllUserLive().observe(getActivity(), <span class="hljs-keyword">new</span> <span class="hljs-title class_">Observer</span>&lt;List&lt;User&gt;&gt;() &#123;  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onChanged</span><span class="hljs-params">(List&lt;User&gt; users)</span> &#123;  <br>        <span class="hljs-keyword">if</span> (adapter.getData().size() == <span class="hljs-number">0</span>)  <br>            adapter.setNewInstance(users);  <br>        <span class="hljs-comment">//通过setDiffNewData来通知adapter数据发生变化，并保留动画  </span><br>        adapter.setDiffNewData(users);  <br>        adapter.setList(users);  <br>    &#125;  <br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>这里的setList方法是我在Adapter进行重写，不再刷新数据，只是将users数组传递到Adapter中而已（这一个漏网之鱼，后面的类都改成setMyList了==）</p>
+<p>这样就恢复了添加删除Item时的动画。</p>
+<h1>订单管理</h1>
+<p>之前的订单管理的设计思路是可以展开的条目，即列表中显示的为简单的主要信息，点击条目时下方展开一个新的视图，显示详细的信息，那会儿我花了好长的时间来实现，虽然最终成了，但终究还是有点小问题，而且虽然硬盘损坏，这部分内容也都没了。于是我又想着能不能有更好的呈现方式，后来看到淘宝的购物车界面，发现了里面的一个个购物记录卡片中也显示了很多的信息，也符合”订单“这种设定，于是就想着能不能做个类似淘宝购物车的卡片用于呈现数据。</p>
+<h2 id="主界面">主界面</h2>
+<p><img src="https://images.starnight.top/img/20220504233946.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>卡片中去掉了各种提示标签，像“订单号：”，“用户名：”这种，显得臃肿，改为直接显示数据，通过颜色的明暗来分主次。其中的状态框，根据订单的当前状态不同，有不同的显示效果，更加直观地展示订单的进度。采购订单分为四个状态：申请中、已拒绝、运输中、已完成。销售订单分为五个状态：申请中、待发货、已拒绝、运输中、已完成。订单管理界面的整体框架跟其他页面一致，只是RecycleView中的Item样式不同而已。<br>
+<img src="https://images.starnight.top/img/20220504234343.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="添加对话框">添加对话框</h2>
+<p>添加订单的对话框中就是输入一些基本信息<br>
+<img src="https://images.starnight.top/img/20220504234518.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中经办人信息默认锁定为当前用户，不允许更改，采购日期设定为当天，用户选择购买的原料名称、原料型号、供货商以及数量和价格，其余信息不再此时添加。其中的名称和型号的下拉框采用了二级联动，即当用户选择完原料名称后，根据名称查询数据库得到该名称下的型号列表，将型号列表填充到型号下拉框中，这里也遇到了一些的<a href="obsidian://open?vault=Obsidian&amp;file=E%20-%20Output%2F%E6%AF%95%E8%AE%BE%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%2FAndroid%20Spinner%E4%BA%8C%E7%BA%A7%E8%81%94%E5%8A%A8">问题</a>。</p>
+<p>在点击确定后便向数据库中添加一条采购订单记录，订单状态为”申请中“，等待管理员审核。</p>
+<h2 id="修改对话框">修改对话框</h2>
+<p><img src="https://images.starnight.top/img/20220504235328.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在修改对话框中，订单信息显示得更加完整，在此处用户可以修改上述的基本信息，但入库日期和管理员批注无法修改，入库日期等待库存管理中入库时更新，管理员批注只有管理员可以操作。此外，在Adapter中根据订单状态进行了判断，如果订单状态是申请中和已拒绝，则ok按钮显示的文本是”重新提交“，实现的功能是将订单状态修改为申请中，重新进行申请，如果订单状态是运输中和已完成，则ok按钮显示的文本是”确定“，此时用户不能修改订单内容。</p>
+<h1>库存管理</h1>
+<p>库存管理部分相对于之前所完成的内容没有太多的改动，主要就是工具栏的改动。<br>
+发现了一个设计的致命漏洞💣例如产品，只提供了确认订单的功能，也就是产品只有出而没有入，哪怕只是增加库存都不行😑，同理，原料只有入而没有出，库存只会越积越多。就非常地不合理。所以将确认订单按钮改成了入库和出库。<br>
+<img src="https://images.starnight.top/img/20220505105457.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="产品部分">产品部分</h2>
+<p>在产品部分，点击入库时只需要选择产品，并填写数量和存放区域即可，点击确认后库存数量便增加对应的量。而出库时，则是选择“待发货”状态的订单，读取订单信息并显示在对话框中，设定出库时间，当点击确定时，从库存数量中减去订单所需的产品数，在运输中数量中加上订单的产品数，同时将销售订单界面中对应的订单项的状态改为“运输中”（即联动部分内容）<br>
+<img src="https://images.starnight.top/img/20220505105821.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://images.starnight.top/img/20220505105850.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="原料部分">原料部分</h2>
+<p>原料部分则和产品部分相反，原料部分的出库部分比较简单，就是要出库的原料以及出库数量即可，点击确认后库存数量便减去对应的量。入库部分则对应订单管理，选择“运输中”状态的订单，读取订单信息并显示在对话框中，设定入库时间和存放区域，点击确定时，便从运输中数量中减去对应的原料数，并在库存数量中加上对应的量，同时将采购订单中对应的订单项状态修改为“已完成”<br>
+<img src="https://images.starnight.top/img/20220505110230.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://images.starnight.top/img/20220505110351.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>Room、viewModel</h1>
+<p>Room数据表设计大体和<a href="obsidian://open?vault=Obsidian&amp;file=E%20-%20Output%2F%E6%AF%95%E8%AE%BE%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%2F%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89">第一部分</a>类似，添加了几个字段，例如产品的图片地址等，这里不写了。主要还是整个Room数据的流程。</p>
+<h2 id="1-创建Entity、Dao、Database">1. 创建Entity、Dao、Database</h2>
+<p>这些部分内容都在<a href="obsidian://open?vault=Obsidian&amp;file=E%20-%20Output%2F%E6%AF%95%E8%AE%BE%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%2F%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89">第一部分</a>完成了。</p>
+<h2 id="2-创建ViewModel类">2. 创建ViewModel类</h2>
+<p>所有对页面数据的访问全都放在ViewModel类中，在Fragment中调用ViewModel中的方法来对数据进行操作。在ViewModel中存储一个对应的Dao对象，通过调用dao中的方法来对数据库进行操作，同时在ViewModel中实现部分多线程，因为对数据库的操作不能在主线程中执行。<br>
+以ProductViewModel为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductViewModel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AndroidViewModel</span> &#123;  <br>    <span class="hljs-keyword">private</span> ProductDao dao;  <br>    <span class="hljs-keyword">private</span> LiveData&lt;List&lt;Product&gt;&gt; listLive;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ProductViewModel</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Application application)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(application);  <br>        dao = TestDatabase.Companion.getINSTANCE(application).productDao();  <br>        listLive = dao.getAllProduct();  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertProduct</span><span class="hljs-params">(Product... products)</span> &#123;  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductViewModel</span>.InsertAsyncTask(dao).execute(products);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateProduct</span><span class="hljs-params">(Product... products)</span> &#123;  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductViewModel</span>.UpdateAsyncTask(dao).execute(products);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteProduct</span><span class="hljs-params">(Product... products)</span> &#123;  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProductViewModel</span>.DeleteAsyncTask(dao).execute(products);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">getProductNameList</span><span class="hljs-params">()</span>&#123;  <br>        <span class="hljs-keyword">return</span> dao.getProductNameList();  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title function_">getProductModelListByName</span><span class="hljs-params">(String name)</span>&#123;  <br>        <span class="hljs-keyword">return</span> dao.getProductModelListByName(name);  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> Double <span class="hljs-title function_">getPriceByModel</span><span class="hljs-params">(String model)</span>&#123;  <br>        <span class="hljs-keyword">return</span> dao.getProductByModel(model).getPrice();  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">getProductByModel</span><span class="hljs-params">(String model)</span>&#123;<span class="hljs-keyword">return</span> dao.getProductByModel(model);&#125;  <br>  <br>    <span class="hljs-keyword">public</span> LiveData&lt;List&lt;Product&gt;&gt; <span class="hljs-title function_">getAllProductLive</span><span class="hljs-params">()</span> &#123;  <br>        <span class="hljs-keyword">return</span> listLive;  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">public</span> List&lt;Product&gt; <span class="hljs-title function_">getAllProductNoLive</span><span class="hljs-params">()</span>&#123;  <br>        <span class="hljs-keyword">return</span> dao.getAllProductNoLive();  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">InsertAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AsyncTask</span>&lt;Product, Void, Void&gt; &#123;  <br>        <span class="hljs-keyword">private</span> ProductDao dao;  <br>  <br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">InsertAsyncTask</span><span class="hljs-params">(ProductDao dao)</span> &#123;  <br>            <span class="hljs-built_in">this</span>.dao = dao;  <br>        &#125;  <br>  <br>        <span class="hljs-meta">@Override</span>  <br>        <span class="hljs-keyword">protected</span> Void <span class="hljs-title function_">doInBackground</span><span class="hljs-params">(Product... products)</span> &#123;  <br>            <span class="hljs-keyword">try</span> &#123;  <br>                dao.insertProduct(products);  <br>                PopTip.show(<span class="hljs-string">&quot;添加成功&quot;</span>);  <br>            &#125; <span class="hljs-keyword">catch</span> (Exception exception) &#123;  <br>                exception.printStackTrace();  <br>                PopTip.show(<span class="hljs-string">&quot;添加出错&quot;</span>);  <br>            &#125;  <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;  <br>        &#125;  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UpdateAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AsyncTask</span>&lt;Product, Void, Void&gt; &#123;  <br>        <span class="hljs-keyword">private</span> ProductDao dao;  <br>  <br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">UpdateAsyncTask</span><span class="hljs-params">(ProductDao dao)</span> &#123;  <br>            <span class="hljs-built_in">this</span>.dao = dao;  <br>        &#125;  <br>  <br>        <span class="hljs-meta">@Override</span>  <br>        <span class="hljs-keyword">protected</span> Void <span class="hljs-title function_">doInBackground</span><span class="hljs-params">(Product... products)</span> &#123;  <br>            <span class="hljs-keyword">try</span> &#123;  <br>                dao.updateProduct(products);  <br>                PopTip.show(<span class="hljs-string">&quot;修改成功&quot;</span>);  <br>            &#125; <span class="hljs-keyword">catch</span> (Exception exception) &#123;  <br>                exception.printStackTrace();  <br>                PopTip.show(<span class="hljs-string">&quot;修改出错&quot;</span>);  <br>            &#125;  <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;  <br>        &#125;  <br>    &#125;  <br>  <br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeleteAsyncTask</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AsyncTask</span>&lt;Product, Void, Void&gt; &#123;  <br>        <span class="hljs-keyword">private</span> ProductDao dao;  <br>  <br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">DeleteAsyncTask</span><span class="hljs-params">(ProductDao dao)</span> &#123;  <br>            <span class="hljs-built_in">this</span>.dao = dao;  <br>        &#125;  <br>  <br>        <span class="hljs-meta">@Override</span>  <br>        <span class="hljs-keyword">protected</span> Void <span class="hljs-title function_">doInBackground</span><span class="hljs-params">(Product... products)</span> &#123;  <br>            dao.deleteProduct(products);  <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;        <br>        &#125;  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>因为<code>getAllProductLive</code>方法返回的LiveData类型的数据，所以系统在底层已经实现了子线程的操作，本身就是线程安全的，所以不需要再自己实现，而Insert等方法就需要自己实现，这里使用AsyncTask(虽然已经被弃用了)，自定义对应的操作类，继承AsyncTask，在构造方法中传入dao对象，在doInBackground方法中执行对应的操作。然后ViewModel中提供一个公共方法供外部调用，在方法中新建操作类并执行其操作。<br>
+<strong>错误处理</strong><br>
+在Dao的Insert等方法中添加注解<code>@Throws(Exception::class)</code>，通过注解来抛出错误，在doInBackground中捕获错误并做出对应的操作。</p>
+<h2 id="3-在Fragment中使用基础增删改查方法">3. 在Fragment中使用基础增删改查方法</h2>
+<p>在Fragment中首先声明viewModel对象，然后在onViewCreated方法中，通过ViewModelProvider对viewModel进行初始化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">ProductViewModel viewModel;<br>....<br><span class="hljs-comment">//在onViewCreated方法中初始化</span><br>viewModel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViewModelProvider</span>(<span class="hljs-built_in">this</span>).get(ProductViewModel.class);<br></code></pre></td></tr></table></figure>
+<p>接下来当需要对数据进行修改时调用viewModel提供的公共方法即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(name,model,image,price,usedMaterial);  <br>viewModel.insertProduct(product);<br></code></pre></td></tr></table></figure>
+<h2 id="4-在Fragment中使用非基础增删改查方法">4. 在Fragment中使用非基础增删改查方法</h2>
+<p>根据需求不同，我们往往需要查询不同的数据，而不是只有返回全部数据的方法。例如在上述的“<a href="obsidian://open?vault=Obsidian&amp;file=E%20-%20Output%2F%E6%AF%95%E8%AE%BE%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%2FAndroid%20Spinner%E4%BA%8C%E7%BA%A7%E8%81%94%E5%8A%A8">Spinner二级联动</a>”中，就需要先查询所有的产品名称，再根据名称查询型号列表。所以我们需要在Dao中添加对应的方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Query(<span class="hljs-string">&quot;SELECT name FROM product GROUP BY name&quot;</span>)</span>  <br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getProductNameList</span><span class="hljs-params">()</span></span>:List&lt;String&gt;  <br>  <br><span class="hljs-meta">@Query(<span class="hljs-string">&quot;SELECT model FROM product WHERE name=:name&quot;</span>)</span>  <br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getProductModelListByName</span><span class="hljs-params">(name:<span class="hljs-type">String</span>)</span></span>:List&lt;String&gt;  <br>  <br><span class="hljs-meta">@Query(<span class="hljs-string">&quot;SELECT * FROM product WHERE model=:model&quot;</span>)</span>  <br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getProductByModel</span><span class="hljs-params">(model:<span class="hljs-type">String</span>)</span></span>:Product<br></code></pre></td></tr></table></figure>
+<p>此处返回的数据不再是LiveData，就需要自己实现子线程查询，而这个通过viewModel中的AsyncTask又似乎不能实现，我还不知道怎么能通过viewModel中的AsyncTask向Fragment传递数据，所以最后还是在Fragment中采用New Thread的形式来执行这些方法，并赋值给Fragment中对应的变量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>        productNameList = productViewModel.getProductNameList();  <br>        customerList = customerViewModel.getNameList();  <br>    &#125;  <br>&#125;).start();<br></code></pre></td></tr></table></figure>
+<h1>图片的启动时加载</h1>
+<p>该部分内容可见<a href="obsidian://open?vault=Obsidian&amp;file=E%20-%20Output%2F%E6%AF%95%E8%AE%BE%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%2FAndroid%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%B9%B6%E6%98%BE%E7%A4%BA">Android读取相册图片并显示</a></p>
+<h1>订单管理信息和库存信息联动</h1>
+<p>要实现在订单信息管理界面中修改库存信息，则需要在订单信息管理的Adapter中传入库存信息的ViewModel类，然后在Adapter中调用库存信息的ViewModel中的对应的方法即可。同理在库存信息中修改订单状态也需要在库存信息页面中传入订单的ViewModel，并修改订单的入\出库时间和订单状态，然后调用ViewModel中的更新方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java">order[<span class="hljs-number">0</span>].setState(SaleOrder.STATE_DELIVERY);  <br>order[<span class="hljs-number">0</span>].setDeliveryDate(deliveryDate);  <br>saleOrderViewModel.updateSaleOrder(order);  <br>  <br>inventory[<span class="hljs-number">0</span>].setHostCount(inventory[<span class="hljs-number">0</span>].getHostCount()-count);  <br>inventory[<span class="hljs-number">0</span>].setDeliveryCount(inventory[<span class="hljs-number">0</span>].getDeliveryCount()+count);  <br>viewModel.updateInventory(inventory[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure>
+<h1>遇到的问题</h1>
+<h2 id="Only-the-original-thread-that-created-a-view-hierarchy-can-touch-its-views">Only the original thread that created a view hierarchy can touch its views.</h2>
+<p>这里的报错原因是在子线程中直接操作UI，还是Spinner二级联动中出现的问题，因为需要根据第一个Spinner中的名称来查询型号列表并填充到第二个Spinner中，所以我直接开了子线程执行查询和填充操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> spinnerName.getSelectedItem().toString();  <br>        materialModelList =  materialViewModel.getMaterialModelListByName(name);<br>        ArrayAdapter&lt;String&gt; modelAdapter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayAdapter</span>&lt;String&gt;(getContext(), com.lihang.R.layout.support_simple_spinner_dropdown_item,modelList);  <br>		spinnerModel.setAdapter(modelAdapter);   <br>    &#125;  <br>&#125;).start();<br></code></pre></td></tr></table></figure>
+<p>这里我直接通过<code>spinnerModel.setAdapter()</code>对UI进行了操作，所以报了这个错（不知为啥我之前这么用也没报错==）<br>
+<strong>解决方法</strong><br>
+使用Handler来对UI进行操作，在子线程中运行完成时通过Message来传递数据给Handler，Handler接收到信息后更新UI</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Handler</span> <span class="hljs-variable">mHandler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Handler</span>(Looper.myLooper())&#123;  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">handleMessage</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Message msg)</span> &#123;  <br>        <span class="hljs-built_in">super</span>.handleMessage(msg);  <br>        <span class="hljs-keyword">if</span>(msg.what == SET_SECOND_SPINNER)&#123;  <br>            List&lt;String&gt; modelList = msg.getData().getStringArrayList(<span class="hljs-string">&quot;modelList&quot;</span>);  <br>            ArrayAdapter&lt;String&gt; modelAdapter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayAdapter</span>&lt;String&gt;(getContext(), com.lihang.R.layout.support_simple_spinner_dropdown_item,modelList);  <br>            spinnerModel.setAdapter(modelAdapter);  <br>        &#125;  <br>    &#125;  <br>&#125;;  <br>spinnerName.setOnItemSelectedListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">AdapterView</span>.OnItemSelectedListener() &#123;  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onItemSelected</span><span class="hljs-params">(AdapterView&lt;?&gt; adapterView, View view, <span class="hljs-type">int</span> i, <span class="hljs-type">long</span> l)</span> &#123;  <br>        materialModelList.clear();  <br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;  <br>            <span class="hljs-meta">@Override</span>  <br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;  <br>                <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> spinnerName.getSelectedItem().toString();  <br>                materialModelList =  materialViewModel.getMaterialModelListByName(name);  <br>                <span class="hljs-type">Message</span> <span class="hljs-variable">message</span> <span class="hljs-operator">=</span> Message.obtain();  <br>                message.what = SET_SECOND_SPINNER;;  <br>                <span class="hljs-type">Bundle</span> <span class="hljs-variable">bundle</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bundle</span>();  <br>                bundle.putStringArrayList(<span class="hljs-string">&quot;modelList&quot;</span>, (ArrayList&lt;String&gt;) materialModelList);  <br>                message.setData(bundle);  <br>                mHandler.sendMessage(message);  <br>            &#125;  <br>        &#125;).start();  <br>    &#125;  <br>  <br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onNothingSelected</span><span class="hljs-params">(AdapterView&lt;?&gt; adapterView)</span> &#123; &#125;  <br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>在使用时发现Hanlder被弃用了==，于是查询有没有什么替代，发现直接弃用了Handler的无参构造函数，只要直接指定Looper对象就行了。</p>
+<ul>
+<li>在主线程内运行，指定为主线程的Looper</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Handler</span> <span class="hljs-variable">mhandler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Handler</span>(Looper.getMainLooper());<br></code></pre></td></tr></table></figure>
+<ul>
+<li>在当前线程内运行，指定为当前线程的Looper</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Handler</span> <span class="hljs-variable">mhandler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Handler</span>(Looper.myLooper());<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/BruceZong/article/details/83964218">Android常见报错之 - Only the original thread that created a view hierarchy can touch its views</a><br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/John_Lenon/article/details/124529515">Android Handler被弃用，那么以后怎么使用Handler，或者类似的功能</a></p>
+</blockquote>
+<h1>ToDo</h1>
+<ul>
+<li>[ ]  登录注册界面</li>
+<li>[ ]  报表分析界面</li>
+<li>[ ]  管理员的权限鉴别</li>
+<li>[ ]  模糊搜索功能</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>烟草仓储管理系统开发笔记（六）</div>
+      <div>http://example.com/2022/05/04/烟草仓储管理系统开发笔记（六）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 4, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/20/Vue%E8%B7%A8%E7%BB%84%E4%BB%B6v-model%E5%AE%9E%E7%8E%B0/" title="Vue跨组件v-model实现">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue跨组件v-model实现</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/04/Android%20Spinner%E4%BA%8C%E7%BA%A7%E8%81%94%E5%8A%A8/" title="Android Spinner二级联动">
+                        <span class="hidden-mobile">Android Spinner二级联动</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

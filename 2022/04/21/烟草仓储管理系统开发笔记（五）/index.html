@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="悲报 前几天写完的采购订单界面，花了很长的时间去实现树形列表，构思数据的呈现形式，算是写了挺多的内容了，前天晚上明明都暂告一段落了，却忘记了push到GitHub，结果昨天打开电脑，发现存放毕设的硬盘损坏了，系统直接识别不到硬盘了。。。也就是前几天写的采购订单页面全部作废。GitHub上的最新的commit也是两天前的，直接导致昨天心态炸裂，摆了一天。期望着今天硬盘能够奇迹般恢复（毕竟之前有过一次">
+<meta property="og:type" content="article">
+<meta property="og:title" content="烟草仓储管理系统开发笔记（五）">
+<meta property="og:url" content="http://example.com/2022/04/21/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="悲报 前几天写完的采购订单界面，花了很长的时间去实现树形列表，构思数据的呈现形式，算是写了挺多的内容了，前天晚上明明都暂告一段落了，却忘记了push到GitHub，结果昨天打开电脑，发现存放毕设的硬盘损坏了，系统直接识别不到硬盘了。。。也就是前几天写的采购订单页面全部作废。GitHub上的最新的commit也是两天前的，直接导致昨天心态炸裂，摆了一天。期望着今天硬盘能够奇迹般恢复（毕竟之前有过一次">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.starnight.top/img/20220421224759.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220421230047.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220421232051.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220421232702.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220421233606.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220421235246.png">
+<meta property="article:published_time" content="2022-04-21T14:28:00.000Z">
+<meta property="article:modified_time" content="2024-03-18T11:49:38.492Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/20220421224759.png">
+  
+  
+  <title>烟草仓储管理系统开发笔记（五） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="烟草仓储管理系统开发笔记（五）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-21 22:28" pubdate>
+          April 21, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">烟草仓储管理系统开发笔记（五）</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1>悲报</h1>
+<p>前几天写完的采购订单界面，花了很长的时间去实现树形列表，构思数据的呈现形式，算是写了挺多的内容了，前天晚上明明都暂告一段落了，却忘记了push到GitHub，结果昨天打开电脑，发现存放毕设的硬盘损坏了，系统直接识别不到硬盘了。。。也就是前几天写的采购订单页面全部作废。GitHub上的最新的commit也是两天前的，直接导致昨天心态炸裂，摆了一天。期望着今天硬盘能够奇迹般恢复（毕竟之前有过一次），看来当时就不该心存侥幸，留下这块硬盘，明明都买了新硬盘，但因为硬盘恢复了便也没更换。不过更重要的还是一定要注意备份，要是那天晚上将写完的内容push到GitHub上，那么硬盘损坏倒也无所谓了。</p>
+<p>今天首先着手把产品信息页面调整了一下，并且把库存管理界面给写了，两个订单管理界面也留个几天，万一硬盘又恢复了呢🤡不过真恢复不了也罢，正好之前的方案也存在一些无法解决的问题，这次换一个实现方式，换一个数据的呈现方式。</p>
+<h1>产品信息界面</h1>
+<p>之前的产品信息界面的Item设计始终觉得不美观，辨识度也不太够，因此今天把产品信息界面进行了重新的设计，考虑再三还是为产品加上了图片字段，更加直接地显示产品信息，也方便库存管理中Item的设计，此外，原本觉得页面没有其他颜色，过于单调，加上图片也方便布局和查看，而原料信息则没有进行更新，一是原料图片也没有什么辨识度，二是原料只是为产品服务而已（”使用原料“）<br>
+<img src="https://images.starnight.top/img/20220421224759.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>重新设计后的Item中去除了名称和型号的标识label，直接用加粗的大号字体显示，使层次更加清晰。</p>
+<h1>库存管理界面</h1>
+<p>由于库存信息中有两大块，一个是产品，一个是原料，两者都存储在Inventory数据表中，通过一个字段Type来分辨存放的是原料还是产品，原本设想过在一个页面中放置两个RecycleView，分别显示产品和原料信息，但总觉得不太妥当，最后还是选择了底部导航栏的方式，再用一个Navigation，在库存的Fragment中再嵌套两个Fragment。为了尽可能多的显示产品和原料的库存条目，将原本的头部布局进行了压缩，将菜单按钮和标题等挪到了同一高度。具体界面如下。<br>
+<img src="https://images.starnight.top/img/20220421230047.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>原料界面也是如此，将标题更换一下而已。</p>
+<h2 id="Fragment嵌套导航实现">Fragment嵌套导航实现</h2>
+<p>因为此处的库存界面本身是一个Fragment，在其中再套NavHostFragment时出现了一点问题，首先是创建Fragment，创建menu的xml文件，创建navigation的xml文件，这些都没有问题，但是NavControll的获取出现了问题。在Activity中通过如下代码实现导航。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">NavigationView</span> <span class="hljs-variable">navigationView</span> <span class="hljs-operator">=</span> findViewById(R.id.navigationView);  <br><span class="hljs-type">NavHostFragment</span> <span class="hljs-variable">navHostFragment</span> <span class="hljs-operator">=</span> (NavHostFragment) <br>    getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);  <br><span class="hljs-type">NavController</span> <span class="hljs-variable">controller</span> <span class="hljs-operator">=</span> navHostFragment.getNavController();  <br>NavigationUI.setupWithNavController(navigationView,controller);<br></code></pre></td></tr></table></figure>
+<p>首先获取到navigationView，通过<code>getSupportFragmentManager()</code>方法获取FragmentContainerView，并通过类型强转为NavHostFragment，最后通过NavHostFragment的<code>getNavControll()</code>方法获取到NavControll，而在Fragment内部的NavHostFragment中，首先就没有<code>getSupportFragmentManager()</code>方法，这是Activity的方法。那么Fragment中用什么呢，在Fragment中有一个方法<code>getChildFragmentManager()</code>，就是用来获取嵌套中的Fragment的FragmentContainer。于是我便参照Activity，在Fragment的onCreate()方法中加入了修改后的代码，结果还是报错，程序找不到NavHostFragment，即<code>findFragmentById</code>方法找到的Fragment是个null，于是我又尝试了其他的方法，结果都没有成功，最后意识到一点，我要查找的Fragment是页面中的组件，而在Fragment的onCreate方法中，页面都还没有创建，自然也就无法找到页面中的组件了，于是把代码挪到了onCreateView中，结果成功实现了想要的效果。具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>  <br><span class="hljs-keyword">public</span> View <span class="hljs-title function_">onCreateView</span><span class="hljs-params">(LayoutInflater inflater, ViewGroup container,  </span><br><span class="hljs-params">                         Bundle savedInstanceState)</span> &#123;  <br>    <span class="hljs-comment">// Inflate the layout for this fragment  </span><br>    <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> inflater.inflate(R.layout.fragment_inventory, container, <span class="hljs-literal">false</span>);  <br>    <span class="hljs-type">BottomNavigationView</span> <span class="hljs-variable">bottomNavigationView</span> <span class="hljs-operator">=</span>view.findViewById(R.id.inventoryBottomNavigationView);  <br>    <span class="hljs-type">NavHostFragment</span> <span class="hljs-variable">navHostFragment</span> <span class="hljs-operator">=</span> (NavHostFragment) <br>        getChildFragmentManager().findFragmentById(R.id.inventoryNavHostFragment);  <br>    <span class="hljs-type">NavController</span> <span class="hljs-variable">controller</span> <span class="hljs-operator">=</span> navHostFragment.getNavController();  <br>    NavigationUI.setupWithNavController(bottomNavigationView,controller);  <br>    <span class="hljs-keyword">return</span> view;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="产品信息Item设计与实现">产品信息Item设计与实现</h2>
+<p>库存管理中的产品信息需要的体现的内容有产品的名称和型号，产品的库存情况，由于产品只需要销售，而不需要购入，因此设计了两个数据，一个是库存数量，一个是运输中数量（售出数量），因为是出库，所以颜色设定为红色。而库存数量则设定为蓝色，同时为两个数据加上对应的Iconfont图标。具体实现结果如下：<br>
+<img src="https://images.starnight.top/img/20220421232051.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>由于库存信息中只需要查看，而不需要进行删除操作，因此这里的RecycleView移除了滑动删除功能。这里的item右侧添加了一个向右图标，标志可以点击打开进一步的详细页面，暂时还没写😂，优先级可能没那么高，尽量实现。</p>
+<h2 id="原料信息Item设计与实现">原料信息Item设计与实现</h2>
+<p>原料信息Item和产品信息Item相比，少了图片，此外因为原料是入库，因此将入库的字体颜色设定为绿色。具体实现效果如下：<br>
+<img src="https://images.starnight.top/img/20220421232702.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="公用Adapter">公用Adapter</h2>
+<p>因为原料信息和产品信息的内容几乎相同，唯一的区别只是产品信息有图片，因此两个RecycleView公用一个Adapter，在自定义的ViewHolder中定义所有的组件，包括ImageView，不过因为在原料信息中没有ImageView，所以此时在ViewHolder中findViewById方法找到的是个null，所以在赋值时需要进行判断，根据数据表中设计的Type字段来分辨是产品信息还是原料信息，只有在当前是产品信息时才对ImageView设定图片路径，如果是原料信息则不对ImageView进行操作。</p>
+<p><strong>ViewHolder</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyInventoryViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseViewHolder</span> &#123;  <br>    TextView name,model,hostCount,deliveryCount;  <br>    ImageView image;  <br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyInventoryViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> View view)</span> &#123;  <br>        <span class="hljs-built_in">super</span>(view);  <br>        name = view.findViewById(R.id.textViewName);  <br>        model = view.findViewById(R.id.textViewModel);  <br>        hostCount = view.findViewById(R.id.textViewHostCount);  <br>        deliveryCount = view.findViewById(R.id.textViewDeliveryCount);  <br>        image = view.findViewById(R.id.productImageView);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>赋值方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>  <br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">convert</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> MyInventoryViewHolder holder, InventoryTest inventory)</span> &#123;  <br>    holder.name.setText(inventory.getName());  <br>    holder.model.setText(inventory.getModel());  <br>    holder.hostCount.setText(String.valueOf(inventory.getHostCount()));  <br>    holder.deliveryCount.setText(String.valueOf(inventory.getDeliveryCount()));  <br>    <span class="hljs-keyword">if</span> (inventory.getType() == InventoryTest.TYPE_PRODUCT)  <br>        <span class="hljs-comment">//设置图片路径  </span><br>        <span class="hljs-comment">//holder.image.setImageURI();  </span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="产品订单送达确认">产品订单送达确认</h2>
+<p>在产品信息界面中，我仍然放置了一个添加按钮，不过这个按钮不是用来添加产品库存信息的，而是进行订单的确认，因为订单存在”运输中“这个状态，而此时订单中的售出数量包含在<code>deliveryCount</code>中，且订单一直为运输中状态，那么订单怎么完成呢，就是在库存界面确认订单送达，则订单状态改为完成，并减去对应的运输中数量。点击按钮后弹出一个底部对话框，对话框中的数据都由TextView呈现，无法修改，用户可做的就是选择要操作的哪个订单（Spinner），以及设定订单完成的时间。具体实现界面如下：<br>
+<img src="https://images.starnight.top/img/20220421233606.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中送达日期由两部分组成，第一部分是一个Date类型的输入框，用户可以手动输入，第二部分是一个IconFontTextView，用于显示图标并响应点击事件，原本尝试了EditText的drawableRight属性，但显示效果差强人意，更重要的是，不知道怎么样（能不能）单独实现这个图标的点击事件，所以干脆用IconFontTextView替代。<br>
+点击日历按钮后跳出自带的日期选择器，使用的是DatePickerDialog，在此处也遇到了两个小问题。</p>
+<h3 id="初始日期的设定">初始日期的设定</h3>
+<p>第一个问题是初始日期的设定，DatePickerDialog默认是1970年那个时间，那显然不方便使用，因此设定了三个变量分别表示年月日，并通过Calendar类获取了当前日期作为初始值。DatePickerDialog的构造函数中需要有一个<code>OnDateSetListener</code>，那就创建一个，当日期选择完成时，将选择的日期分别赋值给三个本地变量，并同步设置送达日期EditText的数值，而此时就出现了问题，因为年月日的三个变量是外部变量，在定义<code>OnDateSetListener</code>时是定义的内部类，而在内部类中要使用外部变量就需要将外部变量定义为final，而定义为final又无法赋值，最后只能用IDE建议的修改方式，将年月日变量修改为final的单容量数组。具体代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java">addButton.setOnClickListener(v-&gt;&#123;  <br>    BottomDialog.show(<span class="hljs-string">&quot;确认送达&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnBindView</span>&lt;BottomDialog&gt;(R.layout.dialog_inventory_check_product) &#123;  <br>        <span class="hljs-meta">@Override</span>  <br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onBind</span><span class="hljs-params">(BottomDialog dialog, View v)</span> &#123;  <br>            <span class="hljs-comment">//<span class="hljs-doctag">TODO:</span> 添加“确认”事件  </span><br>            Spinner spinner;  <br>            TextView name,model,customer,count,price,saleDate,calendar;  <br>            EditText deliveryDate;  <br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] mYear = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1</span>];  <br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] mMonth = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1</span>];  <br>            <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] mDay = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">1</span>];  <br>            mYear[<span class="hljs-number">0</span>] = Calendar.getInstance(Locale.CHINA).get(Calendar.YEAR);  <br>            mMonth[<span class="hljs-number">0</span>] = Calendar.getInstance(Locale.CHINA).get(Calendar.MONTH);  <br>            mDay[<span class="hljs-number">0</span>] = Calendar.getInstance(Locale.CHINA).get(Calendar.DAY_OF_MONTH);  <br>  <br>            spinner = v.findViewById(R.id.orderSpinner);  <br>            name = v.findViewById(R.id.textViewName);  <br>            model = v.findViewById(R.id.textViewModel);  <br>            customer = v.findViewById(R.id.textViewCustomer);  <br>            count = v.findViewById(R.id.textViewCount);  <br>            price = v.findViewById(R.id.textViewPrice);  <br>            saleDate = v.findViewById(R.id.textViewSaleDate);  <br>            calendar = v.findViewById(R.id.textViewCalendar);  <br>            deliveryDate = v.findViewById(R.id.editTextDeliveryDate);  <br>  <br>            calendar.setOnClickListener(view1-&gt;&#123;  <br>                DatePickerDialog.<span class="hljs-type">OnDateSetListener</span> <span class="hljs-variable">mDateSetListener</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatePickerDialog</span>.OnDateSetListener() &#123;  <br>                    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onDateSet</span><span class="hljs-params">(DatePicker view, <span class="hljs-type">int</span> year, <span class="hljs-type">int</span> monthOfYear, <span class="hljs-type">int</span> dayOfMonth)</span> &#123;  <br>                        mYear[<span class="hljs-number">0</span>] = year;  <br>                        mMonth[<span class="hljs-number">0</span>] = monthOfYear;  <br>                        mDay[<span class="hljs-number">0</span>] = dayOfMonth;  <br>                        deliveryDate.setText(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>().append(mYear[<span class="hljs-number">0</span>]).append(<span class="hljs-string">&quot;-&quot;</span>)  <br>                                .append(mMonth[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>).append(<span class="hljs-string">&quot;-&quot;</span>).append(mDay[<span class="hljs-number">0</span>]));  <br>                    &#125;  <br>                &#125;;  <br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">DatePickerDialog</span>(getActivity(), mDateSetListener, mYear[<span class="hljs-number">0</span>], mMonth[<span class="hljs-number">0</span>], mDay[<span class="hljs-number">0</span>]).show();  <br>            &#125;);  <br>        &#125;  <br>    &#125;).setOkButton(<span class="hljs-string">&quot;确定&quot;</span>).setCancelButton(<span class="hljs-string">&quot;取消&quot;</span>);  <br>&#125;);<br></code></pre></td></tr></table></figure>
+<h3 id="DatePickerDialog显示英文">DatePickerDialog显示英文</h3>
+<p>但是很奇怪，DatePickerDialog默认显示的是英文，没能找到办法修改为中文，在网上查阅了许多也没发现有说这个问题的什么内容，不过有些类似问题倒是提到了”修改程序的默认地址“，也就是说，因为程序的默认地址不是中文区，所以显示不是中文，所以通过设置Local的默认值来修改地址</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//将系统环境默认设置为中文  </span><br>Locale.setDefault(Locale.SIMPLIFIED_CHINESE);<br></code></pre></td></tr></table></figure>
+<p>这样就可以将DatePickerDialog显示为简体中文，但最后发现其实问题是我的安卓模拟器设置的语言是英文😂，所以DatePickerDialog也就使用的英文，将系统语言改成中文就好了。<br>
+<img src="https://images.starnight.top/img/20220421235246.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>烟草仓储管理系统开发笔记（五）</div>
+      <div>http://example.com/2022/04/21/烟草仓储管理系统开发笔记（五）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 21, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/03/Android%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%B9%B6%E6%98%BE%E7%A4%BA/" title="Android读取相册图片并显示">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Android读取相册图片并显示</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/18/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/" title="烟草仓储管理系统开发笔记（四）">
+                        <span class="hidden-mobile">烟草仓储管理系统开发笔记（四）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

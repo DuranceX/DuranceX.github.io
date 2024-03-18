@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="java课程的学习笔记，部分和c++重合的内容不做描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java学习笔记">
+<meta property="og:url" content="http://example.com/2020/03/05/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java课程的学习笔记，部分和c++重合的内容不做描述">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/java/header.png">
+<meta property="article:published_time" content="2020-03-05T06:38:37.000Z">
+<meta property="article:modified_time" content="2024-03-18T09:07:03.643Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/java/header.png">
+  
+  
+  <title>java学习笔记 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="java学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-03-05 14:38" pubdate>
+          March 5, 2020 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">java学习笔记</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>java课程的学习笔记，部分和c++重合的内容不做描述</p>
+<span id="more"></span>
+<h1>一、安装java</h1>
+<h2 id="下载java">下载java</h2>
+<p>去<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">Oracle</a>官网下载。</p>
+<h2 id="添加环境变量">添加环境变量</h2>
+<p>在&quot;系统变量&quot;中进行添加</p>
+<ol>
+<li>添加JAVA_HOME<br>
+选择“新建”，变量名为<code>JAVA_HOME</code>，变量值为jdk的路径，例如<code>C:\Program Files\Java\jdk-12.0.2</code></li>
+<li>添加CLASSPATH<br>
+选择“新建”，变量名为<code>CLASSPATH</code>，变量值为<code>.;%JAVA_HOME%\lib;</code></li>
+<li>添加Path<br>
+找到<code>Path</code>项，双击打开（win7等直接在变量值最前面加），选择“新建”，变量值为jdk目录下bin文件夹的路径，例如<code>C:\Program Files\Java\jdk-12.0.2\bin</code></li>
+</ol>
+<h2 id="测试是否安装成功">测试是否安装成功</h2>
+<p>打开<code>CMD</code>窗口，输入<code>java -version</code>，有输出则说明安装完成。</p>
+<h1>二、基本数据类型</h1>
+<h2 id="分类和长度">分类和长度</h2>
+<p>与c++一致，其中注意char型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:center">初始值</th>
+<th style="text-align:center">范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">16 bits</td>
+<td style="text-align:center">‘\u0000’</td>
+<td style="text-align:center">‘\u0000~\uffff’</td>
+</tr>
+</tbody>
+</table>
+<h2 id="浮点数">浮点数</h2>
+<p>默认为double型</p>
+<ul>
+<li>十进制数形式<br>
+由数字和小数点组成，且必须有小数点。<br>
+如：0.123,  1.23, 123.0</li>
+<li>科学计数法形式　　　<br>
+如：123e3或123E3，其中e或E之前必须有数字，且e或E后面的指数必须为整数。</li>
+<li>float型的值,必须在数字后加f或F,如1.23f。</li>
+<li>double型的值,可以在数字后加d或D,如1.23D。</li>
+</ul>
+<h2 id="转义符">转义符</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">转义字符</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">回车(\u000a)</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">Tab(\u0009)</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">空格(\u0008)</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">换行(\u000d)</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页(\u000c)</td>
+</tr>
+<tr>
+<td style="text-align:left">\’</td>
+<td style="text-align:left">单引号(\u0027)</td>
+</tr>
+<tr>
+<td style="text-align:left">\&quot;</td>
+<td style="text-align:left">双引号(\u0022)</td>
+</tr>
+<tr>
+<td style="text-align:left">\ddd</td>
+<td style="text-align:left">三位八进制</td>
+</tr>
+<tr>
+<td style="text-align:left">\udddd</td>
+<td style="text-align:left">四位16进制</td>
+</tr>
+<tr>
+<td style="text-align:left">\|反斜杠(\u005c)</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h1>三、输入输出</h1>
+<h2 id="输出">输出</h2>
+<p>使用<code>System.out.print</code>进行输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.print();  \\输出内容<br>System.out.println();  \\输出内容，并换行<br>System.out.printf();   \*支持占位符<br>%d: 输出<span class="hljs-type">int</span>型数据<br>%c: 输出<span class="hljs-type">char</span>型数据<br>%f: 输出浮点型数据，小数部分最多保留<span class="hljs-number">6</span>位     <br>%s: 输出字符串数据<br>%md: 输出的<span class="hljs-type">int</span>型数据占m列   <br>%m.nf:输出的浮点型数据占m列，小数点保留n位。<br>*/<br></code></pre></td></tr></table></figure>
+<h2 id="输入">输入</h2>
+<p>使用输入需要先导入文件，<code> import java.utli.*;</code>或<code>import java.utli.Scanner;</code></p>
+<p>进行使用时，需要先创建Scanner对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Scanner</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br></code></pre></td></tr></table></figure>
+<p>在使用时使用<code>input.next类型()</code>来读取输入内容，例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> input.nextInt();<br><span class="hljs-type">float</span> <span class="hljs-variable">y</span> <span class="hljs-operator">=</span> input.nextFloat();<br></code></pre></td></tr></table></figure>
+<h1>四、函数、类格式差异</h1>
+<h2 id="main函数">main函数</h2>
+<p>java main函数格式为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span><br>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="类">类</h2>
+<p>类为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">balabala</span>()<br>&#123;<br>    <br>&#125;<br></code></pre></td></tr></table></figure>
+<h1>五、数组</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//创建</span><br>arrayType arrayName[];  <br><span class="hljs-comment">//或</span><br>arrayType []arrayName;<br><br><span class="hljs-comment">//静态初始化</span><br>arrayType arrayName[] = &#123;elem1, elem2, elem3, ...&#125;;<br><span class="hljs-comment">//或</span><br>arrayType []arrayName = &#123;elem1, elem2, elem3, ...&#125;;<br><br><span class="hljs-comment">//动态初始化</span><br>arrayTyoe arrayName[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">arrayType</span>[x];<br><span class="hljs-comment">//或</span><br>arrayTyoe []arrayName = <span class="hljs-keyword">new</span> <span class="hljs-title class_">arrayType</span>[x];<br><br><span class="hljs-comment">//复合数据类型动态初始化</span><br>arrayType arrayName[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">arrayTyppe</span>[x];<br><span class="hljs-comment">//然后依次为数据元素开辟空间，相当于二维数组</span><br>arrayName[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">arrayType</span>[paramList]; <span class="hljs-comment">//i=0,1,2,...,paramList-1</span><br><span class="hljs-comment">//例如</span><br>String stringArray[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[<span class="hljs-number">4</span>];<br>stringArray[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;Welcome&quot;</span>);<br>stringArray[<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;To&quot;</span>);<br>stringArray[<span class="hljs-number">2</span>] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;My&quot;</span>);<br>stringArray[<span class="hljs-number">3</span>] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;Blog&quot;</span>);<br></code></pre></td></tr></table></figure>
+<p>数组的复制操作，java提供<code>System.arraycopy</code>函数来进行操作，格式为<br>
+<code>System.arraycopy(SourceArray,sourcePositon,DestinationArray,DestinationPositon,number)</code><br>
+<code>SourceArray</code>表示被复制的数组，<code>DestinationArray</code>表示复制的数组，即Source-&gt;Destination<br>
+<code>SourcePosition</code>表示从下标几开始复制，<code>DestinationPosition</code>表示从下标几开始粘贴，<code>number</code>表示复制几位。<br>
+示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> array1[ ]=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">13</span>,<span class="hljs-number">17</span>&#125;;<br><span class="hljs-type">int</span>[] array2=&#123;<span class="hljs-number">101</span>,<span class="hljs-number">102</span>,<span class="hljs-number">103</span>,<span class="hljs-number">104</span>,<span class="hljs-number">105</span>,<span class="hljs-number">106</span>,<span class="hljs-number">107</span>,<span class="hljs-number">108</span>&#125;;<br>System.arraycopy(array1,<span class="hljs-number">2</span>,array2,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);   <span class="hljs-comment">//表示从array1[2]开始复制，即5，从array2[3]开始粘贴，即104，复制4位</span><br>System.out.println(<span class="hljs-string">&quot;After copy, array2:&quot;</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt; array2.length;i++)<br>  System.out.println(<span class="hljs-string">&quot;array2[&quot;</span>+i+<span class="hljs-string">&quot;]=&quot;</span>+array2[i]);<br><span class="hljs-comment">//最后结果为</span><br>After copy, array2:<br>array2[<span class="hljs-number">0</span>]=<span class="hljs-number">101</span><br>array2[<span class="hljs-number">1</span>]=<span class="hljs-number">102</span><br>array2[<span class="hljs-number">2</span>]=<span class="hljs-number">103</span><br>array2[<span class="hljs-number">3</span>]=<span class="hljs-number">5</span><br>array2[<span class="hljs-number">4</span>]=<span class="hljs-number">7</span><br>array2[<span class="hljs-number">5</span>]=<span class="hljs-number">11</span><br>array2[<span class="hljs-number">6</span>]=<span class="hljs-number">13</span><br>array2[<span class="hljs-number">7</span>]=<span class="hljs-number">108</span><br></code></pre></td></tr></table></figure>
+<h1>六、向量</h1>
+<p>向量是java.util包中的一个类，实现了类似 ==动态数组== 的功能，跟数组的区别是向量的容量是 ==可变== 的</p>
+<ul>
+<li>向量的容量——向量的存储空间大小（最大下标）</li>
+<li>向量的长度——向量的实际元素个数</li>
+<li>向量的容量增量——当向量长度达到了容量时，容量的增加量
+<ul>
+<li>当容量增量为0时，当向量长度达到容量时，容量变为原来两倍</li>
+<li>当容量增量不等于0时，当向量长度达到容量时，新容量=原容量+容量增量</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//声明格式：</span><br>Vector &lt;data Type&gt; VariableName = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector</span> &lt;data Type&gt;(parameter)<br><br><span class="hljs-comment">//三种形式</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Vector</span><span class="hljs-params">()</span>   <br><span class="hljs-comment">//创建空向量，初始容量为10，容量增量为0</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Vector</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span><br><span class="hljs-comment">//创建空向量，初始容量为x，容量增量为0</span><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Vector</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span><br><span class="hljs-comment">//创建空向量，初始容量为x，容量增量为y</span><br></code></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java">Vector&lt;String&gt; v1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector</span>&lt;String&gt;(<span class="hljs-number">5</span>); <br>v1.addElement(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;one&quot;</span>));   <span class="hljs-comment">//添加元素&quot;one&quot;，下同</span><br>v1.addElement(<span class="hljs-string">&quot;three&quot;</span>);<br>v1.addElement(<span class="hljs-string">&quot;four&quot;</span>);<br>v1.insertElementAt(<span class="hljs-string">&quot;zero&quot;</span>,<span class="hljs-number">0</span>);     <span class="hljs-comment">//在下标0位置添加元素&quot;zero&quot;，后续元素自动右移，下同</span><br>v1.insertElementAt(<span class="hljs-string">&quot;two&quot;</span>,<span class="hljs-number">2</span>);<br>v1.insertElementAt(<span class="hljs-string">&quot;five&quot;</span>,<span class="hljs-number">5</span>); <br>System.out.println(<span class="hljs-string">&quot;v1:&quot;</span>+v1); <br>System.out.println(<span class="hljs-string">&quot;v1的容量为：&quot;</span> + v1.capacity( ));   <br>Vector&lt;String&gt; v2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vector</span>&lt;String&gt;(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>); <br>v2.addElement(<span class="hljs-string">&quot;one&quot;</span>);<br>v2.addElement(<span class="hljs-string">&quot;three&quot;</span>);<br>v2.addElement(<span class="hljs-string">&quot;four&quot;</span>);<br>v2.insertElementAt(<span class="hljs-string">&quot;zero&quot;</span>,<span class="hljs-number">0</span>); <br>v2.insertElementAt(<span class="hljs-string">&quot;two&quot;</span>,<span class="hljs-number">2</span>);<br>v2.insertElementAt(<span class="hljs-string">&quot;five&quot;</span>,<span class="hljs-number">5</span>); <br>System.out.println(<span class="hljs-string">&quot;v2:&quot;</span>+v2);<br>System.out.println(<span class="hljs-string">&quot;v2的容量为：&quot;</span> + v2.capacity( ));<br><br><span class="hljs-comment">//输出为：</span><br>v1:[zero, one, two, three, four, five]<br>v1的容量为：<span class="hljs-number">10</span><br>v2:[zero, one, two, three, four, five]<br>v2的容量为：<span class="hljs-number">6</span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">首先看第一个例子，创建方式是Vector(int x)，说明初始容量为5，容量增量为0。因此当向量的长度达到容量(5)时，向量的容量翻倍，所以输出出来的V1的容量是10。</span><br><span class="hljs-comment">第二个例子，创建方式是Vector(int x, int y)，说明初始容量为5，容量增量为0，因此当向量的长度达到容量(5)时，向量的新容量等于原容量+容量增量，即5+1=6，所以输出的V2的容量为6.</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java/" class="category-chain-item">java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+        <a href="/tags/java/">#java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>java学习笔记</div>
+      <div>http://example.com/2020/03/05/java学习笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 5, 2020</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/05/HTML5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="HTML5学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML5学习笔记</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/04/%E4%B8%BB%E9%A2%98%E4%B8%ADnote%E6%8F%90%E7%A4%BA%E6%A1%86%E7%9A%84%E4%BD%BF%E7%94%A8/" title="主题中note提示框的使用">
+                        <span class="hidden-mobile">主题中note提示框的使用</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="安卓的毕设为烟草仓储管理系统，本科期间最后一个开发项目了，上学年还有安卓的课程，不过也是经典的用完就忘，当时课设所使用的内容在现在也只留下了一个大概印象了，而每次开发总得学到些东西，因此就又从头开始看起了安卓的教程，不过也没能找到近年的评价好的安卓教程，最后直接看jetpack相关的教程。在看了好几天的教程后，终于开始了毕设的编写，因为教程的后半部分使用的是kotlin代码，虽然我并没有学习过，但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="烟草仓储管理系统开发笔记（一）">
+<meta property="og:url" content="http://example.com/2022/04/09/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安卓的毕设为烟草仓储管理系统，本科期间最后一个开发项目了，上学年还有安卓的课程，不过也是经典的用完就忘，当时课设所使用的内容在现在也只留下了一个大概印象了，而每次开发总得学到些东西，因此就又从头开始看起了安卓的教程，不过也没能找到近年的评价好的安卓教程，最后直接看jetpack相关的教程。在看了好几天的教程后，终于开始了毕设的编写，因为教程的后半部分使用的是kotlin代码，虽然我并没有学习过，但">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.starnight.top/img/20220411205905.png">
+<meta property="og:image" content="https://images.starnight.top/img/20220411210918.png">
+<meta property="article:published_time" content="2022-04-09T13:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-18T11:48:35.318Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/20220411205905.png">
+  
+  
+  <title>烟草仓储管理系统开发笔记（一） - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="烟草仓储管理系统开发笔记（一）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-09 21:00" pubdate>
+          April 9, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">烟草仓储管理系统开发笔记（一）</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on March 18, 2024 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>安卓的毕设为烟草仓储管理系统，本科期间最后一个开发项目了，上学年还有安卓的课程，不过也是经典的用完就忘，当时课设所使用的内容在现在也只留下了一个大概印象了，而每次开发总得学到些东西，因此就又从头开始看起了安卓的教程，不过也没能找到近年的评价好的安卓教程，最后直接看jetpack相关的教程。在看了好几天的教程后，终于开始了毕设的编写，因为教程的后半部分使用的是kotlin代码，虽然我并没有学习过，但感觉使用kotlin构建Room的实体类还是要方便不少，因此在数据库设计部分使用kotlin，其余部分仍然使用Java。</p>
+<h1>功能逻辑梳理</h1>
+<p>和以往不同的是，这次不是刚开始项目就直接上手写，写了这么多的课设也多少明白了前期设计的重要性，所以首先对软件的功能进行了梳理，主要功能内容分为用户管理、产品信息管理、原料信息管理、客户信息管理、供应商信息管理、采购订单管理、销售订单管理、库存管理以及报表分析。更加详细的内容如以下的思维导图所呈现。其中黄色的为可选功能，粉色的为注释。<br>
+<img src="https://images.starnight.top/img/20220411205905.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>数据库设计</h1>
+<p>数据库也是前期就应该设计好的，后续对数据库进行的更改非常麻烦，所以这次首先根据功能列表设计好数据库的结构，使用Navicat16生成数据进行了测试，并根据需要用到的数据查询情况设计了对应的视图，确保都能获得想要的效果。具体内容如下。<br>
+<img src="https://images.starnight.top/img/20220411210918.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h1>数据库编写</h1>
+<p>在Android的数据库编写中，使用Kotlin语言和Room组件进行设计，设计的表全部放于Entities包下，其中报表分析所需要的Report表中不存放数据，而是使用视图从其他表中获取数据进行呈现，对于一些数值有限可选的变量设计为静态变量，增加可读性。新建dao包，在其中为每个实体类都添加对应的Dao接口，在Dao接口中定义各种增删改查操作。新建一个抽象类database，在其中返回各个实体的dao对象，并通过kotlin的伴生对象设计为单例模式。<br>
+<strong>Entity示例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Entity(tableName = <span class="hljs-string">&quot;sale_order&quot;</span>)</span>  <br><span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SaleOrder</span>(  <br>    <span class="hljs-comment">//订单号  </span><br> <span class="hljs-meta">@PrimaryKey(autoGenerate = true)</span>  <br>    <span class="hljs-keyword">val</span> orderId:<span class="hljs-built_in">Int</span>=<span class="hljs-number">1</span>,  <br> <span class="hljs-comment">//售出产品名称  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;productName&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> productName:String,  <br> <span class="hljs-comment">//售出产品型号  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;productModel&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> productModel:String,  <br> <span class="hljs-comment">//销售数量  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;count&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> count:<span class="hljs-built_in">Int</span>,  <br> <span class="hljs-comment">//销售总价格  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;price&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> price:<span class="hljs-built_in">Float</span>,  <br> <span class="hljs-comment">//客户名称  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;customer&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> customer:String,  <br> <span class="hljs-comment">//销售日期  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;saleDate&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> saleDate: Date,  <br> <span class="hljs-comment">//预计送达日期  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;deliveryDate&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> deliveryDate: Date,  <br> <span class="hljs-comment">//订单状态  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;state&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> state:String,  <br> <span class="hljs-comment">//管理员批注  </span><br> <span class="hljs-meta">@ColumnInfo(name = <span class="hljs-string">&quot;comment&quot;</span>)</span>  <br>    <span class="hljs-keyword">var</span> comment:String  <br>)&#123;  <br>    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span>&#123;  <br>        <span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> STATE_REQUEST:String=<span class="hljs-string">&quot;申请中&quot;</span>  <br>		<span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> STATE_DELIVERY:String=<span class="hljs-string">&quot;运输中&quot;</span>  <br>		<span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> STATE_REFUSED:String=<span class="hljs-string">&quot;已拒绝&quot;</span>  <br>		<span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> STATE_COMPLETE:String=<span class="hljs-string">&quot;已完成&quot;</span>  <br>	&#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>视图示例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@DatabaseView(<span class="hljs-string">&quot;SELECT customer, count(customer) FROM sale_order GROUP BY customer ORDER BY count(customer) DESC&quot;</span>)</span>  <br><span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PurchaseCount</span>(  <br>    <span class="hljs-keyword">val</span> customer: String,  <br>	<span class="hljs-keyword">val</span> times:<span class="hljs-built_in">Int</span>  <br>)<br></code></pre></td></tr></table></figure>
+<p><strong>dao示例</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Dao</span>  <br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">SaleOrderDao</span> &#123;  <br>    <span class="hljs-meta">@Insert</span>  <br>	<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">insertSaleOrder</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> saleOrder: <span class="hljs-type">SaleOrder</span>)</span></span>:<span class="hljs-built_in">Long</span>  <br>  <br>    <span class="hljs-meta">@Update</span>  <br>	<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">updateSaleOrder</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> saleOrder: <span class="hljs-type">SaleOrder</span>)</span></span>:<span class="hljs-built_in">Long</span>  <br>  <br>    <span class="hljs-meta">@Delete</span>  <br>	<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">deleteSaleOrder</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> saleOrder: <span class="hljs-type">SaleOrder</span>)</span></span>:<span class="hljs-built_in">Long</span>  <br>  <br>    <span class="hljs-meta">@Query(<span class="hljs-string">&quot;SELECT * FROM sale_order ORDER BY&quot;</span> +  </span><br><span class="hljs-meta">            <span class="hljs-string">&quot;( CASE WHEN state = &#x27;申请中&#x27; THEN 0 WHEN state = &#x27;已拒绝&#x27; THEN 1 WHEN state = &#x27;运输中&#x27; THEN 2 ELSE 3 END )&quot;</span>)</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getAllSaleOrder</span><span class="hljs-params">()</span></span>: LiveData&lt;List&lt;SaleOrder&gt;&gt;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>database</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-meta">@Database(  </span><br><span class="hljs-meta">    entities = [User::class, Customer::class, Supplier::class, Product::class, Material::class, Inventory::class, PurchaseOrder::class, SaleOrder::class],  </span><br><span class="hljs-meta">	views = [PurchaseAmount::class, PurchaseCount::class],  </span><br><span class="hljs-meta">	version = 1,  </span><br><span class="hljs-meta">	exportSchema = false  </span><br><span class="hljs-meta">)</span>  <br><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WMSDatabase</span>:<span class="hljs-type">RoomDatabase</span>()&#123;    <br>    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span>&#123;  <br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> INSTANCE:WMSDatabase?=<span class="hljs-literal">null</span>  <br>  <br>		<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getINSTANCE</span><span class="hljs-params">(context: <span class="hljs-type">Context</span>)</span></span>:WMSDatabase ? &#123;  <br>            <span class="hljs-keyword">if</span>(INSTANCE == <span class="hljs-literal">null</span>)&#123;  <br>                INSTANCE = Room.databaseBuilder(context,WMSDatabase::<span class="hljs-keyword">class</span>.java,<span class="hljs-string">&quot;tobacco_database.db&quot;</span>).allowMainThreadQueries().build()  <br>            &#125;  <br>            <span class="hljs-keyword">return</span> INSTANCE  <br>		&#125;  <br>  <br>        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getINSTANCE</span><span class="hljs-params">()</span></span>:WMSDatabase?= INSTANCE  <br> &#125;  <br>      <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">userDao</span><span class="hljs-params">()</span></span>:UserDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">customerDao</span><span class="hljs-params">()</span></span>:CustomerDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">supplierDao</span><span class="hljs-params">()</span></span>:SupplierDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">productDao</span><span class="hljs-params">()</span></span>:ProductDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">materialDao</span><span class="hljs-params">()</span></span>:MaterialDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">inventoryDao</span><span class="hljs-params">()</span></span>:InventoryDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">purchaseOrderDao</span><span class="hljs-params">()</span></span>:PurchaseOrderDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">saleOrderDao</span><span class="hljs-params">()</span></span>:SaleOrderDao  <br>    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">reportDao</span><span class="hljs-params">()</span></span>:ReportDao  <br>&#125;<br></code></pre></td></tr></table></figure>
+<h1>遇到的问题</h1>
+<p>在这次的开发中由于使用了kotlin语言，而本身对于kotlin可以说完全没有了解，因此当出现问题时耗费了挺多时间去处理，例如上述的静态常量和静态方法，由于kotlin中没有<code>static</code>关键字，因此无法直接使用static定义静态常量，在查阅资料后知道了kotlin伴生对象的使用方法，实现了静态常量的定义。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>烟草仓储管理系统开发笔记（一）</div>
+      <div>http://example.com/2022/04/09/烟草仓储管理系统开发笔记（一）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 9, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/11/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="烟草仓储管理系统开发笔记（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">烟草仓储管理系统开发笔记（二）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/19/Note%20-%20Filter%20Grafting%20for%20Deep%20Neural%20Networks/" title="Note - Filter Grafting for Deep Neural Networks">
+                        <span class="hidden-mobile">Note - Filter Grafting for Deep Neural Networks</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

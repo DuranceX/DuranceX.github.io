@@ -1,8 +1,8 @@
 ---
 title: JS遍历JSON输出Mysql拆分JSON语句
 date: 2023-11-10 17:33:24
-tags: [前端,mysql]
-categories: 前端
+tags: [前端,mysql,js]
+categories: [前端,js]
 ---
 ### 背景
 数据库存储有这类JSON数据，希望在输出时将每个子项都单独输出并根据key值重命名

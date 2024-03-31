@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>JS字符串操作连用问题</title>
+    <link href="/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题">问题</h3><p>有字符串“…/…/img/example.jpg”，想要提取出文件名example，使用js代码replace替换<code>../../img/</code>，再使用substring提取文件名时出现问题</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;../../img/example.jpg&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;../../img/&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>,str.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;.&#x27;</span>))<br><span class="hljs-comment">// example.jpg</span><br></code></pre></td></tr></table></figure><p>无法去除后缀名，而当两者分开使用时可以正常出结果</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;../../img/example.jpg&#x27;</span><br><span class="hljs-keyword">const</span> str_temp = str.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;../../img/&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str_temp.<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>,str_temp.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;.&#x27;</span>))<br><span class="hljs-comment">// example</span><br></code></pre></td></tr></table></figure><h2 id="原因">原因</h2><p>JS的replace和substring不对原字符串进行操作<br>所以在后者使用的<code>lastIndexOf</code>中仍读取的变量<code>str</code>仍是原数据，也就是结果为17，而进行了<code>replace</code>操作后的文本的读取结果应该为7</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;../../img/example.jpg&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;.&#x27;</span>)) <br><span class="hljs-comment">// 17</span><br><br>str = str.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;../../img/&#x27;</span>,<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;.&#x27;</span>)) <br><span class="hljs-comment">// 7</span><br></code></pre></td></tr></table></figure><p>所以原代码的结果就是在replace后的<code>example.jpg</code>中读取<code>(0,17)</code>的字符串，自然也就是全部了</p><h2 id="解决方案">解决方案</h2><ol><li>分开写，用一个临时变量进行存储</li><li>在substring中再使用一次replace操作<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">x.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;../../img/&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">0</span>, x.<span class="hljs-title function_">replace</span>(<span class="hljs-string">&#x27;../../img/&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">lastIndexOf</span>(<span class="hljs-string">&#x27;.&#x27;</span>));<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MySQL中JSON数据的查找和更新</title>
     <link href="/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/"/>
     <url>/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/</url>
@@ -94,6 +123,8 @@
       
       <category>前端</category>
       
+      <category>js</category>
+      
     </categories>
     
     
@@ -102,6 +133,8 @@
       <tag>mysql</tag>
       
       <tag>前端</tag>
+      
+      <tag>js</tag>
       
     </tags>
     

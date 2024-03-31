@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,24 +13,24 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Cardy Xie">
   <meta name="keywords" content="">
   
     <meta name="description" content="范数 l1l1l1范数 l1l1l1范数表示向量元素的绝对值之和：∣∣x∣∣1&#x3D;∑i&#x3D;1n∣xi∣||x||_1&#x3D;\sum_{i&#x3D;1}^n|x_i|∣∣x∣∣1​&#x3D;∑i&#x3D;1n​∣xi​∣ 代码中可以通过如下实现 1torch.abs(u).sum() l2l2l2范数 l2l2l2范数表示向量元素平方和的平方根：∣∣x∣∣2&#x3D;∑i&#x3D;1nxi2||x||_2&#x3D;\sqrt{\sum_{i&#x3D;1}^n x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="范数">
-<meta property="og:url" content="http://example.com/2023/11/01/%E8%8C%83%E6%95%B0/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://starnight.top/2023/11/01/%E8%8C%83%E6%95%B0/index.html">
+<meta property="og:site_name" content="星夜">
 <meta property="og:description" content="范数 l1l1l1范数 l1l1l1范数表示向量元素的绝对值之和：∣∣x∣∣1&#x3D;∑i&#x3D;1n∣xi∣||x||_1&#x3D;\sum_{i&#x3D;1}^n|x_i|∣∣x∣∣1​&#x3D;∑i&#x3D;1n​∣xi​∣ 代码中可以通过如下实现 1torch.abs(u).sum() l2l2l2范数 l2l2l2范数表示向量元素平方和的平方根：∣∣x∣∣2&#x3D;∑i&#x3D;1nxi2||x||_2&#x3D;\sqrt{\sum_{i&#x3D;1}^n x">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-01T07:03:43.000Z">
 <meta property="article:modified_time" content="2024-03-18T11:01:54.842Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Cardy Xie">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>范数 - Hexo</title>
+  <title>范数 - 星夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -114,7 +114,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                首页
               </a>
             </li>
           
@@ -126,7 +126,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                归档
               </a>
             </li>
           
@@ -138,7 +138,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                Tags
+                标签
               </a>
             </li>
           
@@ -183,7 +183,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-11-01 15:03" pubdate>
-          November 1, 2023 pm
+          2023年11月1日 下午
         </time>
       </span>
     
@@ -194,7 +194,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          635 words
+          635 字
         
       </span>
     
@@ -205,7 +205,7 @@
         
         
         
-          6 mins
+          6 分钟
         
       </span>
     
@@ -248,7 +248,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on March 18, 2024 pm
+                    本文最后更新于：2024年3月18日 晚上
                   
                 
               </p>
@@ -336,30 +336,30 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   <div class="license-box my-3">
     <div class="license-title">
       <div>范数</div>
-      <div>http://example.com/2023/11/01/范数/</div>
+      <div>http://starnight.top/2023/11/01/范数/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Cardy Xie</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>November 1, 2023</div>
+          <div>发布于</div>
+          <div>2023年11月1日</div>
         </div>
       
       
       <div class="license-meta-item">
-        <div>Licensed under</div>
+        <div>许可协议</div>
         <div>
           
             
             
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
@@ -381,7 +381,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                       <a href="/2023/11/01/Zero-shot%E3%80%81Few-shot%E5%92%8COne-shot/" title="Zero-shot、Few-shot和One-shot">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Zero-shot、Few-shot和One-shot</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -390,7 +390,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                     
                       <a href="/2023/11/01/Vue%E5%88%9B%E5%BB%BA%E9%9D%9E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E8%B1%A1/" title="Vue创建非引用类型的对象">
                         <span class="hidden-mobile">Vue创建非引用类型的对象</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -409,7 +409,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -468,7 +468,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -476,7 +476,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -695,7 +695,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

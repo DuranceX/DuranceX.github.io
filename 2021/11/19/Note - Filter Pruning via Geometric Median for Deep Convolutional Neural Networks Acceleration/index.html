@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,28 +13,28 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Cardy Xie">
   <meta name="keywords" content="">
   
     <meta name="description" content="现况 现有的滤波器剪枝的标准是，“smaller-norm-less-important&quot;，即认为滤波器的范数（p-norm）越小，相对应的特征图越接近于 0，于是对网络对贡献越小，那么这些滤波器可以去掉而不会严重影响网络的性能。 但作者认为这个标准要达到好的效果需要满足两个前提：  不同卷积核之间的范数差距要够大 最不重要的（范数最小的）卷积核的范数要够小  即如图 (a) 可能会导致">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration">
-<meta property="og:url" content="http://example.com/2021/11/19/Note%20-%20Filter%20Pruning%20via%20Geometric%20Median%20for%20Deep%20Convolutional%20Neural%20Networks%20Acceleration/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://starnight.top/2021/11/19/Note%20-%20Filter%20Pruning%20via%20Geometric%20Median%20for%20Deep%20Convolutional%20Neural%20Networks%20Acceleration/index.html">
+<meta property="og:site_name" content="星夜">
 <meta property="og:description" content="现况 现有的滤波器剪枝的标准是，“smaller-norm-less-important&quot;，即认为滤波器的范数（p-norm）越小，相对应的特征图越接近于 0，于是对网络对贡献越小，那么这些滤波器可以去掉而不会严重影响网络的性能。 但作者认为这个标准要达到好的效果需要满足两个前提：  不同卷积核之间的范数差距要够大 最不重要的（范数最小的）卷积核的范数要够小  即如图 (a) 可能会导致">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154042.png">
-<meta property="og:image" content="http://example.com/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154512.png">
-<meta property="og:image" content="http://example.com/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118172210.png">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://starnight.top/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154042.png">
+<meta property="og:image" content="http://starnight.top/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154512.png">
+<meta property="og:image" content="http://starnight.top/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118172210.png">
 <meta property="article:published_time" content="2021-11-19T06:01:40.000Z">
 <meta property="article:modified_time" content="2024-03-18T10:49:13.451Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Cardy Xie">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154042.png">
+<meta name="twitter:image" content="http://starnight.top/img/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/Pasted_image_20211118154042.png">
   
   
-  <title>Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration - Hexo</title>
+  <title>Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration - 星夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -118,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                首页
               </a>
             </li>
           
@@ -130,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                归档
               </a>
             </li>
           
@@ -142,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                Tags
+                标签
               </a>
             </li>
           
@@ -187,7 +187,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2021-11-19 14:01" pubdate>
-          November 19, 2021 pm
+          2021年11月19日 下午
         </time>
       </span>
     
@@ -198,7 +198,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k words
+          4k 字
         
       </span>
     
@@ -209,7 +209,7 @@
         
         
         
-          34 mins
+          34 分钟
         
       </span>
     
@@ -252,7 +252,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on March 18, 2024 pm
+                    本文最后更新于：2024年3月18日 晚上
                   
                 
               </p>
@@ -366,30 +366,30 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   <div class="license-box my-3">
     <div class="license-title">
       <div>Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration</div>
-      <div>http://example.com/2021/11/19/Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration/</div>
+      <div>http://starnight.top/2021/11/19/Note - Filter Pruning via Geometric Median for Deep Convolutional Neural Networks Acceleration/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Cardy Xie</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>November 19, 2021</div>
+          <div>发布于</div>
+          <div>2021年11月19日</div>
         </div>
       
       
       <div class="license-meta-item">
-        <div>Licensed under</div>
+        <div>许可协议</div>
         <div>
           
             
             
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
@@ -411,7 +411,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                       <a href="/2021/11/19/Note%20-%20Filter%20Grafting%20for%20Deep%20Neural%20Networks/" title="Note - Filter Grafting for Deep Neural Networks">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Note - Filter Grafting for Deep Neural Networks</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -420,7 +420,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
                     
                       <a href="/2021/11/19/Note%20-%20Pruning%20Filter%20In%20Filter/" title="Note - Pruning Filter In Filter">
                         <span class="hidden-mobile">Note - Pruning Filter In Filter</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -439,7 +439,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -498,7 +498,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -506,7 +506,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -725,7 +725,7 @@ M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

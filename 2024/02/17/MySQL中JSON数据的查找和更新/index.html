@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,24 +13,24 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Cardy Xie">
   <meta name="keywords" content="">
   
     <meta name="description" content="设MySQL中JSON字段info的格式如下： 12345&#123;	&quot;name&quot;:&quot;小明&quot;,	&quot;age&quot;:15,	&quot;height&quot;:163&#125; 建表 12345create table &#x27;t1&#x27; (	&#x27;id&#x27; int(11) NOT NULL AUTO_INCREME">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中JSON数据的查找和更新">
-<meta property="og:url" content="http://example.com/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://starnight.top/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/index.html">
+<meta property="og:site_name" content="星夜">
 <meta property="og:description" content="设MySQL中JSON字段info的格式如下： 12345&#123;	&quot;name&quot;:&quot;小明&quot;,	&quot;age&quot;:15,	&quot;height&quot;:163&#125; 建表 12345create table &#x27;t1&#x27; (	&#x27;id&#x27; int(11) NOT NULL AUTO_INCREME">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-17T14:42:25.000Z">
 <meta property="article:modified_time" content="2024-03-18T11:25:38.052Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Cardy Xie">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>MySQL中JSON数据的查找和更新 - Hexo</title>
+  <title>MySQL中JSON数据的查找和更新 - 星夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -114,7 +114,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                首页
               </a>
             </li>
           
@@ -126,7 +126,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                归档
               </a>
             </li>
           
@@ -138,7 +138,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                Tags
+                标签
               </a>
             </li>
           
@@ -183,7 +183,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2024-02-17 22:42" pubdate>
-          February 17, 2024 pm
+          2024年2月17日 晚上
         </time>
       </span>
     
@@ -194,7 +194,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.1k 字
         
       </span>
     
@@ -205,7 +205,7 @@
         
         
         
-          10 mins
+          10 分钟
         
       </span>
     
@@ -248,7 +248,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on March 18, 2024 pm
+                    本文最后更新于：2024年3月18日 晚上
                   
                 
               </p>
@@ -319,30 +319,30 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>MySQL中JSON数据的查找和更新</div>
-      <div>http://example.com/2024/02/17/MySQL中JSON数据的查找和更新/</div>
+      <div>http://starnight.top/2024/02/17/MySQL中JSON数据的查找和更新/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Cardy Xie</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>February 17, 2024</div>
+          <div>发布于</div>
+          <div>2024年2月17日</div>
         </div>
       
       
       <div class="license-meta-item">
-        <div>Licensed under</div>
+        <div>许可协议</div>
         <div>
           
             
             
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
@@ -361,13 +361,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/" title="JS字符串操作连用问题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JS字符串操作连用问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/2024/01/17/SSH%20connect%20to%20host%20github.com%20port%2022%20Connection%20refused/" title="SSH connect to host github.com port 22 Connection refused">
                         <span class="hidden-mobile">SSH connect to host github.com port 22 Connection refused</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -386,7 +392,7 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -445,7 +451,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -453,7 +459,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -672,7 +678,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,27 +13,27 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Cardy Xie">
   <meta name="keywords" content="">
   
     <meta name="description" content="One-shot 公司门禁用了人脸识别，你只提供一张照片，门禁就能认识各个角度的你，这就是 one-shot。可以把 one-shot 理解为用 1 条数据 finetune 模型。 Zero-shot 即，利用已有的数据和知识，来推理辨认模型从没见过的数据，也就是“0条没见过的数据” 例子： 小明和爸爸，到了动物园，看到了马，然后爸爸告诉他，这就是马；之后，又看到了老虎，告诉他：“看，这种身上有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zero-shot、Few-shot和One-shot">
-<meta property="og:url" content="http://example.com/2023/11/01/Zero-shot%E3%80%81Few-shot%E5%92%8COne-shot/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://starnight.top/2023/11/01/Zero-shot%E3%80%81Few-shot%E5%92%8COne-shot/index.html">
+<meta property="og:site_name" content="星夜">
 <meta property="og:description" content="One-shot 公司门禁用了人脸识别，你只提供一张照片，门禁就能认识各个角度的你，这就是 one-shot。可以把 one-shot 理解为用 1 条数据 finetune 模型。 Zero-shot 即，利用已有的数据和知识，来推理辨认模型从没见过的数据，也就是“0条没见过的数据” 例子： 小明和爸爸，到了动物园，看到了马，然后爸爸告诉他，这就是马；之后，又看到了老虎，告诉他：“看，这种身上有">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.starnight.top/img/Pasted%20image%2020231101142939.png">
 <meta property="og:image" content="https://images.starnight.top/img/Pasted%20image%2020231101144946.png">
 <meta property="article:published_time" content="2023-11-01T07:04:36.000Z">
 <meta property="article:modified_time" content="2024-03-18T11:38:30.173Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Cardy Xie">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://images.starnight.top/img/Pasted%20image%2020231101142939.png">
   
   
-  <title>Zero-shot、Few-shot和One-shot - Hexo</title>
+  <title>Zero-shot、Few-shot和One-shot - 星夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -117,7 +117,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                Home
+                首页
               </a>
             </li>
           
@@ -129,7 +129,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                Archives
+                归档
               </a>
             </li>
           
@@ -141,7 +141,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                Tags
+                标签
               </a>
             </li>
           
@@ -186,7 +186,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-11-01 15:04" pubdate>
-          November 1, 2023 pm
+          2023年11月1日 下午
         </time>
       </span>
     
@@ -197,7 +197,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.1k 字
         
       </span>
     
@@ -208,7 +208,7 @@
         
         
         
-          10 mins
+          10 分钟
         
       </span>
     
@@ -251,7 +251,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on March 18, 2024 pm
+                    本文最后更新于：2024年3月18日 晚上
                   
                 
               </p>
@@ -329,30 +329,30 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Zero-shot、Few-shot和One-shot</div>
-      <div>http://example.com/2023/11/01/Zero-shot、Few-shot和One-shot/</div>
+      <div>http://starnight.top/2023/11/01/Zero-shot、Few-shot和One-shot/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Cardy Xie</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>November 1, 2023</div>
+          <div>发布于</div>
+          <div>2023年11月1日</div>
         </div>
       
       
       <div class="license-meta-item">
-        <div>Licensed under</div>
+        <div>许可协议</div>
         <div>
           
             
             
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
@@ -374,7 +374,7 @@
                       <a href="/2023/11/07/Prejection%20Head/" title="projection head 映射头">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">projection head 映射头</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -383,7 +383,7 @@
                     
                       <a href="/2023/11/01/%E8%8C%83%E6%95%B0/" title="范数">
                         <span class="hidden-mobile">范数</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -402,7 +402,7 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -461,7 +461,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -469,7 +469,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -688,7 +688,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

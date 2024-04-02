@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Nginx服务器通过地址访问页面出现404错误</title>
+    <link href="/2024/04/02/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%BF%87%E5%9C%B0%E5%9D%80%E8%AE%BF%E9%97%AE%E9%A1%B5%E9%9D%A2%E5%87%BA%E7%8E%B0404%E9%94%99%E8%AF%AF/"/>
+    <url>/2024/04/02/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%BF%87%E5%9C%B0%E5%9D%80%E8%AE%BF%E9%97%AE%E9%A1%B5%E9%9D%A2%E5%87%BA%E7%8E%B0404%E9%94%99%E8%AF%AF/</url>
+    
+    <content type="html"><![CDATA[<h3 id="出现问题">出现问题</h3><p>在将Vue项目部署到服务器后发现在访问页面的时候只能访问默认页面和通过项目内跳转其他页面，如果直接通过地址访问就会出现404 Not Found而在本地Vue项目运行时直接通过地址访问并没有出错，说明问题不在Route而是在Nginx服务器的设置中</p><h3 id="解决方案">解决方案</h3><p>在原本的Nginx配置中，设置的内容如下：</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">location</span> / &#123;<br>root   /usr/<span class="hljs-keyword">share</span>/nginx/html;<br><span class="hljs-keyword">index</span>   dist/<span class="hljs-keyword">index</span>.html;<br>&#125;<br></code></pre></td></tr></table></figure><p>直接理解就是当访问根地址<code>/</code>时，跳转到dist文件夹下的index.html文件，而其他页面在访问时nginx会找不到对应的文件，所以显示找不到，将配置修改成如下即可：</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> / &#123;<br><span class="hljs-attribute">root</span>   /usr/share/nginx/html;<br><span class="hljs-attribute">index</span>   dist/index.html;<br><span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /dist/index.html;<br>&#125;<br></code></pre></td></tr></table></figure><p>其中的<code>try_files</code>是Nginx的一个指令，用于指定一个文件的查找顺序，并且在文件不存在时执行相应的操作。通过添加这个<code>try_files</code>指令，可以告诉Nginx首先尝试查找请求的URI对应的文件（<code>$uri</code>），如果找到了，就直接返回该文件。如果没有找到，Nginx会尝试查找与请求的URI对应的目录（<code>$uri/</code>），如果找到了目录，则尝试寻找该目录下的默认文件（通常是<code>index.html</code>或者其他指定的默认文件）。如果前两步都没有找到相应的文件或目录，Nginx会将请求重定向到<code>/dist/index.html</code>。</p><p>因为采用Vue开发单页应用程序（SPA）时，只会生成一个index.html文件作为整个单页应用程序的入口，所以直接访问URL时会出现404错误，因为实际上这些路径是由前端路由处理的。通过将所有这些路径都重定向到单页应用程序的入口文件（例如<code>index.html</code>），程序才可以正确地处理这些路由并渲染相应的页面内容。</p><h3 id="补充内容">补充内容</h3><p><code>vue-router</code> 默认是hash模式，使用<code>url</code>的<code>hash</code>来模拟一个完整的url，当url改变的时候，页面不会重新加载。但是如果不想使用hash这种以#号结尾的路径的话，就可以使用路由的history的模式。比如如下网址：使用hash模式的话，那么访问的地址就是 <a href="http://localhost:8080/test/#/">http://localhost:8080/test/#/</a> ，而如果路由使用 <code>history</code>的话，那么访问的路径变成就变成了 <a href="http://localhost:8080/test">http://localhost:8080/test</a></p><p>不过<code>history</code>的这种模式需要后台配置支持。比如当访问项目的主页的时候，一切正常，可以访问，但是当我们刷新页面或者直接访问路径的时候就会返回404，那是因为在<code>history</code>模式下，只是动态的通过js操作<code>window.history</code>来改变浏览器地址栏里的路径，并没有发起http请求，而当直接在浏览器里输入这个地址来访问的时候，就需要对服务器发起http请求来获取该地址对应的网页内容，但是这个目标在服务器上又不存在，所以会返回404</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>error</tag>
+      
+      <tag>服务器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JS字符串操作连用问题</title>
     <link href="/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/"/>
     <url>/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/</url>
@@ -65,16 +86,10 @@
     <content type="html"><![CDATA[<p>在个人电脑上使用Git命令来操作GitHub上的项目，突然提示如下错误<code>ssh: connect to host github.com port 22: Connection refused</code>。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git pull<br>ssh: connect to host github.com port 22: Connection refused<br>fatal: Could not <span class="hljs-built_in">read</span> from remote repository.<br>​<br>Please make sure you have the correct access rights<br>and the repository exists.<br></code></pre></td></tr></table></figure><p>提示连接GitHub的22端口被拒绝，用浏览器访问Github发现正常访问，说明不是Github出了问题，怀疑可能是Github的22端口被屏蔽了，因此改用Github的443端口进行访问。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ vim ~/.ssh/config<br><br><span class="hljs-comment"># Add section below to it</span><br>Host github.com<br>  Hostname ssh.github.com<br>  Port 443<br></code></pre></td></tr></table></figure><p>通过修改SSH的config文件，让SSH在访问Github时使用443端口，再进行<code>git pull</code>操作发现可以正常下载数据。</p><hr><p>Tips：</p><ol><li>使用<code>ssh -T git@github.com</code>来测试和GitHub的网络通信是否正常，如果提示<code>Hi xxxxx! You've successfully authenticated, but GitHub does not provide shell access.</code> 就表示一切正常。</li><li><code>ssh -v</code>命令，<code>-v</code>表示verbose，会打出详细日志。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -vT git@github.com<br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
     
-    <categories>
-      
-      <category>problems</category>
-      
-    </categories>
-    
     
     <tags>
       
-      <tag>problem</tag>
+      <tag>error</tag>
       
     </tags>
     

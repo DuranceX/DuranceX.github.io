@@ -1,8 +1,7 @@
 ---
 title: SSH connect to host github.com port 22 Connection refused
 date: 2024-01-17 15:06:54
-tags: problem
-categories: problems
+tags: error
 ---
 在个人电脑上使用Git命令来操作GitHub上的项目，突然提示如下错误`ssh: connect to host github.com port 22: Connection refused`。
 

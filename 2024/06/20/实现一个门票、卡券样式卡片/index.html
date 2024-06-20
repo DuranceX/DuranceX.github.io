@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Cardy Xie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="实现一个门票、卡券样式的卡片，涉及到mask-image,drop-shadow,radial-gradient等属性的学习与使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现一个门票、卡券样式卡片">
+<meta property="og:url" content="http://starnight.top/2024/06/20/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%97%A8%E7%A5%A8%E3%80%81%E5%8D%A1%E5%88%B8%E6%A0%B7%E5%BC%8F%E5%8D%A1%E7%89%87/index.html">
+<meta property="og:site_name" content="星夜">
+<meta property="og:description" content="实现一个门票、卡券样式的卡片，涉及到mask-image,drop-shadow,radial-gradient等属性的学习与使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.starnight.top/img/20240620214016.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620214148.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620214240.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620214313.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620214424.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620220524.png">
+<meta property="og:image" content="https://images.starnight.top/img/20240620220115.png">
+<meta property="article:published_time" content="2024-06-20T13:28:30.000Z">
+<meta property="article:modified_time" content="2024-06-20T14:08:30.636Z">
+<meta property="article:author" content="Cardy Xie">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/20240620214016.png">
+  
+  
+  <title>实现一个门票、卡券样式卡片 - 星夜</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="实现一个门票、卡券样式卡片"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-20 21:28" pubdate>
+          2024年6月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实现一个门票、卡券样式卡片</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年6月20日 晚上
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>实现一个门票、卡券样式的卡片，涉及到<code>mask-image</code>,<code>drop-shadow</code>,<code>radial-gradient</code>等属性的学习与使用</p>
+<span id="more"></span>
+<p>实现一个门票、卡券样式的卡片，其样式如下所示：</p>
+<p><img src="https://images.starnight.top/img/20240620214016.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可以发现这个样式以虚线为界分为左右两个部分，左侧显示图片，右侧显示一些详细信息，其中右上角还有一个三角模块显示当前状态。</p>
+<h2 id="基础布局">基础布局</h2>
+<p>左侧的图片，右侧的详细信息布局都可以轻松完成，中间的虚线则使用<code>border</code>进行设置</p>
+<ol>
+<li>新建一个空标签</li>
+<li>设置其<code>border-left</code>属性，将样式设置为<code>dashed</code>实现虚线条</li>
+<li>设置上下的<code>margin</code>来将虚线放置在中间</li>
+</ol>
+<p><img src="https://images.starnight.top/img/20240620214148.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="虚线上下的半圆缺口">虚线上下的半圆缺口</h3>
+<p>首先通过<code>radial-gradient</code>实现一个径向渐变，指定渐变的形状，大小，圆心和渐变颜色位置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">radial-gradient(circle <span class="hljs-number">100px</span> at <span class="hljs-number">200px</span> <span class="hljs-number">75px</span>,transparent <span class="hljs-number">19%</span> red <span class="hljs-number">20%</span>);<br></code></pre></td></tr></table></figure>
+<p>上述css样式意为，创建一个半径为100px，圆心位置在(200px，75px)的径向渐变，其中圆心到19%处为透明，19%到20%处为透明到红色的渐变，20%到100%为红色</p>
+<p>通过将这一个渐变图案赋值给<code>mask-image</code>实现遮罩效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">mask-image</span>:<span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at <span class="hljs-number">200px</span> <span class="hljs-number">75px</span>,transparent <span class="hljs-number">19%</span> red <span class="hljs-number">20%</span>);<br></code></pre></td></tr></table></figure>
+<p><code>mask-image</code>接收一个图片，可以是通过url传入的图片，也可以是通过<code>radial-gradient</code>等方法创建的图形，传入的图片中的透明部分(transparent)会被遮挡，显示下方元素，而非透明的部分则会进行显示，从而实现不同形状的蒙版。</p>
+<p>此时，我们已经创建了一个圆形蒙版，得到了一个半径为100px的圆形，圆形内显示的是背景样式，为了实现上下的缺口，我们需要对蒙版进行移动，使用<code>mask-position</code>属性对蒙版进行定位。</p>
+<p><strong>并且这个蒙版会在该元素内循环定位</strong>，也就是说如果我们将这个图形移出边界，那么移出的那部分会出现在该元素的另一侧，所以我们通过将这个圆形蒙版下移或上移一半，使得只留下半圆，那么剩下的半圆便会出现在另一侧，从而实现上下两个半圆的缺口。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">mask-image</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at <span class="hljs-number">200px</span> <span class="hljs-number">75px</span>, transparent <span class="hljs-number">19%</span>, red <span class="hljs-number">20%</span>);<br><span class="hljs-attribute">mask-position</span>: -<span class="hljs-number">50px</span> <span class="hljs-number">75px</span>;<br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/20240620214240.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="右上角三角标签">右上角三角标签</h3>
+<p>比起构建一个三角形的形状，更常用的方法是正常设置一个正方形的元素，将其旋转后移动至右上角，并隐藏溢出的部分。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.ticket-card__tag</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">106px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">106px</span>;<br>  <span class="hljs-attribute">background</span>: gray;<br>  <span class="hljs-attribute">color</span>: white;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">align-items</span>: end;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">45deg</span>);<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: -<span class="hljs-number">55px</span>;<br>  <span class="hljs-attribute">right</span>: -<span class="hljs-number">55px</span>;<br>  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">25px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>设置大小背景色和文字的位置后通过<code>  transform: rotate(45deg)</code>将图形旋转45度，之后通过设置<code> position: absolute;</code>和<code>top</code>、<code>right</code>属性将其移动到右上角，实现标签的显示。并且由于已经给父元素添加了蒙版，所以标签溢出的部分会直接被蒙版所遮盖，只显示一个三角。</p>
+<p><img src="https://images.starnight.top/img/20240620214313.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>通过这种方式我们已经可以实现门票、卡券样式的显示，例如BiliBili的流量券样式</p>
+<p><img src="https://images.starnight.top/img/20240620214424.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="另一种实现方式，支持阴影">另一种实现方式，支持阴影</h3>
+<p>但通过上述方式实现，我们会发现一个问题，就是如果我们想要给这个卡片添加一个阴影，但发现由于阴影被遮罩所覆盖而无法显示。</p>
+<p>因此我们考虑通过拼接的方式实现该样式，左侧为一个带右上和右下缺口的元素，中间一个虚线，右侧则为一个带左上和左下缺口的元素。三者拼接实现卡券样式。</p>
+<h4 id="左右侧卡片">左右侧卡片</h4>
+<p>首先是左侧的卡片，同样使用<code>radial-gradient</code>创建圆形图案，在<code>background</code>属性中通过设置两个<code>radial-gradient</code>来添加两个圆。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right top, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) top right / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat,<br>            <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right bottom, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) bottom right/ <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>首先通过<code>circle 100px at right top, transparent 19%, white 20%</code>设置一个半径为100px，圆心位于右上角的径向渐变，从而得到一个1/4圆的形状，然后设置渐变色，从圆心到19%处为透明，显示背景颜色，从19%到20%为透明到白色的渐变，从20%到100%为白色</li>
+<li>通过<code>top</code>和<code>right</code>指定该块背景的位置在右上角，之后的<code>100% 51%</code>指定该块背景的大小，例如如果设置为<code>top right / 50% 50%</code>，那么这块背景就只占据元素右上角且面积为元素的1/4，如果设置为<code>top / 50% 50%</code>，那么这块背景就只占据元素的上半部分，且居中，大小仍为元素的1/4</li>
+<li>如果这里不添加背景的位置和大小，那么它会默认占据100%的大小，就会出现第一个渐变中的透明部分，被第二个渐变的白色所覆盖，同理第二个渐变的透明部分显示的也是第一个渐变的白色部分，则无法实现缺口效果了。</li>
+</ul>
+<p><img src="https://images.starnight.top/img/20240620220524.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>上图即为下方代码的示例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right top, orange <span class="hljs-number">19%</span>, red <span class="hljs-number">20%</span>) top right / <span class="hljs-number">80%</span> <span class="hljs-number">51%</span> no-repeat,<br>      <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right bottom, purple <span class="hljs-number">19%</span>, lightblue <span class="hljs-number">20%</span>) bottom / <span class="hljs-number">50%</span> <span class="hljs-number">51%</span> no-repeat;<br></code></pre></td></tr></table></figure>
+<p>那么接下来右侧卡片也就同理了，只需要将缺口设置为左上角和左下角即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.ticket-card__content</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at left top, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) top left / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat,<br>              <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at left bottom, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) bottom left / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">flex-direction</span>: column;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>  <span class="hljs-attribute">position</span>: relative;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样便实现了之前的样式效果。</p>
+<p>接下来如果想要给这个不规则图形添加一个阴影的话就需要用到<code>filter</code> 中的<code>drop-shadow</code>，分别给左右两个部分添加这一样式即可实现阴影。注意<code>drop-shadow</code>跟<code>box-shadow</code>的<a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">区别</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">filter</span>: <span class="hljs-built_in">drop-shadow</span>(<span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> lightgray); <br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/20240620220115.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="实现代码">实现代码</h3>
+<h4 id="第一种方式">第一种方式</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;div class=&quot;ticket-card&quot;&gt;<br>      &lt;div class=&quot;ticket-card__title_container&quot;&gt;<br>        &lt;div class=&quot;ticket-card__title&quot;&gt;&lt;/div&gt;<br>      &lt;/div&gt;<br>      &lt;div class=&quot;ticket-card__divider&quot;&gt;&lt;/div&gt;<br>      &lt;div class=&quot;ticket-card__content&quot;&gt;<br>        &lt;span class=&quot;ticket-card__content__title&quot;&gt;邓紫棋南京演唱会&lt;/span&gt;<br>        &lt;span class=&quot;ticket-card__content__time&quot;&gt;2024.06.21-06.23&lt;/span&gt;<br>        &lt;span class=&quot;ticket-card__content__place&quot;&gt;南京奥体中心体育场&lt;/span&gt;<br>      &lt;/div&gt;<br>      &lt;div class=&quot;ticket-card__tag&quot;&gt;<br>        已售罄<br>      &lt;/div&gt;<br>    &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot; setup&gt;<br>&lt;/script&gt;<br><br>&lt;style&gt;<br>body&#123;<br>  background-color: rgb(242,242,242);<br>&#125;<br><br>.ticket-card&#123;<br>  mask-image: radial-gradient(circle 100px at 200px 75px, transparent 19%, red 20%);<br>  mask-position: -50px 75px;<br>  width: fit-content;<br>  height: 150px;<br>  background: white;<br>  position: relative;<br>  border-radius: 5px; <br>  display: flex;<br>&#125;<br><br>.ticket-card__title_container&#123;<br>  width: 150px;<br>  overflow: hidden;<br>&#125;<br><br>.ticket-card__title&#123;<br>  width: 85%;<br>  height: 100%;<br>  display: flex;<br>  justify-content: center;<br>  align-items: center;<br>  background: url(&#x27;https://img.dahepiao.com/uploads/allimg/240607/39222-PbS0y9xfEuEbf.jpg&#x27;) no-repeat;<br>  background-size: 100%;<br>&#125;<br><br>.ticket-card__divider&#123;<br>  border-left: 2px dashed lightgray;<br>  margin: 30px 0px;<br>&#125;<br><br>.ticket-card__content&#123;<br>  width: 300px;<br>  padding-left: 40px;<br>  display: flex;<br>  flex-direction: column;<br>  justify-content: center;<br>&#125;<br><br>.ticket-card__content__title&#123;<br>  font-weight: 700;<br>  font-size: 16pt;<br>  color: #000;<br>  margin-bottom: 10px;<br>&#125;<br><br>.ticket-card__content__time&#123;<br>  font-size: 12pt;<br>  line-height: .768rem;<br>  color: #666;<br>  margin-bottom: 10px;<br>&#125;<br><br>.ticket-card__content__place&#123;<br>  font-size: 12pt;<br>  color: #999;<br>  word-break: break-all;<br>  overflow-wrap: break-word;<br>&#125;<br><br>.ticket-card__tag&#123;<br>  width: 106px;<br>  height: 106px;<br>  background: gray;<br>  /* text-align: center; */<br>  color: white;<br>  display: flex;<br>  align-items: end;<br>  justify-content: center;<br>  transform: rotate(45deg);<br>  position: absolute;<br>  top: -55px;<br>  right: -55px;<br>  line-height: 25px;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+<h4 id="第二种修改的部分">第二种修改的部分</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;template&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card&quot;&gt;<br>      &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card__title__container&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card__title&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>      &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>      &lt;<span class="hljs-selector-tag">div</span> style=&quot;<span class="hljs-attribute">background-color</span>: white;<span class="hljs-attribute">margin</span>:<span class="hljs-number">20px</span> <span class="hljs-number">0px</span>;<span class="hljs-attribute">width</span>:<span class="hljs-number">2px</span>;<span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card__divider&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>      &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>      &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card__content&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">span</span> class=&quot;ticket-card__content__title&quot;&gt;邓紫棋南京演唱会&lt;/<span class="hljs-selector-tag">span</span>&gt;<br>        &lt;<span class="hljs-selector-tag">span</span> class=&quot;ticket-card__content__time&quot;&gt;<span class="hljs-number">2024.06</span>.<span class="hljs-number">21</span>-<span class="hljs-number">06.23</span>&lt;/<span class="hljs-selector-tag">span</span>&gt;<br>        &lt;<span class="hljs-selector-tag">span</span> class=&quot;ticket-card__content__place&quot;&gt;南京奥体中心体育场&lt;/<span class="hljs-selector-tag">span</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;ticket-card__tag&quot;&gt;<br>          已售罄<br>        &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>      &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/template&gt;<br><br><br>&lt;style&gt;<br><span class="hljs-selector-class">.ticket-card</span>&#123;<br>  <span class="hljs-attribute">width</span>: fit-content;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">position</span>: relative;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">40px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">40px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.ticket-card__title__container</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right top, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) top right / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat,<span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at right bottom, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) bottom right / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">drop-shadow</span>(<span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> lightgray);<br>&#125;<br><br><span class="hljs-selector-class">.ticket-card__content</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">40px</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at left top, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) top left / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat,<span class="hljs-built_in">radial-gradient</span>(circle <span class="hljs-number">100px</span> at left bottom, transparent <span class="hljs-number">19%</span>, white <span class="hljs-number">20%</span>) bottom left / <span class="hljs-number">100%</span> <span class="hljs-number">51%</span> no-repeat;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">flex-direction</span>: column;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>  <span class="hljs-attribute">position</span>: relative;<br>  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">drop-shadow</span>(<span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> lightgray);<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/52103187aac6">CSS绘制卡券、优惠券样式</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/">CSS3 filter:drop-shadow滤镜与box-shadow区别应用</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">MDN-mask-image</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter">MDN-filter</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/radial-gradient">MDN-radial-gradient</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>实现一个门票、卡券样式卡片</div>
+      <div>http://starnight.top/2024/06/20/实现一个门票、卡券样式卡片/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Cardy Xie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月20日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/20/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E9%A1%B5%E9%9D%A2%E5%AF%BC%E8%88%AA%E5%8A%9F%E8%83%BD/" title="实现简单的页面导航功能">
+                        <span class="hidden-mobile">实现简单的页面导航功能</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

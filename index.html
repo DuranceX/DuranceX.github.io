@@ -196,6 +196,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2024/07/16/%E5%AE%9E%E7%8E%B0%E8%B7%9F%E9%9A%8F%E9%BC%A0%E6%A0%87%E4%BD%8D%E7%BD%AE%E7%9A%84Tooltip/" target="_self">
+          实现跟随鼠标位置的Tooltip
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/07/16/%E5%AE%9E%E7%8E%B0%E8%B7%9F%E9%9A%8F%E9%BC%A0%E6%A0%87%E4%BD%8D%E7%BD%AE%E7%9A%84Tooltip/" target="_self">
+        <div>
+          
+          实现一个能够鼠标移动的Tooltip，在里面显示一些信息，并且可以进入以进行进一步的互动操作。 基础实现 首先定义一个背景图，当鼠标在背景图中移动的时候，Tooltip显示在鼠标的右下角，并显示当前鼠标在背景图中的坐标。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-16 22:53" pubdate>
+              2024-07-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/07/13/%E9%80%9A%E8%BF%87Vite-plugin-svg-icons%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84Icon%E7%BB%84%E4%BB%B6/" target="_self">
+          通过Vite-plugin-svg-icons实现自定义的Icon组件
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/07/13/%E9%80%9A%E8%BF%87Vite-plugin-svg-icons%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84Icon%E7%BB%84%E4%BB%B6/" target="_self">
+        <div>
+          
+          为了能够通过像UI库的图标组件一样，通过name&#x3D;&#39;icon-name&#39;的形式来引入自己的图标，而不是通过img标签的src属性写长长一串地址，所以通过svg sprite图来进行实现。 原理 svg sprite图的实现原理是利用svg的symbol元素，将每个icon包裹在symbol中，再通过svg的use标签来使用该symbol，也就是最终，svg图标会变成如下的样子 1234&lt;sv
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-13 20:31" pubdate>
+              2024-07-13
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2024/06/20/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%97%A8%E7%A5%A8%E3%80%81%E5%8D%A1%E5%88%B8%E6%A0%B7%E5%BC%8F%E5%8D%A1%E7%89%87/" target="_self">
           实现一个门票、卡券样式卡片
         </a>
@@ -613,133 +693,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mysql/">#mysql</a>
-            
               <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
             
+              <a href="/tags/mysql/">#mysql</a>
+            
               <a href="/tags/js/">#js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/11/09/SSH%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
-          SSH端口转发
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2023/11/09/SSH%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
-        <div>
-          
-          背景 web部署在内网服务器上，而本机访问内网服务器首先需要通过堡垒机，再使用ssh连接内网服务器，但无法直接通过ip地址访问web页面，通过ssh进行端口转发来实现这一点。 操作 首先登陆堡垒机，确保能够ssh连接到内网服务器 ssh连接服务器 1234ssh user@hostname -p xxxx# user为要登录的用户，hostname为主机ip或域名，通过-p来指定特定端口# 示例s
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-09 02:17" pubdate>
-              2023-11-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="category-chain-item">服务器</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/11/07/One-hot%EF%BC%8CMulti-hot/" target="_self">
-          One-hot、Multi-hot
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2023/11/07/One-hot%EF%BC%8CMulti-hot/" target="_self">
-        <div>
-          
-          one-hot 表示特征只能有一个1，无论最后编码的向量维度的维度多少，比如幼年，青年，中年，老年； eg，小明是青年人。[0,1,0,0] 而multihot表示特征可以多选，多个1出现；比如性格特征：平和，严谨，乐观……； eg：小明：是一个平和，乐观但粗心的人；[1,0,1]； 123456789101112131415161718192021# 使用sklearn自带的编码器import
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-07 15:44" pubdate>
-              2023-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
             
           </div>
         

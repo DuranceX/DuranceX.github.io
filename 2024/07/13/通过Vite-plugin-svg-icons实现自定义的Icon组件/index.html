@@ -16,23 +16,21 @@
   <meta name="author" content="Cardy Xie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景 数据库存储有这类JSON数据，希望在输出时将每个子项都单独输出并根据key值重命名 12345678910111213141516171819202122232425262728softtissue:&#123;	nasalBase:&#123;		Col_Sn_Ls:null,		N_Prn_Sn:null,		ZyR_Prn_ZyL:null,		Sn_N_Pg:null,		A_NPg">
+    <meta name="description" content="为了能够通过像UI库的图标组件一样，通过name&#x3D;&#39;icon-name&#39;的形式来引入自己的图标，而不是通过img标签的src属性写长长一串地址，所以通过svg sprite图来进行实现。 原理 svg sprite图的实现原理是利用svg的symbol元素，将每个icon包裹在symbol中，再通过svg的use标签来使用该symbol，也就是最终，svg图标会变成如下的样子 1234&lt;sv">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS遍历JSON输出Mysql拆分JSON语句">
-<meta property="og:url" content="http://starnight.top/2023/11/10/JS%E9%81%8D%E5%8E%86JSON%E8%BE%93%E5%87%BAMysql%E6%8B%86%E5%88%86JSON%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:title" content="通过Vite-plugin-svg-icons实现自定义的Icon组件">
+<meta property="og:url" content="http://starnight.top/2024/07/13/%E9%80%9A%E8%BF%87Vite-plugin-svg-icons%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84Icon%E7%BB%84%E4%BB%B6/index.html">
 <meta property="og:site_name" content="星夜">
-<meta property="og:description" content="背景 数据库存储有这类JSON数据，希望在输出时将每个子项都单独输出并根据key值重命名 12345678910111213141516171819202122232425262728softtissue:&#123;	nasalBase:&#123;		Col_Sn_Ls:null,		N_Prn_Sn:null,		ZyR_Prn_ZyL:null,		Sn_N_Pg:null,		A_NPg">
+<meta property="og:description" content="为了能够通过像UI库的图标组件一样，通过name&#x3D;&#39;icon-name&#39;的形式来引入自己的图标，而不是通过img标签的src属性写长长一串地址，所以通过svg sprite图来进行实现。 原理 svg sprite图的实现原理是利用svg的symbol元素，将每个icon包裹在symbol中，再通过svg的use标签来使用该symbol，也就是最终，svg图标会变成如下的样子 1234&lt;sv">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-10T09:33:24.000Z">
-<meta property="article:modified_time" content="2024-03-31T16:46:27.090Z">
+<meta property="article:published_time" content="2024-07-13T12:31:30.000Z">
+<meta property="article:modified_time" content="2024-07-22T14:52:19.320Z">
 <meta property="article:author" content="Cardy Xie">
 <meta property="article:tag" content="前端">
-<meta property="article:tag" content="mysql">
-<meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>JS遍历JSON输出Mysql拆分JSON语句 - 星夜</title>
+  <title>通过Vite-plugin-svg-icons实现自定义的Icon组件 - 星夜</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,7 +171,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JS遍历JSON输出Mysql拆分JSON语句"></span>
+            <span id="subtitle" data-typed-text="通过Vite-plugin-svg-icons实现自定义的Icon组件"></span>
           
         </div>
 
@@ -184,8 +182,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-10 17:33" pubdate>
-          2023年11月10日 下午
+        <time datetime="2024-07-13 20:31" pubdate>
+          2024年7月13日 晚上
         </time>
       </span>
     
@@ -196,7 +194,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          3.2k 字
         
       </span>
     
@@ -207,7 +205,7 @@
         
         
         
-          15 分钟
+          28 分钟
         
       </span>
     
@@ -245,69 +243,63 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JS遍历JSON输出Mysql拆分JSON语句</h1>
+            <h1 style="display: none">通过Vite-plugin-svg-icons实现自定义的Icon组件</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年4月1日 凌晨
+                    本文最后更新于：2024年7月22日 晚上
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h3 id="背景">背景</h3>
-<p>数据库存储有这类JSON数据，希望在输出时将每个子项都单独输出并根据key值重命名</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs json">softtissue<span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>	nasalBase<span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>		Col_Sn_Ls<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		N_Prn_Sn<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		ZyR_Prn_ZyL<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		Sn_N_Pg<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		A_NPg<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		Col_Sn<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		Prn_Sn<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		AIR_AIL<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		AcR_AcL<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		other<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>	upperLipAndOralnasalRegion<span class="hljs-punctuation">:</span><span class="hljs-punctuation">&#123;</span><br>		Ls_E<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		A_A<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		Ls_U1<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		Chr_Ls_ChL<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		division<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		N_Pg_H<span class="hljs-punctuation">:</span><span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>		other<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>	frontalProfile<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>	lateralProfile<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>	facialSymmetry<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>	chinDeviation<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>	verbalLine<span class="hljs-punctuation">:</span><span class="hljs-string">&quot;&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<p>这样就会用到一个MySQL命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">JSON_UNQUOTE(JSON_EXTRACT(softtissue.nasalBase, &#x27;$.Col_Sn_Ls&#x27;)) AS &#x27;nasalBase_Col_Sn_Ls&#x27;,<br></code></pre></td></tr></table></figure>
-<p>但是如果针对每一个属性都手写这个代码的话过于麻烦，因此考虑通过js遍历JSON，自动拼接生成此类语句</p>
-<h3 id="代码">代码</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js">str = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-comment">//驼峰转下划线</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">camelToUnderscore</span>(<span class="hljs-params">str</span>) &#123; <span class="hljs-keyword">return</span> str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/[A-Z]/g</span>, <span class="hljs-function"><span class="hljs-params">match</span> =&gt;</span> <span class="hljs-string">&#x27;_&#x27;</span> + match.<span class="hljs-title function_">toLowerCase</span>()); &#125;<br><br><span class="hljs-comment">//遍历最外层json的key值</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> softtissue)&#123;<br>	<span class="hljs-comment">//进入子json，遍历其key值</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> subkey <span class="hljs-keyword">in</span> softtissue[key])&#123;<br>	    <span class="hljs-comment">//拼接文本，其中‘softtissue’为数据表名称</span><br>        str = str + <span class="hljs-string">&quot;JSON_UNQUOTE(JSON_EXTRACT(softtissue.&quot;</span> + <span class="hljs-title function_">camelToUnderscore</span>(key) + <span class="hljs-string">&quot;, &#x27;$.&quot;</span> + subkey + <span class="hljs-string">&quot;&#x27;)) AS &#x27;&quot;</span> + <span class="hljs-title function_">camelToUnderscore</span>(key) + <span class="hljs-string">&quot;_&quot;</span> + subkey + <span class="hljs-string">&quot;&#x27;,\n&quot;</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//格式化输出拼接后的文本</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);<br><span class="hljs-comment">//得到的部分输出</span><br><span class="hljs-comment">//JSON_UNQUOTE(JSON_EXTRACT(softtissue.nasalBase, &#x27;$.Col_Sn_Ls&#x27;)) AS &#x27;nasalBase_Col_Sn_Ls&#x27;,</span><br><span class="hljs-comment">//JSON_UNQUOTE(JSON_EXTRACT(softtissue.nasalBase, &#x27;$.N_Prn_Sn&#x27;)) AS &#x27;nasalBase_N_Prn_Sn&#x27;,</span><br><span class="hljs-comment">//JSON_UNQUOTE(JSON_EXTRACT(softtissue.nasalBase, &#x27;$.ZyR_Prn_ZyL&#x27;)) AS &#x27;nasalBase_ZyR_Prn_ZyL&#x27;,</span><br><span class="hljs-comment">//JSON_UNQUOTE(JSON_EXTRACT(softtissue.nasalBase, &#x27;$.Sn_N_Pg&#x27;)) AS &#x27;nasalBase_Sn_N_Pg&#x27;,</span><br><span class="hljs-comment">//....</span><br></code></pre></td></tr></table></figure>
+              <p>为了能够通过像UI库的图标组件一样，通过<code>name='icon-name'</code>的形式来引入自己的图标，而不是通过<code>img</code>标签的<code>src</code>属性写长长一串地址，所以通过svg sprite图来进行实现。</p>
+<h3 id="原理">原理</h3>
+<p>svg sprite图的实现原理是利用svg的<code>symbol</code>元素，将每个icon包裹在<code>symbol</code>中，再通过svg的<code>use</code>标签来使用该<code>symbol</code>，也就是最终，svg图标会变成如下的样子</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">xmlns:xlink</span>=<span class="hljs-string">&quot;http://www.w3.org/1999/xlink&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">symbol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1024 1024&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;icon名&quot;</span>&gt;</span>&#123;&#123;省略的icon path&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">symbol</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">symbol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1024 1024&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;icon名&quot;</span>&gt;</span>&#123;&#123;省略的icon path&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">symbol</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>此处的每个<code>symbol</code>都对应着一个元素，在需要使用icon的地方通过svg中的<code>use</code>标签根据icon的Id来进行读取</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">&quot;#symbolId&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="svg-sprite图的生成与导入">svg sprite图的生成与导入</h3>
+<p>对于<code>vite</code>项目来说，可以使用<code>vite-plugin-svg-icons</code>插件，对于<code>webpack</code>项目来说可以使用<code>svg-sprite-loader</code>插件。</p>
+<p><strong>安装</strong></p>
+<p>首先安装<code>vite-plugin-svg-icons</code>插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm i vite-plugin-svg-icons<br></code></pre></td></tr></table></figure>
+<p><strong>配置</strong></p>
+<p>之后在<code>vite.config.ts</code>中对插件进行配置</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; createSvgIconsPlugin &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite-plugin-svg-icons&#x27;</span><br><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>  <span class="hljs-attr">plugins</span>: [<br>    <span class="hljs-title function_">vue</span>()，<br>    <span class="hljs-title function_">createSvgIconsPlugin</span>(&#123;<br>    	<span class="hljs-comment">// 指定需要缓存的图标文件夹</span><br>    	<span class="hljs-attr">iconDirs</span>: [path.<span class="hljs-title function_">resolve</span>(process.<span class="hljs-title function_">cwd</span>(), <span class="hljs-string">&#x27;src/assets/icons&#x27;</span>)]<br>			<span class="hljs-comment">// 指定symbolId格式</span><br>			<span class="hljs-attr">symbolId</span>: <span class="hljs-string">&#x27;icon-[name]&#x27;</span><br>    &#125;)<br>  ]<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>之后还需要在<code>src/main.ts</code>中引入注册脚本</p>
+ <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;virtual:svg-icons-register&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>至此svg sprite图已经生成，可以在页面中通过svg标签进行访问。访问的symbolId格式便是设置中的<code>icon-[图标文件名称]</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlnk:href</span>=<span class="hljs-string">&#x27;#test&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="封装图标组件">封装图标组件</h3>
+<p>在现在的情况下，我们仍然需要使用svg标签来引入图标，而不是像UI库一般通过组件形式来引入，因此我们创建一个Icon组件对图标进行封装。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;svg :class=&quot;&#x27;svg-icon &#x27; + classes&quot; :style=&quot;&#123;<br>        width: `$&#123;width&#125;px`,<br>        height: `$&#123;height&#125;px`,<br>        color: color<br>    &#125;&quot; @click=&quot;$emit(&#x27;click&#x27;)&quot;&gt;<br>        &lt;use :xlink:href=&quot;`#icon-$&#123;name&#125;`&quot; /&gt;<br>    &lt;/svg&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; defineComponent &#125; from &#x27;vue&#x27;<br><br>export default defineComponent(&#123;<br>    name: &#x27;VIcon&#x27;,<br>    props: &#123;<br>        name: &#123;<br>            type: String,<br>            required: true<br>        &#125;,<br>        width: &#123;<br>            type: Number,<br>            default: 60<br>        &#125;,<br>        height: &#123;<br>            type: Number,<br>            default: 60<br>        &#125;,<br>        color: &#123;<br>            type: String,<br>            default: &#x27;deepgrey&#x27;<br>        &#125;,<br>        classes: &#123;<br>            type: String,<br>            default: &#x27;&#x27;<br>        &#125;<br>    &#125;,<br>    setup(props) &#123;<br>        return &#123;<br>            props<br>        &#125;<br>    &#125;<br>&#125;)<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>.svg-icon &#123;<br>    font-weight: 500;<br>    fill: currentColor;<br>    stroke: currentColor;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+<p>在上述的代码中，我们将svg标签中的内容放置在组件中，并传入一些控制参数，用于调整图标的显示样式，并注册了点击事件，如果希望处理点击事件则可以在调用侧监听<code>click</code>事件并做相应的处理。</p>
+<p>至此，便可在别处通过组件形式来使用图标了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;h1&gt;This is an about page&lt;/h1&gt;<br>    &lt;VIcon name=&quot;boy&quot; color=&quot;lightblue&quot; class=&quot;test test2&quot; /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script setup lang=&quot;ts&quot;&gt;<br>import VIcon from &#x27;@/components/VIcon.vue&#x27;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>也可以在<code>src/main.ts</code>中将<code>VIcon</code>注册为组件，即可在别处使用时不再一一导入<code>VIcon</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> <span class="hljs-title class_">VIcon</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/VIcon.vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br>...<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>)<br>...<br>app.<span class="hljs-title function_">component</span>(<span class="hljs-string">&#x27;VIcon&#x27;</span>,<span class="hljs-title class_">VIcon</span>)<br>...<br></code></pre></td></tr></table></figure>
+<hr>
+<p><strong>Reference</strong></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015367490">懒人神器：svg-sprite-loader实现自己的Icon组件</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md">Github文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/onesea/p/16095164.html">vite.config.js配置入门详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sincisco/articles/18201676">svg-sprite-loader的使用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Leophen/p/14157256.html">Vue2/3 使用 svg-sprite-loader 实现 svg 图标按需加载</a></p>
+
               
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%89%8D%E7%AB%AF/js/" class="category-chain-item">js</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-      
-        <a href="/tags/mysql/">#mysql</a>
-      
-        <a href="/tags/js/">#js</a>
       
     </div>
   
@@ -319,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JS遍历JSON输出Mysql拆分JSON语句</div>
-      <div>http://starnight.top/2023/11/10/JS遍历JSON输出Mysql拆分JSON语句/</div>
+      <div>通过Vite-plugin-svg-icons实现自定义的Icon组件</div>
+      <div>http://starnight.top/2024/07/13/通过Vite-plugin-svg-icons实现自定义的Icon组件/</div>
     </div>
     <div class="license-meta">
       
@@ -332,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月10日</div>
+          <div>2024年7月13日</div>
         </div>
       
       
@@ -362,9 +354,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/30/vue%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%81ref%E5%92%8Creadonly%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中自定义变量、ref和readonly定义变量的区别">
+                      <a href="/2024/07/16/%E5%AE%9E%E7%8E%B0%E8%B7%9F%E9%9A%8F%E9%BC%A0%E6%A0%87%E4%BD%8D%E7%BD%AE%E7%9A%84Tooltip/" title="实现跟随鼠标位置的Tooltip">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue中自定义变量、ref和readonly定义变量的区别</span>
+                        <span class="hidden-mobile">实现跟随鼠标位置的Tooltip</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -372,8 +364,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/09/SSH%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" title="SSH端口转发">
-                        <span class="hidden-mobile">SSH端口转发</span>
+                      <a href="/2024/06/20/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E9%97%A8%E7%A5%A8%E3%80%81%E5%8D%A1%E5%88%B8%E6%A0%B7%E5%BC%8F%E5%8D%A1%E7%89%87/" title="实现一个门票、卡券样式卡片">
+                        <span class="hidden-mobile">实现一个门票、卡券样式卡片</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

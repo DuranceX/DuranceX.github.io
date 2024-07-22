@@ -196,6 +196,128 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/11/09/SSH%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+          SSH端口转发
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2023/11/09/SSH%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" target="_self">
+        <div>
+          
+          背景 web部署在内网服务器上，而本机访问内网服务器首先需要通过堡垒机，再使用ssh连接内网服务器，但无法直接通过ip地址访问web页面，通过ssh进行端口转发来实现这一点。 操作 首先登陆堡垒机，确保能够ssh连接到内网服务器 ssh连接服务器 1234ssh user@hostname -p xxxx# user为要登录的用户，hostname为主机ip或域名，通过-p来指定特定端口# 示例s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-09 02:17" pubdate>
+              2023-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="category-chain-item">服务器</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/11/07/One-hot%EF%BC%8CMulti-hot/" target="_self">
+          One-hot、Multi-hot
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2023/11/07/One-hot%EF%BC%8CMulti-hot/" target="_self">
+        <div>
+          
+          one-hot 表示特征只能有一个1，无论最后编码的向量维度的维度多少，比如幼年，青年，中年，老年； eg，小明是青年人。[0,1,0,0] 而multihot表示特征可以多选，多个1出现；比如性格特征：平和，严谨，乐观……； eg：小明：是一个平和，乐观但粗心的人；[1,0,1]； 123456789101112131415161718192021# 使用sklearn自带的编码器import
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-07 15:44" pubdate>
+              2023-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="category-chain-item">深度学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/11/07/Prejection%20Head/" target="_self">
           projection head 映射头
         </a>
@@ -662,86 +784,6 @@
 </span>
 
           </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/03/Android%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%B9%B6%E6%98%BE%E7%A4%BA/" target="_self">
-          Android读取相册图片并显示
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/05/03/Android%E8%AF%BB%E5%8F%96%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%B9%B6%E6%98%BE%E7%A4%BA/" target="_self">
-        <div>
-          
-          Android根据Uri访问图片 在新的Android版本中，startActivityForResult方法被启用了，取而代之的是registerForActivityResult方法，registerForActivityResult方法需要在Activity中注册。 注册 1234567891011121314151617@Override  public void onCreate(Bun
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-03 21:00" pubdate>
-              2022-05-03
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/21/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" target="_self">
-          烟草仓储管理系统开发笔记（五）
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/04/21/%E7%83%9F%E8%8D%89%E4%BB%93%E5%82%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/" target="_self">
-        <div>
-          
-          悲报 前几天写完的采购订单界面，花了很长的时间去实现树形列表，构思数据的呈现形式，算是写了挺多的内容了，前天晚上明明都暂告一段落了，却忘记了push到GitHub，结果昨天打开电脑，发现存放毕设的硬盘损坏了，系统直接识别不到硬盘了。。。也就是前几天写的采购订单页面全部作废。GitHub上的最新的commit也是两天前的，直接导致昨天心态炸裂，摆了一天。期望着今天硬盘能够奇迹般恢复（毕竟之前有过一次
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-21 22:28" pubdate>
-              2022-04-21
-            </time>
-          </div>
-        
         
         
           <div class="post-meta">

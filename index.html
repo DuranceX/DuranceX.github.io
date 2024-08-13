@@ -196,6 +196,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2024/08/10/Vue%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%94%BB%E5%BB%8A%E9%A1%B5%E9%9D%A2/" target="_self">
+          Vue实现一个画廊页面
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/08/10/Vue%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%94%BB%E5%BB%8A%E9%A1%B5%E9%9D%A2/" target="_self">
+        <div>
+          
+          使用Vue实现一个简单的瀑布流画廊页面demo，图片简单地从assets目录下读取并在页面进行展示，在这过程中遇到了一些问题进行一下记录。 Vite读取assets目录下的文件 在webpack中可以通过require.context方法来读取目录下的所有文件 其具体用法为 1require.context(directory,useSubdirectories,regExp) directory
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-10 15:54" pubdate>
+              2024-08-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/07/20/%E4%BD%BF%E7%94%A8ECharts%E5%92%8CG2%E5%AE%9E%E7%8E%B0%E5%9B%BE%E8%A1%A8/" target="_self">
+          使用ECharts和G2实现图表
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/07/20/%E4%BD%BF%E7%94%A8ECharts%E5%92%8CG2%E5%AE%9E%E7%8E%B0%E5%9B%BE%E8%A1%A8/" target="_self">
+        <div>
+          
+          使用ECharts和G2实现图表 在网页上常用的图表显示框架有ECharts、G2等，通过使用ECharts和G2实现相同效果的双折线带面积的图表来学习其用法。 ECharts ECharts绘制图表通过设置options来实现，并通过setOption来应用配置项，同时实现图表的更新。 安装ECharts 1npm install echarts 获取容器 首先在template中准备一个定义了
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-20 22:18" pubdate>
+              2024-07-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2024/07/16/%E5%AE%9E%E7%8E%B0%E8%B7%9F%E9%9A%8F%E9%BC%A0%E6%A0%87%E4%BD%8D%E7%BD%AE%E7%9A%84Tooltip/" target="_self">
           实现跟随鼠标位置的Tooltip
         </a>
@@ -556,148 +636,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/error/">#error</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/12/30/vue%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%81ref%E5%92%8Creadonly%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
-          vue中自定义变量、ref和readonly定义变量的区别
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2023/12/30/vue%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E3%80%81ref%E5%92%8Creadonly%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
-        <div>
-          
-          在由选项式API转向组合式API时，发现响应式数据的定义往往通过ref来实现，但是直接定义变量的方式也能够在页面中实现显示，而后又有readonly来进行变量定义的方式，因此实验了一下其中的区别。 自定义变量 使用自定义变量时直接进行定义即可let customVal:number &#x3D; 10  自定义变量的值可以直接在模板中显示（包括文本和输入框等） 点击按钮改变自定义变量的值时，后台数据会发生变
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-30 23:59" pubdate>
-              2023-12-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%89%8D%E7%AB%AF/vue/" class="category-chain-item">vue</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/11/10/JS%E9%81%8D%E5%8E%86JSON%E8%BE%93%E5%87%BAMysql%E6%8B%86%E5%88%86JSON%E8%AF%AD%E5%8F%A5/" target="_self">
-          JS遍历JSON输出Mysql拆分JSON语句
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2023/11/10/JS%E9%81%8D%E5%8E%86JSON%E8%BE%93%E5%87%BAMysql%E6%8B%86%E5%88%86JSON%E8%AF%AD%E5%8F%A5/" target="_self">
-        <div>
-          
-          背景 数据库存储有这类JSON数据，希望在输出时将每个子项都单独输出并根据key值重命名 12345678910111213141516171819202122232425262728softtissue:&#123;	nasalBase:&#123;		Col_Sn_Ls:null,		N_Prn_Sn:null,		ZyR_Prn_ZyL:null,		Sn_N_Pg:null,		A_NPg
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-10 17:33" pubdate>
-              2023-11-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%89%8D%E7%AB%AF/js/" class="category-chain-item">js</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-            
-              <a href="/tags/mysql/">#mysql</a>
-            
-              <a href="/tags/js/">#js</a>
             
           </div>
         

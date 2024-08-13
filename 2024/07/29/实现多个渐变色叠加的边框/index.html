@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/star.png">
+  <link rel="icon" href="/img/star.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Cardy Xie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="实现多个渐变色叠加的边框 如何实现下面这个由两个渐变色叠加的边框效果：  对于单个渐变色的边框可以用border-image轻松实现 1234567.border-image-demo&#123;  margin: 10px 0;  width: 200px;  height: 100px;  border: 2px solid;  border-image: linear-gradient(13">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现多个渐变色叠加的边框">
+<meta property="og:url" content="http://starnight.top/2024/07/29/%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AA%E6%B8%90%E5%8F%98%E8%89%B2%E5%8F%A0%E5%8A%A0%E7%9A%84%E8%BE%B9%E6%A1%86/index.html">
+<meta property="og:site_name" content="星夜">
+<meta property="og:description" content="实现多个渐变色叠加的边框 如何实现下面这个由两个渐变色叠加的边框效果：  对于单个渐变色的边框可以用border-image轻松实现 1234567.border-image-demo&#123;  margin: 10px 0;  width: 200px;  height: 100px;  border: 2px solid;  border-image: linear-gradient(13">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.starnight.top/img/aec5805e03422bd0b42c52f56efc040.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/02453875a0261f1602bf496d3d6e4cc.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/29f5c9f4f5a8dfbcaf9259060f5394f.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/5cce711d462609d31bd0acc639310ab.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/b6764dc4fc03739608b9549bf5eb4e1.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/505620f9e26bc9b54ef910dfc170569.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/52b40e9b153ddbab98a3422df885624.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/3ab5a64b15fad1444932bddc9c28c1b.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/804f062e6e99afef61eb6f8b9161d9e.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/995cadc902015767a219c273a03f337.jpg">
+<meta property="og:image" content="https://images.starnight.top/img/73195e6a3b628e15f31c438549b0e50.jpg">
+<meta property="article:published_time" content="2024-07-29T09:45:03.000Z">
+<meta property="article:modified_time" content="2024-08-13T07:37:18.011Z">
+<meta property="article:author" content="Cardy Xie">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.starnight.top/img/aec5805e03422bd0b42c52f56efc040.jpg">
+  
+  
+  <title>实现多个渐变色叠加的边框 - 星夜</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.15.6/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"starnight.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>星夜</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="实现多个渐变色叠加的边框"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-29 17:45" pubdate>
+          2024年7月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实现多个渐变色叠加的边框</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年8月13日 下午
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h2 id="实现多个渐变色叠加的边框">实现多个渐变色叠加的边框</h2>
+<p>如何实现下面这个由两个渐变色叠加的边框效果：</p>
+<p><img src="https://images.starnight.top/img/aec5805e03422bd0b42c52f56efc040.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于单个渐变色的边框可以用<code>border-image</code>轻松实现</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.border-image-demo</span>&#123;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid;<br>  <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">135deg</span>, skyblue, purple) <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/02453875a0261f1602bf496d3d6e4cc.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>但这个方式存在两个问题：</p>
+<ol>
+<li><code>border-image</code>只能接受一个渐变色，无法叠加多个渐变色</li>
+<li><code>border-image</code>无法通过<code>border-radius</code>实现圆角</li>
+</ol>
+<p><img src="https://images.starnight.top/img/29f5c9f4f5a8dfbcaf9259060f5394f.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法一：border-image-overflow">方法一：border-image+overflow</h3>
+<p>这一方法是在原有<code>border-image</code>方法上的改进，既然使用了<code>border-image</code>属性的元素无法通过<code>border-radius</code>属性实现圆角，那么可以给该元素添加一个父元素，给父元素设置<code>border-radius</code>属性，并设置<code>overflow:hidden</code>，以此来实现边框的圆角效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.border-image-demo-container</span>&#123;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">206px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">106px</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;<br>  <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-selector-class">.border-image-demo</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50px</span>;<br>  <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">135deg</span>, skyblue, purple) <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>但是也可以看到，这种方法存在两个问题</p>
+<ol>
+<li>内部的黑色部分（内容部分）仍为方形，棱角分明</li>
+<li>父元素的圆角不能太大，一但偏大就会出现边框断裂的问题</li>
+</ol>
+<p><img src="https://images.starnight.top/img/5cce711d462609d31bd0acc639310ab.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这是因为带有<code>border-image</code>的子元素本身是没有任何变化的，只是父元素中通过设置<code>border-raduis</code>对子元素进行遮挡而已，因此当父元素的圆角遮住了子元素的边框宽度后，子元素的边框便“断裂”了</p>
+<h3 id="方法二：多border-image元素叠加">方法二：多border-image元素叠加</h3>
+<p>此方法可以解决<code>border-image</code>不能使用多个渐变色的问题，既然一个<code>border-image</code>无法使用多个渐变色，那就用多个元素并设置<code>border-image</code>进行叠加，即可实现多渐变叠加的效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mask1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mask2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">100.9deg</span>, <span class="hljs-number">#112531</span> -<span class="hljs-number">1.03%</span>, <span class="hljs-number">#111111</span> <span class="hljs-number">37.46%</span>, <span class="hljs-number">#000001</span> <span class="hljs-number">96.14%</span>);<br>  <span class="hljs-attribute">position</span>: relative;<br>  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">10px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.mask1</span>&#123;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid;<br>  <span class="hljs-attribute">box-sizing</span>: border-box;<br>  <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">125.19deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">208</span>, <span class="hljs-number">208</span>, <span class="hljs-number">242</span>, <span class="hljs-number">0</span>) <span class="hljs-number">48.74%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">223</span>, <span class="hljs-number">223</span>, <span class="hljs-number">252</span>, <span class="hljs-number">0.6</span>) <span class="hljs-number">98.12%</span>) <span class="hljs-number">1</span>;<br>  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-selector-class">.mask2</span>&#123;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid;<br>  <span class="hljs-attribute">box-sizing</span>: border-box;<br>  <span class="hljs-attribute">border-image</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">312.62deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">105</span>, <span class="hljs-number">124</span>, <span class="hljs-number">159</span>, <span class="hljs-number">0</span>) <span class="hljs-number">81.16%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.72</span>) <span class="hljs-number">99.61%</span>) <span class="hljs-number">1</span>;<br>  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/b6764dc4fc03739608b9549bf5eb4e1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这种方法实现了浮于子元素上方的多渐变叠加的边框，但同样无法实现圆角的问题，此外这个方法的缺点显而易见，每个添加渐变都需要添加一个元素，很不方便。</p>
+<h3 id="方法三：clip-path">方法三：clip-path</h3>
+<p>这种方法与方法一非常相似，方法一是通过添加父元素并设置<code>overflow:hidden</code>来对边框进行遮挡，而这种方法则是通过<code>clip-path</code>对元素本身进行裁剪。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.clip-path-demo</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid;<br>  <span class="hljs-attribute">border-image</span>:<span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">135deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">123</span>,<span class="hljs-number">123</span>,<span class="hljs-number">252</span>), <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">253</span>,<span class="hljs-number">252</span>)) <span class="hljs-number">1</span>;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">clip-path</span>: <span class="hljs-built_in">inset</span>(<span class="hljs-number">0</span> round <span class="hljs-number">5px</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>首先还是通过<code>border-image</code>设置渐变边框，之后通过<code>clip-path</code>属性对元素进行裁剪。<code>clip-path: inset(0 round 10px)</code>，其中<code>inset()</code>是矩形裁剪，<code>inset(0 round 10px)</code>表示为一个与父容器完全贴合的容器，并且其<code>border-radius</code>为<code>10px</code>，将这个元素之外的内容全部裁剪不可见。</p>
+<p><code>inset()</code>方法的位置信息有四个可选项，分别对应距离上、下、左、右四条边的距离，<code>round</code>为可选参数，其同样可以使用四个数值分别描述四个角的圆角数值。</p>
+<p>这个方法的缺点也和方法一一样：</p>
+<ol>
+<li>内部的黑色部分（内容部分）仍为方形，棱角分明</li>
+<li>裁剪的圆角不能太大，一但偏大就会出现边框断裂的问题</li>
+</ol>
+<p><img src="https://images.starnight.top/img/505620f9e26bc9b54ef910dfc170569.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法四：background-image">方法四：background-image</h3>
+<p>在对<code>border-image</code>尝试无果后，便开始考虑通过<code>background-image</code>来实现这个效果，最常用的方法是给出一个宽高都略大于目标元素的<code>div</code>标签，设置其<code>background-image</code>和<code>border-image</code>属性，将其放置在目标元素的下方，模拟出了一个边框。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;background-image-demo-container&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;background-image-demo-content&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.background-image-demo-container</span>&#123;<br>  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">206px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">106px</span>;<br>  <span class="hljs-attribute">position</span>: relative;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">20px</span>;<br>  <span class="hljs-attribute">background-image</span>: <br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">135deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">123</span>,<span class="hljs-number">123</span>,<span class="hljs-number">252</span>,<span class="hljs-number">0.4</span>), <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">253</span>,<span class="hljs-number">252</span>,<span class="hljs-number">0.4</span>)),<br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">45deg</span>,<span class="hljs-built_in">rgba</span>(<span class="hljs-number">133</span>, <span class="hljs-number">208</span>, <span class="hljs-number">84</span>, <span class="hljs-number">0.4</span>) <span class="hljs-number">48.74%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">23</span>, <span class="hljs-number">23</span>, <span class="hljs-number">232</span>, <span class="hljs-number">0.6</span>) <span class="hljs-number">98.12%</span>);<br>&#125;<br><br><span class="hljs-selector-class">.background-image-demo-content</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">3px</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">3px</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">20px</span>;<br>  <span class="hljs-attribute">background-color</span>: black;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或者也可以不用两个元素，而用<code>::after</code>替代</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.background-image-demo-container</span><span class="hljs-selector-pseudo">::after</span>&#123;<br>  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">3px</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">3px</span>;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">20px</span>;<br>  <span class="hljs-attribute">background-color</span>: black;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/52b40e9b153ddbab98a3422df885624.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://images.starnight.top/img/3ab5a64b15fad1444932bddc9c28c1b.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>左侧为单个渐变的效果，右侧为两个渐变叠加的效果，可见多个渐变叠加得以实现。同时也可以通过<code>border-radius</code>属性实现圆角。但这种情况下，如果需要该半透明的边框叠加在图片上方，则无法实现。</p>
+<h3 id="方法五：mask-image">方法五：mask-image</h3>
+<p>为了将边框浮于元素上方，便思考有没有一种方法能够将元素裁剪为一个环，首先想到的是<code>mask-image</code>，他能够定义一个蒙版，来遮挡住元素，<code>mask-image</code>接收图片或者渐变色作为参数，而线性渐变无法实现效果，其只能实现渐隐的效果，因此采用径向渐变来进行蒙版的构建。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.mask</span>&#123;<br>  <span class="hljs-attribute">content</span>:<span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>:<span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">border-radius</span>:<span class="hljs-number">50px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">position</span>:absolute;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">125.19deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">208</span>, <span class="hljs-number">208</span>, <span class="hljs-number">242</span>, <span class="hljs-number">0</span>) <span class="hljs-number">48.74%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">223</span>, <span class="hljs-number">223</span>, <span class="hljs-number">252</span>, <span class="hljs-number">0.6</span>) <span class="hljs-number">98.12%</span>),<br>              <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">312.62deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">105</span>, <span class="hljs-number">124</span>, <span class="hljs-number">159</span>, <span class="hljs-number">0</span>) <span class="hljs-number">81.16%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.72</span>) <span class="hljs-number">99.61%</span>);<br>  <span class="hljs-attribute">mask-image</span>: <span class="hljs-built_in">radial-gradient</span>(circle at center, transparent <span class="hljs-number">60%</span>, black <span class="hljs-number">100%</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="https://images.starnight.top/img/804f062e6e99afef61eb6f8b9161d9e.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>虽然效果不是非常理想，但是至少模拟出了类似的效果，将其移至元素上方即可。</p>
+<h3 id="方法六：background-clip">方法六：background-clip</h3>
+<p>最后，我找到了<code>background-clip</code>方法，<code>background-clip</code>方法设置元素的背景（背景图片或颜色）是否延伸到边框下面。它的部分取值和 <code>box-sizing</code> 类似。其中，</p>
+<ul>
+<li><code>background-clip: border-box</code> 表示设置的背景 <code>background-image</code> 将延伸至边框</li>
+<li><code>background-clip: content-box</code> 表示设置的背景 <code>background-image</code> 被裁剪至内容区（content box）外沿</li>
+</ul>
+<p>具体的效果示例可见<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip">MDN</a></p>
+<p>重要的是，这个方法可以设置多个参数，用以对应多个<code>background</code>参数，也就是说，我们可以在<code>background-image</code>属性中，设置四层背景，第四层背景（也就是最下方的背景）是要显示的子元素的背景色，第二三层背景则是两个构建边框的渐变色，第一层背景（也就是最上方的背景）也是要显示的子元素的背景色，用于遮挡住二三层的渐变色。为了使二三层的渐变色边框能够显露出来，将二三层边框的<code>background-clip</code>参数设置为<code>border-box</code>，而第一层背景的<code>background-clip</code>属性设置为<code>content-box</code>这样第一层背景就只遮挡住了<code>content-box</code>部分的内容，而将<code>border</code>部分的内容显露出现，正好形成了一个边框，并叠加在底层元素的上方。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.background-clip-use</span>&#123;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<br>  <span class="hljs-attribute">border</span>: solid <span class="hljs-number">2px</span> transparent;<br>  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50px</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-attribute">background-image</span>:  <br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">100.9deg</span>, <span class="hljs-number">#F3F8FF</span> -<span class="hljs-number">1.03%</span>, <span class="hljs-number">#D7E1EE</span> <span class="hljs-number">37.46%</span>, <span class="hljs-number">#A6B4FE</span> <span class="hljs-number">96.14%</span>),<br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">125.19deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">28</span>, <span class="hljs-number">208</span>, <span class="hljs-number">242</span>, <span class="hljs-number">0</span>) <span class="hljs-number">48.74%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">23</span>, <span class="hljs-number">223</span>, <span class="hljs-number">252</span>, <span class="hljs-number">0.6</span>) <span class="hljs-number">98.12%</span>),<br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">312.62deg</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">105</span>, <span class="hljs-number">124</span>, <span class="hljs-number">159</span>, <span class="hljs-number">0</span>) <span class="hljs-number">81.16%</span>, <span class="hljs-built_in">rgba</span>(<span class="hljs-number">255</span>, <span class="hljs-number">25</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.72</span>) <span class="hljs-number">99.61%</span>),<br>    <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">100.9deg</span>, <span class="hljs-number">#F3F8FF</span> -<span class="hljs-number">1.03%</span>, <span class="hljs-number">#D7E1EE</span> <span class="hljs-number">37.46%</span>, <span class="hljs-number">#A6B4FE</span> <span class="hljs-number">96.14%</span>);<br>  <span class="hljs-attribute">background-origin</span>: border-box;<br>  <span class="hljs-attribute">background-clip</span>: content-box, border-box, border-box, border-box;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>裁剪得到的边框如下所示（该情况下去掉了最下方的背景，使得边框单独展示）：</p>
+<p><img src="https://images.starnight.top/img/995cadc902015767a219c273a03f337.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>添加上最底层的背景后得到了想要的结果，如下图所示</p>
+<p><img src="https://images.starnight.top/img/73195e6a3b628e15f31c438549b0e50.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="方法七：复制为SVG">方法七：复制为SVG</h3>
+<p>另外的开发过程中，对于这类复杂背景，可以直接从figma设计稿中选中图形，右键复制为svg或者png，导入到项目的静态资源中，直接使用<code>url()</code>设置为背景图更加的便捷。</p>
+<hr>
+<h3 id="Reference">Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5MDA2MTI1MA==&amp;mid=2649093625&amp;idx=3&amp;sn=534bcedc0989a0d05ec1c0b9d547c612&amp;chksm=be5bd254892c5b428ab3588891b7fdb2829f85dd936eec3a877fadd82729bca579ca852a2019&amp;scene=27">巧妙实现带圆角的渐变边框</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000043924067">不要图片？CSS实现圆角边框渐变色+背景透明</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>实现多个渐变色叠加的边框</div>
+      <div>http://starnight.top/2024/07/29/实现多个渐变色叠加的边框/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Cardy Xie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月29日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/08/10/Vue%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%94%BB%E5%BB%8A%E9%A1%B5%E9%9D%A2/" title="Vue实现一个画廊页面">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue实现一个画廊页面</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/20/%E4%BD%BF%E7%94%A8ECharts%E5%92%8CG2%E5%AE%9E%E7%8E%B0%E5%9B%BE%E8%A1%A8/" title="使用ECharts和G2实现图表">
+                        <span class="hidden-mobile">使用ECharts和G2实现图表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

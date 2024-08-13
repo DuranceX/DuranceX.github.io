@@ -196,6 +196,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2024/08/10/%E5%9B%BE%E7%89%87%E4%B8%8B%E6%96%B9%E5%87%BA%E7%8E%B0%E7%A9%BA%E8%A1%8C%E7%9A%84%E6%88%90%E5%9B%A0%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+          图片下方出现空行的成因和解决方案
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/08/10/%E5%9B%BE%E7%89%87%E4%B8%8B%E6%96%B9%E5%87%BA%E7%8E%B0%E7%A9%BA%E8%A1%8C%E7%9A%84%E6%88%90%E5%9B%A0%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          
+          在[[Vue实现一个画廊页面]]中出现了一个问题，即img标签导入的图片在排版时，在margin、padding、border等属性都不存在的情况下，下方仍然出现了空行。为了探寻这一情况的原因和解决方案做了一系列的研究。问题示例如下所示，在图片的下方存在着一个空行，使得外层div的边框没能完整地贴合图片。  成因 首先我们要理解的是文本的渲染逻辑。 文本在渲染过程中，会将文本放置在baseline
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-10 19:57" pubdate>
+              2024-08-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+              <a href="/tags/Error/">#Error</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2024/08/10/Vue%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%94%BB%E5%BB%8A%E9%A1%B5%E9%9D%A2/" target="_self">
           Vue实现一个画廊页面
         </a>
@@ -293,6 +335,46 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2024-07-20 22:18" pubdate>
+              2024-07-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2024/07/20/ECharts%E7%9A%84Tooltip%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%8E%9F%E5%9B%A0/" target="_self">
+          ECharts的Tooltip不显示原因
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2024/07/20/ECharts%E7%9A%84Tooltip%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%8E%9F%E5%9B%A0/" target="_self">
+        <div>
+          
+          ECharts的Tooltip不显示原因 问题 在使用ECharts添加Tooltip的时候发现浮窗不显示，但其辅助线可以正常显示，网上查到的原因都说的是Vue的代理问题，不能将Echarts实例定义为ref或reactive对象，但我在代码里并没有将其定义为ref对象，且用上makeRow等方法后仍然不显示提示框。如下所示。  HTML结构检查 出现了问题首先查看控制台，发现没有报错，便去查看H
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-20 17:26" pubdate>
               2024-07-20
             </time>
           </div>
@@ -512,142 +594,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
-          JS字符串操作连用问题
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2024/03/20/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E8%BF%9E%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          
-          问题 有字符串“…&#x2F;…&#x2F;img&#x2F;example.jpg”，想要提取出文件名example，使用js代码replace替换..&#x2F;..&#x2F;img&#x2F;，再使用substring提取文件名时出现问题 123const str &#x3D; &#x27;..&#x2F;..&#x2F;img&#x2F;example.jpg&#x27;console.log(str.replace(&#x27;..&#x2F;..&#x2F;img&#x2F;&#x27;,&#x27;&amp;#x27
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-20 12:01" pubdate>
-              2024-03-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%89%8D%E7%AB%AF/js/" class="category-chain-item">js</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
-            
-              <a href="/tags/js/">#js</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/" target="_self">
-          MySQL中JSON数据的查找和更新
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2024/02/17/MySQL%E4%B8%ADJSON%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9F%A5%E6%89%BE%E5%92%8C%E6%9B%B4%E6%96%B0/" target="_self">
-        <div>
-          
-          设MySQL中JSON字段info的格式如下： 12345&#123;	&quot;name&quot;:&quot;小明&quot;,	&quot;age&quot;:15,	&quot;height&quot;:163&#125; 建表 12345create table &#x27;t1&#x27; (	&#x27;id&#x27; int(11) NOT NULL AUTO_INCREME
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 22:42" pubdate>
-              2024-02-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/mysql/" class="category-chain-item">mysql</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mysql/">#mysql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -122,7 +122,7 @@ img{
 2. 给`img`添加属性`display:block`
 3. 给`img`添加属性`vertical-align: bottom`
 
-出现这一情况的原因是：**HTML中的`img`标签是内联元素，这意味着它们会被像文本一样对待，而在HTML中文本行有额外的空间，用于放置类似`g`,`j`等字母的下行部分，所以会出现空白间隙。** 而通过给`container`设置`line-height:0`以及给`img`添加属性`display:block`都是在消除这些额外空间。具体内容查看[图片下方出现空行的成因和解决方案](starnight.top/2024/08/10/图片下方出现空行的成因和解决方案)
+出现这一情况的原因是：**HTML中的`img`标签是内联元素，这意味着它们会被像文本一样对待，而在HTML中文本行有额外的空间，用于放置类似`g`,`j`等字母的下行部分，所以会出现空白间隙。** 而通过给`container`设置`line-height:0`以及给`img`添加属性`display:block`都是在消除这些额外空间。具体内容查看[图片下方出现空行的成因和解决方案](https://starnight.top/2024/08/10/图片下方出现空行的成因和解决方案/)
 
 最后得到如图所示的显示效果：
 ![](https://images.starnight.top/img/Pasted%20image%2020240805145854.png)

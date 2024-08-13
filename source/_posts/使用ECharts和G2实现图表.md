@@ -471,7 +471,7 @@ onMounted(()=>{
 
 ## 遇到的问题
 
-在设置Tooltip的过程中遇到一个[ECharts的Tooltip不显示原因](starnight.top/2024/07/20/Echarts的Tooltip不显示原因)
+在设置Tooltip的过程中遇到一个[ECharts的Tooltip不显示原因](https://starnight.top/2024/07/20/ECharts的Tooltip不显示原因/)
 
 ---
 
